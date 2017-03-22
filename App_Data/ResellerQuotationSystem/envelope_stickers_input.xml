@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.envelope_stickers_input" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createenvelope_stickers_input">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERCONTACT_V` VARCHAR(200) NULL ,
+        `PRODUCT_V` VARCHAR(200) NULL ,
+        `PURCHASEORDERNUMBER_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createenvelope_stickers_inputHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUTHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERCONTACT_V` VARCHAR(200) NULL ,
+        `PRODUCT_V` VARCHAR(200) NULL ,
+        `PURCHASEORDERNUMBER_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , CUSTOMERNAME_V , CUSTOMERCONTACT_V , PRODUCT_V , PURCHASEORDERNUMBER_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , CUSTOMERNAME_V , CUSTOMERCONTACT_V , PRODUCT_V , PURCHASEORDERNUMBER_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT WHERE SID = #SID#
+    </statement>
+
+    <select id="getenvelope_stickers_input" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT(SID, AXTMODIFY, CUSTOMERNAME_V, CUSTOMERCONTACT_V, PRODUCT_V, PURCHASEORDERNUMBER_V)
+      VALUES(#SID#, #AXTMODIFY#, #CUSTOMERNAME_V#, #CUSTOMERCONTACT_V#, #PRODUCT_V#, #PURCHASEORDERNUMBER_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT SET AXTMODIFY = #AXTMODIFY#,CUSTOMERNAME_V = #CUSTOMERNAME_V#,CUSTOMERCONTACT_V = #CUSTOMERCONTACT_V#,PRODUCT_V = #PRODUCT_V#,PURCHASEORDERNUMBER_V = #PURCHASEORDERNUMBER_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT WHERE SID = #SID#
+    </delete>
+
+    <statement id="getenvelope_stickers_inputBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERCONTACT_V">
+          CUSTOMERCONTACT_V like #CUSTOMERCONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_V">
+          PRODUCT_V like #PRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          PURCHASEORDERNUMBER_V like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getenvelope_stickers_inputTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT
+   </select>
+
+    <statement id="getenvelope_stickers_inputByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERCONTACT_V">
+          CUSTOMERCONTACT_V like #CUSTOMERCONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_V">
+          PRODUCT_V like #PRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          PURCHASEORDERNUMBER_V like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

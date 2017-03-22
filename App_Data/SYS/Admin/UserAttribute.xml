@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.UserAttribute" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createUserAttribute">
+      CREATE TABLE IF NOT EXISTS SYSADMINUSERATTRIBUTE (
+        `SID` VARCHAR(100) NOT NULL ,
+        `C1` VARCHAR(100) NULL ,
+        `C2` VARCHAR(100) NULL ,
+        `C3` VARCHAR(100) NULL ,
+        `C4` VARCHAR(100) NULL ,
+        `C5` VARCHAR(100) NULL ,
+        `C6` VARCHAR(100) NULL ,
+        `C7` VARCHAR(100) NULL ,
+        `C8` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createUserAttributeTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINUSERATTRIBUTETMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `C1` VARCHAR(100) NULL ,
+        `C2` VARCHAR(100) NULL ,
+        `C3` VARCHAR(100) NULL ,
+        `C4` VARCHAR(100) NULL ,
+        `C5` VARCHAR(100) NULL ,
+        `C6` VARCHAR(100) NULL ,
+        `C7` VARCHAR(100) NULL ,
+        `C8` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getUserAttribute" resultClass="Hashtable">
+      Select * From SYSADMINUSERATTRIBUTE
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINUSERATTRIBUTE(SID, C1, C2, C3, C4, C5, C6, C7, C8)
+      VALUES(#SID#, #C1#, #C2#, #C3#, #C4#, #C5#, #C6#, #C7#, #C8#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINUSERATTRIBUTE SET C1 = #C1#, C2 = #C2#, C3 = #C3#, C4 = #C4#, C5 = #C5#, C6 = #C6#, C7 = #C7#, C8 = #C8# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINUSERATTRIBUTE
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINUSERATTRIBUTE WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

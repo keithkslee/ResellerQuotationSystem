@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.MainMenu" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createMainMenu">
+      CREATE TABLE IF NOT EXISTS SYSADMINMAINMENU (
+        `SID` VARCHAR(100) NOT NULL ,
+        `MAIN_MENU` VARCHAR(100) NULL ,
+        `LANGUAGE_TYPE` VARCHAR(100) NULL ,
+        `LANGUAGE` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createMainMenuTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINMAINMENUTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `MAIN_MENU` VARCHAR(100) NULL ,
+        `LANGUAGE_TYPE` VARCHAR(100) NULL ,
+        `LANGUAGE` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getMainMenu" resultClass="Hashtable">
+      Select * From SYSADMINMAINMENU
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINMAINMENU(SID, MAIN_MENU, LANGUAGE_TYPE, LANGUAGE)
+      VALUES(#SID#, #MAIN_MENU#, #LANGUAGE_TYPE#, #LANGUAGE#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINMAINMENU SET MAIN_MENU = #MAIN_MENU#, LANGUAGE_TYPE = #LANGUAGE_TYPE#, LANGUAGE = #LANGUAGE# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINMAINMENU
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINMAINMENU WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

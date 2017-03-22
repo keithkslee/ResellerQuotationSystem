@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="AxtMutiLang" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+    
+    <select id="getLangs" resultClass="Hashtable">
+      SELECT LANGUAGE FROM MES_MENU_ITEM GROUP BY LANGUAGE
+    </select>
+
+    <select id="getMainMenuLangs" resultClass="Hashtable">
+      SELECT MAIN_MENU, LANGUAGE_TYPE, LANGUAGE FROM (
+        SELECT amt.MAIN_MENU, amm.LANGUAGE_TYPE, amm.LANGUAGE
+        FROM axtmes_menu_tree amt, axtmes_main_menu amm
+        WHERE amt.MAIN_MENU = amm.MAIN_MENU
+        ORDER BY amm.LANGUAGE
+      ) c
+      GROUP BY MAIN_MENU, LANGUAGE_TYPE, LANGUAGE
+      ORDER BY LANGUAGE_TYPE, LANGUAGE
+    </select>
+    
+    <select id="getSubMenuLangs" resultClass="Hashtable">
+      SELECT SUB_MENU, LANGUAGE_TYPE, LANGUAGE FROM (
+        SELECT amt.SUB_MENU, asm.LANGUAGE_TYPE, asm.LANGUAGE
+        FROM axtmes_menu_tree amt, axtmes_sub_menu asm
+        WHERE amt.SUB_MENU = asm.SUB_MENU
+        ORDER BY asm.LANGUAGE
+      ) c
+      GROUP BY SUB_MENU, LANGUAGE_TYPE, LANGUAGE
+      ORDER BY LANGUAGE_TYPE, LANGUAGE
+    </select>
+    
+    <select id="getMenuItemsLangs" resultClass="Hashtable">
+      SELECT amt.MENU_TREE_SID AS SID, amt.GUI_PATH, ami.LANGUAGE_TYPE, ami.LANGUAGE
+      FROM axtmes_menu_tree amt, axtmes_menu_item ami
+      WHERE amt.MENU_TREE_SID = ami.MENU_TREE_SID
+      ORDER BY ami.LANGUAGE_TYPE, amt.SUB_MENU, amt.TREE_ORDER
+    </select>
+
+    <select id="getChiLinMenuItemsLangs" resultClass="Hashtable">
+      SELECT amt.MENU_ITEM, amt.GUI_PATH, ami.LANGUAGE_TYPE, ami.LANGUAGE
+      FROM axtmes_menu_tree amt, axtmes_menu_item ami
+      WHERE amt.MENU_ITEM = ami.MENU_ITEM
+      ORDER BY ami.LANGUAGE_TYPE, amt.SUB_MENU, amt.TREE_ORDER
+    </select>
+    
+  </statements>    
+</sqlMap>

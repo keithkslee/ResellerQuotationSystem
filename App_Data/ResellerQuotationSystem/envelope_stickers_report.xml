@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.envelope_stickers_report" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createenvelope_stickers_report">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORT (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DELIVERYADDRESS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERCONTACT_V` VARCHAR(200) NULL ,
+        `NOTE_V` VARCHAR(200) NULL ,
+        `PRODUCT_V` VARCHAR(200) NULL ,
+        `PURCHASEORDERNUMBER_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createenvelope_stickers_reportHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORTHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DELIVERYADDRESS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERCONTACT_V` VARCHAR(200) NULL ,
+        `NOTE_V` VARCHAR(200) NULL ,
+        `PRODUCT_V` VARCHAR(200) NULL ,
+        `PURCHASEORDERNUMBER_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORTHISTORY SELECT SID 
+ , AXTMODIFY , DELIVERYADDRESS_V , CUSTOMERNAME_V , CUSTOMERCONTACT_V , NOTE_V , PRODUCT_V , PURCHASEORDERNUMBER_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORT WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORTHISTORY SELECT SID 
+ , AXTMODIFY , DELIVERYADDRESS_V , CUSTOMERNAME_V , CUSTOMERCONTACT_V , NOTE_V , PRODUCT_V , PURCHASEORDERNUMBER_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORT WHERE SID = #SID#
+    </statement>
+
+    <select id="getenvelope_stickers_report" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORT LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORT(SID, AXTMODIFY, DELIVERYADDRESS_V, CUSTOMERNAME_V, CUSTOMERCONTACT_V, NOTE_V, PRODUCT_V, PURCHASEORDERNUMBER_V)
+      VALUES(#SID#, #AXTMODIFY#, #DELIVERYADDRESS_V#, #CUSTOMERNAME_V#, #CUSTOMERCONTACT_V#, #NOTE_V#, #PRODUCT_V#, #PURCHASEORDERNUMBER_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORT SET AXTMODIFY = #AXTMODIFY#,DELIVERYADDRESS_V = #DELIVERYADDRESS_V#,CUSTOMERNAME_V = #CUSTOMERNAME_V#,CUSTOMERCONTACT_V = #CUSTOMERCONTACT_V#,NOTE_V = #NOTE_V#,PRODUCT_V = #PRODUCT_V#,PURCHASEORDERNUMBER_V = #PURCHASEORDERNUMBER_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE SID = #SID#
+    </delete>
+
+    <statement id="getenvelope_stickers_reportBy" resultClass="Hashtable" >
+      SELECT  SID, AXTMODIFY ,DELIVERYADDRESS_V ,CUSTOMERNAME_V ,CUSTOMERCONTACT_V ,NOTE_V ,PRODUCT_V, PURCHASEORDERNUMBER_V FROM  RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DELIVERYADDRESS_V">
+          DELIVERYADDRESS_V like #DELIVERYADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERCONTACT_V">
+          CUSTOMERCONTACT_V like #CUSTOMERCONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOTE_V">
+          NOTE_V like #NOTE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_V">
+          PRODUCT_V like #PRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          PURCHASEORDERNUMBER_V like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Email code-->
+ <select id="getEmailSetting" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          SENDERNAME_V like #SENDERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDEREMAIL_V">
+          SENDEREMAIL_V like #SENDEREMAIL_V#
+        </isNotEmpty>
+      </dynamic>
+ </select>
+    <!--Email code end-->
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getenvelope_stickers_reportTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS_REPORT
+   </select>
+
+    <statement id="getenvelope_stickers_reportByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DELIVERYADDRESS_V">
+          DELIVERYADDRESS_V like #DELIVERYADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERCONTACT_V">
+          CUSTOMERCONTACT_V like #CUSTOMERCONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOTE_V">
+          NOTE_V like #NOTE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_V">
+          PRODUCT_V like #PRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          PURCHASEORDERNUMBER_V like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.customer_trace_input" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createcustomer_trace_input">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `DUEDATE1_V` VARCHAR(200) NULL ,
+        `DUEDATE2_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createcustomer_trace_inputHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUTHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `DUEDATE1_V` VARCHAR(200) NULL ,
+        `DUEDATE2_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , DEALER_TW_V , DUEDATE1_V , DUEDATE2_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , DEALER_TW_V , DUEDATE1_V , DUEDATE2_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT WHERE SID = #SID#
+    </statement>
+
+    <select id="getcustomer_trace_input" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT(SID, AXTMODIFY, DEALER_TW_V, DUEDATE1_V, DUEDATE2_V)
+      VALUES(#SID#, #AXTMODIFY#, #DEALER_TW_V#, #DUEDATE1_V#, #DUEDATE2_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT SET AXTMODIFY = #AXTMODIFY#,DEALER_TW_V = #DEALER_TW_V#,DUEDATE1_V = #DUEDATE1_V#,DUEDATE2_V = #DUEDATE2_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT WHERE SID = #SID#
+    </delete>
+
+    <statement id="getcustomer_trace_inputBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DUEDATE1_V">
+          DUEDATE1_V like #DUEDATE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DUEDATE2_V">
+          DUEDATE2_V like #DUEDATE2_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getcustomer_trace_inputTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT
+   </select>
+
+    <statement id="getcustomer_trace_inputByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DUEDATE1_V">
+          DUEDATE1_V like #DUEDATE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DUEDATE2_V">
+          DUEDATE2_V like #DUEDATE2_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

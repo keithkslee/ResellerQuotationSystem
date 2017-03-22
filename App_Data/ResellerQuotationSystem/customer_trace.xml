@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.customer_trace" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createcustomer_trace">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `TRACK_RESULTS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMER_CONTACT_V` VARCHAR(200) NULL ,
+        `CONTACTPHONE_V` VARCHAR(200) NULL ,
+        `PRIMARY_EMAIL_V` VARCHAR(200) NULL ,
+        `DUEDATE1_V` VARCHAR(200) NULL ,
+        `DUEDATE2_V` VARCHAR(200) NULL ,
+        `TERM1_V` VARCHAR(200) NULL ,
+        `TERM2_V` VARCHAR(200) NULL ,
+        `QUANTITY_1_V` VARCHAR(200) NULL ,
+        `QUANTITY_2_V` VARCHAR(200) NULL ,
+        `PRODUCT_1_V` VARCHAR(200) NULL ,
+        `PRODUCT_2_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` INT ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createcustomer_traceHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMCUSTOMER_TRACEHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `TRACK_RESULTS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMER_CONTACT_V` VARCHAR(200) NULL ,
+        `CONTACTPHONE_V` VARCHAR(200) NULL ,
+        `PRIMARY_EMAIL_V` VARCHAR(200) NULL ,
+        `DUEDATE1_V` VARCHAR(200) NULL ,
+        `DUEDATE2_V` VARCHAR(200) NULL ,
+        `TERM1_V` VARCHAR(200) NULL ,
+        `TERM2_V` VARCHAR(200) NULL ,
+        `QUANTITY_1_V` VARCHAR(200) NULL ,
+        `QUANTITY_2_V` VARCHAR(200) NULL ,
+        `PRODUCT_1_V` VARCHAR(200) NULL ,
+        `PRODUCT_2_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMCUSTOMER_TRACEHISTORY SELECT SID 
+ , AXTMODIFY , DEALER_TW_V , TRACK_RESULTS_V , CUSTOMERNAME_V , CUSTOMER_CONTACT_V , CONTACTPHONE_V , PRIMARY_EMAIL_V , DUEDATE1_V , DUEDATE2_V , TERM1_V , TERM2_V , QUANTITY_1_V , QUANTITY_2_V , PRODUCT_1_V , PRODUCT_2_V , LAST_SEQUENCE_V , ENTRY_DATE_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMCUSTOMER_TRACEHISTORY SELECT SID 
+ , AXTMODIFY , DEALER_TW_V , TRACK_RESULTS_V , CUSTOMERNAME_V , CUSTOMER_CONTACT_V , CONTACTPHONE_V , PRIMARY_EMAIL_V , DUEDATE1_V , DUEDATE2_V , TERM1_V , TERM2_V , QUANTITY_1_V , QUANTITY_2_V , PRODUCT_1_V , PRODUCT_2_V , LAST_SEQUENCE_V , ENTRY_DATE_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE WHERE SID = #SID#
+    </statement>
+
+    <select id="getcustomer_trace" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <statement id="getCBXDEALER_TW_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </statement>
+    <select id="getCBXDEALER_TW_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_TW_V) AS DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </select>
+
+    <statement id="getCBXDUEDATE1_V_MAX_LEN" resultClass="Hashtable">
+     Select DUEDATE1_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT WHERE DUEDATE1_V != '' ORDER BY DUEDATE1_V
+    </statement>
+    <select id="getCBXDUEDATE1_V" resultClass="Hashtable">
+     Select distinct CONCAT(DUEDATE1_V) AS DUEDATE1_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT WHERE DUEDATE1_V != '' ORDER BY DUEDATE1_V
+    </select>
+
+    <statement id="getCBXDUEDATE2_V_MAX_LEN" resultClass="Hashtable">
+     Select DUEDATE2_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT WHERE DUEDATE2_V != '' ORDER BY DUEDATE2_V
+    </statement>
+    <select id="getCBXDUEDATE2_V" resultClass="Hashtable">
+     Select distinct CONCAT(DUEDATE2_V) AS DUEDATE2_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE_INPUT WHERE DUEDATE2_V != '' ORDER BY DUEDATE2_V
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE(SID, AXTMODIFY, DEALER_TW_V, TRACK_RESULTS_V, CUSTOMERNAME_V, CUSTOMER_CONTACT_V, CONTACTPHONE_V, PRIMARY_EMAIL_V, DUEDATE1_V, DUEDATE2_V, TERM1_V, TERM2_V, QUANTITY_1_V, QUANTITY_2_V, PRODUCT_1_V, PRODUCT_2_V, LAST_SEQUENCE_V, ENTRY_DATE_V)
+      VALUES(#SID#, #AXTMODIFY#, #DEALER_TW_V#, #TRACK_RESULTS_V#, #CUSTOMERNAME_V#, #CUSTOMER_CONTACT_V#, #CONTACTPHONE_V#, #PRIMARY_EMAIL_V#, #DUEDATE1_V#, #DUEDATE2_V#, #TERM1_V#, #TERM2_V#, #QUANTITY_1_V#, #QUANTITY_2_V#, #PRODUCT_1_V#, #PRODUCT_2_V#, #LAST_SEQUENCE_V#, #ENTRY_DATE_V#)
+    </insert>
+
+    <update id="updateData_customer_trace">
+      UPDATE RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE SET TRACK_RESULTS_V = #TRACK_RESULTS_V# WHERE SID = #SID#
+    </update>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 SET TRACK_RESULTS_V = #TRACK_RESULTS_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE
+    </delete>
+
+    <delete id="renewAll">
+      insert into resellerquotationsystemcustomer_trace (SID, DEALER_TW_V , TRACK_RESULTS_V , CUSTOMERNAME_V , CUSTOMER_CONTACT_V , CONTACTPHONE_V , PRIMARY_EMAIL_V , DUEDATE1_V , DUEDATE2_V , TERM1_V , TERM2_V , QUANTITY_1_V , QUANTITY_2_V , PRODUCT_1_V , PRODUCT_2_V) select DISTINCT a.SID,a.DEALER_V,a.TRACK_RESULTS_V,a.FINALCUSTOMER_V,b.CUSTOMER_CONTACT_V,b.CONTACT_PHONE_V,b.EMAIL_V,a.LICENSE_END_V,a.LICENSEEND2_V,a.YEAR_V,a.YEAR2_V,a.QUANTITY_V,a.QUANTITY2_V,a.PRODUCT_V,a.PRODUCT2_V from resellerquotationsystemreseller_shipper3 as a LEFT JOIN resellerquotationsystemreseller_data as b on a.FINALCUSTOMER_V=b.DEALER_TW_V
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE WHERE SID = #SID#
+    </delete>
+
+    <statement id="getcustomer_traceBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TRACK_RESULTS_V">
+          TRACK_RESULTS_V like #TRACK_RESULTS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMER_CONTACT_V">
+          CUSTOMER_CONTACT_V like #CUSTOMER_CONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTPHONE_V">
+          CONTACTPHONE_V like #CONTACTPHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRIMARY_EMAIL_V">
+          PRIMARY_EMAIL_V like #PRIMARY_EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DUEDATE1_V">
+          DUEDATE1_V like #DUEDATE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DUEDATE2_V">
+          DUEDATE2_V like #DUEDATE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TERM1_V">
+          TERM1_V like #TERM1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TERM2_V">
+          TERM2_V like #TERM2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_1_V">
+          QUANTITY_1_V like #QUANTITY_1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_2_V">
+          QUANTITY_2_V like #QUANTITY_2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_1_V">
+          PRODUCT_1_V like #PRODUCT_1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_2_V">
+          PRODUCT_2_V like #PRODUCT_2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+      </dynamic>
+      order by DUEDATE1_V desc, DUEDATE1_V desc LIMIT #START_V#, #LIMIT_V#
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+ <statement id="getSequenceByDate" resultClass="Hashtable">
+ 	SELECT max(LAST_SEQUENCE_V) FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="TODAY_DATE_V">
+          ENTRY_DATE_V like #TODAY_DATE_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+   <select id="getcustomer_traceTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE
+   </select>
+
+    <statement id="getcustomer_traceByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMCUSTOMER_TRACE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TRACK_RESULTS_V">
+          TRACK_RESULTS_V like #TRACK_RESULTS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMER_CONTACT_V">
+          CUSTOMER_CONTACT_V like #CUSTOMER_CONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTPHONE_V">
+          CONTACTPHONE_V like #CONTACTPHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRIMARY_EMAIL_V">
+          PRIMARY_EMAIL_V like #PRIMARY_EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DUEDATE1_V">
+          DUEDATE1_V like #DUEDATE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DUEDATE2_V">
+          DUEDATE2_V like #DUEDATE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TERM1_V">
+          TERM1_V like #TERM1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TERM2_V">
+          TERM2_V like #TERM2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_1_V">
+          QUANTITY_1_V like #QUANTITY_1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_2_V">
+          QUANTITY_2_V like #QUANTITY_2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_1_V">
+          PRODUCT_1_V like #PRODUCT_1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_2_V">
+          PRODUCT_2_V like #PRODUCT_2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

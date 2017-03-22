@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.envelope_stickers" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createenvelope_stickers">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DELIVERYADDRESS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERCONTACT_V` VARCHAR(200) NULL ,
+        `NOTE_V` VARCHAR(200) NULL ,
+        `PRODUCT_V` VARCHAR(200) NULL ,
+        `PURCHASEORDERNUMBER_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createenvelope_stickersHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMENVELOPE_STICKERSHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DELIVERYADDRESS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERCONTACT_V` VARCHAR(200) NULL ,
+        `NOTE_V` VARCHAR(200) NULL ,
+        `PRODUCT_V` VARCHAR(200) NULL ,
+        `PURCHASEORDERNUMBER_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMENVELOPE_STICKERSHISTORY SELECT SID 
+ , AXTMODIFY , DELIVERYADDRESS_V , CUSTOMERNAME_V , CUSTOMERCONTACT_V , NOTE_V , PRODUCT_V , PURCHASEORDERNUMBER_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMENVELOPE_STICKERSHISTORY SELECT SID 
+ , AXTMODIFY , DELIVERYADDRESS_V , CUSTOMERNAME_V , CUSTOMERCONTACT_V , NOTE_V , PRODUCT_V , PURCHASEORDERNUMBER_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE SID = #SID#
+    </statement>
+
+    <select id="getenvelope_stickers" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <statement id="getCBXCUSTOMERNAME_V_MAX_LEN" resultClass="Hashtable">
+     Select CUSTOMERNAME_V FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE CUSTOMERNAME_V != '' ORDER BY CUSTOMERNAME_V
+    </statement>
+    <select id="getCBXCUSTOMERNAME_V" resultClass="Hashtable">
+     Select distinct CONCAT(CUSTOMERNAME_V) AS CUSTOMERNAME_V FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE CUSTOMERNAME_V != '' ORDER BY CUSTOMERNAME_V
+    </select>
+
+    <statement id="getCBXCUSTOMERCONTACT_V_MAX_LEN" resultClass="Hashtable">
+     Select CUSTOMERCONTACT_V FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE CUSTOMERCONTACT_V != '' ORDER BY CUSTOMERCONTACT_V
+    </statement>
+    <select id="getCBXCUSTOMERCONTACT_V" resultClass="Hashtable">
+     Select distinct CONCAT(CUSTOMERCONTACT_V) AS CUSTOMERCONTACT_V FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE CUSTOMERCONTACT_V != '' ORDER BY CUSTOMERCONTACT_V
+    </select>
+
+    <statement id="getCBXPRODUCT_V_MAX_LEN" resultClass="Hashtable">
+     Select PRODUCT_V FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE PRODUCT_V != '' ORDER BY PRODUCT_V
+    </statement>
+    <select id="getCBXPRODUCT_V" resultClass="Hashtable">
+     Select distinct CONCAT(PRODUCT_V) AS PRODUCT_V FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE PRODUCT_V != '' ORDER BY PRODUCT_V
+    </select>
+
+    <statement id="getCBXPURCHASEORDERNUMBER_V_MAX_LEN" resultClass="Hashtable">
+     Select PURCHASEORDERNUMBER_V FROM RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 WHERE PURCHASEORDERNUMBER_V != '' ORDER BY PURCHASEORDERNUMBER_V
+    </statement>
+    <select id="getCBXPURCHASEORDERNUMBER_V" resultClass="Hashtable">
+     Select distinct CONCAT(PURCHASEORDERNUMBER_V) AS PURCHASEORDERNUMBER_V FROM RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 WHERE PURCHASEORDERNUMBER_V != '' ORDER BY PURCHASEORDERNUMBER_V
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS(SID, AXTMODIFY, DELIVERYADDRESS_V, CUSTOMERNAME_V, CUSTOMERCONTACT_V, NOTE_V, PRODUCT_V, PURCHASEORDERNUMBER_V)
+      VALUES(#SID#, #AXTMODIFY#, #DELIVERYADDRESS_V#, #CUSTOMERNAME_V#, #CUSTOMERCONTACT_V#, #NOTE_V#, #PRODUCT_V#, #PURCHASEORDERNUMBER_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS SET AXTMODIFY = #AXTMODIFY#,DELIVERYADDRESS_V = #DELIVERYADDRESS_V#,CUSTOMERNAME_V = #CUSTOMERNAME_V#,CUSTOMERCONTACT_V = #CUSTOMERCONTACT_V#,NOTE_V = #NOTE_V#,PRODUCT_V = #PRODUCT_V#,PURCHASEORDERNUMBER_V = #PURCHASEORDERNUMBER_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS WHERE SID = #SID#
+    </delete>
+
+    <statement id="getenvelope_stickersBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DELIVERYADDRESS_V">
+          DELIVERYADDRESS_V like #DELIVERYADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERCONTACT_V">
+          CUSTOMERCONTACT_V like #CUSTOMERCONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOTE_V">
+          NOTE_V like #NOTE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_V">
+          PRODUCT_V like #PRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          PURCHASEORDERNUMBER_V like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getenvelope_stickersTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS
+   </select>
+
+    <statement id="getenvelope_stickersNote_vBy" resultClass="Hashtable" >
+      Select NOTE_V From RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          purchaseordernumber_v like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getenvelope_stickersProduct_vBy" resultClass="Hashtable" >
+      Select PRODUCT_V From RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          purchaseordernumber_v like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getenvelope_stickersDeliveryaddress_vBy" resultClass="Hashtable" >
+      Select DELIVERYADDRESS_V From RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          purchaseordernumber_v like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getenvelope_stickersCustomercontact_vBy" resultClass="Hashtable" >
+      Select COMPACT_V From RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          purchaseordernumber_v like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getenvelope_stickersCustomername_vBy" resultClass="Hashtable" >
+      Select CUSTOMERNAME_V From RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          purchaseordernumber_v like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getenvelope_stickersByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMENVELOPE_STICKERS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DELIVERYADDRESS_V">
+          DELIVERYADDRESS_V like #DELIVERYADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERCONTACT_V">
+          CUSTOMERCONTACT_V like #CUSTOMERCONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOTE_V">
+          NOTE_V like #NOTE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_V">
+          PRODUCT_V like #PRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          PURCHASEORDERNUMBER_V like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="UserInfo" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+    
+    <select id="getUserName" resultClass="Hashtable">
+      SELECT USERNAME FROM axtmes_user_info WHERE ACCOUNT = #account#
+    </select>
+
+    <select id="getUserHomePage" resultClass="Hashtable">
+      SELECT HOMEPAGE FROM axtmes_user_info WHERE ACCOUNT = #account#
+    </select>
+
+    <select id="getUserGroup" resultClass="Hashtable">
+      SELECT GROUP_INFO_SID FROM axtmes_group_user WHERE USER_INFO_ACCOUNT = #account#
+    </select>
+    
+  </statements>    
+</sqlMap>

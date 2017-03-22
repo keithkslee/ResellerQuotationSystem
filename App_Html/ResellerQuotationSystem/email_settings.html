@@ -1,0 +1,1009 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>email_settings</title>
+    <link href="../../css/axtlib.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/axtStyle.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/ux/css/RowEditor.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .x-grid3-cell-inner{
+            white-space: normal;
+            font-size: 15px;
+        }
+    </style>
+    <style type="text/css">
+       .x-selectable, .x-selectable * {
+       -moz-user-select: text!important;
+       -khtml-user-select: text!important;
+      }
+    </style>
+
+    <script src="../../ext/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ext-all-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ux/PagingMemoryProxy.js" type="text/javascript"></script>
+    <script src="../../ext/ux/ProgressBarPager.js" type="text/javascript"></script>
+    <script src="../../ext/ux/RowEditor.js" type="text/javascript"></script>
+    <script src="../../ext/src/locale/ext-lang-zh_TW.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtRuleMessage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtlib.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtMutiLanguage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtHelpWindow.js" type="text/javascript"></script>
+    <script src="../../axtjs/pPageSize.js" type="text/javascript"></script>
+    <script src="../../axtjs/AJAXRPC.js" type="text/javascript"></script>
+    <script src="../../Charts/FusionCharts.js" type="text/javascript"></script>
+    <script src="../../ajaxrpc/Script.aspx" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var AxtEditor = new Ext.ux.grid.RowEditor({});
+        var client = new AJAXRPC_Client('../../ajaxrpc/Server.aspx');
+
+        if (client.Login.isLogin() == false) {
+            parent.location.href = "../../Login.html";
+        }
+
+        client.ResellerQuotationSystememail_settings.createTable();
+        client.ResellerQuotationSystememail_settings.beforeGenConf();
+
+        function setlang() {
+            lang = client.AxtSystem.getLang("zh-TW");
+            setRuleMessageLang(lang);
+            AxtForm = Ext.getCmp('email_settings_form');
+            switch (lang) {
+                case 'zh-CN':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("郵件");
+                    AxtForm.findById("lblspace1").update("<font size=\'3\'><p align = \'right\'>&nbsp;</p></font>");
+                    AxtForm.findById("fieldset1").setTitle('郵件');
+                    AxtForm.findById("lblsenderName_t").update("<font size=\'3\'><p align = \'right\'>寄信人</p></font>");
+                    AxtForm.findById("lblsenderEmail_t").update("<font size=\'3\'><p align = \'right\'>寄信人Email</p></font>");
+                    AxtForm.findById("lblemailServer_t").update("<font size=\'3\'><p align = \'right\'>郵件伺服器</p></font>");
+                    AxtForm.findById("lblsenderAccount_t").update("<font size=\'3\'><p align = \'right\'>帳號</p></font>");
+                    AxtForm.findById("lblsenderPassword_t").update("<font size=\'3\'><p align = \'right\'>密碼</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("儲存");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('经销商报价4');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>预览</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>寄信人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>寄信人Email</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>郵件伺服器</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>帳號</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>密碼</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'en':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("Email");
+                    AxtForm.findById("lblspace1").update("<font size=\'3\'><p align = \'right\'>&nbsp;</p></font>");
+                    AxtForm.findById("fieldset1").setTitle('Email');
+                    AxtForm.findById("lblsenderName_t").update("<font size=\'3\'><p align = \'right\'>Sender Name</p></font>");
+                    AxtForm.findById("lblsenderEmail_t").update("<font size=\'3\'><p align = \'right\'>Sender Email</p></font>");
+                    AxtForm.findById("lblemailServer_t").update("<font size=\'3\'><p align = \'right\'>Email Server</p></font>");
+                    AxtForm.findById("lblsenderAccount_t").update("<font size=\'3\'><p align = \'right\'>Account</p></font>");
+                    AxtForm.findById("lblsenderPassword_t").update("<font size=\'3\'><p align = \'right\'>Password</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("Query");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("Submit");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("Cancel");
+                    AxtForm.findById("grid1").setTitle('Reseller Quotation4');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>Modify</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>Sender Name</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>Sender Email</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>Email Server</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>Account</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>Password</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'zh-TW':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("郵件");
+                    AxtForm.findById("lblspace1").update("<font size=\'3\'><p align = \'right\'>&nbsp;</p></font>");
+                    AxtForm.findById("fieldset1").setTitle('郵件');
+                    AxtForm.findById("lblsenderName_t").update("<font size=\'3\'><p align = \'right\'>寄信人</p></font>");
+                    AxtForm.findById("lblsenderEmail_t").update("<font size=\'3\'><p align = \'right\'>寄信人Email</p></font>");
+                    AxtForm.findById("lblemailServer_t").update("<font size=\'3\'><p align = \'right\'>郵件伺服器</p></font>");
+                    AxtForm.findById("lblsenderAccount_t").update("<font size=\'3\'><p align = \'right\'>帳號</p></font>");
+                    AxtForm.findById("lblsenderPassword_t").update("<font size=\'3\'><p align = \'right\'>密碼</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("儲存");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('經銷商報價4');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>預覽</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>寄信人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>寄信人Email</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>郵件伺服器</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>帳號</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>密碼</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                }
+            }
+
+
+        function axtHelp() {
+                lang = client.AxtSystem.getLang("zh-TW");
+                setRuleMessageLang(lang);
+                AxtForm = Ext.getCmp('email_settings_form');
+                switch (lang) {
+                }
+         }
+
+            Ext.onReady(function () {
+                Ext.QuickTips.init();
+
+                setlang();
+                var AxtData = client.ResellerQuotationSystememail_settings.getemail_settingsBy({
+                    START_V : 0,
+                    LIMIT_V : 20
+                });
+
+                var proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+
+                var reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'email_settings'
+                }, [
+                        {
+                            name: 'SID'
+                        },
+                        {
+                            name: 'AXTMODIFY'
+                        },
+                        {
+                            name: 'SENDERNAME_V'
+                        },
+                        {
+                            name: 'SENDEREMAIL_V'
+                        },
+                        {
+                            name: 'EMAILSERVER_V'
+                        },
+                        {
+                            name: 'SENDERACCOUNT_V'
+                        },
+                        {
+                            name: 'SENDERPASSWORD_V'
+                        }
+                    ]
+                );
+
+                var writer = new Ext.data.JsonWriter({
+                    encode: false       // <-- don't return encoded JSON -- causes Ext.Ajax#request to send data using jsonData config rather than HTTP params
+                });
+
+                var AxtStore = new Ext.data.Store({
+                    id: 'jssemail_settings',
+                    proxy: proxy,
+                    reader: reader,
+                    pruneModifiedRecords: true
+                });
+
+                AxtStore.load({ params: { start: 0, limit: 20} });
+
+                function axtStoreUpdate() {
+                    AxtData = client.ResellerQuotationSystememail_settings.getemail_settingsBy({
+                        START_V : AxtPageBar.cursor,
+                        LIMIT_V : AxtPageBar.pageSize
+                    });
+                    AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                    AxtStore.load();
+                }
+                var AxtPageBar = new Ext.PagingToolbar({
+                    xtype: "paging",
+                    pageSize: 20,
+                    store: AxtStore,
+                    displayInfo: true,
+                    //displayMsg: 'Displaying {0} - {1} of {2}',
+                    style: 'border-width:0;',
+                    refresh: function (pt, o) {
+                        axtStoreUpdate();
+                        Ext.getCmp('grid1').getView().refresh();
+                    },
+                    //emptyMsg: "No message to display",
+                    plugins: [new Ext.ux.Andrie.pPageSize(), new Ext.ux.ProgressBarPager()],
+                    listeners: {
+                        'beforechange' : function(pagingToolbar, pageData) {
+                            AxtData = client.ResellerQuotationSystememail_settings.getemail_settingsBy({
+                                SENDERNAME_V: AxtForm.findById('senderName_v').getValue(),
+                                SENDEREMAIL_V: AxtForm.findById('senderEmail_v').getValue(),
+                                EMAILSERVER_V: AxtForm.findById('emailServer_v').getValue(),
+                                SENDERACCOUNT_V: AxtForm.findById('senderAccount_v').getValue(),
+                                SENDERPASSWORD_V: AxtForm.findById('senderPassword_v').getValue(),
+                                START_V : pageData.start,
+                                LIMIT_V : pageData.limit
+                            });
+                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                            AxtStore.load();
+                            Ext.getCmp('grid1').getView().refresh();
+
+                            var p = this.getParams();
+                            this.cursor = (pageData && pageData.start) ? pageData.start : 0;
+                            var d = this.getPageData(), ap = d.activePage, ps = d.pages;
+
+                            this.afterTextItem.setText(String.format(this.afterPageText, d.pages));
+                            this.inputItem.setValue(ap);
+                            this.first.setDisabled(ap == 1);
+                            this.prev.setDisabled(ap == 1);
+                            this.next.setDisabled(ap == ps);
+                            this.last.setDisabled(ap == ps);
+                            this.refresh.enable();
+                            this.updateInfo();
+
+                            return false;
+                         }
+                     }
+                 });
+
+                function tfToogle() {
+				   AxtForm.findById('senderName_ta').setVisible(false);
+				   AxtForm.findById('senderName_v').setVisible(true);
+				   AxtForm.findById('senderName_v').setValue(AxtForm.findById('senderName_ta').getValue());
+
+				   AxtForm.findById('senderEmail_ta').setVisible(false);
+				   AxtForm.findById('senderEmail_v').setVisible(true);
+				   AxtForm.findById('senderEmail_v').setValue(AxtForm.findById('senderEmail_ta').getValue());
+
+				   AxtForm.findById('emailServer_ta').setVisible(false);
+				   AxtForm.findById('emailServer_v').setVisible(true);
+				   AxtForm.findById('emailServer_v').setValue(AxtForm.findById('emailServer_ta').getValue());
+
+				   AxtForm.findById('senderAccount_ta').setVisible(false);
+				   AxtForm.findById('senderAccount_v').setVisible(true);
+				   AxtForm.findById('senderAccount_v').setValue(AxtForm.findById('senderAccount_ta').getValue());
+
+				   AxtForm.findById('senderPassword_ta').setVisible(false);
+				   AxtForm.findById('senderPassword_v').setVisible(true);
+				   AxtForm.findById('senderPassword_v').setValue(AxtForm.findById('senderPassword_ta').getValue());
+
+                }
+                /*usercode start*/
+                /*usercode end*/
+
+                var sm =  new Ext.grid.CheckboxSelectionModel({
+                    checkOnly: false,
+                    width: 20
+                });
+
+                var AxtPanel = new Ext.Panel({
+                    width: 1100,
+                    layout: 'form',
+                    id: 'email_settings_form',
+                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                    items: [
+                    {
+                        xtype: 'textfield',
+                        hidden: true,
+                        id: 'SID'
+                    },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'displayfield',
+                                        cls: 'CSTitle',
+                                        height: 35,
+                                        columnWidth: 1,
+                                        id: 'dfdTitle'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblspace1'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'fieldset',
+                                        collapsible: true,
+                                        title: 'fieldset1',
+                                        id: 'fieldset1',
+                                        items: [
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblsenderName_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'textarea',
+                                                        width: 150,
+                                                        autoScroll: true,
+                                                        height: 66,
+                                                        hidden: true,
+                                                        style: 'font-size: 16;',
+                                                        id: 'senderName_ta',
+                                                        listeners: {
+                                                            blur: function(obj) {
+                                                                AxtForm.findById("senderName_v").setValue(obj.getValue());
+                                                                obj.setVisible(false);
+                                                                AxtForm.findById("senderName_v").setVisible(true);
+                                                            }
+                                                        }
+                                                    }, {
+                                                        xtype: 'textfield',
+                                                        name: 'senderName_v',
+                                                        columnWidth: 0.2,
+                                                        width: 150,
+                                                        allowBlank: true,
+                                                        style: 'font-size: 16;',
+                                                        listeners: {
+                                                        	focus: function(obj){
+                                                        		AxtForm.findById("senderName_ta").setValue(obj.getValue());
+                                                        		obj.setVisible(false);
+                                                        		AxtForm.findById("senderName_ta").setVisible(true);
+                                                        		AxtForm.findById("senderName_ta").focus();
+                                                        	}
+                                                        },
+                                                        id: 'senderName_v'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblsenderEmail_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'textarea',
+                                                        width: 150,
+                                                        autoScroll: true,
+                                                        height: 66,
+                                                        hidden: true,
+                                                        style: 'font-size: 16;',
+                                                        id: 'senderEmail_ta',
+                                                        listeners: {
+                                                            blur: function(obj) {
+                                                                AxtForm.findById("senderEmail_v").setValue(obj.getValue());
+                                                                obj.setVisible(false);
+                                                                AxtForm.findById("senderEmail_v").setVisible(true);
+                                                            }
+                                                        }
+                                                    }, {
+                                                        xtype: 'textfield',
+                                                        name: 'senderEmail_v',
+                                                        columnWidth: 0.2,
+                                                        width: 150,
+                                                        allowBlank: true,
+                                                        style: 'font-size: 16;',
+                                                        listeners: {
+                                                        	focus: function(obj){
+                                                        		AxtForm.findById("senderEmail_ta").setValue(obj.getValue());
+                                                        		obj.setVisible(false);
+                                                        		AxtForm.findById("senderEmail_ta").setVisible(true);
+                                                        		AxtForm.findById("senderEmail_ta").focus();
+                                                        	}
+                                                        },
+                                                        id: 'senderEmail_v'
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblemailServer_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'textarea',
+                                                        width: 150,
+                                                        autoScroll: true,
+                                                        height: 66,
+                                                        hidden: true,
+                                                        style: 'font-size: 16;',
+                                                        id: 'emailServer_ta',
+                                                        listeners: {
+                                                            blur: function(obj) {
+                                                                AxtForm.findById("emailServer_v").setValue(obj.getValue());
+                                                                obj.setVisible(false);
+                                                                AxtForm.findById("emailServer_v").setVisible(true);
+                                                            }
+                                                        }
+                                                    }, {
+                                                        xtype: 'textfield',
+                                                        name: 'emailServer_v',
+                                                        columnWidth: 0.2,
+                                                        width: 150,
+                                                        allowBlank: true,
+                                                        style: 'font-size: 16;',
+                                                        listeners: {
+                                                        	focus: function(obj){
+                                                        		AxtForm.findById("emailServer_ta").setValue(obj.getValue());
+                                                        		obj.setVisible(false);
+                                                        		AxtForm.findById("emailServer_ta").setVisible(true);
+                                                        		AxtForm.findById("emailServer_ta").focus();
+                                                        	}
+                                                        },
+                                                        id: 'emailServer_v'
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblsenderAccount_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'textarea',
+                                                        width: 150,
+                                                        autoScroll: true,
+                                                        height: 66,
+                                                        hidden: true,
+                                                        style: 'font-size: 16;',
+                                                        id: 'senderAccount_ta',
+                                                        listeners: {
+                                                            blur: function(obj) {
+                                                                AxtForm.findById("senderAccount_v").setValue(obj.getValue());
+                                                                obj.setVisible(false);
+                                                                AxtForm.findById("senderAccount_v").setVisible(true);
+                                                            }
+                                                        }
+                                                    }, {
+                                                        xtype: 'textfield',
+                                                        name: 'senderAccount_v',
+                                                        columnWidth: 0.2,
+                                                        width: 150,
+                                                        allowBlank: true,
+                                                        style: 'font-size: 16;',
+                                                        listeners: {
+                                                        	focus: function(obj){
+                                                        		AxtForm.findById("senderAccount_ta").setValue(obj.getValue());
+                                                        		obj.setVisible(false);
+                                                        		AxtForm.findById("senderAccount_ta").setVisible(true);
+                                                        		AxtForm.findById("senderAccount_ta").focus();
+                                                        	}
+                                                        },
+                                                        id: 'senderAccount_v'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblsenderPassword_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'textarea',
+                                                        width: 150,
+                                                        autoScroll: true,
+                                                        height: 66,
+                                                        hidden: true,
+                                                        style: 'font-size: 16;',
+                                                        id: 'senderPassword_ta',
+                                                        listeners: {
+                                                            blur: function(obj) {
+                                                                AxtForm.findById("senderPassword_v").setValue(obj.getValue());
+                                                                obj.setVisible(false);
+                                                                AxtForm.findById("senderPassword_v").setVisible(true);
+                                                            }
+                                                        }
+                                                    }, {
+                                                        xtype: 'textfield',
+                                                        name: 'senderPassword_v',
+                                                        columnWidth: 0.2,
+                                                        width: 150,
+                                                        allowBlank: true,
+                                                        style: 'font-size: 16;',
+                                                        listeners: {
+                                                        	focus: function(obj){
+                                                        		AxtForm.findById("senderPassword_ta").setValue(obj.getValue());
+                                                        		obj.setVisible(false);
+                                                        		AxtForm.findById("senderPassword_ta").setVisible(true);
+                                                        		AxtForm.findById("senderPassword_ta").focus();
+                                                        	}
+                                                        },
+                                                        id: 'senderPassword_v'
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTQUERY',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('email_settings_form');
+
+                                                AxtData = client.ResellerQuotationSystememail_settings.getemail_settingsBy({
+                                                    SENDERNAME_V: AxtForm.findById('senderName_v').getValue(),
+                                                    SENDEREMAIL_V: AxtForm.findById('senderEmail_v').getValue(),
+                                                    EMAILSERVER_V: AxtForm.findById('emailServer_v').getValue(),
+                                                    SENDERACCOUNT_V: AxtForm.findById('senderAccount_v').getValue(),
+                                                    SENDERPASSWORD_V: AxtForm.findById('senderPassword_v').getValue(),
+                                                    START_V : 0,
+                                                    LIMIT_V : AxtPageBar.pageSize,
+                                                    AXTMODIFY: ""
+                                            });
+                                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                                            AxtStore.load();
+                                            Ext.getCmp('grid1').getView().refresh();
+                                            /*btnBTNAXTQUERY user code start*/
+                                            /*btnBTNAXTQUERY user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTSUBMIT',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('email_settings_form');
+
+
+                                                    if(AxtForm.findById('senderName_v').getValue() == "" && AxtForm.findById('senderEmail_v').getValue() == "" && AxtForm.findById('emailServer_v').getValue() == "" && AxtForm.findById('senderAccount_v').getValue() == "" && AxtForm.findById('senderPassword_v').getValue() == ""){
+                                                    
+                                                   		Ext.MessageBox.show({
+                                    				title: axtlang_msgbox_error_title,
+                                    				msg: axtlang_msgbox_null,
+                                    				buttons: Ext.Msg.OK,
+                                    				closable: false,
+                                    				width: 240
+                                    			});
+                                    			return;
+                                                    }
+                                                if( true )
+                                                {
+                                                    var newData = new Array();
+                                                    var data = {
+                                                    SENDERNAME_V: AxtForm.findById('senderName_v').getValue(),
+                                                    SENDEREMAIL_V: AxtForm.findById('senderEmail_v').getValue(),
+                                                    EMAILSERVER_V: AxtForm.findById('emailServer_v').getValue(),
+                                                    SENDERACCOUNT_V: AxtForm.findById('senderAccount_v').getValue(),
+                                                    SENDERPASSWORD_V: AxtForm.findById('senderPassword_v').getValue(),
+                                                    SID: AxtForm.findById('SID').getValue()
+                                                }
+
+                                                newData.push(data);
+
+                                                if (newData.length <= 0) {
+                                                    return;
+                                                }
+
+                                                var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                var msg = client.ResellerQuotationSystememail_settings.saveData(newData);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                progress.hide();
+
+                                                axtStoreUpdate();
+
+                                                Ext.getCmp('grid1').getView().refresh();
+                                                }
+
+                                            /*btnBTNAXTSUBMIT user code start*/
+                                            /*btnBTNAXTSUBMIT user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTCANCEL',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('email_settings_form');
+
+
+                                                AxtForm.findById('senderName_v').setValue('');
+                                                AxtForm.findById('senderEmail_v').setValue('');
+                                                AxtForm.findById('emailServer_v').setValue('');
+                                                AxtForm.findById('senderAccount_v').setValue('');
+                                                AxtForm.findById('senderPassword_v').setValue('');
+                                                AxtForm.findById('SID').setValue('');
+                                            /*btnBTNAXTCANCEL user code start*/
+                                            /*btnBTNAXTCANCEL user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'text-align: left;',
+                       items: [
+                            {
+                                xtype: 'grid',
+                                id: 'grid1',
+                                store: AxtStore,
+                                height: 380,
+                                bodyStyle: 'border-width:0; padding: 0px 0 0 0px; background: transparent;',
+                                loadMask: true,
+                                columnWidth: 1,
+                                columnLines: true,
+                                selModel: sm,
+                                viewConfig: {
+                                templates: {
+                                cell: new Ext.Template(
+    '<td class= "x-grid3-col x-grid3-cell x-grid3-td-{id} x-selectable {css}" style="{style}" tabIndex="0" {cellAttr}>',
+    '<div class="x-grid3-cell-inner x-grid3-col-{id}" {attr}>{value}</div>',
+    '</td>'
+    )
+}
+ },
+                                columns: [
+                                    sm,
+                                    {
+                                        width: 50,
+                                        renderer: renderAXTMODIFYImg,
+                                        id: 'AXTMODIFY'
+                                    },
+                                    {
+                                        id: 'SENDERNAME_V',
+                                        dataIndex: 'SENDERNAME_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SENDEREMAIL_V',
+                                        dataIndex: 'SENDEREMAIL_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'EMAILSERVER_V',
+                                        dataIndex: 'EMAILSERVER_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SENDERACCOUNT_V',
+                                        dataIndex: 'SENDERACCOUNT_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SENDERPASSWORD_V',
+                                        dataIndex: 'SENDERPASSWORD_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    }
+                                ],
+                                viewConfig: {
+                                    forceFit: true
+                                },
+                                tbar: [
+                                    {
+                                        id: 'delete',
+                                        text: 'Delete',
+                                        tooltip: 'Delete',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSDelete',
+                                        width: 72
+                                        ,handler: function () {
+                                            var grid = Ext.getCmp('grid1');
+                                            var records = grid.getSelectionModel().getSelections();
+                                            if (!records || records.length <= 0) 
+                                            {
+                                                return false;
+                                            }
+
+                                            Ext.MessageBox.confirm(
+                                                WRN_00002,
+                                                WRN_00002,
+                                                function (btn) {
+                                                    if (btn == 'yes') {
+                                                        var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                        var deleteData = new Array();
+                                                        Ext.each(records, function (record) {
+                                                            var data = {
+                                                                SID: record.get("SID"),
+                                                                AXTMODIFY: record.get("AXTMODIFY"),
+                                                                SENDERNAME_V: record.get("SENDERNAME_V"),
+                                                                SENDEREMAIL_V: record.get("SENDEREMAIL_V"),
+                                                                EMAILSERVER_V: record.get("EMAILSERVER_V"),
+                                                                SENDERACCOUNT_V: record.get("SENDERACCOUNT_V"),
+                                                                SENDERPASSWORD_V: record.get("SENDERPASSWORD_V")
+                                                            };
+                                                            deleteData.push(data);
+                                                            grid.store.remove(record);
+                                                        });
+
+                                                        var msg = client.ResellerQuotationSystememail_settings.deleteData(deleteData);
+                                                        axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                        axtStoreUpdate();
+
+                                                        /*onDelete user code start*/
+                                                        /*onDelete user code end*/
+
+                                                        Ext.getCmp('grid1').getView().refresh();
+                                                        progress.hide();
+                                                    }
+                                                }
+                                            );
+                                        }
+                                    },
+                                    '-',
+                                    {
+                                        text: 'Add',
+                                        tooltip: 'Add',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSAdd',
+                                        width: 72,
+                                        handler: function () {
+                                            onAdd(Ext.getCmp('grid1'), AxtEditor, { SENDERNAME_V: "", SENDEREMAIL_V: "", EMAILSERVER_V: "", SENDERACCOUNT_V: "", SENDERPASSWORD_V: "" });
+                                        },
+                                        id: 'add'
+                                    },
+                                    '-'
+                                ],
+                                bbar: [
+                                    '->',
+                                     AxtPageBar]
+                            }
+                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            hidden:true,
+                            id:'Axtronics_AutoGen_System'
+                        }
+                    ]
+                });
+
+                function renderAXTMODIFYImg() {
+                    return '<center><img src="../../img/icons/edit.png"></center>'
+                }
+
+                AxtForm = Ext.getCmp('email_settings_form');
+                AxtForm.findById('grid1').on('cellclick', function (g, rowIndex, columnIndex, e) {
+                    var record = g.getStore().getAt(rowIndex);
+                    if(columnIndex == 1) {
+                        AxtForm.findById('SID').setValue(record.get('SID'));
+                        AxtForm.findById('senderName_v').setValue(record.get('SENDERNAME_V'));
+                        AxtForm.findById('senderEmail_v').setValue(record.get('SENDEREMAIL_V'));
+                        AxtForm.findById('emailServer_v').setValue(record.get('EMAILSERVER_V'));
+                        AxtForm.findById('senderAccount_v').setValue(record.get('SENDERACCOUNT_V'));
+                        AxtForm.findById('senderPassword_v').setValue(record.get('SENDERPASSWORD_V'));
+                    }
+                });
+                AxtPanel.render("main");
+                setlang();
+            });
+    </script>
+</head>
+<body>
+    <center>
+        <div id="main"></div>
+    </center>
+</body>
+</html>

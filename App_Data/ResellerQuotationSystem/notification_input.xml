@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.notification_input" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createnotification_input">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `CUSTOMERNAMECHINESE_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAMEEN_V` VARCHAR(200) NULL ,
+        `CONTACTCHINESE_V` VARCHAR(200) NULL ,
+        `CONTACTENGLISH_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT_V` VARCHAR(200) NULL ,
+        `RENEWCUSTOMERNO_V` VARCHAR(200) NULL ,
+        `NEWCUSTOMERBRANDS_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createnotification_inputHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUTHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `CUSTOMERNAMECHINESE_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAMEEN_V` VARCHAR(200) NULL ,
+        `CONTACTCHINESE_V` VARCHAR(200) NULL ,
+        `CONTACTENGLISH_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT_V` VARCHAR(200) NULL ,
+        `RENEWCUSTOMERNO_V` VARCHAR(200) NULL ,
+        `NEWCUSTOMERBRANDS_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , CUSTOMERNAMECHINESE_V , CUSTOMERNAMEEN_V , CONTACTCHINESE_V , CONTACTENGLISH_V , ORDERPRODUCT_V , RENEWCUSTOMERNO_V , NEWCUSTOMERBRANDS_V , COMPETITIVEBRANDS_V , DEALER_TW_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , CUSTOMERNAMECHINESE_V , CUSTOMERNAMEEN_V , CONTACTCHINESE_V , CONTACTENGLISH_V , ORDERPRODUCT_V , RENEWCUSTOMERNO_V , NEWCUSTOMERBRANDS_V , COMPETITIVEBRANDS_V , DEALER_TW_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE SID = #SID#
+    </statement>
+
+    <select id="getnotification_input" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT(SID, AXTMODIFY, CUSTOMERNAMECHINESE_V, CUSTOMERNAMEEN_V, CONTACTCHINESE_V, CONTACTENGLISH_V, ORDERPRODUCT_V, RENEWCUSTOMERNO_V, NEWCUSTOMERBRANDS_V, COMPETITIVEBRANDS_V, DEALER_TW_V)
+      VALUES(#SID#, #AXTMODIFY#, #CUSTOMERNAMECHINESE_V#, #CUSTOMERNAMEEN_V#, #CONTACTCHINESE_V#, #CONTACTENGLISH_V#, #ORDERPRODUCT_V#, #RENEWCUSTOMERNO_V#, #NEWCUSTOMERBRANDS_V#, #COMPETITIVEBRANDS_V#, #DEALER_TW_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT SET AXTMODIFY = #AXTMODIFY#,CUSTOMERNAMECHINESE_V = #CUSTOMERNAMECHINESE_V#,CUSTOMERNAMEEN_V = #CUSTOMERNAMEEN_V#,CONTACTCHINESE_V = #CONTACTCHINESE_V#,CONTACTENGLISH_V = #CONTACTENGLISH_V#,ORDERPRODUCT_V = #ORDERPRODUCT_V#,RENEWCUSTOMERNO_V = #RENEWCUSTOMERNO_V#,NEWCUSTOMERBRANDS_V = #NEWCUSTOMERBRANDS_V#,COMPETITIVEBRANDS_V = #COMPETITIVEBRANDS_V#,DEALER_TW_V = #DEALER_TW_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE SID = #SID#
+    </delete>
+
+    <statement id="getnotification_inputBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMECHINESE_V">
+          CUSTOMERNAMECHINESE_V like #CUSTOMERNAMECHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMEEN_V">
+          CUSTOMERNAMEEN_V like #CUSTOMERNAMEEN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTCHINESE_V">
+          CONTACTCHINESE_V like #CONTACTCHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTENGLISH_V">
+          CONTACTENGLISH_V like #CONTACTENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT_V">
+          ORDERPRODUCT_V like #ORDERPRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RENEWCUSTOMERNO_V">
+          RENEWCUSTOMERNO_V like #RENEWCUSTOMERNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NEWCUSTOMERBRANDS_V">
+          NEWCUSTOMERBRANDS_V like #NEWCUSTOMERBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getnotification_inputTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT
+   </select>
+
+    <statement id="getnotification_inputByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMECHINESE_V">
+          CUSTOMERNAMECHINESE_V like #CUSTOMERNAMECHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMEEN_V">
+          CUSTOMERNAMEEN_V like #CUSTOMERNAMEEN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTCHINESE_V">
+          CONTACTCHINESE_V like #CONTACTCHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTENGLISH_V">
+          CONTACTENGLISH_V like #CONTACTENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT_V">
+          ORDERPRODUCT_V like #ORDERPRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RENEWCUSTOMERNO_V">
+          RENEWCUSTOMERNO_V like #RENEWCUSTOMERNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NEWCUSTOMERBRANDS_V">
+          NEWCUSTOMERBRANDS_V like #NEWCUSTOMERBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.Shift" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createShift">
+      CREATE TABLE IF NOT EXISTS SYSADMINSHIFT (
+        `SID` VARCHAR(100) NOT NULL ,
+        `SHIFTNAME` VARCHAR(100) NULL ,
+        `STATUS` VARCHAR(100) NULL ,
+        `SCHEDULE` VARCHAR(100) NULL ,
+        `WORKDAY` VARCHAR(100) NULL ,
+        `RESTDAY` VARCHAR(100) NULL ,
+        `WEEKLYWORKDAY` VARCHAR(100) NULL ,
+        `STARTTIME` VARCHAR(100) NULL ,
+        `ENDTIME` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createShiftTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINSHIFTTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `SHIFTNAME` VARCHAR(100) NULL ,
+        `STATUS` VARCHAR(100) NULL ,
+        `SCHEDULE` VARCHAR(100) NULL ,
+        `WORKDAY` VARCHAR(100) NULL ,
+        `RESTDAY` VARCHAR(100) NULL ,
+        `WEEKLYWORKDAY` VARCHAR(100) NULL ,
+        `STARTTIME` VARCHAR(100) NULL ,
+        `ENDTIME` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getShift" resultClass="Hashtable">
+      Select * From SYSADMINSHIFT
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINSHIFT(SID, SHIFTNAME, STATUS, SCHEDULE, WORKDAY, RESTDAY, WEEKLYWORKDAY, STARTTIME, ENDTIME)
+      VALUES(#SID#, #SHIFTNAME#, #STATUS#, #SCHEDULE#, #WORKDAY#, #RESTDAY#, #WEEKLYWORKDAY#, #STARTTIME#, #ENDTIME#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINSHIFT SET SHIFTNAME = #SHIFTNAME#, STATUS = #STATUS#, SCHEDULE = #SCHEDULE#, WORKDAY = #WORKDAY#, RESTDAY = #RESTDAY#, WEEKLYWORKDAY = #WEEKLYWORKDAY#, STARTTIME = #STARTTIME#, ENDTIME = #ENDTIME# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINSHIFT
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINSHIFT WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

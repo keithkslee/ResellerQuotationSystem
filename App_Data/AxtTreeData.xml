@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="AxtTreeData" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+    
+    <select id="getMainMenu" resultClass="Hashtable">
+      SELECT MAIN_MENU
+      FROM (
+        SELECT amt.MAIN_MENU
+        FROM axtmes_menu_tree amt, axtmes_main_menu amm
+        WHERE amt.MAIN_MENU = amm.MAIN_MENU
+        GROUP BY amt.MAIN_MENU
+        ORDER BY amm.ORDER
+      ) m
+      UNION
+      SELECT MAIN_MENU
+      FROM axtmes_menu_tree
+      WHERE MAIN_MENU NOT IN (SELECT MAIN_MENU FROM axtmes_main_menu GROUP BY MAIN_MENU)
+    </select>
+    
+    <select id="getMainMenuByUser" resultClass="Hashtable">
+      SELECT MAIN_MENU
+      FROM (
+        SELECT amt.MAIN_MENU
+        FROM axtmes_group_user agu, axtmes_group_right agr, axtmes_menu_tree amt, axtmes_main_menu amm
+        WHERE agu.USER_INFO_ACCOUNT = #account#
+        AND agu.GROUP_INFO_SID = agr.GROUP_INFO_SID
+        AND agr.MENU_TREE_SID = amt.MENU_TREE_SID
+        AND amt.MAIN_MENU = amm.MAIN_MENU
+        GROUP BY amt.MAIN_MENU
+        ORDER BY amm.ORDER
+      ) m
+      UNION
+      SELECT amt.MAIN_MENU
+      FROM axtmes_group_user agu, axtmes_group_right agr, axtmes_menu_tree amt
+      WHERE agu.USER_INFO_ACCOUNT = #account#
+      AND agu.GROUP_INFO_SID = agr.GROUP_INFO_SID
+      AND agr.MENU_TREE_SID = amt.MENU_TREE_SID
+      AND amt.MAIN_MENU NOT IN (SELECT MAIN_MENU FROM axtmes_main_menu GROUP BY MAIN_MENU)
+    </select>
+    
+    <select id="getSubMenu" resultClass="Hashtable">
+      SELECT SUB_MENU
+      FROM (
+        SELECT SUB_MENU, `ORDER` FROM (
+          SELECT amt.SUB_MENU, asm.`ORDER`
+          FROM axtmes_menu_tree amt, axtmes_sub_menu asm
+          WHERE amt.SUB_MENU = asm.SUB_MENU
+          AND amt.MAIN_MENU = #mainmenu#
+          ORDER BY asm.ORDER
+        ) t
+        GROUP BY SUB_MENU, `ORDER`
+        ORDER BY `ORDER`
+      ) s
+      UNION
+      SELECT SUB_MENU
+      FROM axtmes_menu_tree
+      WHERE SUB_MENU NOT IN (SELECT SUB_MENU FROM axtmes_sub_menu GROUP BY SUB_MENU)
+      AND MAIN_MENU = #mainmenu#
+    </select>
+    
+    <select id="getSubMenuByUser" resultClass="Hashtable">
+      SELECT SUB_MENU
+      FROM (
+        SELECT SUB_MENU, `ORDER` FROM (
+          SELECT amt.SUB_MENU, asm.`ORDER`
+          FROM axtmes_group_user agu, axtmes_group_right agr, axtmes_menu_tree amt, axtmes_sub_menu asm
+          WHERE agu.USER_INFO_ACCOUNT = #account#
+          AND agu.GROUP_INFO_SID = agr.GROUP_INFO_SID
+          AND agr.MENU_TREE_SID = amt.MENU_TREE_SID
+          AND amt.SUB_MENU = asm.SUB_MENU
+          AND amt.MAIN_MENU = #mainmenu#
+          ORDER BY asm.ORDER
+        ) t
+        GROUP BY SUB_MENU, `ORDER`
+        ORDER BY `ORDER`
+      ) s
+      UNION
+      SELECT amt.SUB_MENU
+      FROM axtmes_group_user agu, axtmes_group_right agr, axtmes_menu_tree amt
+      WHERE agu.USER_INFO_ACCOUNT = #account#
+      AND agu.GROUP_INFO_SID = agr.GROUP_INFO_SID
+      AND agr.MENU_TREE_SID = amt.MENU_TREE_SID
+      AND amt.SUB_MENU NOT IN (SELECT SUB_MENU FROM axtmes_sub_menu GROUP BY SUB_MENU)
+    </select>
+
+    <select id="getMenuItems" resultClass="Hashtable">
+      SELECT SID, MENU_ITEM, GUI_PATH, TREE_ORDER
+      FROM (
+        SELECT SID, MENU_ITEM, GUI_PATH, TREE_ORDER FROM (
+          SELECT amt.MENU_TREE_SID AS SID, amt.MENU_ITEM, amt.GUI_PATH, amt.TREE_ORDER
+          FROM axtmes_menu_tree amt, axtmes_menu_item ami
+          WHERE amt.MENU_TREE_SID = ami.MENU_TREE_SID
+          AND amt.MAIN_MENU = #mainmenu#
+          AND amt.SUB_MENU = #submenu#
+          ORDER BY amt.TREE_ORDER
+        ) t
+        GROUP BY GUI_PATH, MENU_ITEM, SID, TREE_ORDER
+        ORDER BY TREE_ORDER
+      ) i
+      UNION
+      SELECT MENU_TREE_SID AS SID, MENU_ITEM, GUI_PATH, TREE_ORDER
+      FROM axtmes_menu_tree
+      WHERE MENU_TREE_SID NOT IN (SELECT MENU_TREE_SID FROM axtmes_menu_item)
+      AND MAIN_MENU = #mainmenu#
+      AND SUB_MENU = #submenu#
+      ORDER BY TREE_ORDER
+    </select>
+    
+    <select id="getMenuItemsByUser" resultClass="Hashtable">
+      SELECT SID, MENU_ITEM, GUI_PATH, TREE_ORDER
+      FROM (
+        SELECT SID, MENU_ITEM, GUI_PATH, TREE_ORDER FROM (
+          SELECT amt.MENU_TREE_SID AS SID, amt.MENU_ITEM, amt.GUI_PATH, amt.TREE_ORDER
+          FROM axtmes_group_user agu, axtmes_group_right agr, axtmes_menu_tree amt, axtmes_menu_item ami
+          WHERE agu.USER_INFO_ACCOUNT = #account#
+          AND agu.GROUP_INFO_SID = agr.GROUP_INFO_SID
+          AND agr.MENU_TREE_SID = amt.MENU_TREE_SID
+          AND amt.MENU_TREE_SID = ami.MENU_TREE_SID
+          AND amt.MAIN_MENU = #mainmenu#
+          AND amt.SUB_MENU = #submenu#
+          ORDER BY amt.TREE_ORDER
+        ) t
+        GROUP BY GUI_PATH, MENU_ITEM, SID, TREE_ORDER
+        ORDER BY TREE_ORDER
+      ) i
+      UNION
+      SELECT amt.MENU_TREE_SID AS SID, amt.MENU_ITEM, amt.GUI_PATH, amt.TREE_ORDER
+      FROM axtmes_group_user agu, axtmes_group_right agr, axtmes_menu_tree amt
+      WHERE agu.USER_INFO_ACCOUNT = #account#
+      AND agu.GROUP_INFO_SID = agr.GROUP_INFO_SID
+      AND agr.MENU_TREE_SID = amt.MENU_TREE_SID
+      AND amt.MENU_TREE_SID NOT IN (SELECT MENU_TREE_SID FROM axtmes_menu_item)
+      AND amt.MAIN_MENU = #mainmenu#
+      AND amt.SUB_MENU = #submenu#
+      ORDER BY TREE_ORDER
+    </select>
+
+    <select id="getChiLinMenuItems" resultClass="Hashtable">
+      SELECT SID, MENU_ITEM, GUI_PATH, TREE_ORDER
+      FROM (
+        SELECT SID, MENU_ITEM, GUI_PATH, TREE_ORDER FROM (
+          SELECT amt.MENU_TREE_SID AS SID, amt.MENU_ITEM, amt.GUI_PATH, amt.TREE_ORDER
+          FROM axtmes_menu_tree amt, axtmes_menu_item ami
+          WHERE amt.MENU_ITEM = ami.MENU_ITEM
+          AND amt.MAIN_MENU = #mainmenu#
+          AND amt.SUB_MENU = #submenu#
+          ORDER BY amt.TREE_ORDER
+        ) t
+        GROUP BY GUI_PATH, MENU_ITEM, SID, TREE_ORDER
+        ORDER BY TREE_ORDER
+      ) i
+      UNION
+      SELECT MENU_TREE_SID AS SID, MENU_ITEM, GUI_PATH, TREE_ORDER
+      FROM axtmes_menu_tree
+      WHERE MENU_ITEM NOT IN (SELECT MENU_ITEM FROM axtmes_menu_item)
+      AND MAIN_MENU = #mainmenu#
+      AND SUB_MENU = #submenu#
+      ORDER BY TREE_ORDER
+    </select>
+
+    <select id="getChiLinMenuItemsByUser" resultClass="Hashtable">
+      SELECT SID, MENU_ITEM, GUI_PATH, TREE_ORDER
+      FROM (
+        SELECT SID, MENU_ITEM, GUI_PATH, TREE_ORDER FROM (
+          SELECT amt.MENU_TREE_SID AS SID, amt.MENU_ITEM, amt.GUI_PATH, amt.TREE_ORDER
+          FROM axtmes_group_user agu, axtmes_group_right agr, axtmes_menu_tree amt, axtmes_menu_item ami
+          WHERE agu.USER_INFO_ACCOUNT = #account#
+          AND agu.GROUP_INFO_SID = agr.GROUP_INFO_SID
+          AND agr.MENU_TREE_SID = amt.MENU_TREE_SID
+          AND amt.MENU_ITEM = ami.MENU_ITEM
+          AND amt.MAIN_MENU = #mainmenu#
+          AND amt.SUB_MENU = #submenu#
+          ORDER BY amt.TREE_ORDER
+        ) t
+        GROUP BY GUI_PATH, MENU_ITEM, SID, TREE_ORDER
+        ORDER BY TREE_ORDER
+      ) i
+      UNION
+      SELECT amt.MENU_TREE_SID AS SID, amt.MENU_ITEM, amt.GUI_PATH, amt.TREE_ORDER
+      FROM axtmes_group_user agu, axtmes_group_right agr, axtmes_menu_tree amt
+      WHERE agu.USER_INFO_ACCOUNT = #account#
+      AND agu.GROUP_INFO_SID = agr.GROUP_INFO_SID
+      AND agr.MENU_TREE_SID = amt.MENU_TREE_SID
+      AND amt.MENU_ITEM NOT IN (SELECT MENU_ITEM FROM axtmes_menu_item)
+      AND amt.MAIN_MENU = #mainmenu#
+      AND amt.SUB_MENU = #submenu#
+      ORDER BY TREE_ORDER
+    </select>
+    
+    <select id="getMenuTreeSid" resultClass="Hashtable">
+      SELECT MENU_TREE_SID FROM axtmes_menu_tree WHERE MENU_ITEM = #menu_item#
+    </select>
+
+    <select id="getGuiPath" resultClass="Hashtable">
+      SELECT GUI_PATH FROM axtmes_menu_tree WHERE MENU_TREE_SID = #menu_tree_sid#
+    </select>
+    
+  </statements>    
+</sqlMap>

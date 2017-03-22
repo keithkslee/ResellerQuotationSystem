@@ -1,0 +1,1349 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>envelope_stickers</title>
+    <link href="../../css/axtlib.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/axtStyle.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/ux/css/RowEditor.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .x-grid3-cell-inner{
+            white-space: normal;
+            font-size: 15px;
+        }
+        .my-label-style {
+    				font-weight: bold; 
+    				color: red;
+				}
+    </style>
+    <style type="text/css">
+       .x-selectable, .x-selectable * {
+       -moz-user-select: text!important;
+       -khtml-user-select: text!important;
+      }
+    </style>
+
+    <script src="../../ext/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ext-all-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ux/PagingMemoryProxy.js" type="text/javascript"></script>
+    <script src="../../ext/ux/ProgressBarPager.js" type="text/javascript"></script>
+    <script src="../../ext/ux/RowEditor.js" type="text/javascript"></script>
+    <script src="../../ext/src/locale/ext-lang-zh_TW.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtRuleMessage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtlib.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtMutiLanguage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtHelpWindow.js" type="text/javascript"></script>
+    <script src="../../axtjs/pPageSize.js" type="text/javascript"></script>
+    <script src="../../axtjs/AJAXRPC.js" type="text/javascript"></script>
+    <script src="../../Charts/FusionCharts.js" type="text/javascript"></script>
+    <script src="../../ajaxrpc/Script.aspx" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var AxtEditor = new Ext.ux.grid.RowEditor({});
+        var client = new AJAXRPC_Client('../../ajaxrpc/Server.aspx');
+
+        if (client.Login.isLogin() == false) {
+            parent.location.href = "../../Login.html";
+        }
+
+        client.ResellerQuotationSystemenvelope_stickers.createTable();
+        client.ResellerQuotationSystemenvelope_stickers.beforeGenConf();
+
+        function setlang() {
+            lang = client.AxtSystem.getLang("zh-TW");
+            setRuleMessageLang(lang);
+            AxtForm = Ext.getCmp('envelope_stickers_form');
+            switch (lang) {
+                case 'zh-CN':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("外箱信封贴纸");
+                    AxtForm.findById("lblspace1").update("<font size=\'3\'><p align = \'right\'>&nbsp;</p></font>");
+                    AxtForm.findById("fieldset1").setTitle('外箱信封贴纸');
+                    AxtForm.findById("lbldeliveryaddress_t").update("<font size=\'3\'><p align = \'right\'>送货地址</p></font>");
+                    AxtForm.findById("lblcustomername_t").update("<font size=\'3\'><p align = \'right\'>客户名称</p></font>");
+                    AxtForm.findById("lblcustomercontact_t").update("<font size=\'3\'><p align = \'right\'>客户联络</p></font>");
+                    AxtForm.findById("lblnote_t").update("<font size=\'3\'><p align = \'right\'>备注</p></font>");
+                    AxtForm.findById("lblproduct_t").update("<font size=\'3\'><p align = \'right\'>产品</p></font>");
+                    AxtForm.findById("lblpurchaseordernumber_t").update("<font size=\'3\'><p align = \'right\'>采购单号</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("儲存");
+                    AxtForm.findById("btnBTNAXTREPORTOUTPUT").setText("列印");
+                    AxtForm.findById("btnBTNAXTREPORTPREVIEW").setText("預覽");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('外箱信封贴纸 報表');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>预览</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>送货地址</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>客户名称</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>客户联络</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>备注</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>产品</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>采购单号</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'en':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("Envelope Stickers");
+                    AxtForm.findById("lblspace1").update("<font size=\'3\'><p align = \'right\'>&nbsp;</p></font>");
+                    AxtForm.findById("fieldset1").setTitle('Envelope Stickers');
+                    AxtForm.findById("lbldeliveryaddress_t").update("<font size=\'3\'><p align = \'right\'>DeliveryAddress</p></font>");
+                    AxtForm.findById("lblcustomername_t").update("<font size=\'3\'><p align = \'right\'>CustomerName</p></font>");
+                    AxtForm.findById("lblcustomercontact_t").update("<font size=\'3\'><p align = \'right\'>CustomerContact</p></font>");
+                    AxtForm.findById("lblnote_t").update("<font size=\'3\'><p align = \'right\'>Note</p></font>");
+                    AxtForm.findById("lblproduct_t").update("<font size=\'3\'><p align = \'right\'>Product</p></font>");
+                    AxtForm.findById("lblpurchaseordernumber_t").update("<font size=\'3\'><p align = \'right\'>PurchaseOrderNumber</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("Query");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("Submit");
+					AxtForm.findById("btnBTNAXTREPORTOUTPUT").setText("Print Output");
+                    AxtForm.findById("btnBTNAXTREPORTPREVIEW").setText("Preview");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("Cancel");
+                    AxtForm.findById("grid1").setTitle('Envelope Stickers Report');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>Modify</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>DeliveryAddress</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>CustomerName</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>CustomerContact</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>Note</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>Product</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>PurchaseOrderNumber</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'zh-TW':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("外箱信封貼紙");
+                    AxtForm.findById("lblspace1").update("<font size=\'3\'><p align = \'right\'>&nbsp;</p></font>");
+                    AxtForm.findById("fieldset1").setTitle('外箱信封貼紙');
+                    AxtForm.findById("lbldeliveryaddress_t").update("<font size=\'3\'><p align = \'right\'>送貨地址</p></font>");
+                    AxtForm.findById("lblcustomername_t").update("<font size=\'3\'><p align = \'right\'>客戶名稱</p></font>");
+                    AxtForm.findById("lblcustomercontact_t").update("<font size=\'3\'><p align = \'right\'>客戶聯絡</p></font>");
+                    AxtForm.findById("lblnote_t").update("<font size=\'3\'><p align = \'right\'>備註</p></font>");
+                    AxtForm.findById("lblproduct_t").update("<font size=\'3\'><p align = \'right\'>產品</p></font>");
+                    AxtForm.findById("lblpurchaseordernumber_t").update("<font size=\'3\'><p align = \'right\'>採購單號</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("儲存");
+                    AxtForm.findById("btnBTNAXTREPORTOUTPUT").setText("列印");
+                    AxtForm.findById("btnBTNAXTREPORTPREVIEW").setText("預覽");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('外箱信封貼紙 報表 ');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>預覽</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>送貨地址</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>客戶名稱</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>客戶聯絡</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>備註</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>產品</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>採購單號</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                }
+            }
+
+
+        function axtHelp() {
+                lang = client.AxtSystem.getLang("zh-TW");
+                setRuleMessageLang(lang);
+                AxtForm = Ext.getCmp('envelope_stickers_form');
+                switch (lang) {
+                }
+         }
+
+            Ext.onReady(function () {
+                Ext.QuickTips.init();
+
+                setlang();
+                var AxtData = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersBy({
+                    START_V : 0,
+                    LIMIT_V : 20
+                });
+
+                var proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+
+                var reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'envelope_stickers'
+                }, [
+                        {
+                            name: 'SID'
+                        },
+                        {
+                            name: 'AXTMODIFY'
+                        },
+                        {
+                            name: 'DELIVERYADDRESS_V'
+                        },
+                        {
+                            name: 'CUSTOMERNAME_V'
+                        },
+                        {
+                            name: 'CUSTOMERCONTACT_V'
+                        },
+                        {
+                            name: 'NOTE_V'
+                        },
+                        {
+                            name: 'PRODUCT_V'
+                        },
+                        {
+                            name: 'PURCHASEORDERNUMBER_V'
+                        }
+                    ]
+                );
+
+                var writer = new Ext.data.JsonWriter({
+                    encode: false       // <-- don't return encoded JSON -- causes Ext.Ajax#request to send data using jsonData config rather than HTTP params
+                });
+
+                var AxtStore = new Ext.data.Store({
+                    id: 'jssenvelope_stickers',
+                    proxy: proxy,
+                    reader: reader,
+                    pruneModifiedRecords: true
+                });
+
+                AxtStore.load({ params: { start: 0, limit: 20} });
+
+                function axtStoreUpdate() {
+                    AxtData = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersBy({
+                        START_V : AxtPageBar.cursor,
+                        LIMIT_V : AxtPageBar.pageSize
+                    });
+                    AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                    AxtStore.load();
+                }
+
+                var CBX_CUSTOMERNAME_V = client.ResellerQuotationSystemenvelope_stickers.getCBXCUSTOMERNAME_V();
+
+                var CBX_CUSTOMERNAME_V_proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(CBX_CUSTOMERNAME_V));
+
+                var CBX_CUSTOMERNAME_V_reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'envelope_stickers',
+                }, [
+                   {
+                    name: 'CUSTOMERNAME_V'
+                   }
+                ]);
+
+                var CBX_CUSTOMERNAME_V_Store = new Ext.data.Store({
+                    id: 'cbxcustomername_v',
+                    proxy: CBX_CUSTOMERNAME_V_proxy,
+                    reader: CBX_CUSTOMERNAME_V_reader,
+                    pruneModifiedRecords: true
+                });
+
+                CBX_CUSTOMERNAME_V_Store.load();
+
+                var CBX_CUSTOMERCONTACT_V = client.ResellerQuotationSystemenvelope_stickers.getCBXCUSTOMERCONTACT_V();
+
+                var CBX_CUSTOMERCONTACT_V_proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(CBX_CUSTOMERCONTACT_V));
+
+                var CBX_CUSTOMERCONTACT_V_reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'envelope_stickers',
+                }, [
+                   {
+                    name: 'CUSTOMERCONTACT_V'
+                   }
+                ]);
+
+                var CBX_CUSTOMERCONTACT_V_Store = new Ext.data.Store({
+                    id: 'cbxcustomercontact_v',
+                    proxy: CBX_CUSTOMERCONTACT_V_proxy,
+                    reader: CBX_CUSTOMERCONTACT_V_reader,
+                    pruneModifiedRecords: true
+                });
+
+                CBX_CUSTOMERCONTACT_V_Store.load();
+
+                var CBX_PRODUCT_V = client.ResellerQuotationSystemenvelope_stickers.getCBXPRODUCT_V();
+
+                var CBX_PRODUCT_V_proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(CBX_PRODUCT_V));
+
+                var CBX_PRODUCT_V_reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'envelope_stickers',
+                }, [
+                   {
+                    name: 'PRODUCT_V'
+                   }
+                ]);
+
+                var CBX_PRODUCT_V_Store = new Ext.data.Store({
+                    id: 'cbxproduct_v',
+                    proxy: CBX_PRODUCT_V_proxy,
+                    reader: CBX_PRODUCT_V_reader,
+                    pruneModifiedRecords: true
+                });
+
+                CBX_PRODUCT_V_Store.load();
+
+                var CBX_PURCHASEORDERNUMBER_V = client.ResellerQuotationSystemenvelope_stickers.getCBXPURCHASEORDERNUMBER_V();
+
+                var CBX_PURCHASEORDERNUMBER_V_proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(CBX_PURCHASEORDERNUMBER_V));
+
+                var CBX_PURCHASEORDERNUMBER_V_reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'envelope_stickers',
+                }, [
+                   {
+                    name: 'PURCHASEORDERNUMBER_V'
+                   }
+                ]);
+
+                var CBX_PURCHASEORDERNUMBER_V_Store = new Ext.data.Store({
+                    id: 'cbxpurchaseordernumber_v',
+                    proxy: CBX_PURCHASEORDERNUMBER_V_proxy,
+                    reader: CBX_PURCHASEORDERNUMBER_V_reader,
+                    pruneModifiedRecords: true
+                });
+
+                CBX_PURCHASEORDERNUMBER_V_Store.load();
+                var AxtPageBar = new Ext.PagingToolbar({
+                    xtype: "paging",
+                    pageSize: 20,
+                    store: AxtStore,
+                    displayInfo: true,
+                    //displayMsg: 'Displaying {0} - {1} of {2}',
+                    style: 'border-width:0;',
+                    refresh: function (pt, o) {
+                        axtStoreUpdate();
+                        Ext.getCmp('grid1').getView().refresh();
+                    },
+                    //emptyMsg: "No message to display",
+                    plugins: [new Ext.ux.Andrie.pPageSize(), new Ext.ux.ProgressBarPager()],
+                    listeners: {
+                        'beforechange' : function(pagingToolbar, pageData) {
+                            AxtData = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersBy({
+                                DELIVERYADDRESS_V: AxtForm.findById('deliveryaddress_v').getValue(),
+                                CUSTOMERNAME_V: AxtForm.findById('cbx_customername_v').getValue(),
+                                CUSTOMERCONTACT_V: AxtForm.findById('cbx_customercontact_v').getValue(),
+                                NOTE_V: AxtForm.findById('note_v').getValue(),
+                                PRODUCT_V: AxtForm.findById('cbx_product_v').getValue(),
+                                PURCHASEORDERNUMBER_V: AxtForm.findById('cbx_purchaseordernumber_v').getValue(),
+                                START_V : pageData.start,
+                                LIMIT_V : pageData.limit
+                            });
+                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                            AxtStore.load();
+                            Ext.getCmp('grid1').getView().refresh();
+
+                            var p = this.getParams();
+                            this.cursor = (pageData && pageData.start) ? pageData.start : 0;
+                            var d = this.getPageData(), ap = d.activePage, ps = d.pages;
+
+                            this.afterTextItem.setText(String.format(this.afterPageText, d.pages));
+                            this.inputItem.setValue(ap);
+                            this.first.setDisabled(ap == 1);
+                            this.prev.setDisabled(ap == 1);
+                            this.next.setDisabled(ap == ps);
+                            this.last.setDisabled(ap == ps);
+                            this.refresh.enable();
+                            this.updateInfo();
+
+                            return false;
+                         }
+                     }
+                 });
+
+                function tfToogle() {
+				   AxtForm.findById('deliveryaddress_ta').setVisible(false);
+				   AxtForm.findById('deliveryaddress_v').setVisible(true);
+				   AxtForm.findById('deliveryaddress_v').setValue(AxtForm.findById('deliveryaddress_ta').getValue());
+
+				   AxtForm.findById('note_ta').setVisible(false);
+				   AxtForm.findById('note_v').setVisible(true);
+				   AxtForm.findById('note_v').setValue(AxtForm.findById('note_ta').getValue());
+
+                }
+                /*usercode start*/
+                /*usercode end*/
+
+                var sm =  new Ext.grid.CheckboxSelectionModel({
+                    checkOnly: false,
+                    width: 20
+                });
+
+                var AxtPanel = new Ext.Panel({
+                    width: 1100,
+                    layout: 'form',
+                    id: 'envelope_stickers_form',
+                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                    items: [
+                    {
+                        xtype: 'textfield',
+                        hidden: true,
+                        id: 'SID'
+                    },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'displayfield',
+                                        cls: 'CSTitle',
+                                        height: 35,
+                                        columnWidth: 1,
+                                        id: 'dfdTitle'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblspace1'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'fieldset',
+                                        collapsible: true,
+                                        title: 'fieldset1',
+                                        id: 'fieldset1',
+                                        items: [
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lbldeliveryaddress_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'textarea',
+                                                        width: 150,
+                                                        autoScroll: true,
+                                                        height: 66,
+                                                        hidden: true,
+                                                        style: 'font-size: 16;',
+                                                        id: 'deliveryaddress_ta',
+                                                        listeners: {
+                                                            blur: function(obj) {
+                                                                AxtForm.findById("deliveryaddress_v").setValue(obj.getValue());
+                                                                obj.setVisible(false);
+                                                                AxtForm.findById("deliveryaddress_v").setVisible(true);
+                                                            }
+                                                        }
+                                                    }, {
+                                                        xtype: 'textfield',
+                                                        name: 'deliveryaddress_v',
+                                                        columnWidth: 0.2,
+                                                        width: 150,
+                                                        allowBlank: true,
+                                                        style: 'font-size: 16;',
+                                                        listeners: {
+                                                        	focus: function(obj){
+                                                        		AxtForm.findById("deliveryaddress_ta").setValue(obj.getValue());
+                                                        		obj.setVisible(false);
+                                                        		AxtForm.findById("deliveryaddress_ta").setVisible(true);
+                                                        		AxtForm.findById("deliveryaddress_ta").focus();
+                                                        	}
+                                                        },
+                                                        id: 'deliveryaddress_v'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblcustomername_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_customername_v',
+                    mode: 'local',
+                    editable: true,
+                    store: CBX_CUSTOMERNAME_V_Store,
+                    displayField: 'CUSTOMERNAME_V',
+                    tpl: '<tpl for="."><div ext:qtip="{CUSTOMERNAME_V}" class="x-combo-list-item">{CUSTOMERNAME_V}</div></tpl>',
+
+                    style: 'font-size: 16;',
+                    /*cbxcustomername_v user code start*/
+                    /*cbxcustomername_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblcustomercontact_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_customercontact_v',
+                    mode: 'local',
+                    editable: true,
+                    store: CBX_CUSTOMERCONTACT_V_Store,
+                    displayField: 'CUSTOMERCONTACT_V',
+                    tpl: '<tpl for="."><div ext:qtip="{CUSTOMERCONTACT_V}" class="x-combo-list-item">{CUSTOMERCONTACT_V}</div></tpl>',
+
+                    style: 'font-size: 16;',
+                    /*cbxcustomercontact_v user code start*/
+                    /*cbxcustomercontact_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblnote_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'textarea',
+                                                        width: 150,
+                                                        autoScroll: true,
+                                                        height: 66,
+                                                        hidden: true,
+                                                        style: 'font-size: 16;',
+                                                        id: 'note_ta',
+                                                        listeners: {
+                                                            blur: function(obj) {
+                                                                AxtForm.findById("note_v").setValue(obj.getValue());
+                                                                obj.setVisible(false);
+                                                                AxtForm.findById("note_v").setVisible(true);
+                                                            }
+                                                        }
+                                                    }, {
+                                                        xtype: 'textfield',
+                                                        name: 'note_v',
+                                                        columnWidth: 0.2,
+                                                        width: 150,
+                                                        allowBlank: true,
+                                                        style: 'font-size: 16;',
+                                                        listeners: {
+                                                        	focus: function(obj){
+                                                        		AxtForm.findById("note_ta").setValue(obj.getValue());
+                                                        		obj.setVisible(false);
+                                                        		AxtForm.findById("note_ta").setVisible(true);
+                                                        		AxtForm.findById("note_ta").focus();
+                                                        	}
+                                                        },
+                                                        id: 'note_v'
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblproduct_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_product_v',
+                    mode: 'local',
+                    editable: true,
+                    store: CBX_PRODUCT_V_Store,
+                    displayField: 'PRODUCT_V',
+                    tpl: '<tpl for="."><div ext:qtip="{PRODUCT_V}" class="x-combo-list-item">{PRODUCT_V}</div></tpl>',
+
+                    style: 'font-size: 16;',
+                    /*cbxproduct_v user code start*/
+                    /*cbxproduct_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        cls: 'my-label-style',
+                                                        id: 'lblpurchaseordernumber_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_purchaseordernumber_v',
+                    mode: 'local',
+                    editable: true,
+                    store: CBX_PURCHASEORDERNUMBER_V_Store,
+                    displayField: 'PURCHASEORDERNUMBER_V',
+                    tpl: '<tpl for="."><div ext:qtip="{PURCHASEORDERNUMBER_V}" class="x-combo-list-item">{PURCHASEORDERNUMBER_V}</div></tpl>',
+
+                    style: 'font-size: 16;',
+                    /*cbxpurchaseordernumber_v user code start*/
+                    /*cbxpurchaseordernumber_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        select: function(c,r,i){ 
+                        //Query Grid Start 
+                        	AxtData = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersBy({
+                        		DELIVERYADDRESS_V: AxtPanel.findById('deliveryaddress_v').getValue(),
+                        		CUSTOMERNAME_V: AxtPanel.findById('cbx_customername_v').getValue(),
+                        		CUSTOMERCONTACT_V: AxtPanel.findById('cbx_customercontact_v').getValue(),
+                        		NOTE_V: AxtPanel.findById('note_v').getValue(),
+                        		PRODUCT_V: AxtPanel.findById('cbx_product_v').getValue(),
+                        		PURCHASEORDERNUMBER_V: AxtPanel.findById('cbx_purchaseordernumber_v').getValue(),
+                        		START_V : 0,
+                        		LIMIT_V : AxtPageBar.pageSize,
+                        		AXTMODIFY : ""
+                        	});
+                        	AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                        	AxtStore.load();
+                        	Ext.getCmp('grid1').getView().refresh();
+                        //Query Grid End 
+                    	    AxtData_note_v = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersNote_vBy({ 
+                    	    PURCHASEORDERNUMBER_V: r.get('PURCHASEORDERNUMBER_V') 
+                    	    }); 
+                    	    
+                		if(AxtData_note_v[0] != null && AxtData_note_v[0]['NOTE_V'] != ""){
+                    			AxtPanel.findById('note_v').setValue(AxtData_note_v[0]['NOTE_V']); 
+                		}else{
+                		    	AxtPanel.findById('note_v').setValue("");
+                		}
+                    	    AxtData_product_v = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersProduct_vBy({ 
+                    	    PURCHASEORDERNUMBER_V: r.get('PURCHASEORDERNUMBER_V') 
+                    	    }); 
+                    	    
+                		if(AxtData_product_v[0] != null && AxtData_product_v[0]['PRODUCT_V'] != ""){
+                    			AxtPanel.findById('cbx_product_v').setValue(AxtData_product_v[0]['PRODUCT_V']); 
+                		}else{
+                		    	AxtPanel.findById('cbx_product_v').setValue("");
+                		}
+                    	    AxtData_deliveryaddress_v = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersDeliveryaddress_vBy({ 
+                    	    PURCHASEORDERNUMBER_V: r.get('PURCHASEORDERNUMBER_V') 
+                    	    }); 
+                    	    
+                		if(AxtData_deliveryaddress_v[0] != null && AxtData_deliveryaddress_v[0]['DELIVERYADDRESS_V'] != ""){
+                    			AxtPanel.findById('deliveryaddress_v').setValue(AxtData_deliveryaddress_v[0]['DELIVERYADDRESS_V']); 
+                		}else{
+                		    	AxtPanel.findById('deliveryaddress_v').setValue("");
+                		}
+                    	    AxtData_customercontact_v = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersCustomercontact_vBy({ 
+                    	    PURCHASEORDERNUMBER_V: r.get('PURCHASEORDERNUMBER_V') 
+                    	    }); 
+                    	    
+                		if(AxtData_customercontact_v[0] != null && AxtData_customercontact_v[0]['CUSTOMERCONTACT_V'] != ""){
+                    			AxtPanel.findById('cbx_customercontact_v').setValue(AxtData_customercontact_v[0]['COMPACT_V']); 
+                		}else{
+                		    	AxtPanel.findById('cbx_customercontact_v').setValue("");
+                		}
+                    	    AxtData_customername_v = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersCustomername_vBy({ 
+                    	    PURCHASEORDERNUMBER_V: r.get('PURCHASEORDERNUMBER_V') 
+                    	    }); 
+                    	    
+                		if(AxtData_customername_v[0] != null && AxtData_customername_v[0]['CUSTOMERNAME_V'] != ""){
+                    			AxtPanel.findById('cbx_customername_v').setValue(AxtData_customername_v[0]['CUSTOMERNAME_V']); 
+                		}else{
+                		    	AxtPanel.findById('cbx_customername_v').setValue("");
+                		}
+                    	} 
+                    }, 
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTQUERY',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('envelope_stickers_form');
+
+                                                AxtData = client.ResellerQuotationSystemenvelope_stickers.getenvelope_stickersBy({
+                                                    DELIVERYADDRESS_V: AxtForm.findById('deliveryaddress_v').getValue(),
+                                                    CUSTOMERNAME_V: AxtForm.findById('cbx_customername_v').getValue(),
+                                                    CUSTOMERCONTACT_V: AxtForm.findById('cbx_customercontact_v').getValue(),
+                                                    NOTE_V: AxtForm.findById('note_v').getValue(),
+                                                    PRODUCT_V: AxtForm.findById('cbx_product_v').getValue(),
+                                                    PURCHASEORDERNUMBER_V: AxtForm.findById('cbx_purchaseordernumber_v').getValue(),
+                                                    START_V : 0,
+                                                    LIMIT_V : AxtPageBar.pageSize,
+                                                    AXTMODIFY: ""
+                                            });
+                                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                                            AxtStore.load();
+                                            Ext.getCmp('grid1').getView().refresh();
+                                            /*btnBTNAXTQUERY user code start*/
+                                            /*btnBTNAXTQUERY user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTSUBMIT',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('envelope_stickers_form');
+
+
+                                                    if(AxtForm.findById('deliveryaddress_v').getValue() == "" && AxtForm.findById('cbx_customername_v').getValue() == "" && AxtForm.findById('cbx_customercontact_v').getValue() == "" && AxtForm.findById('note_v').getValue() == "" && AxtForm.findById('cbx_product_v').getValue() == "" && AxtForm.findById('cbx_purchaseordernumber_v').getValue() == ""){
+                                                    
+                                                   		Ext.MessageBox.show({
+                                    				title: axtlang_msgbox_error_title,
+                                    				msg: axtlang_msgbox_null,
+                                    				buttons: Ext.Msg.OK,
+                                    				closable: false,
+                                    				width: 240
+                                    			});
+                                    			return;
+                                                    }
+                                                if( true )
+                                                {
+                                                    var newData = new Array();
+                                                    var data = {
+                                                    DELIVERYADDRESS_V: AxtForm.findById('deliveryaddress_v').getValue(),
+                                                    CUSTOMERNAME_V: AxtForm.findById('cbx_customername_v').getValue(),
+                                                    CUSTOMERCONTACT_V: AxtForm.findById('cbx_customercontact_v').getValue(),
+                                                    NOTE_V: AxtForm.findById('note_v').getValue(),
+                                                    PRODUCT_V: AxtForm.findById('cbx_product_v').getValue(),
+                                                    PURCHASEORDERNUMBER_V: AxtForm.findById('cbx_purchaseordernumber_v').getValue(),
+                                                    SID: AxtForm.findById('SID').getValue()
+                                                }
+
+                                                newData.push(data);
+
+                                                if (newData.length <= 0) {
+                                                    return;
+                                                }
+
+                                                var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                var msg = client.ResellerQuotationSystemenvelope_stickers.saveData(newData);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                progress.hide();
+
+                                                axtStoreUpdate();
+
+                                                Ext.getCmp('grid1').getView().refresh();
+                                                }
+
+                                            /*btnBTNAXTSUBMIT user code start*/
+                                            /*btnBTNAXTSUBMIT user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTREPORTOUTPUT',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('envelope_stickers_report_form');
+
+
+                                                var grid = Ext.getCmp('grid1');
+                                                var records = grid.getSelectionModel().getSelections();
+                                                var Data = new Array();
+                                                if(!records || records.length <=0){
+                                                	Ext.MessageBox.confirm("Do you want to Display Empty Report?","No, Please select Report in Grid",function(btn){
+                                                		if(btn == "yes"){
+                                                			data = {};
+                                                			Data.push(data)
+                                                				var msg = client.ResellerQuotationSystemenvelope_stickers_report.exportData("doc", Data,false);
+                                                			axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                window.location = "../../Report_Output/ResellerQuotationSystememailbox_report.doc";
+                                                			
+                                                		}
+                                                	});
+                                                }else{
+                                    			Ext.each(records,function(record){
+                                                		var data = {
+                                    	                		AXTMODIFY: record.get('AXTMODIFY'),
+                                    	                		DELIVERYADDRESS_V: record.get('DELIVERYADDRESS_V'),
+                                    	                		CUSTOMERNAME_V: record.get('CUSTOMERNAME_V'),
+                                    	                		CUSTOMERCONTACT_V: record.get('CUSTOMERCONTACT_V'),
+                                    	                		NOTE_V: record.get('NOTE_V'),
+                                    	                		PRODUCT_V: record.get('PRODUCT_V'),
+                                    	                		PURCHASEORDERNUMBER_V: record.get('PURCHASEORDERNUMBER_V')
+
+                                            			};
+                                            			Data.push(data);
+                                            	});
+                                                	var msg = client.ResellerQuotationSystemenvelope_stickers_report.exportData("doc", Data,false);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                	window.location = "../../Report_Output/ResellerQuotationSystememailbox_report.doc";
+                         		}
+                                            /*btnBTNAXTREPORTOUTPUT user code start*/
+                                            /*btnBTNAXTREPORTOUTPUT user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTREPORTPREVIEW',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('envelope_stickers_report_form');
+
+
+                                                var grid = Ext.getCmp('grid1');
+                                                var records = grid.getSelectionModel().getSelections();
+                                                var Data = new Array();
+                                                if(!records || records.length <=0){
+                                                	Ext.MessageBox.confirm("Do you want to Display Empty Report?","No, Please select Report in Grid",function(btn){
+                                                		if(btn == "yes"){
+                                                			data = {};
+                                                			Data.push(data)
+                                                			var msg = client.ResellerQuotationSystemenvelope_stickers_report.exportData("pdf", Data, false);
+                                                			axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                window.open("../../Report_Output/ResellerQuotationSystememailbox_report.pdf");
+                                                			
+                                                		}
+                                                	});
+                                                }else{
+                                    			Ext.each(records,function(record){
+                                                		var data = {
+                                    	                		AXTMODIFY: record.get('AXTMODIFY'),
+                                    	                		DELIVERYADDRESS_V: record.get('DELIVERYADDRESS_V'),
+                                    	                		CUSTOMERNAME_V: record.get('CUSTOMERNAME_V'),
+                                    	                		CUSTOMERCONTACT_V: record.get('CUSTOMERCONTACT_V'),
+                                    	                		NOTE_V: record.get('NOTE_V'),
+                                    	                		PRODUCT_V: record.get('PRODUCT_V'),
+                                    	                		PURCHASEORDERNUMBER_V: record.get('PURCHASEORDERNUMBER_V')
+
+                                            			};
+                                            			Data.push(data);
+                                            	});
+                                                	var msg = client.ResellerQuotationSystemenvelope_stickers_report.exportData("pdf", Data, false);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                window.open("../../Report_Output/ResellerQuotationSystememailbox_report.pdf");
+                         				}
+                                            /*btnBTNAXTREPORTPREVIEW user code start*/
+                                            /*btnBTNAXTREPORTPREVIEW user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTCANCEL',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('envelope_stickers_form');
+
+
+                                                AxtForm.findById('deliveryaddress_v').setValue('');
+                                                AxtForm.findById('cbx_customername_v').setValue('');
+                                                AxtForm.findById('cbx_customercontact_v').setValue('');
+                                                AxtForm.findById('note_v').setValue('');
+                                                AxtForm.findById('cbx_product_v').setValue('');
+                                                AxtForm.findById('cbx_purchaseordernumber_v').setValue('');
+                                                AxtForm.findById('SID').setValue('');
+                                            /*btnBTNAXTCANCEL user code start*/
+                                            /*btnBTNAXTCANCEL user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'text-align: left;',
+                       items: [
+                            {
+                                xtype: 'grid',
+                                id: 'grid1',
+                                store: AxtStore,
+                                height: 380,
+                                bodyStyle: 'border-width:0; padding: 0px 0 0 0px; background: transparent;',
+                                loadMask: true,
+                                columnWidth: 1,
+                                columnLines: true,
+                                selModel: sm,
+                                viewConfig: {
+                                templates: {
+                                cell: new Ext.Template(
+    '<td class= "x-grid3-col x-grid3-cell x-grid3-td-{id} x-selectable {css}" style="{style}" tabIndex="0" {cellAttr}>',
+    '<div class="x-grid3-cell-inner x-grid3-col-{id}" {attr}>{value}</div>',
+    '</td>'
+    )
+}
+ },
+                                columns: [
+                                    sm,
+                                    {
+                                        width: 50,
+                                        renderer: renderAXTMODIFYImg,
+                                        id: 'AXTMODIFY'
+                                    },
+                                    {
+                                        id: 'DELIVERYADDRESS_V',
+                                        dataIndex: 'DELIVERYADDRESS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'CUSTOMERNAME_V',
+                                        dataIndex: 'CUSTOMERNAME_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'CUSTOMERCONTACT_V',
+                                        dataIndex: 'CUSTOMERCONTACT_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'NOTE_V',
+                                        dataIndex: 'NOTE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PRODUCT_V',
+                                        dataIndex: 'PRODUCT_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PURCHASEORDERNUMBER_V',
+                                        dataIndex: 'PURCHASEORDERNUMBER_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    }
+                                ],
+                                viewConfig: {
+                                    forceFit: true
+                                },
+                                tbar: [
+                                    {
+                                        id: 'delete',
+                                        text: 'Delete',
+                                        tooltip: 'Delete',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSDelete',
+                                        width: 72
+                                        ,handler: function () {
+                                            var grid = Ext.getCmp('grid1');
+                                            var records = grid.getSelectionModel().getSelections();
+                                            if (!records || records.length <= 0) 
+                                            {
+                                                return false;
+                                            }
+
+                                            Ext.MessageBox.confirm(
+                                                WRN_00002,
+                                                WRN_00002,
+                                                function (btn) {
+                                                    if (btn == 'yes') {
+                                                        var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                        var deleteData = new Array();
+                                                        Ext.each(records, function (record) {
+                                                            var data = {
+                                                                SID: record.get("SID"),
+                                                                AXTMODIFY: record.get("AXTMODIFY"),
+                                                                DELIVERYADDRESS_V: record.get("DELIVERYADDRESS_V"),
+                                                                CUSTOMERNAME_V: record.get("CUSTOMERNAME_V"),
+                                                                CUSTOMERCONTACT_V: record.get("CUSTOMERCONTACT_V"),
+                                                                NOTE_V: record.get("NOTE_V"),
+                                                                PRODUCT_V: record.get("PRODUCT_V"),
+                                                                PURCHASEORDERNUMBER_V: record.get("PURCHASEORDERNUMBER_V")
+                                                            };
+                                                            deleteData.push(data);
+                                                            grid.store.remove(record);
+                                                        });
+
+                                                        var msg = client.ResellerQuotationSystemenvelope_stickers.deleteData(deleteData);
+                                                        axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                        axtStoreUpdate();
+
+                                                        /*onDelete user code start*/
+                                                        /*onDelete user code end*/
+
+                                                        Ext.getCmp('grid1').getView().refresh();
+                                                        progress.hide();
+                                                    }
+                                                }
+                                            );
+                                        }
+                                    },
+                                    '-',
+                                    {
+                                        text: 'Add',
+                                        tooltip: 'Add',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSAdd',
+                                        width: 72,
+                                        handler: function () {
+                                            onAdd(Ext.getCmp('grid1'), AxtEditor, { DELIVERYADDRESS_V: "", CUSTOMERNAME_V: "", CUSTOMERCONTACT_V: "", NOTE_V: "", PRODUCT_V: "", PURCHASEORDERNUMBER_V: "" });
+                                        },
+                                        id: 'add'
+                                    },
+                                    '-'
+                                ],
+                                bbar: [
+                                    '->',
+                                     AxtPageBar]
+                            }
+                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            hidden:true,
+                            id:'Axtronics_AutoGen_System'
+                        }
+                    ]
+                });
+
+                function renderAXTMODIFYImg() {
+                    return '<center><img src="../../img/icons/edit.png"></center>'
+                }
+
+                AxtForm = Ext.getCmp('envelope_stickers_form');
+                AxtForm.findById('grid1').on('cellclick', function (g, rowIndex, columnIndex, e) {
+                    var record = g.getStore().getAt(rowIndex);
+                    if(columnIndex == 1) {
+                        AxtForm.findById('SID').setValue(record.get('SID'));
+                        AxtForm.findById('deliveryaddress_v').setValue(record.get('DELIVERYADDRESS_V'));
+                        AxtForm.findById('cbx_customername_v').setValue(record.get('CUSTOMERNAME_V'));
+                        AxtForm.findById('cbx_customercontact_v').setValue(record.get('CUSTOMERCONTACT_V'));
+                        AxtForm.findById('note_v').setValue(record.get('NOTE_V'));
+                        AxtForm.findById('cbx_product_v').setValue(record.get('PRODUCT_V'));
+                        AxtForm.findById('cbx_purchaseordernumber_v').setValue(record.get('PURCHASEORDERNUMBER_V'));
+                    }
+                });
+                AxtPanel.render("main");
+                setlang();
+            });
+    </script>
+</head>
+<body>
+    <center>
+        <div id="main"></div>
+    </center>
+</body>
+</html>

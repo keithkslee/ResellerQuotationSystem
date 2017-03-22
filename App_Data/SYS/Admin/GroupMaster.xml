@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.GroupMaster" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createGroupMaster">
+      CREATE TABLE IF NOT EXISTS SYSADMINGROUPMASTER (
+        `SID` VARCHAR(100) NOT NULL ,
+        `GROUPNAME` VARCHAR(100) NULL ,
+        `DESCRIPTION` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createGroupMasterTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINGROUPMASTERTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `GROUPNAME` VARCHAR(100) NULL ,
+        `DESCRIPTION` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getGroupMaster" resultClass="Hashtable">
+      Select * From SYSADMINGROUPMASTER
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINGROUPMASTER(SID, GROUPNAME, DESCRIPTION)
+      VALUES(#SID#, #GROUPNAME#, #DESCRIPTION#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINGROUPMASTER SET GROUPNAME = #GROUPNAME#, DESCRIPTION = #DESCRIPTION# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINGROUPMASTER
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINGROUPMASTER WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

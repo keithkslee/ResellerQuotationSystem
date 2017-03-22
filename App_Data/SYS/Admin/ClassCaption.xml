@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.ClassCaption" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createClassCaption">
+      CREATE TABLE IF NOT EXISTS SYSADMINCLASSCAPTION (
+        `SID` VARCHAR(100) NOT NULL ,
+        `SUB_MENU` VARCHAR(100) NULL ,
+        `LANGUAGE_TYPE` VARCHAR(100) NULL ,
+        `LANGUAGE` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createClassCaptionTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINCLASSCAPTIONTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `SUB_MENU` VARCHAR(100) NULL ,
+        `LANGUAGE_TYPE` VARCHAR(100) NULL ,
+        `LANGUAGE` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getClassCaption" resultClass="Hashtable">
+      Select * From SYSADMINCLASSCAPTION
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINCLASSCAPTION(SID, SUB_MENU, LANGUAGE_TYPE, LANGUAGE)
+      VALUES(#SID#, #SUB_MENU#, #LANGUAGE_TYPE#, #LANGUAGE#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINCLASSCAPTION SET SUB_MENU = #SUB_MENU#, LANGUAGE_TYPE = #LANGUAGE_TYPE#, LANGUAGE = #LANGUAGE# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINCLASSCAPTION
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINCLASSCAPTION WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

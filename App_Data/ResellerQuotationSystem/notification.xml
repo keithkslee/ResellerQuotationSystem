@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.notification" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createnotification">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMNOTIFICATION (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `BOOKED_DATE_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAMECHINESE_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAMEEN_V` VARCHAR(200) NULL ,
+        `WEBSITECHINESE_V` VARCHAR(200) NULL ,
+        `WEBSITEENGLISH_V` VARCHAR(200) NULL ,
+        `ADDRESSCHINESE_V` VARCHAR(200) NULL ,
+        `ADDRESSENGLISH_V` VARCHAR(200) NULL ,
+        `CONTACTCHINESE_V` VARCHAR(200) NULL ,
+        `CONTACTENGLISH_V` VARCHAR(200) NULL ,
+        `CONTACT_PHONE_V` VARCHAR(200) NULL ,
+        `FAX_NUMBER_V` VARCHAR(200) NULL ,
+        `UNIFORM_NUMBERS_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT_V` VARCHAR(200) NULL ,
+        `ORDERQUANTITY_V` VARCHAR(200) NULL ,
+        `TERM_V` VARCHAR(200) NULL ,
+        `LICENSE_START_V` VARCHAR(200) NULL ,
+        `LICENSE_END_V` VARCHAR(200) NULL ,
+        `RENEWCUSTOMERNO_V` VARCHAR(200) NULL ,
+        `NEWCUSTOMERBRANDS_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `BUSINESSUNDERTAKER_V` VARCHAR(200) NULL ,
+        `BUSINESSUNDERTAKERPHONE_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` INT ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createnotificationHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMNOTIFICATIONHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `BOOKED_DATE_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAMECHINESE_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAMEEN_V` VARCHAR(200) NULL ,
+        `WEBSITECHINESE_V` VARCHAR(200) NULL ,
+        `WEBSITEENGLISH_V` VARCHAR(200) NULL ,
+        `ADDRESSCHINESE_V` VARCHAR(200) NULL ,
+        `ADDRESSENGLISH_V` VARCHAR(200) NULL ,
+        `CONTACTCHINESE_V` VARCHAR(200) NULL ,
+        `CONTACTENGLISH_V` VARCHAR(200) NULL ,
+        `CONTACT_PHONE_V` VARCHAR(200) NULL ,
+        `FAX_NUMBER_V` VARCHAR(200) NULL ,
+        `UNIFORM_NUMBERS_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT_V` VARCHAR(200) NULL ,
+        `ORDERQUANTITY_V` VARCHAR(200) NULL ,
+        `TERM_V` VARCHAR(200) NULL ,
+        `LICENSE_START_V` VARCHAR(200) NULL ,
+        `LICENSE_END_V` VARCHAR(200) NULL ,
+        `RENEWCUSTOMERNO_V` VARCHAR(200) NULL ,
+        `NEWCUSTOMERBRANDS_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `BUSINESSUNDERTAKER_V` VARCHAR(200) NULL ,
+        `BUSINESSUNDERTAKERPHONE_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMNOTIFICATIONHISTORY SELECT SID 
+ , AXTMODIFY , BOOKED_DATE_V , CUSTOMERNAMECHINESE_V , CUSTOMERNAMEEN_V , WEBSITECHINESE_V , WEBSITEENGLISH_V , ADDRESSCHINESE_V , ADDRESSENGLISH_V , CONTACTCHINESE_V , CONTACTENGLISH_V , CONTACT_PHONE_V , FAX_NUMBER_V , UNIFORM_NUMBERS_V , EMAIL_V , ORDERPRODUCT_V , ORDERQUANTITY_V , TERM_V , LICENSE_START_V , LICENSE_END_V , RENEWCUSTOMERNO_V , NEWCUSTOMERBRANDS_V , COMPETITIVEBRANDS_V , DEALER_TW_V , BUSINESSUNDERTAKER_V , BUSINESSUNDERTAKERPHONE_V , ENTRY_DATE_V , LAST_SEQUENCE_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMNOTIFICATION WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMNOTIFICATIONHISTORY SELECT SID 
+ , AXTMODIFY , BOOKED_DATE_V , CUSTOMERNAMECHINESE_V , CUSTOMERNAMEEN_V , WEBSITECHINESE_V , WEBSITEENGLISH_V , ADDRESSCHINESE_V , ADDRESSENGLISH_V , CONTACTCHINESE_V , CONTACTENGLISH_V , CONTACT_PHONE_V , FAX_NUMBER_V , UNIFORM_NUMBERS_V , EMAIL_V , ORDERPRODUCT_V , ORDERQUANTITY_V , TERM_V , LICENSE_START_V , LICENSE_END_V , RENEWCUSTOMERNO_V , NEWCUSTOMERBRANDS_V , COMPETITIVEBRANDS_V , DEALER_TW_V , BUSINESSUNDERTAKER_V , BUSINESSUNDERTAKERPHONE_V , ENTRY_DATE_V , LAST_SEQUENCE_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMNOTIFICATION WHERE SID = #SID#
+    </statement>
+
+    <select id="getnotification" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMNOTIFICATION LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <statement id="getCBXCUSTOMERNAMECHINESE_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </statement>
+    <select id="getCBXCUSTOMERNAMECHINESE_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_TW_V) AS DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </select>
+
+    <statement id="getCBXCUSTOMERNAMEEN_V_MAX_LEN" resultClass="Hashtable">
+     Select CUSTOMERNAMEEN_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE CUSTOMERNAMEEN_V != '' ORDER BY CUSTOMERNAMEEN_V
+    </statement>
+    <select id="getCBXCUSTOMERNAMEEN_V" resultClass="Hashtable">
+     Select distinct CONCAT(CUSTOMERNAMEEN_V) AS CUSTOMERNAMEEN_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE CUSTOMERNAMEEN_V != '' ORDER BY CUSTOMERNAMEEN_V
+    </select>
+
+    <statement id="getCBXCONTACTCHINESE_V_MAX_LEN" resultClass="Hashtable">
+     Select CONTACTCHINESE_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE CONTACTCHINESE_V != '' ORDER BY CONTACTCHINESE_V
+    </statement>
+    <select id="getCBXCONTACTCHINESE_V" resultClass="Hashtable">
+     Select distinct CONCAT(CONTACTCHINESE_V) AS CONTACTCHINESE_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE CONTACTCHINESE_V != '' ORDER BY CONTACTCHINESE_V
+    </select>
+
+    <statement id="getCBXCONTACTENGLISH_V_MAX_LEN" resultClass="Hashtable">
+     Select CONTACTENGLISH_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE CONTACTENGLISH_V != '' ORDER BY CONTACTENGLISH_V
+    </statement>
+    <select id="getCBXCONTACTENGLISH_V" resultClass="Hashtable">
+     Select distinct CONCAT(CONTACTENGLISH_V) AS CONTACTENGLISH_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE CONTACTENGLISH_V != '' ORDER BY CONTACTENGLISH_V
+    </select>
+
+    <statement id="getCBXORDERPRODUCT_V_MAX_LEN" resultClass="Hashtable">
+     Select ORDERPRODUCT_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE ORDERPRODUCT_V != '' ORDER BY ORDERPRODUCT_V
+    </statement>
+    <select id="getCBXORDERPRODUCT_V" resultClass="Hashtable">
+     Select distinct CONCAT(ORDERPRODUCT_V) AS ORDERPRODUCT_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE ORDERPRODUCT_V != '' ORDER BY ORDERPRODUCT_V
+    </select>
+
+    <statement id="getCBXRENEWCUSTOMERNO_V_MAX_LEN" resultClass="Hashtable">
+     Select RENEWCUSTOMERNO_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE RENEWCUSTOMERNO_V != '' ORDER BY RENEWCUSTOMERNO_V
+    </statement>
+    <select id="getCBXRENEWCUSTOMERNO_V" resultClass="Hashtable">
+     Select distinct CONCAT(RENEWCUSTOMERNO_V) AS RENEWCUSTOMERNO_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE RENEWCUSTOMERNO_V != '' ORDER BY RENEWCUSTOMERNO_V
+    </select>
+
+    <statement id="getCBXNEWCUSTOMERBRANDS_V_MAX_LEN" resultClass="Hashtable">
+     Select NEWCUSTOMERBRANDS_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE NEWCUSTOMERBRANDS_V != '' ORDER BY NEWCUSTOMERBRANDS_V
+    </statement>
+    <select id="getCBXNEWCUSTOMERBRANDS_V" resultClass="Hashtable">
+     Select distinct CONCAT(NEWCUSTOMERBRANDS_V) AS NEWCUSTOMERBRANDS_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE NEWCUSTOMERBRANDS_V != '' ORDER BY NEWCUSTOMERBRANDS_V
+    </select>
+
+    <statement id="getCBXCOMPETITIVEBRANDS_V_MAX_LEN" resultClass="Hashtable">
+     Select COMPETITIVEBRANDS_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE COMPETITIVEBRANDS_V != '' ORDER BY COMPETITIVEBRANDS_V
+    </statement>
+    <select id="getCBXCOMPETITIVEBRANDS_V" resultClass="Hashtable">
+     Select distinct CONCAT(COMPETITIVEBRANDS_V) AS COMPETITIVEBRANDS_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE COMPETITIVEBRANDS_V != '' ORDER BY COMPETITIVEBRANDS_V
+    </select>
+
+    <statement id="getCBXDEALER_TW_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </statement>
+    <select id="getCBXDEALER_TW_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_TW_V) AS DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMNOTIFICATION_INPUT WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMNOTIFICATION(SID, AXTMODIFY, BOOKED_DATE_V, CUSTOMERNAMECHINESE_V, CUSTOMERNAMEEN_V, WEBSITECHINESE_V, WEBSITEENGLISH_V, ADDRESSCHINESE_V, ADDRESSENGLISH_V, CONTACTCHINESE_V, CONTACTENGLISH_V, CONTACT_PHONE_V, FAX_NUMBER_V, UNIFORM_NUMBERS_V, EMAIL_V, ORDERPRODUCT_V, ORDERQUANTITY_V, TERM_V, LICENSE_START_V, LICENSE_END_V, RENEWCUSTOMERNO_V, NEWCUSTOMERBRANDS_V, COMPETITIVEBRANDS_V, DEALER_TW_V, BUSINESSUNDERTAKER_V, BUSINESSUNDERTAKERPHONE_V, ENTRY_DATE_V, LAST_SEQUENCE_V)
+      VALUES(#SID#, #AXTMODIFY#, #BOOKED_DATE_V#, #CUSTOMERNAMECHINESE_V#, #CUSTOMERNAMEEN_V#, #WEBSITECHINESE_V#, #WEBSITEENGLISH_V#, #ADDRESSCHINESE_V#, #ADDRESSENGLISH_V#, #CONTACTCHINESE_V#, #CONTACTENGLISH_V#, #CONTACT_PHONE_V#, #FAX_NUMBER_V#, #UNIFORM_NUMBERS_V#, #EMAIL_V#, #ORDERPRODUCT_V#, #ORDERQUANTITY_V#, #TERM_V#, #LICENSE_START_V#, #LICENSE_END_V#, #RENEWCUSTOMERNO_V#, #NEWCUSTOMERBRANDS_V#, #COMPETITIVEBRANDS_V#, #DEALER_TW_V#, #BUSINESSUNDERTAKER_V#, #BUSINESSUNDERTAKERPHONE_V#, #ENTRY_DATE_V#, #LAST_SEQUENCE_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMNOTIFICATION SET AXTMODIFY = #AXTMODIFY#,BOOKED_DATE_V = #BOOKED_DATE_V#,CUSTOMERNAMECHINESE_V = #CUSTOMERNAMECHINESE_V#,CUSTOMERNAMEEN_V = #CUSTOMERNAMEEN_V#,WEBSITECHINESE_V = #WEBSITECHINESE_V#,WEBSITEENGLISH_V = #WEBSITEENGLISH_V#,ADDRESSCHINESE_V = #ADDRESSCHINESE_V#,ADDRESSENGLISH_V = #ADDRESSENGLISH_V#,CONTACTCHINESE_V = #CONTACTCHINESE_V#,CONTACTENGLISH_V = #CONTACTENGLISH_V#,CONTACT_PHONE_V = #CONTACT_PHONE_V#,FAX_NUMBER_V = #FAX_NUMBER_V#,UNIFORM_NUMBERS_V = #UNIFORM_NUMBERS_V#,EMAIL_V = #EMAIL_V#,ORDERPRODUCT_V = #ORDERPRODUCT_V#,ORDERQUANTITY_V = #ORDERQUANTITY_V#,TERM_V = #TERM_V#,LICENSE_START_V = #LICENSE_START_V#,LICENSE_END_V = #LICENSE_END_V#,RENEWCUSTOMERNO_V = #RENEWCUSTOMERNO_V#,NEWCUSTOMERBRANDS_V = #NEWCUSTOMERBRANDS_V#,COMPETITIVEBRANDS_V = #COMPETITIVEBRANDS_V#,DEALER_TW_V = #DEALER_TW_V#,BUSINESSUNDERTAKER_V = #BUSINESSUNDERTAKER_V#,BUSINESSUNDERTAKERPHONE_V = #BUSINESSUNDERTAKERPHONE_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMNOTIFICATION
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMNOTIFICATION WHERE SID = #SID#
+    </delete>
+
+    <statement id="getnotificationBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMNOTIFICATION
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="BOOKED_DATE_V">
+          BOOKED_DATE_V like #BOOKED_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMECHINESE_V">
+          CUSTOMERNAMECHINESE_V like #CUSTOMERNAMECHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMEEN_V">
+          CUSTOMERNAMEEN_V like #CUSTOMERNAMEEN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="WEBSITECHINESE_V">
+          WEBSITECHINESE_V like #WEBSITECHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="WEBSITEENGLISH_V">
+          WEBSITEENGLISH_V like #WEBSITEENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESSCHINESE_V">
+          ADDRESSCHINESE_V like #ADDRESSCHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESSENGLISH_V">
+          ADDRESSENGLISH_V like #ADDRESSENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTCHINESE_V">
+          CONTACTCHINESE_V like #CONTACTCHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTENGLISH_V">
+          CONTACTENGLISH_V like #CONTACTENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_PHONE_V">
+          CONTACT_PHONE_V like #CONTACT_PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="FAX_NUMBER_V">
+          FAX_NUMBER_V like #FAX_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UNIFORM_NUMBERS_V">
+          UNIFORM_NUMBERS_V like #UNIFORM_NUMBERS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT_V">
+          ORDERPRODUCT_V like #ORDERPRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERQUANTITY_V">
+          ORDERQUANTITY_V like #ORDERQUANTITY_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TERM_V">
+          TERM_V like #TERM_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSE_START_V">
+          LICENSE_START_V like #LICENSE_START_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSE_END_V">
+          LICENSE_END_V like #LICENSE_END_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RENEWCUSTOMERNO_V">
+          RENEWCUSTOMERNO_V like #RENEWCUSTOMERNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NEWCUSTOMERBRANDS_V">
+          NEWCUSTOMERBRANDS_V like #NEWCUSTOMERBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="BUSINESSUNDERTAKER_V">
+          BUSINESSUNDERTAKER_V like #BUSINESSUNDERTAKER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="BUSINESSUNDERTAKERPHONE_V">
+          BUSINESSUNDERTAKERPHONE_V like #BUSINESSUNDERTAKERPHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+ <statement id="getSequenceByDate" resultClass="Hashtable">
+ 	SELECT max(LAST_SEQUENCE_V) FROM RESELLERQUOTATIONSYSTEMNOTIFICATION
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="TODAY_DATE_V">
+          ENTRY_DATE_V like #TODAY_DATE_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+   <select id="getnotificationTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMNOTIFICATION
+   </select>
+
+    <statement id="getnotificationAddresschinese_vBy" resultClass="Hashtable" >
+      Select CONTACT_ADDRESS_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getnotificationContact_phone_vBy" resultClass="Hashtable" >
+      Select CONTACT_PHONE_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getnotificationContactchinese_vBy" resultClass="Hashtable" >
+      Select CUSTOMER_CONTACT_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getnotificationEmail_vBy" resultClass="Hashtable" >
+      Select EMAIL_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getnotificationFax_number_vBy" resultClass="Hashtable" >
+      Select FAX_NUMBER_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getnotificationUniform_numbers_vBy" resultClass="Hashtable" >
+      Select UNIFORM_NUMBERS_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getnotificationWebsitechinese_vBy" resultClass="Hashtable" >
+      Select WEBSITE_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getnotificationByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMNOTIFICATION
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="BOOKED_DATE_V">
+          BOOKED_DATE_V like #BOOKED_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMECHINESE_V">
+          CUSTOMERNAMECHINESE_V like #CUSTOMERNAMECHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMEEN_V">
+          CUSTOMERNAMEEN_V like #CUSTOMERNAMEEN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="WEBSITECHINESE_V">
+          WEBSITECHINESE_V like #WEBSITECHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="WEBSITEENGLISH_V">
+          WEBSITEENGLISH_V like #WEBSITEENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESSCHINESE_V">
+          ADDRESSCHINESE_V like #ADDRESSCHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESSENGLISH_V">
+          ADDRESSENGLISH_V like #ADDRESSENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTCHINESE_V">
+          CONTACTCHINESE_V like #CONTACTCHINESE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTENGLISH_V">
+          CONTACTENGLISH_V like #CONTACTENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_PHONE_V">
+          CONTACT_PHONE_V like #CONTACT_PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="FAX_NUMBER_V">
+          FAX_NUMBER_V like #FAX_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UNIFORM_NUMBERS_V">
+          UNIFORM_NUMBERS_V like #UNIFORM_NUMBERS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT_V">
+          ORDERPRODUCT_V like #ORDERPRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERQUANTITY_V">
+          ORDERQUANTITY_V like #ORDERQUANTITY_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TERM_V">
+          TERM_V like #TERM_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSE_START_V">
+          LICENSE_START_V like #LICENSE_START_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSE_END_V">
+          LICENSE_END_V like #LICENSE_END_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RENEWCUSTOMERNO_V">
+          RENEWCUSTOMERNO_V like #RENEWCUSTOMERNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NEWCUSTOMERBRANDS_V">
+          NEWCUSTOMERBRANDS_V like #NEWCUSTOMERBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="BUSINESSUNDERTAKER_V">
+          BUSINESSUNDERTAKER_V like #BUSINESSUNDERTAKER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="BUSINESSUNDERTAKERPHONE_V">
+          BUSINESSUNDERTAKERPHONE_V like #BUSINESSUNDERTAKERPHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.customer_purchase_input" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createcustomer_purchase_input">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `NO_ORDER_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `ORDERTYPE_V` VARCHAR(200) NULL ,
+        `DEALER_V` VARCHAR(200) NULL ,
+        `CUSTOMERID_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT1_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT2_V` VARCHAR(200) NULL ,
+        `EXCHANGE_RATE_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createcustomer_purchase_inputHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUTHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `NO_ORDER_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `ORDERTYPE_V` VARCHAR(200) NULL ,
+        `DEALER_V` VARCHAR(200) NULL ,
+        `CUSTOMERID_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT1_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT2_V` VARCHAR(200) NULL ,
+        `EXCHANGE_RATE_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , NO_ORDER_V , QUOTATIONNO_V , ORDERTYPE_V , DEALER_V , CUSTOMERID_V , CUSTOMERNAME_V , COMPETITIVEBRANDS_V , ORDERPRODUCT1_V , ORDERPRODUCT2_V , EXCHANGE_RATE_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , NO_ORDER_V , QUOTATIONNO_V , ORDERTYPE_V , DEALER_V , CUSTOMERID_V , CUSTOMERNAME_V , COMPETITIVEBRANDS_V , ORDERPRODUCT1_V , ORDERPRODUCT2_V , EXCHANGE_RATE_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE SID = #SID#
+    </statement>
+
+    <select id="getcustomer_purchase_input" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT(SID, AXTMODIFY, NO_ORDER_V, QUOTATIONNO_V, ORDERTYPE_V, DEALER_V, CUSTOMERID_V, CUSTOMERNAME_V, COMPETITIVEBRANDS_V, ORDERPRODUCT1_V, ORDERPRODUCT2_V, EXCHANGE_RATE_V)
+      VALUES(#SID#, #AXTMODIFY#, #NO_ORDER_V#, #QUOTATIONNO_V#, #ORDERTYPE_V#, #DEALER_V#, #CUSTOMERID_V#, #CUSTOMERNAME_V#, #COMPETITIVEBRANDS_V#, #ORDERPRODUCT1_V#, #ORDERPRODUCT2_V#, #EXCHANGE_RATE_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT SET AXTMODIFY = #AXTMODIFY#,NO_ORDER_V = #NO_ORDER_V#,QUOTATIONNO_V = #QUOTATIONNO_V#,ORDERTYPE_V = #ORDERTYPE_V#,DEALER_V = #DEALER_V#,CUSTOMERID_V = #CUSTOMERID_V#,CUSTOMERNAME_V = #CUSTOMERNAME_V#,COMPETITIVEBRANDS_V = #COMPETITIVEBRANDS_V#,ORDERPRODUCT1_V = #ORDERPRODUCT1_V#,ORDERPRODUCT2_V = #ORDERPRODUCT2_V#,EXCHANGE_RATE_V = #EXCHANGE_RATE_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE SID = #SID#
+    </delete>
+
+    <statement id="getcustomer_purchase_inputBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="NO_ORDER_V">
+          NO_ORDER_V like #NO_ORDER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERTYPE_V">
+          ORDERTYPE_V like #ORDERTYPE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_V">
+          DEALER_V like #DEALER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERID_V">
+          CUSTOMERID_V like #CUSTOMERID_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT1_V">
+          ORDERPRODUCT1_V like #ORDERPRODUCT1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT2_V">
+          ORDERPRODUCT2_V like #ORDERPRODUCT2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EXCHANGE_RATE_V">
+          EXCHANGE_RATE_V like #EXCHANGE_RATE_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getcustomer_purchase_inputTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT
+   </select>
+
+    <statement id="getcustomer_purchase_inputByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="NO_ORDER_V">
+          NO_ORDER_V like #NO_ORDER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERTYPE_V">
+          ORDERTYPE_V like #ORDERTYPE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_V">
+          DEALER_V like #DEALER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERID_V">
+          CUSTOMERID_V like #CUSTOMERID_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT1_V">
+          ORDERPRODUCT1_V like #ORDERPRODUCT1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT2_V">
+          ORDERPRODUCT2_V like #ORDERPRODUCT2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EXCHANGE_RATE_V">
+          EXCHANGE_RATE_V like #EXCHANGE_RATE_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

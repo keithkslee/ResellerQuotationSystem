@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.reseller_quotation_input" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createreseller_quotation_input">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `RESELLERNAME_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `PAYMENT_CONDITIONS_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `ORDERTYPE_V` VARCHAR(200) NULL ,
+        `OFFERORS_V` VARCHAR(200) NULL ,
+        `ITEM1_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME1_V` VARCHAR(200) NULL ,
+        `SPECIFICATION1_V` VARCHAR(200) NULL ,
+        `QUANTITY1_V` VARCHAR(200) NULL ,
+        `ITEM2_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME2_V` VARCHAR(200) NULL ,
+        `SPECIFICATION2_V` VARCHAR(200) NULL ,
+        `QUANTITY2_V` VARCHAR(200) NULL ,
+        `ITEM3_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME3_V` VARCHAR(200) NULL ,
+        `SPECIFICATION3_V` VARCHAR(200) NULL ,
+        `QUANTITY3_V` VARCHAR(200) NULL ,
+        `ITEM4_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME4_V` VARCHAR(200) NULL ,
+        `SPECIFICATION4_V` VARCHAR(200) NULL ,
+        `QUANTITY4_V` VARCHAR(200) NULL ,
+        `HEAD_V` VARCHAR(200) NULL ,
+        `SALES_MANAGER_V` VARCHAR(200) NULL ,
+        `ATTN_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createreseller_quotation_inputHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUTHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `RESELLERNAME_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `PAYMENT_CONDITIONS_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `ORDERTYPE_V` VARCHAR(200) NULL ,
+        `OFFERORS_V` VARCHAR(200) NULL ,
+        `ITEM1_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME1_V` VARCHAR(200) NULL ,
+        `SPECIFICATION1_V` VARCHAR(200) NULL ,
+        `QUANTITY1_V` VARCHAR(200) NULL ,
+        `ITEM2_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME2_V` VARCHAR(200) NULL ,
+        `SPECIFICATION2_V` VARCHAR(200) NULL ,
+        `QUANTITY2_V` VARCHAR(200) NULL ,
+        `ITEM3_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME3_V` VARCHAR(200) NULL ,
+        `SPECIFICATION3_V` VARCHAR(200) NULL ,
+        `QUANTITY3_V` VARCHAR(200) NULL ,
+        `ITEM4_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME4_V` VARCHAR(200) NULL ,
+        `SPECIFICATION4_V` VARCHAR(200) NULL ,
+        `QUANTITY4_V` VARCHAR(200) NULL ,
+        `HEAD_V` VARCHAR(200) NULL ,
+        `SALES_MANAGER_V` VARCHAR(200) NULL ,
+        `ATTN_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , RESELLERNAME_V , QUOTATIONNO_V , PAYMENT_CONDITIONS_V , COMPETITIVEBRANDS_V , CUSTOMERNAME_V , ORDERTYPE_V , OFFERORS_V , ITEM1_V , PRODUCT_NAME1_V , SPECIFICATION1_V , QUANTITY1_V , ITEM2_V , PRODUCT_NAME2_V , SPECIFICATION2_V , QUANTITY2_V , ITEM3_V , PRODUCT_NAME3_V , SPECIFICATION3_V , QUANTITY3_V , ITEM4_V , PRODUCT_NAME4_V , SPECIFICATION4_V , QUANTITY4_V , HEAD_V , SALES_MANAGER_V , ATTN_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUTHISTORY SELECT SID 
+ , AXTMODIFY , RESELLERNAME_V , QUOTATIONNO_V , PAYMENT_CONDITIONS_V , COMPETITIVEBRANDS_V , CUSTOMERNAME_V , ORDERTYPE_V , OFFERORS_V , ITEM1_V , PRODUCT_NAME1_V , SPECIFICATION1_V , QUANTITY1_V , ITEM2_V , PRODUCT_NAME2_V , SPECIFICATION2_V , QUANTITY2_V , ITEM3_V , PRODUCT_NAME3_V , SPECIFICATION3_V , QUANTITY3_V , ITEM4_V , PRODUCT_NAME4_V , SPECIFICATION4_V , QUANTITY4_V , HEAD_V , SALES_MANAGER_V , ATTN_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT WHERE SID = #SID#
+    </statement>
+
+    <select id="getreseller_quotation_input" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT(SID, AXTMODIFY, RESELLERNAME_V, QUOTATIONNO_V, PAYMENT_CONDITIONS_V, COMPETITIVEBRANDS_V, CUSTOMERNAME_V, ORDERTYPE_V, OFFERORS_V, ITEM1_V, PRODUCT_NAME1_V, SPECIFICATION1_V, QUANTITY1_V, ITEM2_V, PRODUCT_NAME2_V, SPECIFICATION2_V, QUANTITY2_V, ITEM3_V, PRODUCT_NAME3_V, SPECIFICATION3_V, QUANTITY3_V, ITEM4_V, PRODUCT_NAME4_V, SPECIFICATION4_V, QUANTITY4_V, HEAD_V, SALES_MANAGER_V, ATTN_V)
+      VALUES(#SID#, #AXTMODIFY#, #RESELLERNAME_V#, #QUOTATIONNO_V#, #PAYMENT_CONDITIONS_V#, #COMPETITIVEBRANDS_V#, #CUSTOMERNAME_V#, #ORDERTYPE_V#, #OFFERORS_V#, #ITEM1_V#, #PRODUCT_NAME1_V#, #SPECIFICATION1_V#, #QUANTITY1_V#, #ITEM2_V#, #PRODUCT_NAME2_V#, #SPECIFICATION2_V#, #QUANTITY2_V#, #ITEM3_V#, #PRODUCT_NAME3_V#, #SPECIFICATION3_V#, #QUANTITY3_V#, #ITEM4_V#, #PRODUCT_NAME4_V#, #SPECIFICATION4_V#, #QUANTITY4_V#, #HEAD_V#, #SALES_MANAGER_V#, #ATTN_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT SET AXTMODIFY = #AXTMODIFY#,RESELLERNAME_V = #RESELLERNAME_V#,QUOTATIONNO_V = #QUOTATIONNO_V#,PAYMENT_CONDITIONS_V = #PAYMENT_CONDITIONS_V#,COMPETITIVEBRANDS_V = #COMPETITIVEBRANDS_V#,CUSTOMERNAME_V = #CUSTOMERNAME_V#,ORDERTYPE_V = #ORDERTYPE_V#,OFFERORS_V = #OFFERORS_V#,ITEM1_V = #ITEM1_V#,PRODUCT_NAME1_V = #PRODUCT_NAME1_V#,SPECIFICATION1_V = #SPECIFICATION1_V#,QUANTITY1_V = #QUANTITY1_V#,ITEM2_V = #ITEM2_V#,PRODUCT_NAME2_V = #PRODUCT_NAME2_V#,SPECIFICATION2_V = #SPECIFICATION2_V#,QUANTITY2_V = #QUANTITY2_V#,ITEM3_V = #ITEM3_V#,PRODUCT_NAME3_V = #PRODUCT_NAME3_V#,SPECIFICATION3_V = #SPECIFICATION3_V#,QUANTITY3_V = #QUANTITY3_V#,ITEM4_V = #ITEM4_V#,PRODUCT_NAME4_V = #PRODUCT_NAME4_V#,SPECIFICATION4_V = #SPECIFICATION4_V#,QUANTITY4_V = #QUANTITY4_V#,HEAD_V = #HEAD_V#,SALES_MANAGER_V = #SALES_MANAGER_V#,ATTN_V = #ATTN_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT WHERE SID = #SID#
+    </delete>
+
+    <statement id="getreseller_quotation_inputBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="RESELLERNAME_V">
+          RESELLERNAME_V like #RESELLERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PAYMENT_CONDITIONS_V">
+          PAYMENT_CONDITIONS_V like #PAYMENT_CONDITIONS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERTYPE_V">
+          ORDERTYPE_V like #ORDERTYPE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="OFFERORS_V">
+          OFFERORS_V like #OFFERORS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM1_V">
+          ITEM1_V like #ITEM1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME1_V">
+          PRODUCT_NAME1_V like #PRODUCT_NAME1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION1_V">
+          SPECIFICATION1_V like #SPECIFICATION1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY1_V">
+          QUANTITY1_V like #QUANTITY1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM2_V">
+          ITEM2_V like #ITEM2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME2_V">
+          PRODUCT_NAME2_V like #PRODUCT_NAME2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION2_V">
+          SPECIFICATION2_V like #SPECIFICATION2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY2_V">
+          QUANTITY2_V like #QUANTITY2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM3_V">
+          ITEM3_V like #ITEM3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME3_V">
+          PRODUCT_NAME3_V like #PRODUCT_NAME3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION3_V">
+          SPECIFICATION3_V like #SPECIFICATION3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY3_V">
+          QUANTITY3_V like #QUANTITY3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM4_V">
+          ITEM4_V like #ITEM4_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME4_V">
+          PRODUCT_NAME4_V like #PRODUCT_NAME4_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION4_V">
+          SPECIFICATION4_V like #SPECIFICATION4_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY4_V">
+          QUANTITY4_V like #QUANTITY4_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="HEAD_V">
+          HEAD_V like #HEAD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SALES_MANAGER_V">
+          SALES_MANAGER_V like #SALES_MANAGER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ATTN_V">
+          ATTN_V like #ATTN_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getreseller_quotation_inputTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT
+   </select>
+
+    <statement id="getreseller_quotation_inputByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION_INPUT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="RESELLERNAME_V">
+          RESELLERNAME_V like #RESELLERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PAYMENT_CONDITIONS_V">
+          PAYMENT_CONDITIONS_V like #PAYMENT_CONDITIONS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERTYPE_V">
+          ORDERTYPE_V like #ORDERTYPE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="OFFERORS_V">
+          OFFERORS_V like #OFFERORS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM1_V">
+          ITEM1_V like #ITEM1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME1_V">
+          PRODUCT_NAME1_V like #PRODUCT_NAME1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION1_V">
+          SPECIFICATION1_V like #SPECIFICATION1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY1_V">
+          QUANTITY1_V like #QUANTITY1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM2_V">
+          ITEM2_V like #ITEM2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME2_V">
+          PRODUCT_NAME2_V like #PRODUCT_NAME2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION2_V">
+          SPECIFICATION2_V like #SPECIFICATION2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY2_V">
+          QUANTITY2_V like #QUANTITY2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM3_V">
+          ITEM3_V like #ITEM3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME3_V">
+          PRODUCT_NAME3_V like #PRODUCT_NAME3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION3_V">
+          SPECIFICATION3_V like #SPECIFICATION3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY3_V">
+          QUANTITY3_V like #QUANTITY3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM4_V">
+          ITEM4_V like #ITEM4_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME4_V">
+          PRODUCT_NAME4_V like #PRODUCT_NAME4_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION4_V">
+          SPECIFICATION4_V like #SPECIFICATION4_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY4_V">
+          QUANTITY4_V like #QUANTITY4_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="HEAD_V">
+          HEAD_V like #HEAD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SALES_MANAGER_V">
+          SALES_MANAGER_V like #SALES_MANAGER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ATTN_V">
+          ATTN_V like #ATTN_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

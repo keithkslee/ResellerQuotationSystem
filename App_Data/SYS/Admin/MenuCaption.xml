@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.MenuCaption" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createMenuCaption">
+      CREATE TABLE IF NOT EXISTS SYSADMINMENUCAPTION (
+        `SID` VARCHAR(100) NOT NULL ,
+        `SUB_MENU` VARCHAR(100) NULL ,
+        `MENU_ITEM` VARCHAR(100) NULL ,
+        `LANGUAGE_TYPE` VARCHAR(100) NULL ,
+        `LANGUAGE` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createMenuCaptionTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINMENUCAPTIONTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `SUB_MENU` VARCHAR(100) NULL ,
+        `MENU_ITEM` VARCHAR(100) NULL ,
+        `LANGUAGE_TYPE` VARCHAR(100) NULL ,
+        `LANGUAGE` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getMenuCaption" resultClass="Hashtable">
+      Select * From SYSADMINMENUCAPTION
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINMENUCAPTION(SID, SUB_MENU, MENU_ITEM, LANGUAGE_TYPE, LANGUAGE)
+      VALUES(#SID#, #SUB_MENU#, #MENU_ITEM#, #LANGUAGE_TYPE#, #LANGUAGE#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINMENUCAPTION SET SUB_MENU = #SUB_MENU#, MENU_ITEM = #MENU_ITEM#, LANGUAGE_TYPE = #LANGUAGE_TYPE#, LANGUAGE = #LANGUAGE# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINMENUCAPTION
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINMENUCAPTION WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

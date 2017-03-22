@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.reseller_total_table" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createreseller_total_table">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `QUOTATION_DATE_V` VARCHAR(200) NULL ,
+        `SHIPPER_NUMBER_V` VARCHAR(200) NULL ,
+        `SHIP__DATE_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` INT ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createreseller_total_tableHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLEHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `QUOTATION_DATE_V` VARCHAR(200) NULL ,
+        `SHIPPER_NUMBER_V` VARCHAR(200) NULL ,
+        `SHIP__DATE_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLEHISTORY SELECT SID 
+ , AXTMODIFY , DEALER_TW_V , QUOTATIONNO_V , QUOTATION_DATE_V , SHIPPER_NUMBER_V , SHIP__DATE_V , ENTRY_DATE_V , LAST_SEQUENCE_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLEHISTORY SELECT SID 
+ , AXTMODIFY , DEALER_TW_V , QUOTATIONNO_V , QUOTATION_DATE_V , SHIPPER_NUMBER_V , SHIP__DATE_V , ENTRY_DATE_V , LAST_SEQUENCE_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE WHERE SID = #SID#
+    </statement>
+
+    <select id="getreseller_total_table" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <statement id="getCBXDEALER_TW_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </statement>
+    <select id="getCBXDEALER_TW_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_TW_V) AS DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </select>
+
+    <statement id="getCBXQUOTATIONNO_V_MAX_LEN" resultClass="Hashtable">
+     Select QUOTATIONNO_V FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE WHERE QUOTATIONNO_V != '' ORDER BY QUOTATIONNO_V
+    </statement>
+    <select id="getCBXQUOTATIONNO_V" resultClass="Hashtable">
+     Select distinct CONCAT(QUOTATIONNO_V) AS QUOTATIONNO_V FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE WHERE QUOTATIONNO_V != '' ORDER BY QUOTATIONNO_V
+    </select>
+
+    <statement id="getCBXSHIPPER_NUMBER_V_MAX_LEN" resultClass="Hashtable">
+     Select SHIPPER_NUMBER_V FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE WHERE SHIPPER_NUMBER_V != '' ORDER BY SHIPPER_NUMBER_V
+    </statement>
+    <select id="getCBXSHIPPER_NUMBER_V" resultClass="Hashtable">
+     Select distinct CONCAT(SHIPPER_NUMBER_V) AS SHIPPER_NUMBER_V FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE WHERE SHIPPER_NUMBER_V != '' ORDER BY SHIPPER_NUMBER_V
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE(SID, AXTMODIFY, DEALER_TW_V, QUOTATIONNO_V, QUOTATION_DATE_V, SHIPPER_NUMBER_V, SHIP__DATE_V, ENTRY_DATE_V, LAST_SEQUENCE_V)
+      VALUES(#SID#, #AXTMODIFY#, #DEALER_TW_V#, #QUOTATIONNO_V#, #QUOTATION_DATE_V#, #SHIPPER_NUMBER_V#, #SHIP__DATE_V#, #ENTRY_DATE_V#, #LAST_SEQUENCE_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE SET AXTMODIFY = #AXTMODIFY#,DEALER_TW_V = #DEALER_TW_V#,QUOTATIONNO_V = #QUOTATIONNO_V#,QUOTATION_DATE_V = #QUOTATION_DATE_V#,SHIPPER_NUMBER_V = #SHIPPER_NUMBER_V#,SHIP__DATE_V = #SHIP__DATE_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE WHERE SID = #SID#
+    </delete>
+
+    <statement id="getreseller_total_tableBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATION_DATE_V">
+          QUOTATION_DATE_V like #QUOTATION_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIPPER_NUMBER_V">
+          SHIPPER_NUMBER_V like #SHIPPER_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIP__DATE_V">
+          SHIP__DATE_V like #SHIP__DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+ <statement id="getSequenceByDate" resultClass="Hashtable">
+ 	SELECT max(LAST_SEQUENCE_V) FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="TODAY_DATE_V">
+          ENTRY_DATE_V like #TODAY_DATE_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+   <select id="getreseller_total_tableTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE
+   </select>
+
+    <statement id="getreseller_total_tableDealer_tw_vBy" resultClass="Hashtable" >
+      Select DEALER_TW_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_total_tableByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMRESELLER_TOTAL_TABLE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATION_DATE_V">
+          QUOTATION_DATE_V like #QUOTATION_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIPPER_NUMBER_V">
+          SHIPPER_NUMBER_V like #SHIPPER_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIP__DATE_V">
+          SHIP__DATE_V like #SHIP__DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

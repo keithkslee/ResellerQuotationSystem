@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.Holiday" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createHoliday">
+      CREATE TABLE IF NOT EXISTS SYSADMINHOLIDAY (
+        `SID` VARCHAR(100) NOT NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createHolidayTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINHOLIDAYTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getHoliday" resultClass="Hashtable">
+      Select * From SYSADMINHOLIDAY
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINHOLIDAY(SID)
+      VALUES(#SID#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINHOLIDAY SET  WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINHOLIDAY
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINHOLIDAY WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

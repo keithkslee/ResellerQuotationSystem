@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.reseller_shipper3_report" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createreseller_shipper3_report">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORT (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `REPORTTITLE_V` VARCHAR(200) NULL ,
+        `REPORTNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `SHIP_DATE_V` VARCHAR(200) NULL ,
+        `UNIFIEDNUMBERING_V` VARCHAR(200) NULL ,
+        `SHIPPER_NUMBER_V` VARCHAR(200) NULL ,
+        `COMPACT_V` VARCHAR(200) NULL ,
+        `PAYMENT_DATE_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `PURCHASEORDERNUMBER_V` VARCHAR(200) NULL ,
+        `PHONE_V` VARCHAR(200) NULL ,
+        `ORDERDATE_V` VARCHAR(200) NULL ,
+        `FAX_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `ADDRESS_V` VARCHAR(200) NULL ,
+        `DELIVERYADDRESS_V` VARCHAR(200) NULL ,
+        `ITEM_V` VARCHAR(200) NULL ,
+        `PRODUCT_V` VARCHAR(200) NULL ,
+        `AUTORIZATION_NUMBER_V` VARCHAR(200) NULL ,
+        `QUANTITY_V` VARCHAR(200) NULL ,
+        `YEAR_V` VARCHAR(200) NULL ,
+        `LICENSE_START_V` VARCHAR(200) NULL ,
+        `LICENSE_END_V` VARCHAR(200) NULL ,
+        `MONEY_V` VARCHAR(200) NULL ,
+        `ITEM2_V` VARCHAR(200) NULL ,
+        `PRODUCT2_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONNUMBER2_V` VARCHAR(200) NULL ,
+        `QUANTITY2_V` VARCHAR(200) NULL ,
+        `YEAR2_V` VARCHAR(200) NULL ,
+        `LICENSESTART2_V` VARCHAR(200) NULL ,
+        `LICENSEEND2_V` VARCHAR(200) NULL ,
+        `MONEY2_V` VARCHAR(200) NULL ,
+        `ITEM3_V` VARCHAR(200) NULL ,
+        `PRODUCT3_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONNUMBER3_V` VARCHAR(200) NULL ,
+        `QUANTITY3_V` VARCHAR(200) NULL ,
+        `YEAR3_V` VARCHAR(200) NULL ,
+        `LICENSESTART3_V` VARCHAR(200) NULL ,
+        `LICENSEEND3_V` VARCHAR(200) NULL ,
+        `MONEY3_V` VARCHAR(200) NULL ,
+        `NO_TAX_AMOUNT_V` VARCHAR(200) NULL ,
+        `SALES_TAX_V` VARCHAR(200) NULL ,
+        `TOTAL_V` VARCHAR(200) NULL ,
+        `NOTE_V` VARCHAR(200) NULL ,
+        `HEAD_V` VARCHAR(200) NULL ,
+        `MANAGER_V` VARCHAR(200) NULL ,
+        `ATTN_V` VARCHAR(200) NULL ,
+        `CUSTOMERS_SIGN_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createreseller_shipper3_reportHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORTHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `REPORTTITLE_V` VARCHAR(200) NULL ,
+        `REPORTNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `SHIP_DATE_V` VARCHAR(200) NULL ,
+        `UNIFIEDNUMBERING_V` VARCHAR(200) NULL ,
+        `SHIPPER_NUMBER_V` VARCHAR(200) NULL ,
+        `COMPACT_V` VARCHAR(200) NULL ,
+        `PAYMENT_DATE_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `PURCHASEORDERNUMBER_V` VARCHAR(200) NULL ,
+        `PHONE_V` VARCHAR(200) NULL ,
+        `ORDERDATE_V` VARCHAR(200) NULL ,
+        `FAX_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `ADDRESS_V` VARCHAR(200) NULL ,
+        `DELIVERYADDRESS_V` VARCHAR(200) NULL ,
+        `ITEM_V` VARCHAR(200) NULL ,
+        `PRODUCT_V` VARCHAR(200) NULL ,
+        `AUTORIZATION_NUMBER_V` VARCHAR(200) NULL ,
+        `QUANTITY_V` VARCHAR(200) NULL ,
+        `YEAR_V` VARCHAR(200) NULL ,
+        `LICENSE_START_V` VARCHAR(200) NULL ,
+        `LICENSE_END_V` VARCHAR(200) NULL ,
+        `MONEY_V` VARCHAR(200) NULL ,
+        `ITEM2_V` VARCHAR(200) NULL ,
+        `PRODUCT2_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONNUMBER2_V` VARCHAR(200) NULL ,
+        `QUANTITY2_V` VARCHAR(200) NULL ,
+        `YEAR2_V` VARCHAR(200) NULL ,
+        `LICENSESTART2_V` VARCHAR(200) NULL ,
+        `LICENSEEND2_V` VARCHAR(200) NULL ,
+        `MONEY2_V` VARCHAR(200) NULL ,
+        `ITEM3_V` VARCHAR(200) NULL ,
+        `PRODUCT3_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONNUMBER3_V` VARCHAR(200) NULL ,
+        `QUANTITY3_V` VARCHAR(200) NULL ,
+        `YEAR3_V` VARCHAR(200) NULL ,
+        `LICENSESTART3_V` VARCHAR(200) NULL ,
+        `LICENSEEND3_V` VARCHAR(200) NULL ,
+        `MONEY3_V` VARCHAR(200) NULL ,
+        `NO_TAX_AMOUNT_V` VARCHAR(200) NULL ,
+        `SALES_TAX_V` VARCHAR(200) NULL ,
+        `TOTAL_V` VARCHAR(200) NULL ,
+        `NOTE_V` VARCHAR(200) NULL ,
+        `HEAD_V` VARCHAR(200) NULL ,
+        `MANAGER_V` VARCHAR(200) NULL ,
+        `ATTN_V` VARCHAR(200) NULL ,
+        `CUSTOMERS_SIGN_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORTHISTORY SELECT SID 
+ , AXTMODIFY , REPORTTITLE_V , REPORTNAME_V , CUSTOMERNAME_V , SHIP_DATE_V , UNIFIEDNUMBERING_V , SHIPPER_NUMBER_V , COMPACT_V , PAYMENT_DATE_V , EMAIL_V , PURCHASEORDERNUMBER_V , PHONE_V , ORDERDATE_V , FAX_V , QUOTATIONNO_V , ADDRESS_V , DELIVERYADDRESS_V , ITEM_V , PRODUCT_V , AUTORIZATION_NUMBER_V , QUANTITY_V , YEAR_V , LICENSE_START_V , LICENSE_END_V , MONEY_V , ITEM2_V , PRODUCT2_V , AUTHORIZATIONNUMBER2_V , QUANTITY2_V , YEAR2_V , LICENSESTART2_V , LICENSEEND2_V , MONEY2_V , ITEM3_V , PRODUCT3_V , AUTHORIZATIONNUMBER3_V , QUANTITY3_V , YEAR3_V , LICENSESTART3_V , LICENSEEND3_V , MONEY3_V , NO_TAX_AMOUNT_V , SALES_TAX_V , TOTAL_V , NOTE_V , HEAD_V , MANAGER_V , ATTN_V , CUSTOMERS_SIGN_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORT WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORTHISTORY SELECT SID 
+ , AXTMODIFY , REPORTTITLE_V , REPORTNAME_V , CUSTOMERNAME_V , SHIP_DATE_V , UNIFIEDNUMBERING_V , SHIPPER_NUMBER_V , COMPACT_V , PAYMENT_DATE_V , EMAIL_V , PURCHASEORDERNUMBER_V , PHONE_V , ORDERDATE_V , FAX_V , QUOTATIONNO_V , ADDRESS_V , DELIVERYADDRESS_V , ITEM_V , PRODUCT_V , AUTORIZATION_NUMBER_V , QUANTITY_V , YEAR_V , LICENSE_START_V , LICENSE_END_V , MONEY_V , ITEM2_V , PRODUCT2_V , AUTHORIZATIONNUMBER2_V , QUANTITY2_V , YEAR2_V , LICENSESTART2_V , LICENSEEND2_V , MONEY2_V , ITEM3_V , PRODUCT3_V , AUTHORIZATIONNUMBER3_V , QUANTITY3_V , YEAR3_V , LICENSESTART3_V , LICENSEEND3_V , MONEY3_V , NO_TAX_AMOUNT_V , SALES_TAX_V , TOTAL_V , NOTE_V , HEAD_V , MANAGER_V , ATTN_V , CUSTOMERS_SIGN_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORT WHERE SID = #SID#
+    </statement>
+
+    <select id="getreseller_shipper3_report" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORT LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORT(SID, AXTMODIFY, REPORTTITLE_V, REPORTNAME_V, CUSTOMERNAME_V, SHIP_DATE_V, UNIFIEDNUMBERING_V, SHIPPER_NUMBER_V, COMPACT_V, PAYMENT_DATE_V, EMAIL_V, PURCHASEORDERNUMBER_V, PHONE_V, ORDERDATE_V, FAX_V, QUOTATIONNO_V, ADDRESS_V, DELIVERYADDRESS_V, ITEM_V, PRODUCT_V, AUTORIZATION_NUMBER_V, QUANTITY_V, YEAR_V, LICENSE_START_V, LICENSE_END_V, MONEY_V, ITEM2_V, PRODUCT2_V, AUTHORIZATIONNUMBER2_V, QUANTITY2_V, YEAR2_V, LICENSESTART2_V, LICENSEEND2_V, MONEY2_V, ITEM3_V, PRODUCT3_V, AUTHORIZATIONNUMBER3_V, QUANTITY3_V, YEAR3_V, LICENSESTART3_V, LICENSEEND3_V, MONEY3_V, NO_TAX_AMOUNT_V, SALES_TAX_V, TOTAL_V, NOTE_V, HEAD_V, MANAGER_V, ATTN_V, CUSTOMERS_SIGN_V)
+      VALUES(#SID#, #AXTMODIFY#, #REPORTTITLE_V#, #REPORTNAME_V#, #CUSTOMERNAME_V#, #SHIP_DATE_V#, #UNIFIEDNUMBERING_V#, #SHIPPER_NUMBER_V#, #COMPACT_V#, #PAYMENT_DATE_V#, #EMAIL_V#, #PURCHASEORDERNUMBER_V#, #PHONE_V#, #ORDERDATE_V#, #FAX_V#, #QUOTATIONNO_V#, #ADDRESS_V#, #DELIVERYADDRESS_V#, #ITEM_V#, #PRODUCT_V#, #AUTORIZATION_NUMBER_V#, #QUANTITY_V#, #YEAR_V#, #LICENSE_START_V#, #LICENSE_END_V#, #MONEY_V#, #ITEM2_V#, #PRODUCT2_V#, #AUTHORIZATIONNUMBER2_V#, #QUANTITY2_V#, #YEAR2_V#, #LICENSESTART2_V#, #LICENSEEND2_V#, #MONEY2_V#, #ITEM3_V#, #PRODUCT3_V#, #AUTHORIZATIONNUMBER3_V#, #QUANTITY3_V#, #YEAR3_V#, #LICENSESTART3_V#, #LICENSEEND3_V#, #MONEY3_V#, #NO_TAX_AMOUNT_V#, #SALES_TAX_V#, #TOTAL_V#, #NOTE_V#, #HEAD_V#, #MANAGER_V#, #ATTN_V#, #CUSTOMERS_SIGN_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORT SET AXTMODIFY = #AXTMODIFY#,REPORTTITLE_V = #REPORTTITLE_V#,REPORTNAME_V = #REPORTNAME_V#,CUSTOMERNAME_V = #CUSTOMERNAME_V#,SHIP_DATE_V = #SHIP_DATE_V#,UNIFIEDNUMBERING_V = #UNIFIEDNUMBERING_V#,SHIPPER_NUMBER_V = #SHIPPER_NUMBER_V#,COMPACT_V = #COMPACT_V#,PAYMENT_DATE_V = #PAYMENT_DATE_V#,EMAIL_V = #EMAIL_V#,PURCHASEORDERNUMBER_V = #PURCHASEORDERNUMBER_V#,PHONE_V = #PHONE_V#,ORDERDATE_V = #ORDERDATE_V#,FAX_V = #FAX_V#,QUOTATIONNO_V = #QUOTATIONNO_V#,ADDRESS_V = #ADDRESS_V#,DELIVERYADDRESS_V = #DELIVERYADDRESS_V#,ITEM_V = #ITEM_V#,PRODUCT_V = #PRODUCT_V#,AUTORIZATION_NUMBER_V = #AUTORIZATION_NUMBER_V#,QUANTITY_V = #QUANTITY_V#,YEAR_V = #YEAR_V#,LICENSE_START_V = #LICENSE_START_V#,LICENSE_END_V = #LICENSE_END_V#,MONEY_V = #MONEY_V#,ITEM2_V = #ITEM2_V#,PRODUCT2_V = #PRODUCT2_V#,AUTHORIZATIONNUMBER2_V = #AUTHORIZATIONNUMBER2_V#,QUANTITY2_V = #QUANTITY2_V#,YEAR2_V = #YEAR2_V#,LICENSESTART2_V = #LICENSESTART2_V#,LICENSEEND2_V = #LICENSEEND2_V#,MONEY2_V = #MONEY2_V#,ITEM3_V = #ITEM3_V#,PRODUCT3_V = #PRODUCT3_V#,AUTHORIZATIONNUMBER3_V = #AUTHORIZATIONNUMBER3_V#,QUANTITY3_V = #QUANTITY3_V#,YEAR3_V = #YEAR3_V#,LICENSESTART3_V = #LICENSESTART3_V#,LICENSEEND3_V = #LICENSEEND3_V#,MONEY3_V = #MONEY3_V#,NO_TAX_AMOUNT_V = #NO_TAX_AMOUNT_V#,SALES_TAX_V = #SALES_TAX_V#,TOTAL_V = #TOTAL_V#,NOTE_V = #NOTE_V#,HEAD_V = #HEAD_V#,MANAGER_V = #MANAGER_V#,ATTN_V = #ATTN_V#,CUSTOMERS_SIGN_V = #CUSTOMERS_SIGN_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3 WHERE SID = #SID#
+    </delete>
+
+    <statement id="getreseller_shipper3_reportBy" resultClass="Hashtable" >
+      SELECT  SID, AXTMODIFY ,REPORTTITLE_V ,REPORTNAME_V ,CUSTOMERNAME_V ,SHIP_DATE_V ,UNIFIEDNUMBERING_V ,SHIPPER_NUMBER_V ,COMPACT_V ,PAYMENT_DATE_V ,EMAIL_V ,PURCHASEORDERNUMBER_V ,PHONE_V ,ORDERDATE_V ,FAX_V ,QUOTATIONNO_V ,ADDRESS_V ,DELIVERYADDRESS_V ,ITEM_V ,PRODUCT_V ,AUTORIZATION_NUMBER_V ,QUANTITY_V ,YEAR_V ,LICENSE_START_V ,LICENSE_END_V ,MONEY_V ,ITEM2_V ,PRODUCT2_V ,AUTHORIZATIONNUMBER2_V ,QUANTITY2_V ,YEAR2_V ,LICENSESTART2_V ,LICENSEEND2_V ,MONEY2_V ,ITEM3_V ,PRODUCT3_V ,AUTHORIZATIONNUMBER3_V ,QUANTITY3_V ,YEAR3_V ,LICENSESTART3_V ,LICENSEEND3_V ,MONEY3_V ,NO_TAX_AMOUNT_V ,SALES_TAX_V ,TOTAL_V ,NOTE_V ,HEAD_V ,MANAGER_V ,ATTN_V FROM  RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="REPORTTITLE_V">
+          REPORTTITLE_V like #REPORTTITLE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="REPORTNAME_V">
+          REPORTNAME_V like #REPORTNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIP_DATE_V">
+          SHIP_DATE_V like #SHIP_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UNIFIEDNUMBERING_V">
+          UNIFIEDNUMBERING_V like #UNIFIEDNUMBERING_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIPPER_NUMBER_V">
+          SHIPPER_NUMBER_V like #SHIPPER_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPACT_V">
+          COMPACT_V like #COMPACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PAYMENT_DATE_V">
+          PAYMENT_DATE_V like #PAYMENT_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          PURCHASEORDERNUMBER_V like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PHONE_V">
+          PHONE_V like #PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERDATE_V">
+          ORDERDATE_V like #ORDERDATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="FAX_V">
+          FAX_V like #FAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESS_V">
+          ADDRESS_V like #ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DELIVERYADDRESS_V">
+          DELIVERYADDRESS_V like #DELIVERYADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM_V">
+          ITEM_V like #ITEM_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_V">
+          PRODUCT_V like #PRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTORIZATION_NUMBER_V">
+          AUTORIZATION_NUMBER_V like #AUTORIZATION_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_V">
+          QUANTITY_V like #QUANTITY_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR_V">
+          YEAR_V like #YEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSE_START_V">
+          LICENSE_START_V like #LICENSE_START_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSE_END_V">
+          LICENSE_END_V like #LICENSE_END_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MONEY_V">
+          MONEY_V like #MONEY_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM2_V">
+          ITEM2_V like #ITEM2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT2_V">
+          PRODUCT2_V like #PRODUCT2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONNUMBER2_V">
+          AUTHORIZATIONNUMBER2_V like #AUTHORIZATIONNUMBER2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY2_V">
+          QUANTITY2_V like #QUANTITY2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR2_V">
+          YEAR2_V like #YEAR2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSESTART2_V">
+          LICENSESTART2_V like #LICENSESTART2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSEEND2_V">
+          LICENSEEND2_V like #LICENSEEND2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MONEY2_V">
+          MONEY2_V like #MONEY2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM3_V">
+          ITEM3_V like #ITEM3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT3_V">
+          PRODUCT3_V like #PRODUCT3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONNUMBER3_V">
+          AUTHORIZATIONNUMBER3_V like #AUTHORIZATIONNUMBER3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY3_V">
+          QUANTITY3_V like #QUANTITY3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR3_V">
+          YEAR3_V like #YEAR3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSESTART3_V">
+          LICENSESTART3_V like #LICENSESTART3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSEEND3_V">
+          LICENSEEND3_V like #LICENSEEND3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MONEY3_V">
+          MONEY3_V like #MONEY3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NO_TAX_AMOUNT_V">
+          NO_TAX_AMOUNT_V like #NO_TAX_AMOUNT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SALES_TAX_V">
+          SALES_TAX_V like #SALES_TAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTAL_V">
+          TOTAL_V like #TOTAL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOTE_V">
+          NOTE_V like #NOTE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="HEAD_V">
+          HEAD_V like #HEAD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MANAGER_V">
+          MANAGER_V like #MANAGER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ATTN_V">
+          ATTN_V like #ATTN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERS_SIGN_V">
+          CUSTOMERS_SIGN_V like #CUSTOMERS_SIGN_V#
+        </isNotEmpty>
+      </dynamic>
+      order by SHIP_DATE_V desc LIMIT #START_V#, #LIMIT_V#
+    </statement>
+
+    <!--Email code-->
+ <select id="getEmailSetting" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          SENDERNAME_V like #SENDERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDEREMAIL_V">
+          SENDEREMAIL_V like #SENDEREMAIL_V#
+        </isNotEmpty>
+      </dynamic>
+ </select>
+    <!--Email code end-->
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getreseller_shipper3_reportTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3_REPORT
+   </select>
+
+    <statement id="getreseller_shipper3_reportByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMRESELLER_SHIPPER3
+
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="REPORTTITLE_V">
+          REPORTTITLE_V like #REPORTTITLE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="REPORTNAME_V">
+          REPORTNAME_V like #REPORTNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIP_DATE_V">
+          SHIP_DATE_V like #SHIP_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UNIFIEDNUMBERING_V">
+          UNIFIEDNUMBERING_V like #UNIFIEDNUMBERING_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIPPER_NUMBER_V">
+          SHIPPER_NUMBER_V like #SHIPPER_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPACT_V">
+          COMPACT_V like #COMPACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PAYMENT_DATE_V">
+          PAYMENT_DATE_V like #PAYMENT_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PURCHASEORDERNUMBER_V">
+          PURCHASEORDERNUMBER_V like #PURCHASEORDERNUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PHONE_V">
+          PHONE_V like #PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERDATE_V">
+          ORDERDATE_V like #ORDERDATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="FAX_V">
+          FAX_V like #FAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESS_V">
+          ADDRESS_V like #ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DELIVERYADDRESS_V">
+          DELIVERYADDRESS_V like #DELIVERYADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM_V">
+          ITEM_V like #ITEM_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_V">
+          PRODUCT_V like #PRODUCT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTORIZATION_NUMBER_V">
+          AUTORIZATION_NUMBER_V like #AUTORIZATION_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_V">
+          QUANTITY_V like #QUANTITY_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR_V">
+          YEAR_V like #YEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSE_START_V">
+          LICENSE_START_V like #LICENSE_START_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSE_END_V">
+          LICENSE_END_V like #LICENSE_END_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MONEY_V">
+          MONEY_V like #MONEY_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM2_V">
+          ITEM2_V like #ITEM2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT2_V">
+          PRODUCT2_V like #PRODUCT2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONNUMBER2_V">
+          AUTHORIZATIONNUMBER2_V like #AUTHORIZATIONNUMBER2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY2_V">
+          QUANTITY2_V like #QUANTITY2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR2_V">
+          YEAR2_V like #YEAR2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSESTART2_V">
+          LICENSESTART2_V like #LICENSESTART2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSEEND2_V">
+          LICENSEEND2_V like #LICENSEEND2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MONEY2_V">
+          MONEY2_V like #MONEY2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM3_V">
+          ITEM3_V like #ITEM3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT3_V">
+          PRODUCT3_V like #PRODUCT3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONNUMBER3_V">
+          AUTHORIZATIONNUMBER3_V like #AUTHORIZATIONNUMBER3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY3_V">
+          QUANTITY3_V like #QUANTITY3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR3_V">
+          YEAR3_V like #YEAR3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSESTART3_V">
+          LICENSESTART3_V like #LICENSESTART3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LICENSEEND3_V">
+          LICENSEEND3_V like #LICENSEEND3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MONEY3_V">
+          MONEY3_V like #MONEY3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NO_TAX_AMOUNT_V">
+          NO_TAX_AMOUNT_V like #NO_TAX_AMOUNT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SALES_TAX_V">
+          SALES_TAX_V like #SALES_TAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTAL_V">
+          TOTAL_V like #TOTAL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOTE_V">
+          NOTE_V like #NOTE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="HEAD_V">
+          HEAD_V like #HEAD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MANAGER_V">
+          MANAGER_V like #MANAGER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ATTN_V">
+          ATTN_V like #ATTN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERS_SIGN_V">
+          CUSTOMERS_SIGN_V like #CUSTOMERS_SIGN_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

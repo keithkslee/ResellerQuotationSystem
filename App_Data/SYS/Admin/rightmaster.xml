@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.RightMaster" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createRightMaster">
+      CREATE TABLE IF NOT EXISTS SYSADMINRIGHTMASTER (
+        `SID` VARCHAR(100) NOT NULL ,
+        `MAIN_MENU` VARCHAR(100) NULL ,
+        `SUB_MENU` VARCHAR(100) NULL ,
+        `MENU_ITEM` VARCHAR(100) NULL ,
+        `GUI_PATH` VARCHAR(100) NULL ,
+        `TREE_ORDER` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createRightMasterTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINRIGHTMASTERTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `MAIN_MENU` VARCHAR(100) NULL ,
+        `SUB_MENU` VARCHAR(100) NULL ,
+        `MENU_ITEM` VARCHAR(100) NULL ,
+        `GUI_PATH` VARCHAR(100) NULL ,
+        `TREE_ORDER` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getRightMaster" resultClass="Hashtable">
+      Select * From SYSADMINRIGHTMASTER
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINRIGHTMASTER(SID, MAIN_MENU, SUB_MENU, MENU_ITEM, GUI_PATH, TREE_ORDER)
+      VALUES(#SID#, #MAIN_MENU#, #SUB_MENU#, #MENU_ITEM#, #GUI_PATH#, #TREE_ORDER#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINRIGHTMASTER SET MAIN_MENU = #MAIN_MENU#, SUB_MENU = #SUB_MENU#, MENU_ITEM = #MENU_ITEM#, GUI_PATH = #GUI_PATH#, TREE_ORDER = #TREE_ORDER# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINRIGHTMASTER
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINRIGHTMASTER WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <insert id="beforeGenConf">
+      INSERT SYSADMINRIGHTMASTER SELECT MENU_TREE_SID AS SID, MAIN_MENU, SUB_MENU, MENU_ITEM, GUI_PATH, TREE_ORDER FROM axtmes_menu_tree
+    </insert>
+
+    <select id="getMainMenu" resultClass="Hashtable">
+      Select * From SYSADMINRIGHTMASTER GROUP BY MAIN_MENU
+    </select>
+    
+    <select id="getSubMenu" resultClass="Hashtable">
+      Select * From SYSADMINRIGHTMASTER GROUP BY SUB_MENU
+    </select>
+    
+    <select id="getRightMasterBySubMenu" resultClass="Hashtable">
+      Select * From SYSADMINRIGHTMASTER WHERE SUB_MENU = #SUB_MENU#
+    </select>
+
+    <select id="getRightMasterByMenuItem" resultClass="Hashtable">
+      Select * From SYSADMINRIGHTMASTER WHERE MENU_ITEM = #MENU_ITEM#
+    </select>
+
+    <select id="getRightMasterByAll" resultClass="Hashtable">
+      Select * From SYSADMINRIGHTMASTER WHERE SUB_MENU = #SUB_MENU# AND MENU_ITEM = #MENU_ITEM#
+    </select>
+
+    <insert id="addMenuTree">
+      INSERT INTO axtmes_menu_tree(MENU_TREE_SID, MAIN_MENU, SUB_MENU, MENU_ITEM, GUI_PATH, TREE_ORDER, USERID)
+      VALUES(#SID#, #MAIN_MENU#, #SUB_MENU#, #MENU_ITEM#, #GUI_PATH#, #TREE_ORDER#, #USERID#)
+    </insert>
+    
+    <update id="updateMenuTree">
+      UPDATE axtmes_menu_tree SET MAIN_MENU = #MAIN_MENU#, SUB_MENU = #SUB_MENU#, MENU_ITEM = #MENU_ITEM#, GUI_PATH = #GUI_PATH#, TREE_ORDER = #TREE_ORDER#, USERID = #USERID# WHERE MENU_TREE_SID = #SID#
+    </update>
+
+    <delete id="deleteMenuTree">
+      DELETE FROM axtmes_menu_tree WHERE MENU_TREE_SID = #SID#
+    </delete>
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

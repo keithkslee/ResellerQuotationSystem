@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="Event" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <select id="getEventLog" resultClass="Hashtable">
+      SELECT * FROM axt_event_log
+    </select>
+    
+    <insert id="addEventLog">
+      INSERT INTO axt_event_log(EVENT, USERIP, USERID)
+      VALUES(#EVENT#, #USERIP#, #USERID#)
+    </insert>
+    
+  </statements>
+</sqlMap>

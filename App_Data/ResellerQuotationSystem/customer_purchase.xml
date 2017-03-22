@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.customer_purchase" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createcustomer_purchase">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `NO_ORDER_V` VARCHAR(200) NULL ,
+        `ORDERDATE_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `ORDERTYPE_V` VARCHAR(200) NULL ,
+        `DEALER_V` VARCHAR(200) NULL ,
+        `CUSTOMERID_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAMEEN_V` VARCHAR(200) NULL ,
+        `WEBSITE_V` VARCHAR(200) NULL ,
+        `CONTACT_ADDRESS_V` VARCHAR(200) NULL ,
+        `ADDRESSENGLISH_V` VARCHAR(200) NULL ,
+        `CONTACT_PHONE_V` VARCHAR(200) NULL ,
+        `CUSTOMER_CONTACT_V` VARCHAR(200) NULL ,
+        `CONTACTENGLISH_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT1_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT2_V` VARCHAR(200) NULL ,
+        `QUANTITY_1_V` VARCHAR(200) NULL ,
+        `YEAR1_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONSTARTDATE1_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONTERMINATIONDATE1_V` VARCHAR(200) NULL ,
+        `QUANTITY_2_V` VARCHAR(200) NULL ,
+        `YEAR2_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONSTARTDATE2_V` VARCHAR(200) NULL ,
+        `AUTHORIZETERMINATIONDATE2_V` VARCHAR(200) NULL ,
+        `AMOUNTTAX1_V` VARCHAR(200) NULL ,
+        `AMOUNTTAX2_V` VARCHAR(200) NULL ,
+        `US_DOLLAR_PRICING_V` VARCHAR(200) NULL ,
+        `EXCHANGE_RATE_V` VARCHAR(200) NULL ,
+        `NT_PRICING_V` VARCHAR(200) NULL ,
+        `PRICE_NOT_TAX_V` VARCHAR(200) NULL ,
+        `MARGIN_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` INT ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createcustomer_purchaseHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASEHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `NO_ORDER_V` VARCHAR(200) NULL ,
+        `ORDERDATE_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `ORDERTYPE_V` VARCHAR(200) NULL ,
+        `DEALER_V` VARCHAR(200) NULL ,
+        `CUSTOMERID_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAMEEN_V` VARCHAR(200) NULL ,
+        `WEBSITE_V` VARCHAR(200) NULL ,
+        `CONTACT_ADDRESS_V` VARCHAR(200) NULL ,
+        `ADDRESSENGLISH_V` VARCHAR(200) NULL ,
+        `CONTACT_PHONE_V` VARCHAR(200) NULL ,
+        `CUSTOMER_CONTACT_V` VARCHAR(200) NULL ,
+        `CONTACTENGLISH_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT1_V` VARCHAR(200) NULL ,
+        `ORDERPRODUCT2_V` VARCHAR(200) NULL ,
+        `QUANTITY_1_V` VARCHAR(200) NULL ,
+        `YEAR1_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONSTARTDATE1_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONTERMINATIONDATE1_V` VARCHAR(200) NULL ,
+        `QUANTITY_2_V` VARCHAR(200) NULL ,
+        `YEAR2_V` VARCHAR(200) NULL ,
+        `AUTHORIZATIONSTARTDATE2_V` VARCHAR(200) NULL ,
+        `AUTHORIZETERMINATIONDATE2_V` VARCHAR(200) NULL ,
+        `AMOUNTTAX1_V` VARCHAR(200) NULL ,
+        `AMOUNTTAX2_V` VARCHAR(200) NULL ,
+        `US_DOLLAR_PRICING_V` VARCHAR(200) NULL ,
+        `EXCHANGE_RATE_V` VARCHAR(200) NULL ,
+        `NT_PRICING_V` VARCHAR(200) NULL ,
+        `PRICE_NOT_TAX_V` VARCHAR(200) NULL ,
+        `MARGIN_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASEHISTORY SELECT SID 
+ , AXTMODIFY , NO_ORDER_V , ORDERDATE_V , QUOTATIONNO_V , ORDERTYPE_V , DEALER_V , CUSTOMERID_V , CUSTOMERNAME_V , CUSTOMERNAMEEN_V , WEBSITE_V , CONTACT_ADDRESS_V , ADDRESSENGLISH_V , CONTACT_PHONE_V , CUSTOMER_CONTACT_V , CONTACTENGLISH_V , EMAIL_V , COMPETITIVEBRANDS_V , ORDERPRODUCT1_V , ORDERPRODUCT2_V , QUANTITY_1_V , YEAR1_V , AUTHORIZATIONSTARTDATE1_V , AUTHORIZATIONTERMINATIONDATE1_V , QUANTITY_2_V , YEAR2_V , AUTHORIZATIONSTARTDATE2_V , AUTHORIZETERMINATIONDATE2_V , AMOUNTTAX1_V , AMOUNTTAX2_V , US_DOLLAR_PRICING_V , EXCHANGE_RATE_V , NT_PRICING_V , PRICE_NOT_TAX_V , MARGIN_V , ENTRY_DATE_V , LAST_SEQUENCE_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASEHISTORY SELECT SID 
+ , AXTMODIFY , NO_ORDER_V , ORDERDATE_V , QUOTATIONNO_V , ORDERTYPE_V , DEALER_V , CUSTOMERID_V , CUSTOMERNAME_V , CUSTOMERNAMEEN_V , WEBSITE_V , CONTACT_ADDRESS_V , ADDRESSENGLISH_V , CONTACT_PHONE_V , CUSTOMER_CONTACT_V , CONTACTENGLISH_V , EMAIL_V , COMPETITIVEBRANDS_V , ORDERPRODUCT1_V , ORDERPRODUCT2_V , QUANTITY_1_V , YEAR1_V , AUTHORIZATIONSTARTDATE1_V , AUTHORIZATIONTERMINATIONDATE1_V , QUANTITY_2_V , YEAR2_V , AUTHORIZATIONSTARTDATE2_V , AUTHORIZETERMINATIONDATE2_V , AMOUNTTAX1_V , AMOUNTTAX2_V , US_DOLLAR_PRICING_V , EXCHANGE_RATE_V , NT_PRICING_V , PRICE_NOT_TAX_V , MARGIN_V , ENTRY_DATE_V , LAST_SEQUENCE_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE WHERE SID = #SID#
+    </statement>
+
+    <select id="getcustomer_purchase" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <statement id="getCBXNO_ORDER_V_MAX_LEN" resultClass="Hashtable">
+     Select NO_ORDER_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE WHERE NO_ORDER_V != '' ORDER BY NO_ORDER_V
+    </statement>
+    <select id="getCBXNO_ORDER_V" resultClass="Hashtable">
+     Select distinct CONCAT(NO_ORDER_V) AS NO_ORDER_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE WHERE NO_ORDER_V != '' ORDER BY NO_ORDER_V
+    </select>
+
+    <statement id="getCBXQUOTATIONNO_V_MAX_LEN" resultClass="Hashtable">
+     Select QUOTATIONNO_V FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4 WHERE QUOTATIONNO_V != '' ORDER BY QUOTATIONNO_V
+    </statement>
+    <select id="getCBXQUOTATIONNO_V" resultClass="Hashtable">
+     Select distinct CONCAT(QUOTATIONNO_V) AS QUOTATIONNO_V FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4 WHERE QUOTATIONNO_V != '' ORDER BY QUOTATIONNO_V
+    </select>
+
+    <statement id="getCBXORDERTYPE_V_MAX_LEN" resultClass="Hashtable">
+     Select ORDERTYPE_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE ORDERTYPE_V != '' ORDER BY ORDERTYPE_V
+    </statement>
+    <select id="getCBXORDERTYPE_V" resultClass="Hashtable">
+     Select distinct CONCAT(ORDERTYPE_V) AS ORDERTYPE_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE ORDERTYPE_V != '' ORDER BY ORDERTYPE_V
+    </select>
+
+    <statement id="getCBXDEALER_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE DEALER_V != '' ORDER BY DEALER_V
+    </statement>
+    <select id="getCBXDEALER_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_V) AS DEALER_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE DEALER_V != '' ORDER BY DEALER_V
+    </select>
+
+    <statement id="getCBXCUSTOMERID_V_MAX_LEN" resultClass="Hashtable">
+     Select CUSTOMERID_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE CUSTOMERID_V != '' ORDER BY CUSTOMERID_V
+    </statement>
+    <select id="getCBXCUSTOMERID_V" resultClass="Hashtable">
+     Select distinct CONCAT(CUSTOMERID_V) AS CUSTOMERID_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE CUSTOMERID_V != '' ORDER BY CUSTOMERID_V
+    </select>
+
+    <statement id="getCBXCUSTOMERNAME_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </statement>
+    <select id="getCBXCUSTOMERNAME_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_TW_V) AS DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </select>
+
+    <statement id="getCBXCOMPETITIVEBRANDS_V_MAX_LEN" resultClass="Hashtable">
+     Select COMPETITIVEBRANDS_V FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_INPUT WHERE COMPETITIVEBRANDS_V != '' ORDER BY COMPETITIVEBRANDS_V
+    </statement>
+    <select id="getCBXCOMPETITIVEBRANDS_V" resultClass="Hashtable">
+     Select distinct CONCAT(COMPETITIVEBRANDS_V) AS COMPETITIVEBRANDS_V FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_INPUT WHERE COMPETITIVEBRANDS_V != '' ORDER BY COMPETITIVEBRANDS_V
+    </select>
+
+    <statement id="getCBXORDERPRODUCT1_V_MAX_LEN" resultClass="Hashtable">
+     Select ORDERPRODUCT1_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE ORDERPRODUCT1_V != '' ORDER BY ORDERPRODUCT1_V
+    </statement>
+    <select id="getCBXORDERPRODUCT1_V" resultClass="Hashtable">
+     Select distinct CONCAT(ORDERPRODUCT1_V) AS ORDERPRODUCT1_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE ORDERPRODUCT1_V != '' ORDER BY ORDERPRODUCT1_V
+    </select>
+
+    <statement id="getCBXORDERPRODUCT2_V_MAX_LEN" resultClass="Hashtable">
+     Select ORDERPRODUCT2_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE ORDERPRODUCT2_V != '' ORDER BY ORDERPRODUCT2_V
+    </statement>
+    <select id="getCBXORDERPRODUCT2_V" resultClass="Hashtable">
+     Select distinct CONCAT(ORDERPRODUCT2_V) AS ORDERPRODUCT2_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE ORDERPRODUCT2_V != '' ORDER BY ORDERPRODUCT2_V
+    </select>
+
+    <statement id="getCBXEXCHANGE_RATE_V_MAX_LEN" resultClass="Hashtable">
+     Select EXCHANGE_RATE_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE EXCHANGE_RATE_V != '' ORDER BY EXCHANGE_RATE_V
+    </statement>
+    <select id="getCBXEXCHANGE_RATE_V" resultClass="Hashtable">
+     Select distinct CONCAT(EXCHANGE_RATE_V) AS EXCHANGE_RATE_V FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE_INPUT WHERE EXCHANGE_RATE_V != '' ORDER BY EXCHANGE_RATE_V
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE(SID, AXTMODIFY, NO_ORDER_V, ORDERDATE_V, QUOTATIONNO_V, ORDERTYPE_V, DEALER_V, CUSTOMERID_V, CUSTOMERNAME_V, CUSTOMERNAMEEN_V, WEBSITE_V, CONTACT_ADDRESS_V, ADDRESSENGLISH_V, CONTACT_PHONE_V, CUSTOMER_CONTACT_V, CONTACTENGLISH_V, EMAIL_V, COMPETITIVEBRANDS_V, ORDERPRODUCT1_V, ORDERPRODUCT2_V, QUANTITY_1_V, YEAR1_V, AUTHORIZATIONSTARTDATE1_V, AUTHORIZATIONTERMINATIONDATE1_V, QUANTITY_2_V, YEAR2_V, AUTHORIZATIONSTARTDATE2_V, AUTHORIZETERMINATIONDATE2_V, AMOUNTTAX1_V, AMOUNTTAX2_V, US_DOLLAR_PRICING_V, EXCHANGE_RATE_V, NT_PRICING_V, PRICE_NOT_TAX_V, MARGIN_V, ENTRY_DATE_V, LAST_SEQUENCE_V)
+      VALUES(#SID#, #AXTMODIFY#, #NO_ORDER_V#, #ORDERDATE_V#, #QUOTATIONNO_V#, #ORDERTYPE_V#, #DEALER_V#, #CUSTOMERID_V#, #CUSTOMERNAME_V#, #CUSTOMERNAMEEN_V#, #WEBSITE_V#, #CONTACT_ADDRESS_V#, #ADDRESSENGLISH_V#, #CONTACT_PHONE_V#, #CUSTOMER_CONTACT_V#, #CONTACTENGLISH_V#, #EMAIL_V#, #COMPETITIVEBRANDS_V#, #ORDERPRODUCT1_V#, #ORDERPRODUCT2_V#, #QUANTITY_1_V#, #YEAR1_V#, #AUTHORIZATIONSTARTDATE1_V#, #AUTHORIZATIONTERMINATIONDATE1_V#, #QUANTITY_2_V#, #YEAR2_V#, #AUTHORIZATIONSTARTDATE2_V#, #AUTHORIZETERMINATIONDATE2_V#, #AMOUNTTAX1_V#, #AMOUNTTAX2_V#, #US_DOLLAR_PRICING_V#, #EXCHANGE_RATE_V#, #NT_PRICING_V#, #PRICE_NOT_TAX_V#, #MARGIN_V#, #ENTRY_DATE_V#, #LAST_SEQUENCE_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE SET AXTMODIFY = #AXTMODIFY#,NO_ORDER_V = #NO_ORDER_V#,ORDERDATE_V = #ORDERDATE_V#,QUOTATIONNO_V = #QUOTATIONNO_V#,ORDERTYPE_V = #ORDERTYPE_V#,DEALER_V = #DEALER_V#,CUSTOMERID_V = #CUSTOMERID_V#,CUSTOMERNAME_V = #CUSTOMERNAME_V#,CUSTOMERNAMEEN_V = #CUSTOMERNAMEEN_V#,WEBSITE_V = #WEBSITE_V#,CONTACT_ADDRESS_V = #CONTACT_ADDRESS_V#,ADDRESSENGLISH_V = #ADDRESSENGLISH_V#,CONTACT_PHONE_V = #CONTACT_PHONE_V#,CUSTOMER_CONTACT_V = #CUSTOMER_CONTACT_V#,CONTACTENGLISH_V = #CONTACTENGLISH_V#,EMAIL_V = #EMAIL_V#,COMPETITIVEBRANDS_V = #COMPETITIVEBRANDS_V#,ORDERPRODUCT1_V = #ORDERPRODUCT1_V#,ORDERPRODUCT2_V = #ORDERPRODUCT2_V#,QUANTITY_1_V = #QUANTITY_1_V#,YEAR1_V = #YEAR1_V#,AUTHORIZATIONSTARTDATE1_V = #AUTHORIZATIONSTARTDATE1_V#,AUTHORIZATIONTERMINATIONDATE1_V = #AUTHORIZATIONTERMINATIONDATE1_V#,QUANTITY_2_V = #QUANTITY_2_V#,YEAR2_V = #YEAR2_V#,AUTHORIZATIONSTARTDATE2_V = #AUTHORIZATIONSTARTDATE2_V#,AUTHORIZETERMINATIONDATE2_V = #AUTHORIZETERMINATIONDATE2_V#,AMOUNTTAX1_V = #AMOUNTTAX1_V#,AMOUNTTAX2_V = #AMOUNTTAX2_V#,US_DOLLAR_PRICING_V = #US_DOLLAR_PRICING_V#,EXCHANGE_RATE_V = #EXCHANGE_RATE_V#,NT_PRICING_V = #NT_PRICING_V#,PRICE_NOT_TAX_V = #PRICE_NOT_TAX_V#,MARGIN_V = #MARGIN_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE WHERE SID = #SID#
+    </delete>
+
+    <statement id="getcustomer_purchaseBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="NO_ORDER_V">
+          NO_ORDER_V like #NO_ORDER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERDATE_V">
+          ORDERDATE_V like #ORDERDATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERTYPE_V">
+          ORDERTYPE_V like #ORDERTYPE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_V">
+          DEALER_V like #DEALER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERID_V">
+          CUSTOMERID_V like #CUSTOMERID_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMEEN_V">
+          CUSTOMERNAMEEN_V like #CUSTOMERNAMEEN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="WEBSITE_V">
+          WEBSITE_V like #WEBSITE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_ADDRESS_V">
+          CONTACT_ADDRESS_V like #CONTACT_ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESSENGLISH_V">
+          ADDRESSENGLISH_V like #ADDRESSENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_PHONE_V">
+          CONTACT_PHONE_V like #CONTACT_PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMER_CONTACT_V">
+          CUSTOMER_CONTACT_V like #CUSTOMER_CONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTENGLISH_V">
+          CONTACTENGLISH_V like #CONTACTENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT1_V">
+          ORDERPRODUCT1_V like #ORDERPRODUCT1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT2_V">
+          ORDERPRODUCT2_V like #ORDERPRODUCT2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_1_V">
+          QUANTITY_1_V like #QUANTITY_1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR1_V">
+          YEAR1_V like #YEAR1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONSTARTDATE1_V">
+          AUTHORIZATIONSTARTDATE1_V like #AUTHORIZATIONSTARTDATE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONTERMINATIONDATE1_V">
+          AUTHORIZATIONTERMINATIONDATE1_V like #AUTHORIZATIONTERMINATIONDATE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_2_V">
+          QUANTITY_2_V like #QUANTITY_2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR2_V">
+          YEAR2_V like #YEAR2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONSTARTDATE2_V">
+          AUTHORIZATIONSTARTDATE2_V like #AUTHORIZATIONSTARTDATE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZETERMINATIONDATE2_V">
+          AUTHORIZETERMINATIONDATE2_V like #AUTHORIZETERMINATIONDATE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AMOUNTTAX1_V">
+          AMOUNTTAX1_V like #AMOUNTTAX1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AMOUNTTAX2_V">
+          AMOUNTTAX2_V like #AMOUNTTAX2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="US_DOLLAR_PRICING_V">
+          US_DOLLAR_PRICING_V like #US_DOLLAR_PRICING_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EXCHANGE_RATE_V">
+          EXCHANGE_RATE_V like #EXCHANGE_RATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NT_PRICING_V">
+          NT_PRICING_V like #NT_PRICING_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRICE_NOT_TAX_V">
+          PRICE_NOT_TAX_V like #PRICE_NOT_TAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MARGIN_V">
+          MARGIN_V like #MARGIN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+ <statement id="getSequenceByDate" resultClass="Hashtable">
+ 	SELECT max(LAST_SEQUENCE_V) FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="TODAY_DATE_V">
+          ENTRY_DATE_V like #TODAY_DATE_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+   <select id="getcustomer_purchaseTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE
+   </select>
+
+    <statement id="getcustomer_purchaseEmail_vBy" resultClass="Hashtable" >
+      Select EMAIL_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getcustomer_purchaseWebsite_vBy" resultClass="Hashtable" >
+      Select WEBSITE_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getcustomer_purchaseCustomer_contact_vBy" resultClass="Hashtable" >
+      Select CUSTOMER_CONTACT_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getcustomer_purchaseContact_phone_vBy" resultClass="Hashtable" >
+      Select CONTACT_PHONE_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getcustomer_purchaseContact_address_vBy" resultClass="Hashtable" >
+      Select CONTACT_ADDRESS_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getcustomer_purchaseByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMCUSTOMER_PURCHASE
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="NO_ORDER_V">
+          NO_ORDER_V like #NO_ORDER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERDATE_V">
+          ORDERDATE_V like #ORDERDATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERTYPE_V">
+          ORDERTYPE_V like #ORDERTYPE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_V">
+          DEALER_V like #DEALER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERID_V">
+          CUSTOMERID_V like #CUSTOMERID_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAMEEN_V">
+          CUSTOMERNAMEEN_V like #CUSTOMERNAMEEN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="WEBSITE_V">
+          WEBSITE_V like #WEBSITE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_ADDRESS_V">
+          CONTACT_ADDRESS_V like #CONTACT_ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESSENGLISH_V">
+          ADDRESSENGLISH_V like #ADDRESSENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_PHONE_V">
+          CONTACT_PHONE_V like #CONTACT_PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMER_CONTACT_V">
+          CUSTOMER_CONTACT_V like #CUSTOMER_CONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACTENGLISH_V">
+          CONTACTENGLISH_V like #CONTACTENGLISH_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT1_V">
+          ORDERPRODUCT1_V like #ORDERPRODUCT1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERPRODUCT2_V">
+          ORDERPRODUCT2_V like #ORDERPRODUCT2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_1_V">
+          QUANTITY_1_V like #QUANTITY_1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR1_V">
+          YEAR1_V like #YEAR1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONSTARTDATE1_V">
+          AUTHORIZATIONSTARTDATE1_V like #AUTHORIZATIONSTARTDATE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONTERMINATIONDATE1_V">
+          AUTHORIZATIONTERMINATIONDATE1_V like #AUTHORIZATIONTERMINATIONDATE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY_2_V">
+          QUANTITY_2_V like #QUANTITY_2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="YEAR2_V">
+          YEAR2_V like #YEAR2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZATIONSTARTDATE2_V">
+          AUTHORIZATIONSTARTDATE2_V like #AUTHORIZATIONSTARTDATE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AUTHORIZETERMINATIONDATE2_V">
+          AUTHORIZETERMINATIONDATE2_V like #AUTHORIZETERMINATIONDATE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AMOUNTTAX1_V">
+          AMOUNTTAX1_V like #AMOUNTTAX1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="AMOUNTTAX2_V">
+          AMOUNTTAX2_V like #AMOUNTTAX2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="US_DOLLAR_PRICING_V">
+          US_DOLLAR_PRICING_V like #US_DOLLAR_PRICING_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EXCHANGE_RATE_V">
+          EXCHANGE_RATE_V like #EXCHANGE_RATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NT_PRICING_V">
+          NT_PRICING_V like #NT_PRICING_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRICE_NOT_TAX_V">
+          PRICE_NOT_TAX_V like #PRICE_NOT_TAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="MARGIN_V">
+          MARGIN_V like #MARGIN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

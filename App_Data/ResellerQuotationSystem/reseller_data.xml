@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.reseller_data" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createreseller_data">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_DATA (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `UNIFORM_NUMBERS_V` VARCHAR(200) NULL ,
+        `CUSTOMER_CONTACT_V` VARCHAR(200) NULL ,
+        `CONTACT_PHONE_V` VARCHAR(200) NULL ,
+        `FAX_NUMBER_V` VARCHAR(200) NULL ,
+        `CONTACT_ADDRESS_V` VARCHAR(200) NULL ,
+        `SHIPPING_ADDRESS_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `WEBSITE_V` VARCHAR(200) NULL ,
+        `ORDER_CUSTOMER_V` VARCHAR(200) NULL ,
+        `DEALER_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` INT ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createreseller_dataHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_DATAHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `DEALER_TW_V` VARCHAR(200) NULL ,
+        `UNIFORM_NUMBERS_V` VARCHAR(200) NULL ,
+        `CUSTOMER_CONTACT_V` VARCHAR(200) NULL ,
+        `CONTACT_PHONE_V` VARCHAR(200) NULL ,
+        `FAX_NUMBER_V` VARCHAR(200) NULL ,
+        `CONTACT_ADDRESS_V` VARCHAR(200) NULL ,
+        `SHIPPING_ADDRESS_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `WEBSITE_V` VARCHAR(200) NULL ,
+        `ORDER_CUSTOMER_V` VARCHAR(200) NULL ,
+        `DEALER_V` VARCHAR(200) NULL ,
+        `ENTRY_DATE_V` VARCHAR(200) NULL ,
+        `LAST_SEQUENCE_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_DATAHISTORY SELECT SID 
+ , AXTMODIFY , DEALER_TW_V , UNIFORM_NUMBERS_V , CUSTOMER_CONTACT_V , CONTACT_PHONE_V , FAX_NUMBER_V , CONTACT_ADDRESS_V , SHIPPING_ADDRESS_V , EMAIL_V , WEBSITE_V , ORDER_CUSTOMER_V , DEALER_V , ENTRY_DATE_V , LAST_SEQUENCE_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_DATAHISTORY SELECT SID 
+ , AXTMODIFY , DEALER_TW_V , UNIFORM_NUMBERS_V , CUSTOMER_CONTACT_V , CONTACT_PHONE_V , FAX_NUMBER_V , CONTACT_ADDRESS_V , SHIPPING_ADDRESS_V , EMAIL_V , WEBSITE_V , ORDER_CUSTOMER_V , DEALER_V , ENTRY_DATE_V , LAST_SEQUENCE_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE SID = #SID#
+    </statement>
+
+    <select id="getreseller_data" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMRESELLER_DATA LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <statement id="getCBXDEALER_TW_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </statement>
+    <select id="getCBXDEALER_TW_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_TW_V) AS DEALER_TW_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </select>
+
+    <statement id="getCBXORDER_CUSTOMER_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_TW_V as ORDER_CUSTOMER_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </statement>
+    <select id="getCBXORDER_CUSTOMER_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_TW_V) AS ORDER_CUSTOMER_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_TW_V != '' ORDER BY DEALER_TW_V
+    </select>
+    <statement id="getCBXDEALER_V_MAX_LEN" resultClass="Hashtable">
+     Select DEALER_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA_INPUT WHERE DEALER_V != '' ORDER BY DEALER_V
+    </statement>
+    <select id="getCBXDEALER_V" resultClass="Hashtable">
+     Select distinct CONCAT(DEALER_V) AS DEALER_V FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE DEALER_V != '' ORDER BY DEALER_V
+    </select>
+    
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMRESELLER_DATA(SID, AXTMODIFY, DEALER_TW_V, UNIFORM_NUMBERS_V, CUSTOMER_CONTACT_V, CONTACT_PHONE_V, FAX_NUMBER_V, CONTACT_ADDRESS_V, SHIPPING_ADDRESS_V, EMAIL_V, WEBSITE_V, ORDER_CUSTOMER_V, DEALER_V, ENTRY_DATE_V, LAST_SEQUENCE_V)
+      VALUES(#SID#, #AXTMODIFY#, #DEALER_TW_V#, #UNIFORM_NUMBERS_V#, #CUSTOMER_CONTACT_V#, #CONTACT_PHONE_V#, #FAX_NUMBER_V#, #CONTACT_ADDRESS_V#, #SHIPPING_ADDRESS_V#, #EMAIL_V#, #WEBSITE_V#, #ORDER_CUSTOMER_V#, #DEALER_V#, #ENTRY_DATE_V#, #LAST_SEQUENCE_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMRESELLER_DATA SET AXTMODIFY = #AXTMODIFY#,DEALER_TW_V = #DEALER_TW_V#,UNIFORM_NUMBERS_V = #UNIFORM_NUMBERS_V#,CUSTOMER_CONTACT_V = #CUSTOMER_CONTACT_V#,CONTACT_PHONE_V = #CONTACT_PHONE_V#,FAX_NUMBER_V = #FAX_NUMBER_V#,CONTACT_ADDRESS_V = #CONTACT_ADDRESS_V#,SHIPPING_ADDRESS_V = #SHIPPING_ADDRESS_V#,EMAIL_V = #EMAIL_V#,WEBSITE_V = #WEBSITE_V#,ORDER_CUSTOMER_V = #ORDER_CUSTOMER_V#,DEALER_V = #DEALER_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA WHERE SID = #SID#
+    </delete>
+
+    <statement id="getreseller_dataBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMRESELLER_DATA
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UNIFORM_NUMBERS_V">
+          UNIFORM_NUMBERS_V like #UNIFORM_NUMBERS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMER_CONTACT_V">
+          CUSTOMER_CONTACT_V like #CUSTOMER_CONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_PHONE_V">
+          CONTACT_PHONE_V like #CONTACT_PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="FAX_NUMBER_V">
+          FAX_NUMBER_V like #FAX_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_ADDRESS_V">
+          CONTACT_ADDRESS_V like #CONTACT_ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIPPING_ADDRESS_V">
+          SHIPPING_ADDRESS_V like #SHIPPING_ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="WEBSITE_V">
+          WEBSITE_V like #WEBSITE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDER_CUSTOMER_V">
+          ORDER_CUSTOMER_V like #ORDER_CUSTOMER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_V">
+          DEALER_V like #DEALER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+ <statement id="getSequenceByDate" resultClass="Hashtable">
+ 	SELECT max(LAST_SEQUENCE_V) FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="TODAY_DATE_V">
+          ENTRY_DATE_V like #TODAY_DATE_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+   <select id="getreseller_dataTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMRESELLER_DATA
+   </select>
+
+    <statement id="getreseller_dataContact_address_vBy" resultClass="Hashtable" >
+      Select CONTACT_ADDRESS_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataContact_phone_vBy" resultClass="Hashtable" >
+      Select CONTACT_PHONE_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataCustomer_contact_vBy" resultClass="Hashtable" >
+      Select CUSTOMER_CONTACT_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataEmail_vBy" resultClass="Hashtable" >
+      Select EMAIL_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataFax_number_vBy" resultClass="Hashtable" >
+      Select FAX_NUMBER_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataOrder_customer_vBy" resultClass="Hashtable" >
+      Select ORDER_CUSTOMER_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataShipping_address_vBy" resultClass="Hashtable" >
+      Select SHIPPING_ADDRESS_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataUniform_numbers_vBy" resultClass="Hashtable" >
+      Select UNIFORM_NUMBERS_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataWebsite_vBy" resultClass="Hashtable" >
+      Select WEBSITE_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <statement id="getreseller_dataDealer_vBy" resultClass="Hashtable" >
+      Select DEALER_V From RESELLERQUOTATIONSYSTEMRESELLER_DATA 
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          dealer_tw_v like #DEALER_TW_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+    
+    <statement id="getreseller_dataByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMRESELLER_DATA
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="DEALER_TW_V">
+          DEALER_TW_V like #DEALER_TW_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UNIFORM_NUMBERS_V">
+          UNIFORM_NUMBERS_V like #UNIFORM_NUMBERS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMER_CONTACT_V">
+          CUSTOMER_CONTACT_V like #CUSTOMER_CONTACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_PHONE_V">
+          CONTACT_PHONE_V like #CONTACT_PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="FAX_NUMBER_V">
+          FAX_NUMBER_V like #FAX_NUMBER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CONTACT_ADDRESS_V">
+          CONTACT_ADDRESS_V like #CONTACT_ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIPPING_ADDRESS_V">
+          SHIPPING_ADDRESS_V like #SHIPPING_ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="WEBSITE_V">
+          WEBSITE_V like #WEBSITE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDER_CUSTOMER_V">
+          ORDER_CUSTOMER_V like #ORDER_CUSTOMER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DEALER_V">
+          DEALER_V like #DEALER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ENTRY_DATE_V">
+          ENTRY_DATE_V like #ENTRY_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="LAST_SEQUENCE_V">
+          LAST_SEQUENCE_V like #LAST_SEQUENCE_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

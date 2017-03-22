@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.UserMaster" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createUserMaster">
+      CREATE TABLE IF NOT EXISTS SYSADMINUSERMASTER (
+        `SID` VARCHAR(100) NOT NULL ,
+        `USERID` VARCHAR(100) NULL ,
+        `USERNAME` VARCHAR(100) NULL ,
+        `DEPARTMENT` VARCHAR(100) NULL ,
+        `SHIFTNAME` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createUserMasterTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINUSERMASTERTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `USERID` VARCHAR(100) NULL ,
+        `USERNAME` VARCHAR(100) NULL ,
+        `DEPARTMENT` VARCHAR(100) NULL ,
+        `SHIFTNAME` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getUserMaster" resultClass="Hashtable">
+      Select * From SYSADMINUSERMASTER
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINUSERMASTER(SID, USERID, USERNAME, DEPARTMENT, SHIFTNAME)
+      VALUES(#SID#, #USERID#, #USERNAME#, #DEPARTMENT#, #SHIFTNAME#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINUSERMASTER SET USERID = #USERID#, USERNAME = #USERNAME#, DEPARTMENT = #DEPARTMENT#, SHIFTNAME = #SHIFTNAME# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINUSERMASTER
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINUSERMASTER WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

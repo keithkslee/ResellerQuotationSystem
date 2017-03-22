@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="Login" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <resultMaps>
+    
+    <resultMap id="UserInfoResultMap" class="Hashtable">
+      <result property="SYS_SHIFT_SID" column="SYS_SHIFT_SID" nullValue="0" />
+      <result property="ACCOUNT" column="ACCOUNT" />
+      <result property="PASSWORD" column="PASSWORD" />
+      <result property="USERNAME" column="USERNAME" />
+      <result property="DEPT" column="DEPT" />
+      <result property="TEL" column="TEL" />
+      <result property="MAIL" column="MAIL" />
+      <result property="HOMEPAGE" column="HOMEPAGE" />
+      <result property="TAG" column="TAG" />
+      <result property="UPDATEUSERID" column="UPDATEUSERID" />
+      <result property="UPDATETIME" column="UPDATETIME" type="DATETIME" dbType="TIMESTAMP" />
+    </resultMap>
+    
+  </resultMaps>
+  
+  <statements>
+
+    <select id="getUserByID" resultClass="Hashtable" resultMap="UserInfoResultMap">
+      SELECT * FROM axtmes_user_info WHERE ACCOUNT = #account#
+    </select>
+    
+  </statements>
+  
+</sqlMap>

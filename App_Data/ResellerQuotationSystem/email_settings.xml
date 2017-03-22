@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.email_settings" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createemail_settings">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `SENDERNAME_V` VARCHAR(200) NULL ,
+        `SENDEREMAIL_V` VARCHAR(200) NULL ,
+        `EMAILSERVER_V` VARCHAR(200) NULL ,
+        `SENDERACCOUNT_V` VARCHAR(200) NULL ,
+        `SENDERPASSWORD_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createemail_settingsHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMEMAIL_SETTINGSHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `SENDERNAME_V` VARCHAR(200) NULL ,
+        `SENDEREMAIL_V` VARCHAR(200) NULL ,
+        `EMAILSERVER_V` VARCHAR(200) NULL ,
+        `SENDERACCOUNT_V` VARCHAR(200) NULL ,
+        `SENDERPASSWORD_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMEMAIL_SETTINGSHISTORY SELECT SID 
+ , AXTMODIFY , SENDERNAME_V , SENDEREMAIL_V , EMAILSERVER_V , SENDERACCOUNT_V , SENDERPASSWORD_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMEMAIL_SETTINGSHISTORY SELECT SID 
+ , AXTMODIFY , SENDERNAME_V , SENDEREMAIL_V , EMAILSERVER_V , SENDERACCOUNT_V , SENDERPASSWORD_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS WHERE SID = #SID#
+    </statement>
+
+    <select id="getemail_settings" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS(SID, AXTMODIFY, SENDERNAME_V, SENDEREMAIL_V, EMAILSERVER_V, SENDERACCOUNT_V, SENDERPASSWORD_V)
+      VALUES(#SID#, #AXTMODIFY#, #SENDERNAME_V#, #SENDEREMAIL_V#, #EMAILSERVER_V#, #SENDERACCOUNT_V#, #SENDERPASSWORD_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS SET AXTMODIFY = #AXTMODIFY#,SENDERNAME_V = #SENDERNAME_V#,SENDEREMAIL_V = #SENDEREMAIL_V#,EMAILSERVER_V = #EMAILSERVER_V#,SENDERACCOUNT_V = #SENDERACCOUNT_V#,SENDERPASSWORD_V = #SENDERPASSWORD_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS WHERE SID = #SID#
+    </delete>
+
+    <statement id="getemail_settingsBy" resultClass="Hashtable" >
+      Select * From RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          SENDERNAME_V like #SENDERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDEREMAIL_V">
+          SENDEREMAIL_V like #SENDEREMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAILSERVER_V">
+          EMAILSERVER_V like #EMAILSERVER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDERACCOUNT_V">
+          SENDERACCOUNT_V like #SENDERACCOUNT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDERPASSWORD_V">
+          SENDERPASSWORD_V like #SENDERPASSWORD_V#
+        </isNotEmpty>
+      </dynamic>
+      LIMIT #START_V#, #LIMIT_V# 
+    </statement>
+
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getemail_settingsTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS
+   </select>
+
+    <statement id="getemail_settingsByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          SENDERNAME_V like #SENDERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDEREMAIL_V">
+          SENDEREMAIL_V like #SENDEREMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAILSERVER_V">
+          EMAILSERVER_V like #EMAILSERVER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDERACCOUNT_V">
+          SENDERACCOUNT_V like #SENDERACCOUNT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDERPASSWORD_V">
+          SENDERPASSWORD_V like #SENDERPASSWORD_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

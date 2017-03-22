@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SYS.Admin.ItemMaster" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createItemMaster">
+      CREATE TABLE IF NOT EXISTS SYSADMINITEMMASTER (
+        `SID` VARCHAR(100) NOT NULL ,
+        `CLASS` VARCHAR(100) NULL ,
+        `ITEM` VARCHAR(100) NULL ,
+        `VALUE` VARCHAR(100) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createItemMasterTmp">
+      CREATE TABLE IF NOT EXISTS SYSADMINITEMMASTERTMP (
+        `SID` VARCHAR(100) NOT NULL ,
+        `CLASS` VARCHAR(100) NULL ,
+        `ITEM` VARCHAR(100) NULL ,
+        `VALUE` VARCHAR(100) NULL ,
+        `MODIFYUSER` VARCHAR(100) NULL,
+        `ACTION` VARCHAR(100) NULL
+      )
+    </statement>
+
+    <select id="getItemMaster" resultClass="Hashtable">
+      Select * From SYSADMINITEMMASTER
+    </select>
+
+    <insert id="addData">
+      INSERT INTO SYSADMINITEMMASTER(SID, CLASS, ITEM, VALUE)
+      VALUES(#SID#, #CLASS#, #ITEM#, #VALUE#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE SYSADMINITEMMASTER SET CLASS = #CLASS#, ITEM = #ITEM#, VALUE = #VALUE# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM SYSADMINITEMMASTER
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM SYSADMINITEMMASTER WHERE SID = #SID#
+    </delete>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>

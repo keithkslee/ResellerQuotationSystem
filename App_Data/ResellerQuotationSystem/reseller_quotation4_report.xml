@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ResellerQuotationSystem.reseller_quotation4_report" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <statements>
+
+    <statement id="createreseller_quotation4_report">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORT (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `RESELLERNAME_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `UNIFIEDNUMBERING_V` VARCHAR(200) NULL ,
+        `QUOTE_DATE_V` VARCHAR(200) NULL ,
+        `COMPACT_V` VARCHAR(200) NULL ,
+        `SHIP_DATE_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `PAYMENT_CONDITIONS_V` VARCHAR(200) NULL ,
+        `PHONE_V` VARCHAR(200) NULL ,
+        `FAX_V` VARCHAR(200) NULL ,
+        `ADDRESS_V` VARCHAR(200) NULL ,
+        `DELIVERYADDRESS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `ORDERTYPE_V` VARCHAR(200) NULL ,
+        `OFFERORS_V` VARCHAR(200) NULL ,
+        `ITEM1_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME1_V` VARCHAR(200) NULL ,
+        `SPECIFICATION1_V` VARCHAR(200) NULL ,
+        `QUANTITY1_V` VARCHAR(200) NULL ,
+        `ONEYEARVALUE1_V` VARCHAR(200) NULL ,
+        `ONEYEARSALE1_V` VARCHAR(200) NULL ,
+        `ONE_YEAR_PRICE1_V` VARCHAR(200) NULL ,
+        `ONEYEARBESTPRICE1_V` VARCHAR(200) NULL ,
+        `THREEYEARVALUE1_V` VARCHAR(200) NULL ,
+        `THREEYEARSALE1_V` VARCHAR(200) NULL ,
+        `THREE_YEAR_PRICE1_V` VARCHAR(200) NULL ,
+        `THREEYEARBESTPRICE1_V` VARCHAR(200) NULL ,
+        `ITEM2_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME2_V` VARCHAR(200) NULL ,
+        `SPECIFICATION2_V` VARCHAR(200) NULL ,
+        `QUANTITY2_V` VARCHAR(200) NULL ,
+        `ONEYEARVALUE2_V` VARCHAR(200) NULL ,
+        `ONEYEARSALE2_V` VARCHAR(200) NULL ,
+        `ONE_YEAR_PRICE2_V` VARCHAR(200) NULL ,
+        `ONEYEARBESTPRICE2_V` VARCHAR(200) NULL ,
+        `THREEYEARVALUE2_V` VARCHAR(200) NULL ,
+        `THREEYEARSALE2_V` VARCHAR(200) NULL ,
+        `THREE_YEAR_PRICE2_V` VARCHAR(200) NULL ,
+        `THREEYEARBESTPRICE2_V` VARCHAR(200) NULL ,
+        `ITEM3_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME3_V` VARCHAR(200) NULL ,
+        `SPECIFICATION3_V` VARCHAR(200) NULL ,
+        `QUANTITY3_V` VARCHAR(200) NULL ,
+        `ONEYEARVALUE3_V` VARCHAR(200) NULL ,
+        `ONEYEARSALE3_V` VARCHAR(200) NULL ,
+        `ONE_YEAR_PRICE3_V` VARCHAR(200) NULL ,
+        `ONEYEARBESTPRICE3_V` VARCHAR(200) NULL ,
+        `THREEYEARVALUE3_V` VARCHAR(200) NULL ,
+        `THREEYEARSALE3_V` VARCHAR(200) NULL ,
+        `THREE_YEAR_PRICE3_V` VARCHAR(200) NULL ,
+        `THREEYEARBESTPRICE3_V` VARCHAR(200) NULL ,
+        `NOAMOUNTTAXVALUEYEAR_V` VARCHAR(200) NULL ,
+        `NO_AMOUNT_TAX_YEAR_V` VARCHAR(200) NULL ,
+        `NOAMOUNTTAXVALUETRIENNIAL_V` VARCHAR(200) NULL ,
+        `NO_TAX_AMOUNT_TRIENNIAL_V` VARCHAR(200) NULL ,
+        `ONEYEARSALESTAXVALUE_V` VARCHAR(200) NULL ,
+        `ONE_YEAR_SALES_TAX_V` VARCHAR(200) NULL ,
+        `THREEYEARSALESTAXVALUE_V` VARCHAR(200) NULL ,
+        `THREE_YEAR_SALES_TAX_V` VARCHAR(200) NULL ,
+        `TOTALVALUEYEAR_V` VARCHAR(200) NULL ,
+        `TOTAL_YEAR_V` VARCHAR(200) NULL ,
+        `TOTALTHREEYEARVALUEPERIOD_V` VARCHAR(200) NULL ,
+        `TOTAL_THREE_YEAR_PERIOD_V` VARCHAR(200) NULL ,
+        `NOTE_V` VARCHAR(200) NULL ,
+        `HEAD_V` VARCHAR(200) NULL ,
+        `SALES_MANAGER_V` VARCHAR(200) NULL ,
+        `ATTN_V` VARCHAR(200) NULL ,
+        `CUSTOMERS_SIGN_V` VARCHAR(200) NULL ,
+        `REPORTTITLE_V` VARCHAR(200) NULL ,
+        `REPORTNAME_V` VARCHAR(200) NULL ,
+        PRIMARY KEY (`SID`)
+      )
+    </statement>
+
+    <statement id="createreseller_quotation4_reportHistory">
+      CREATE TABLE IF NOT EXISTS RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORTHISTORY (
+        `SID` VARCHAR(200) NOT NULL ,
+        `AXTMODIFY` VARCHAR(200) NULL ,
+        `RESELLERNAME_V` VARCHAR(200) NULL ,
+        `QUOTATIONNO_V` VARCHAR(200) NULL ,
+        `UNIFIEDNUMBERING_V` VARCHAR(200) NULL ,
+        `QUOTE_DATE_V` VARCHAR(200) NULL ,
+        `COMPACT_V` VARCHAR(200) NULL ,
+        `SHIP_DATE_V` VARCHAR(200) NULL ,
+        `EMAIL_V` VARCHAR(200) NULL ,
+        `PAYMENT_CONDITIONS_V` VARCHAR(200) NULL ,
+        `PHONE_V` VARCHAR(200) NULL ,
+        `FAX_V` VARCHAR(200) NULL ,
+        `ADDRESS_V` VARCHAR(200) NULL ,
+        `DELIVERYADDRESS_V` VARCHAR(200) NULL ,
+        `CUSTOMERNAME_V` VARCHAR(200) NULL ,
+        `COMPETITIVEBRANDS_V` VARCHAR(200) NULL ,
+        `ORDERTYPE_V` VARCHAR(200) NULL ,
+        `OFFERORS_V` VARCHAR(200) NULL ,
+        `ITEM1_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME1_V` VARCHAR(200) NULL ,
+        `SPECIFICATION1_V` VARCHAR(200) NULL ,
+        `QUANTITY1_V` VARCHAR(200) NULL ,
+        `ONEYEARVALUE1_V` VARCHAR(200) NULL ,
+        `ONEYEARSALE1_V` VARCHAR(200) NULL ,
+        `ONE_YEAR_PRICE1_V` VARCHAR(200) NULL ,
+        `ONEYEARBESTPRICE1_V` VARCHAR(200) NULL ,
+        `THREEYEARVALUE1_V` VARCHAR(200) NULL ,
+        `THREEYEARSALE1_V` VARCHAR(200) NULL ,
+        `THREE_YEAR_PRICE1_V` VARCHAR(200) NULL ,
+        `THREEYEARBESTPRICE1_V` VARCHAR(200) NULL ,
+        `ITEM2_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME2_V` VARCHAR(200) NULL ,
+        `SPECIFICATION2_V` VARCHAR(200) NULL ,
+        `QUANTITY2_V` VARCHAR(200) NULL ,
+        `ONEYEARVALUE2_V` VARCHAR(200) NULL ,
+        `ONEYEARSALE2_V` VARCHAR(200) NULL ,
+        `ONE_YEAR_PRICE2_V` VARCHAR(200) NULL ,
+        `ONEYEARBESTPRICE2_V` VARCHAR(200) NULL ,
+        `THREEYEARVALUE2_V` VARCHAR(200) NULL ,
+        `THREEYEARSALE2_V` VARCHAR(200) NULL ,
+        `THREE_YEAR_PRICE2_V` VARCHAR(200) NULL ,
+        `THREEYEARBESTPRICE2_V` VARCHAR(200) NULL ,
+        `ITEM3_V` VARCHAR(200) NULL ,
+        `PRODUCT_NAME3_V` VARCHAR(200) NULL ,
+        `SPECIFICATION3_V` VARCHAR(200) NULL ,
+        `QUANTITY3_V` VARCHAR(200) NULL ,
+        `ONEYEARVALUE3_V` VARCHAR(200) NULL ,
+        `ONEYEARSALE3_V` VARCHAR(200) NULL ,
+        `ONE_YEAR_PRICE3_V` VARCHAR(200) NULL ,
+        `ONEYEARBESTPRICE3_V` VARCHAR(200) NULL ,
+        `THREEYEARVALUE3_V` VARCHAR(200) NULL ,
+        `THREEYEARSALE3_V` VARCHAR(200) NULL ,
+        `THREE_YEAR_PRICE3_V` VARCHAR(200) NULL ,
+        `THREEYEARBESTPRICE3_V` VARCHAR(200) NULL ,
+        `NOAMOUNTTAXVALUEYEAR_V` VARCHAR(200) NULL ,
+        `NO_AMOUNT_TAX_YEAR_V` VARCHAR(200) NULL ,
+        `NOAMOUNTTAXVALUETRIENNIAL_V` VARCHAR(200) NULL ,
+        `NO_TAX_AMOUNT_TRIENNIAL_V` VARCHAR(200) NULL ,
+        `ONEYEARSALESTAXVALUE_V` VARCHAR(200) NULL ,
+        `ONE_YEAR_SALES_TAX_V` VARCHAR(200) NULL ,
+        `THREEYEARSALESTAXVALUE_V` VARCHAR(200) NULL ,
+        `THREE_YEAR_SALES_TAX_V` VARCHAR(200) NULL ,
+        `TOTALVALUEYEAR_V` VARCHAR(200) NULL ,
+        `TOTAL_YEAR_V` VARCHAR(200) NULL ,
+        `TOTALTHREEYEARVALUEPERIOD_V` VARCHAR(200) NULL ,
+        `TOTAL_THREE_YEAR_PERIOD_V` VARCHAR(200) NULL ,
+        `NOTE_V` VARCHAR(200) NULL ,
+        `HEAD_V` VARCHAR(200) NULL ,
+        `SALES_MANAGER_V` VARCHAR(200) NULL ,
+        `ATTN_V` VARCHAR(200) NULL ,
+        `CUSTOMERS_SIGN_V` VARCHAR(200) NULL ,
+        `REPORTTITLE_V` VARCHAR(200) NULL ,
+        `REPORTNAME_V` VARCHAR(200) NULL ,
+        `MODIFYUSER` VARCHAR(200) NULL ,
+        `ACTION` VARCHAR(200) NULL, 
+        `UPDATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )
+    </statement>
+
+    <statement id="updateDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORTHISTORY SELECT SID 
+ , AXTMODIFY , RESELLERNAME_V , QUOTATIONNO_V , UNIFIEDNUMBERING_V , QUOTE_DATE_V , COMPACT_V , SHIP_DATE_V , EMAIL_V , PAYMENT_CONDITIONS_V , PHONE_V , FAX_V , ADDRESS_V , DELIVERYADDRESS_V , CUSTOMERNAME_V , COMPETITIVEBRANDS_V , ORDERTYPE_V , OFFERORS_V , ITEM1_V , PRODUCT_NAME1_V , SPECIFICATION1_V , QUANTITY1_V , ONEYEARVALUE1_V , ONEYEARSALE1_V , ONE_YEAR_PRICE1_V , ONEYEARBESTPRICE1_V , THREEYEARVALUE1_V , THREEYEARSALE1_V , THREE_YEAR_PRICE1_V , THREEYEARBESTPRICE1_V , ITEM2_V , PRODUCT_NAME2_V , SPECIFICATION2_V , QUANTITY2_V , ONEYEARVALUE2_V , ONEYEARSALE2_V , ONE_YEAR_PRICE2_V , ONEYEARBESTPRICE2_V , THREEYEARVALUE2_V , THREEYEARSALE2_V , THREE_YEAR_PRICE2_V , THREEYEARBESTPRICE2_V , ITEM3_V , PRODUCT_NAME3_V , SPECIFICATION3_V , QUANTITY3_V , ONEYEARVALUE3_V , ONEYEARSALE3_V , ONE_YEAR_PRICE3_V , ONEYEARBESTPRICE3_V , THREEYEARVALUE3_V , THREEYEARSALE3_V , THREE_YEAR_PRICE3_V , THREEYEARBESTPRICE3_V , NOAMOUNTTAXVALUEYEAR_V , NO_AMOUNT_TAX_YEAR_V , NOAMOUNTTAXVALUETRIENNIAL_V , NO_TAX_AMOUNT_TRIENNIAL_V , ONEYEARSALESTAXVALUE_V , ONE_YEAR_SALES_TAX_V , THREEYEARSALESTAXVALUE_V , THREE_YEAR_SALES_TAX_V , TOTALVALUEYEAR_V , TOTAL_YEAR_V , TOTALTHREEYEARVALUEPERIOD_V , TOTAL_THREE_YEAR_PERIOD_V , NOTE_V , HEAD_V , SALES_MANAGER_V , ATTN_V , CUSTOMERS_SIGN_V , REPORTTITLE_V , REPORTNAME_V, '$USERID$', 'UPDATE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORT WHERE SID = #SID#
+    </statement>
+
+    <statement id="deleteDataHistory">
+        INSERT RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORTHISTORY SELECT SID 
+ , AXTMODIFY , RESELLERNAME_V , QUOTATIONNO_V , UNIFIEDNUMBERING_V , QUOTE_DATE_V , COMPACT_V , SHIP_DATE_V , EMAIL_V , PAYMENT_CONDITIONS_V , PHONE_V , FAX_V , ADDRESS_V , DELIVERYADDRESS_V , CUSTOMERNAME_V , COMPETITIVEBRANDS_V , ORDERTYPE_V , OFFERORS_V , ITEM1_V , PRODUCT_NAME1_V , SPECIFICATION1_V , QUANTITY1_V , ONEYEARVALUE1_V , ONEYEARSALE1_V , ONE_YEAR_PRICE1_V , ONEYEARBESTPRICE1_V , THREEYEARVALUE1_V , THREEYEARSALE1_V , THREE_YEAR_PRICE1_V , THREEYEARBESTPRICE1_V , ITEM2_V , PRODUCT_NAME2_V , SPECIFICATION2_V , QUANTITY2_V , ONEYEARVALUE2_V , ONEYEARSALE2_V , ONE_YEAR_PRICE2_V , ONEYEARBESTPRICE2_V , THREEYEARVALUE2_V , THREEYEARSALE2_V , THREE_YEAR_PRICE2_V , THREEYEARBESTPRICE2_V , ITEM3_V , PRODUCT_NAME3_V , SPECIFICATION3_V , QUANTITY3_V , ONEYEARVALUE3_V , ONEYEARSALE3_V , ONE_YEAR_PRICE3_V , ONEYEARBESTPRICE3_V , THREEYEARVALUE3_V , THREEYEARSALE3_V , THREE_YEAR_PRICE3_V , THREEYEARBESTPRICE3_V , NOAMOUNTTAXVALUEYEAR_V , NO_AMOUNT_TAX_YEAR_V , NOAMOUNTTAXVALUETRIENNIAL_V , NO_TAX_AMOUNT_TRIENNIAL_V , ONEYEARSALESTAXVALUE_V , ONE_YEAR_SALES_TAX_V , THREEYEARSALESTAXVALUE_V , THREE_YEAR_SALES_TAX_V , TOTALVALUEYEAR_V , TOTAL_YEAR_V , TOTALTHREEYEARVALUEPERIOD_V , TOTAL_THREE_YEAR_PERIOD_V , NOTE_V , HEAD_V , SALES_MANAGER_V , ATTN_V , CUSTOMERS_SIGN_V , REPORTTITLE_V , REPORTNAME_V, '$USERID$', 'DELETE', NOW() FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORT WHERE SID = #SID#
+    </statement>
+
+    <select id="getreseller_quotation4_report" resultClass="Hashtable">
+      Select * From RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORT LIMIT #START_V# , #LIMIT_V#
+    </select>
+
+    <insert id="addData">
+      INSERT INTO RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORT(SID, AXTMODIFY, RESELLERNAME_V, QUOTATIONNO_V, UNIFIEDNUMBERING_V, QUOTE_DATE_V, COMPACT_V, SHIP_DATE_V, EMAIL_V, PAYMENT_CONDITIONS_V, PHONE_V, FAX_V, ADDRESS_V, DELIVERYADDRESS_V, CUSTOMERNAME_V, COMPETITIVEBRANDS_V, ORDERTYPE_V, OFFERORS_V, ITEM1_V, PRODUCT_NAME1_V, SPECIFICATION1_V, QUANTITY1_V, ONEYEARVALUE1_V, ONEYEARSALE1_V, ONE_YEAR_PRICE1_V, ONEYEARBESTPRICE1_V, THREEYEARVALUE1_V, THREEYEARSALE1_V, THREE_YEAR_PRICE1_V, THREEYEARBESTPRICE1_V, ITEM2_V, PRODUCT_NAME2_V, SPECIFICATION2_V, QUANTITY2_V, ONEYEARVALUE2_V, ONEYEARSALE2_V, ONE_YEAR_PRICE2_V, ONEYEARBESTPRICE2_V, THREEYEARVALUE2_V, THREEYEARSALE2_V, THREE_YEAR_PRICE2_V, THREEYEARBESTPRICE2_V, ITEM3_V, PRODUCT_NAME3_V, SPECIFICATION3_V, QUANTITY3_V, ONEYEARVALUE3_V, ONEYEARSALE3_V, ONE_YEAR_PRICE3_V, ONEYEARBESTPRICE3_V, THREEYEARVALUE3_V, THREEYEARSALE3_V, THREE_YEAR_PRICE3_V, THREEYEARBESTPRICE3_V, NOAMOUNTTAXVALUEYEAR_V, NO_AMOUNT_TAX_YEAR_V, NOAMOUNTTAXVALUETRIENNIAL_V, NO_TAX_AMOUNT_TRIENNIAL_V, ONEYEARSALESTAXVALUE_V, ONE_YEAR_SALES_TAX_V, THREEYEARSALESTAXVALUE_V, THREE_YEAR_SALES_TAX_V, TOTALVALUEYEAR_V, TOTAL_YEAR_V, TOTALTHREEYEARVALUEPERIOD_V, TOTAL_THREE_YEAR_PERIOD_V, NOTE_V, HEAD_V, SALES_MANAGER_V, ATTN_V, CUSTOMERS_SIGN_V, REPORTTITLE_V, REPORTNAME_V)
+      VALUES(#SID#, #AXTMODIFY#, #RESELLERNAME_V#, #QUOTATIONNO_V#, #UNIFIEDNUMBERING_V#, #QUOTE_DATE_V#, #COMPACT_V#, #SHIP_DATE_V#, #EMAIL_V#, #PAYMENT_CONDITIONS_V#, #PHONE_V#, #FAX_V#, #ADDRESS_V#, #DELIVERYADDRESS_V#, #CUSTOMERNAME_V#, #COMPETITIVEBRANDS_V#, #ORDERTYPE_V#, #OFFERORS_V#, #ITEM1_V#, #PRODUCT_NAME1_V#, #SPECIFICATION1_V#, #QUANTITY1_V#, #ONEYEARVALUE1_V#, #ONEYEARSALE1_V#, #ONE_YEAR_PRICE1_V#, #ONEYEARBESTPRICE1_V#, #THREEYEARVALUE1_V#, #THREEYEARSALE1_V#, #THREE_YEAR_PRICE1_V#, #THREEYEARBESTPRICE1_V#, #ITEM2_V#, #PRODUCT_NAME2_V#, #SPECIFICATION2_V#, #QUANTITY2_V#, #ONEYEARVALUE2_V#, #ONEYEARSALE2_V#, #ONE_YEAR_PRICE2_V#, #ONEYEARBESTPRICE2_V#, #THREEYEARVALUE2_V#, #THREEYEARSALE2_V#, #THREE_YEAR_PRICE2_V#, #THREEYEARBESTPRICE2_V#, #ITEM3_V#, #PRODUCT_NAME3_V#, #SPECIFICATION3_V#, #QUANTITY3_V#, #ONEYEARVALUE3_V#, #ONEYEARSALE3_V#, #ONE_YEAR_PRICE3_V#, #ONEYEARBESTPRICE3_V#, #THREEYEARVALUE3_V#, #THREEYEARSALE3_V#, #THREE_YEAR_PRICE3_V#, #THREEYEARBESTPRICE3_V#, #NOAMOUNTTAXVALUEYEAR_V#, #NO_AMOUNT_TAX_YEAR_V#, #NOAMOUNTTAXVALUETRIENNIAL_V#, #NO_TAX_AMOUNT_TRIENNIAL_V#, #ONEYEARSALESTAXVALUE_V#, #ONE_YEAR_SALES_TAX_V#, #THREEYEARSALESTAXVALUE_V#, #THREE_YEAR_SALES_TAX_V#, #TOTALVALUEYEAR_V#, #TOTAL_YEAR_V#, #TOTALTHREEYEARVALUEPERIOD_V#, #TOTAL_THREE_YEAR_PERIOD_V#, #NOTE_V#, #HEAD_V#, #SALES_MANAGER_V#, #ATTN_V#, #CUSTOMERS_SIGN_V#, #REPORTTITLE_V#, #REPORTNAME_V#)
+    </insert>
+
+    <update id="updateData">
+      UPDATE RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORT SET AXTMODIFY = #AXTMODIFY#,RESELLERNAME_V = #RESELLERNAME_V#,QUOTATIONNO_V = #QUOTATIONNO_V#,UNIFIEDNUMBERING_V = #UNIFIEDNUMBERING_V#,QUOTE_DATE_V = #QUOTE_DATE_V#,COMPACT_V = #COMPACT_V#,SHIP_DATE_V = #SHIP_DATE_V#,EMAIL_V = #EMAIL_V#,PAYMENT_CONDITIONS_V = #PAYMENT_CONDITIONS_V#,PHONE_V = #PHONE_V#,FAX_V = #FAX_V#,ADDRESS_V = #ADDRESS_V#,DELIVERYADDRESS_V = #DELIVERYADDRESS_V#,CUSTOMERNAME_V = #CUSTOMERNAME_V#,COMPETITIVEBRANDS_V = #COMPETITIVEBRANDS_V#,ORDERTYPE_V = #ORDERTYPE_V#,OFFERORS_V = #OFFERORS_V#,ITEM1_V = #ITEM1_V#,PRODUCT_NAME1_V = #PRODUCT_NAME1_V#,SPECIFICATION1_V = #SPECIFICATION1_V#,QUANTITY1_V = #QUANTITY1_V#,ONEYEARVALUE1_V = #ONEYEARVALUE1_V#,ONEYEARSALE1_V = #ONEYEARSALE1_V#,ONE_YEAR_PRICE1_V = #ONE_YEAR_PRICE1_V#,ONEYEARBESTPRICE1_V = #ONEYEARBESTPRICE1_V#,THREEYEARVALUE1_V = #THREEYEARVALUE1_V#,THREEYEARSALE1_V = #THREEYEARSALE1_V#,THREE_YEAR_PRICE1_V = #THREE_YEAR_PRICE1_V#,THREEYEARBESTPRICE1_V = #THREEYEARBESTPRICE1_V#,ITEM2_V = #ITEM2_V#,PRODUCT_NAME2_V = #PRODUCT_NAME2_V#,SPECIFICATION2_V = #SPECIFICATION2_V#,QUANTITY2_V = #QUANTITY2_V#,ONEYEARVALUE2_V = #ONEYEARVALUE2_V#,ONEYEARSALE2_V = #ONEYEARSALE2_V#,ONE_YEAR_PRICE2_V = #ONE_YEAR_PRICE2_V#,ONEYEARBESTPRICE2_V = #ONEYEARBESTPRICE2_V#,THREEYEARVALUE2_V = #THREEYEARVALUE2_V#,THREEYEARSALE2_V = #THREEYEARSALE2_V#,THREE_YEAR_PRICE2_V = #THREE_YEAR_PRICE2_V#,THREEYEARBESTPRICE2_V = #THREEYEARBESTPRICE2_V#,ITEM3_V = #ITEM3_V#,PRODUCT_NAME3_V = #PRODUCT_NAME3_V#,SPECIFICATION3_V = #SPECIFICATION3_V#,QUANTITY3_V = #QUANTITY3_V#,ONEYEARVALUE3_V = #ONEYEARVALUE3_V#,ONEYEARSALE3_V = #ONEYEARSALE3_V#,ONE_YEAR_PRICE3_V = #ONE_YEAR_PRICE3_V#,ONEYEARBESTPRICE3_V = #ONEYEARBESTPRICE3_V#,THREEYEARVALUE3_V = #THREEYEARVALUE3_V#,THREEYEARSALE3_V = #THREEYEARSALE3_V#,THREE_YEAR_PRICE3_V = #THREE_YEAR_PRICE3_V#,THREEYEARBESTPRICE3_V = #THREEYEARBESTPRICE3_V#,NOAMOUNTTAXVALUEYEAR_V = #NOAMOUNTTAXVALUEYEAR_V#,NO_AMOUNT_TAX_YEAR_V = #NO_AMOUNT_TAX_YEAR_V#,NOAMOUNTTAXVALUETRIENNIAL_V = #NOAMOUNTTAXVALUETRIENNIAL_V#,NO_TAX_AMOUNT_TRIENNIAL_V = #NO_TAX_AMOUNT_TRIENNIAL_V#,ONEYEARSALESTAXVALUE_V = #ONEYEARSALESTAXVALUE_V#,ONE_YEAR_SALES_TAX_V = #ONE_YEAR_SALES_TAX_V#,THREEYEARSALESTAXVALUE_V = #THREEYEARSALESTAXVALUE_V#,THREE_YEAR_SALES_TAX_V = #THREE_YEAR_SALES_TAX_V#,TOTALVALUEYEAR_V = #TOTALVALUEYEAR_V#,TOTAL_YEAR_V = #TOTAL_YEAR_V#,TOTALTHREEYEARVALUEPERIOD_V = #TOTALTHREEYEARVALUEPERIOD_V#,TOTAL_THREE_YEAR_PERIOD_V = #TOTAL_THREE_YEAR_PERIOD_V#,NOTE_V = #NOTE_V#,HEAD_V = #HEAD_V#,SALES_MANAGER_V = #SALES_MANAGER_V#,ATTN_V = #ATTN_V#,CUSTOMERS_SIGN_V = #CUSTOMERS_SIGN_V#,REPORTTITLE_V = #REPORTTITLE_V#,REPORTNAME_V = #REPORTNAME_V# WHERE SID = #SID#
+    </update>
+
+    <delete id="deleteAll">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4
+    </delete>
+
+    <delete id="deleteData">
+      DELETE FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4 WHERE SID = #SID#
+    </delete>
+
+    <statement id="getreseller_quotation4_reportBy" resultClass="Hashtable" >
+      SELECT  SID, AXTMODIFY ,RESELLERNAME_V ,QUOTATIONNO_V ,UNIFIEDNUMBERING_V ,QUOTE_DATE_V ,COMPACT_V ,SHIP_DATE_V ,EMAIL_V ,PAYMENT_CONDITIONS_V ,PHONE_V ,FAX_V ,ADDRESS_V ,DELIVERYADDRESS_V ,CUSTOMERNAME_V ,COMPETITIVEBRANDS_V ,ORDERTYPE_V ,OFFERORS_V ,ITEM1_V ,PRODUCT_NAME1_V ,SPECIFICATION1_V ,QUANTITY1_V ,ONEYEARVALUE1_V ,ONEYEARSALE1_V ,ONE_YEAR_PRICE1_V ,ONEYEARBESTPRICE1_V ,THREEYEARVALUE1_V ,THREEYEARSALE1_V ,THREE_YEAR_PRICE1_V ,THREEYEARBESTPRICE1_V ,ITEM2_V ,PRODUCT_NAME2_V ,SPECIFICATION2_V ,QUANTITY2_V ,ONEYEARVALUE2_V ,ONEYEARSALE2_V ,ONE_YEAR_PRICE2_V ,ONEYEARBESTPRICE2_V ,THREEYEARVALUE2_V ,THREEYEARSALE2_V ,THREE_YEAR_PRICE2_V ,THREEYEARBESTPRICE2_V ,ITEM3_V ,PRODUCT_NAME3_V ,SPECIFICATION3_V ,QUANTITY3_V ,ONEYEARVALUE3_V ,ONEYEARSALE3_V ,ONE_YEAR_PRICE3_V ,ONEYEARBESTPRICE3_V ,THREEYEARVALUE3_V ,THREEYEARSALE3_V ,THREE_YEAR_PRICE3_V ,THREEYEARBESTPRICE3_V ,NOAMOUNTTAXVALUEYEAR_V ,NO_AMOUNT_TAX_YEAR_V ,NOAMOUNTTAXVALUETRIENNIAL_V ,NO_TAX_AMOUNT_TRIENNIAL_V ,ONEYEARSALESTAXVALUE_V ,ONE_YEAR_SALES_TAX_V ,THREEYEARSALESTAXVALUE_V ,THREE_YEAR_SALES_TAX_V ,TOTALVALUEYEAR_V ,TOTAL_YEAR_V ,TOTALTHREEYEARVALUEPERIOD_V ,TOTAL_THREE_YEAR_PERIOD_V ,NOTE_V ,HEAD_V ,SALES_MANAGER_V ,ATTN_V ,CUSTOMERS_SIGN_V ,REPORTTITLE_V FROM  RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="RESELLERNAME_V">
+          RESELLERNAME_V like #RESELLERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UNIFIEDNUMBERING_V">
+          UNIFIEDNUMBERING_V like #UNIFIEDNUMBERING_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTE_DATE_V">
+          QUOTE_DATE_V like #QUOTE_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPACT_V">
+          COMPACT_V like #COMPACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIP_DATE_V">
+          SHIP_DATE_V like #SHIP_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PAYMENT_CONDITIONS_V">
+          PAYMENT_CONDITIONS_V like #PAYMENT_CONDITIONS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PHONE_V">
+          PHONE_V like #PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="FAX_V">
+          FAX_V like #FAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESS_V">
+          ADDRESS_V like #ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DELIVERYADDRESS_V">
+          DELIVERYADDRESS_V like #DELIVERYADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERTYPE_V">
+          ORDERTYPE_V like #ORDERTYPE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="OFFERORS_V">
+          OFFERORS_V like #OFFERORS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM1_V">
+          ITEM1_V like #ITEM1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME1_V">
+          PRODUCT_NAME1_V like #PRODUCT_NAME1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION1_V">
+          SPECIFICATION1_V like #SPECIFICATION1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY1_V">
+          QUANTITY1_V like #QUANTITY1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARVALUE1_V">
+          ONEYEARVALUE1_V like #ONEYEARVALUE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARSALE1_V">
+          ONEYEARSALE1_V like #ONEYEARSALE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONE_YEAR_PRICE1_V">
+          ONE_YEAR_PRICE1_V like #ONE_YEAR_PRICE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARBESTPRICE1_V">
+          ONEYEARBESTPRICE1_V like #ONEYEARBESTPRICE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARVALUE1_V">
+          THREEYEARVALUE1_V like #THREEYEARVALUE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARSALE1_V">
+          THREEYEARSALE1_V like #THREEYEARSALE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREE_YEAR_PRICE1_V">
+          THREE_YEAR_PRICE1_V like #THREE_YEAR_PRICE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARBESTPRICE1_V">
+          THREEYEARBESTPRICE1_V like #THREEYEARBESTPRICE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM2_V">
+          ITEM2_V like #ITEM2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME2_V">
+          PRODUCT_NAME2_V like #PRODUCT_NAME2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION2_V">
+          SPECIFICATION2_V like #SPECIFICATION2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY2_V">
+          QUANTITY2_V like #QUANTITY2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARVALUE2_V">
+          ONEYEARVALUE2_V like #ONEYEARVALUE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARSALE2_V">
+          ONEYEARSALE2_V like #ONEYEARSALE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONE_YEAR_PRICE2_V">
+          ONE_YEAR_PRICE2_V like #ONE_YEAR_PRICE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARBESTPRICE2_V">
+          ONEYEARBESTPRICE2_V like #ONEYEARBESTPRICE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARVALUE2_V">
+          THREEYEARVALUE2_V like #THREEYEARVALUE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARSALE2_V">
+          THREEYEARSALE2_V like #THREEYEARSALE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREE_YEAR_PRICE2_V">
+          THREE_YEAR_PRICE2_V like #THREE_YEAR_PRICE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARBESTPRICE2_V">
+          THREEYEARBESTPRICE2_V like #THREEYEARBESTPRICE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM3_V">
+          ITEM3_V like #ITEM3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME3_V">
+          PRODUCT_NAME3_V like #PRODUCT_NAME3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION3_V">
+          SPECIFICATION3_V like #SPECIFICATION3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY3_V">
+          QUANTITY3_V like #QUANTITY3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARVALUE3_V">
+          ONEYEARVALUE3_V like #ONEYEARVALUE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARSALE3_V">
+          ONEYEARSALE3_V like #ONEYEARSALE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONE_YEAR_PRICE3_V">
+          ONE_YEAR_PRICE3_V like #ONE_YEAR_PRICE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARBESTPRICE3_V">
+          ONEYEARBESTPRICE3_V like #ONEYEARBESTPRICE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARVALUE3_V">
+          THREEYEARVALUE3_V like #THREEYEARVALUE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARSALE3_V">
+          THREEYEARSALE3_V like #THREEYEARSALE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREE_YEAR_PRICE3_V">
+          THREE_YEAR_PRICE3_V like #THREE_YEAR_PRICE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARBESTPRICE3_V">
+          THREEYEARBESTPRICE3_V like #THREEYEARBESTPRICE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOAMOUNTTAXVALUEYEAR_V">
+          NOAMOUNTTAXVALUEYEAR_V like #NOAMOUNTTAXVALUEYEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NO_AMOUNT_TAX_YEAR_V">
+          NO_AMOUNT_TAX_YEAR_V like #NO_AMOUNT_TAX_YEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOAMOUNTTAXVALUETRIENNIAL_V">
+          NOAMOUNTTAXVALUETRIENNIAL_V like #NOAMOUNTTAXVALUETRIENNIAL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NO_TAX_AMOUNT_TRIENNIAL_V">
+          NO_TAX_AMOUNT_TRIENNIAL_V like #NO_TAX_AMOUNT_TRIENNIAL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARSALESTAXVALUE_V">
+          ONEYEARSALESTAXVALUE_V like #ONEYEARSALESTAXVALUE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONE_YEAR_SALES_TAX_V">
+          ONE_YEAR_SALES_TAX_V like #ONE_YEAR_SALES_TAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARSALESTAXVALUE_V">
+          THREEYEARSALESTAXVALUE_V like #THREEYEARSALESTAXVALUE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREE_YEAR_SALES_TAX_V">
+          THREE_YEAR_SALES_TAX_V like #THREE_YEAR_SALES_TAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTALVALUEYEAR_V">
+          TOTALVALUEYEAR_V like #TOTALVALUEYEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTAL_YEAR_V">
+          TOTAL_YEAR_V like #TOTAL_YEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTALTHREEYEARVALUEPERIOD_V">
+          TOTALTHREEYEARVALUEPERIOD_V like #TOTALTHREEYEARVALUEPERIOD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTAL_THREE_YEAR_PERIOD_V">
+          TOTAL_THREE_YEAR_PERIOD_V like #TOTAL_THREE_YEAR_PERIOD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOTE_V">
+          NOTE_V like #NOTE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="HEAD_V">
+          HEAD_V like #HEAD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SALES_MANAGER_V">
+          SALES_MANAGER_V like #SALES_MANAGER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ATTN_V">
+          ATTN_V like #ATTN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERS_SIGN_V">
+          CUSTOMERS_SIGN_V like #CUSTOMERS_SIGN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="REPORTTITLE_V">
+          REPORTTITLE_V like #REPORTTITLE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="REPORTNAME_V">
+          REPORTNAME_V like #REPORTNAME_V#
+        </isNotEmpty>
+      </dynamic>
+      order by QUOTE_DATE_V desc LIMIT #START_V#, #LIMIT_V#
+    </statement>
+
+    <!--Email code-->
+ <select id="getEmailSetting" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMEMAIL_SETTINGS
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          SENDERNAME_V like #SENDERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SENDEREMAIL_V">
+          SENDEREMAIL_V like #SENDEREMAIL_V#
+        </isNotEmpty>
+      </dynamic>
+ </select>
+    <!--Email code end-->
+    <!--Status Alert code-->
+ <statement id="getWork_event" resultClass="Hashtable">
+ 	SELECT * FROM RESELLERQUOTATIONSYSTEMSTATUS_ALERT
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="SENDERNAME_V">
+          WORK_EVENT_V like #WORKEVENT_V#
+        </isNotEmpty>
+      </dynamic>
+ </statement>
+ <insert id="addStatus">
+ 	INSERT INTO RESELLERQUOTATIONSYSTEMSTATUS_ALERT(SID,WORK_EVENT_V,STATUS_V) VALUES(#SID#,#WORK_EVENT_V#,#STATUS_V#)
+ </insert>
+ <update id="updateStatus">
+ 	UPDATE RESELLERQUOTATIONSYSTEMSTATUS_ALERT SET WORK_EVENT_V = #WORK_EVENT_V#, STATUS_V = #STATUS_V# WHERE SID = #SID#
+ </update>
+    <!--Status Alert code end-->
+   <select id="getreseller_quotation4_reportTotalCount" resultClass="Hashtable">
+      SELECT COUNT(*) AS NUM FROM RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4_REPORT
+   </select>
+
+    <statement id="getreseller_quotation4_reportByTotalCount" resultClass="Hashtable" >
+      Select COUNT(*) AS NUM From RESELLERQUOTATIONSYSTEMRESELLER_QUOTATION4
+
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="RESELLERNAME_V">
+          RESELLERNAME_V like #RESELLERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTATIONNO_V">
+          QUOTATIONNO_V like #QUOTATIONNO_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UNIFIEDNUMBERING_V">
+          UNIFIEDNUMBERING_V like #UNIFIEDNUMBERING_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUOTE_DATE_V">
+          QUOTE_DATE_V like #QUOTE_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPACT_V">
+          COMPACT_V like #COMPACT_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SHIP_DATE_V">
+          SHIP_DATE_V like #SHIP_DATE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="EMAIL_V">
+          EMAIL_V like #EMAIL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PAYMENT_CONDITIONS_V">
+          PAYMENT_CONDITIONS_V like #PAYMENT_CONDITIONS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PHONE_V">
+          PHONE_V like #PHONE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="FAX_V">
+          FAX_V like #FAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ADDRESS_V">
+          ADDRESS_V like #ADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DELIVERYADDRESS_V">
+          DELIVERYADDRESS_V like #DELIVERYADDRESS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERNAME_V">
+          CUSTOMERNAME_V like #CUSTOMERNAME_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="COMPETITIVEBRANDS_V">
+          COMPETITIVEBRANDS_V like #COMPETITIVEBRANDS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ORDERTYPE_V">
+          ORDERTYPE_V like #ORDERTYPE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="OFFERORS_V">
+          OFFERORS_V like #OFFERORS_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM1_V">
+          ITEM1_V like #ITEM1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME1_V">
+          PRODUCT_NAME1_V like #PRODUCT_NAME1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION1_V">
+          SPECIFICATION1_V like #SPECIFICATION1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY1_V">
+          QUANTITY1_V like #QUANTITY1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARVALUE1_V">
+          ONEYEARVALUE1_V like #ONEYEARVALUE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARSALE1_V">
+          ONEYEARSALE1_V like #ONEYEARSALE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONE_YEAR_PRICE1_V">
+          ONE_YEAR_PRICE1_V like #ONE_YEAR_PRICE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARBESTPRICE1_V">
+          ONEYEARBESTPRICE1_V like #ONEYEARBESTPRICE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARVALUE1_V">
+          THREEYEARVALUE1_V like #THREEYEARVALUE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARSALE1_V">
+          THREEYEARSALE1_V like #THREEYEARSALE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREE_YEAR_PRICE1_V">
+          THREE_YEAR_PRICE1_V like #THREE_YEAR_PRICE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARBESTPRICE1_V">
+          THREEYEARBESTPRICE1_V like #THREEYEARBESTPRICE1_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM2_V">
+          ITEM2_V like #ITEM2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME2_V">
+          PRODUCT_NAME2_V like #PRODUCT_NAME2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION2_V">
+          SPECIFICATION2_V like #SPECIFICATION2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY2_V">
+          QUANTITY2_V like #QUANTITY2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARVALUE2_V">
+          ONEYEARVALUE2_V like #ONEYEARVALUE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARSALE2_V">
+          ONEYEARSALE2_V like #ONEYEARSALE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONE_YEAR_PRICE2_V">
+          ONE_YEAR_PRICE2_V like #ONE_YEAR_PRICE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARBESTPRICE2_V">
+          ONEYEARBESTPRICE2_V like #ONEYEARBESTPRICE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARVALUE2_V">
+          THREEYEARVALUE2_V like #THREEYEARVALUE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARSALE2_V">
+          THREEYEARSALE2_V like #THREEYEARSALE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREE_YEAR_PRICE2_V">
+          THREE_YEAR_PRICE2_V like #THREE_YEAR_PRICE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARBESTPRICE2_V">
+          THREEYEARBESTPRICE2_V like #THREEYEARBESTPRICE2_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ITEM3_V">
+          ITEM3_V like #ITEM3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="PRODUCT_NAME3_V">
+          PRODUCT_NAME3_V like #PRODUCT_NAME3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SPECIFICATION3_V">
+          SPECIFICATION3_V like #SPECIFICATION3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="QUANTITY3_V">
+          QUANTITY3_V like #QUANTITY3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARVALUE3_V">
+          ONEYEARVALUE3_V like #ONEYEARVALUE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARSALE3_V">
+          ONEYEARSALE3_V like #ONEYEARSALE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONE_YEAR_PRICE3_V">
+          ONE_YEAR_PRICE3_V like #ONE_YEAR_PRICE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARBESTPRICE3_V">
+          ONEYEARBESTPRICE3_V like #ONEYEARBESTPRICE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARVALUE3_V">
+          THREEYEARVALUE3_V like #THREEYEARVALUE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARSALE3_V">
+          THREEYEARSALE3_V like #THREEYEARSALE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREE_YEAR_PRICE3_V">
+          THREE_YEAR_PRICE3_V like #THREE_YEAR_PRICE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARBESTPRICE3_V">
+          THREEYEARBESTPRICE3_V like #THREEYEARBESTPRICE3_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOAMOUNTTAXVALUEYEAR_V">
+          NOAMOUNTTAXVALUEYEAR_V like #NOAMOUNTTAXVALUEYEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NO_AMOUNT_TAX_YEAR_V">
+          NO_AMOUNT_TAX_YEAR_V like #NO_AMOUNT_TAX_YEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOAMOUNTTAXVALUETRIENNIAL_V">
+          NOAMOUNTTAXVALUETRIENNIAL_V like #NOAMOUNTTAXVALUETRIENNIAL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NO_TAX_AMOUNT_TRIENNIAL_V">
+          NO_TAX_AMOUNT_TRIENNIAL_V like #NO_TAX_AMOUNT_TRIENNIAL_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONEYEARSALESTAXVALUE_V">
+          ONEYEARSALESTAXVALUE_V like #ONEYEARSALESTAXVALUE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ONE_YEAR_SALES_TAX_V">
+          ONE_YEAR_SALES_TAX_V like #ONE_YEAR_SALES_TAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREEYEARSALESTAXVALUE_V">
+          THREEYEARSALESTAXVALUE_V like #THREEYEARSALESTAXVALUE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="THREE_YEAR_SALES_TAX_V">
+          THREE_YEAR_SALES_TAX_V like #THREE_YEAR_SALES_TAX_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTALVALUEYEAR_V">
+          TOTALVALUEYEAR_V like #TOTALVALUEYEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTAL_YEAR_V">
+          TOTAL_YEAR_V like #TOTAL_YEAR_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTALTHREEYEARVALUEPERIOD_V">
+          TOTALTHREEYEARVALUEPERIOD_V like #TOTALTHREEYEARVALUEPERIOD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="TOTAL_THREE_YEAR_PERIOD_V">
+          TOTAL_THREE_YEAR_PERIOD_V like #TOTAL_THREE_YEAR_PERIOD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="NOTE_V">
+          NOTE_V like #NOTE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="HEAD_V">
+          HEAD_V like #HEAD_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="SALES_MANAGER_V">
+          SALES_MANAGER_V like #SALES_MANAGER_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ATTN_V">
+          ATTN_V like #ATTN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CUSTOMERS_SIGN_V">
+          CUSTOMERS_SIGN_V like #CUSTOMERS_SIGN_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="REPORTTITLE_V">
+          REPORTTITLE_V like #REPORTTITLE_V#
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="REPORTNAME_V">
+          REPORTNAME_V like #REPORTNAME_V#
+        </isNotEmpty>
+      </dynamic>
+    </statement>
+
+    <!--user code start-->
+    <!--user code end-->
+
+  </statements>
+</sqlMap>
