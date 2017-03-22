@@ -1,0 +1,1382 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>notification_input</title>
+    <link href="../../css/axtlib.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/axtStyle.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/ux/css/RowEditor.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .x-grid3-cell-inner{
+            white-space: normal;
+            font-size: 15px;
+        }
+    </style>
+    <style type="text/css">
+       .x-selectable, .x-selectable * {
+       -moz-user-select: text!important;
+       -khtml-user-select: text!important;
+      }
+    </style>
+
+    <script src="../../ext/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ext-all-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ux/PagingMemoryProxy.js" type="text/javascript"></script>
+    <script src="../../ext/ux/ProgressBarPager.js" type="text/javascript"></script>
+    <script src="../../ext/ux/RowEditor.js" type="text/javascript"></script>
+    <script src="../../ext/src/locale/ext-lang-zh_TW.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtRuleMessage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtlib.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtMutiLanguage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtHelpWindow.js" type="text/javascript"></script>
+    <script src="../../axtjs/pPageSize.js" type="text/javascript"></script>
+    <script src="../../axtjs/AJAXRPC.js" type="text/javascript"></script>
+    <script src="../../Charts/FusionCharts.js" type="text/javascript"></script>
+    <script src="../../ajaxrpc/Script.aspx" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var AxtEditor = new Ext.ux.grid.RowEditor({});
+        var client = new AJAXRPC_Client('../../ajaxrpc/Server.aspx');
+
+        if (client.Login.isLogin() == false) {
+            parent.location.href = "../../Login.html";
+        }
+
+        client.ResellerQuotationSystemnotification_input.createTable();
+        client.ResellerQuotationSystemnotification_input.beforeGenConf();
+
+        function setlang() {
+            lang = client.AxtSystem.getLang("zh-TW");
+            setRuleMessageLang(lang);
+            AxtForm = Ext.getCmp('notification_input_form');
+            switch (lang) {
+                case 'zh-CN':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("客户订购 设定");
+                    AxtForm.findById("lblcustomernamechinese_t").update("<font size=\'3\'><p align = \'right\'>客户名称中文</p></font>");
+                    AxtForm.findById("lblcustomernameen_t").update("<font size=\'3\'><p align = \'right\'>客户名称英文</p></font>");
+                    AxtForm.findById("lblcontactchinese_t").update("<font size=\'3\'><p align = \'right\'>联络人中文</p></font>");
+                    AxtForm.findById("lblcontactenglish_t").update("<font size=\'3\'><p align = \'right\'>联络人英文</p></font>");
+                    AxtForm.findById("lblorderproduct_t").update("<font size=\'3\'><p align = \'right\'>订购产品</p></font>");
+                    AxtForm.findById("lblrenewcustomerno_t").update("<font size=\'3\'><p align = \'right\'>续约客户编号</p></font>");
+                    AxtForm.findById("lblnewcustomerbrands_t").update("<font size=\'3\'><p align = \'right\'>新购客户厂牌</p></font>");
+                    AxtForm.findById("lblcompetitivebrands_t").update("<font size=\'3\'><p align = \'right\'>竞争厂牌</p></font>");
+                    AxtForm.findById("lbldealer_tw_t").update("<font size=\'3\'><p align = \'right\'>经销商名称</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("儲存");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('客户订购 設定');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>修改</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>客户名称中文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>客户名称英文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>联络人中文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>联络人英文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>订购产品</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>续约客户编号</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>新购客户厂牌</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>竞争厂牌</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>经销商名称</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'en':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("Notification Setup");
+                    AxtForm.findById("lblcustomernamechinese_t").update("<font size=\'3\'><p align = \'right\'>CustomerNameChinese</p></font>");
+                    AxtForm.findById("lblcustomernameen_t").update("<font size=\'3\'><p align = \'right\'>CustomerNameEn</p></font>");
+                    AxtForm.findById("lblcontactchinese_t").update("<font size=\'3\'><p align = \'right\'>ContactChinese</p></font>");
+                    AxtForm.findById("lblcontactenglish_t").update("<font size=\'3\'><p align = \'right\'>ContactEnglish</p></font>");
+                    AxtForm.findById("lblorderproduct_t").update("<font size=\'3\'><p align = \'right\'>OrderProduct</p></font>");
+                    AxtForm.findById("lblrenewcustomerno_t").update("<font size=\'3\'><p align = \'right\'>RenewCustomerNo</p></font>");
+                    AxtForm.findById("lblnewcustomerbrands_t").update("<font size=\'3\'><p align = \'right\'>NewCustomerBrands</p></font>");
+                    AxtForm.findById("lblcompetitivebrands_t").update("<font size=\'3\'><p align = \'right\'>CompetitiveBrands</p></font>");
+                    AxtForm.findById("lbldealer_tw_t").update("<font size=\'3\'><p align = \'right\'>Dealer_Tw</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("Query");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("Submit");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("Cancel");
+                    AxtForm.findById("grid1").setTitle('Notification Setup');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>Modify</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>CustomerNameChinese</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>CustomerNameEn</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>ContactChinese</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>ContactEnglish</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>OrderProduct</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>RenewCustomerNo</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>NewCustomerBrands</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>CompetitiveBrands</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>Dealer_Tw</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'zh-TW':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("客戶訂購 設定");
+                    AxtForm.findById("lblcustomernamechinese_t").update("<font size=\'3\'><p align = \'right\'>客戶名稱中文</p></font>");
+                    AxtForm.findById("lblcustomernameen_t").update("<font size=\'3\'><p align = \'right\'>客戶名稱英文</p></font>");
+                    AxtForm.findById("lblcontactchinese_t").update("<font size=\'3\'><p align = \'right\'>聯絡人中文</p></font>");
+                    AxtForm.findById("lblcontactenglish_t").update("<font size=\'3\'><p align = \'right\'>聯絡人英文</p></font>");
+                    AxtForm.findById("lblorderproduct_t").update("<font size=\'3\'><p align = \'right\'>訂購產品</p></font>");
+                    AxtForm.findById("lblrenewcustomerno_t").update("<font size=\'3\'><p align = \'right\'>續約客戶編號</p></font>");
+                    AxtForm.findById("lblnewcustomerbrands_t").update("<font size=\'3\'><p align = \'right\'>新購客戶廠牌</p></font>");
+                    AxtForm.findById("lblcompetitivebrands_t").update("<font size=\'3\'><p align = \'right\'>競爭廠牌</p></font>");
+                    AxtForm.findById("lbldealer_tw_t").update("<font size=\'3\'><p align = \'right\'>經銷商名稱</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("儲存");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('客戶訂購 設定');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>修改</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>客戶名稱中文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>客戶名稱英文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>聯絡人中文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>聯絡人英文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>訂購產品</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>續約客戶編號</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>新購客戶廠牌</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>競爭廠牌</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>經銷商名稱</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                }
+            }
+
+
+        function axtHelp() {
+                lang = client.AxtSystem.getLang("zh-TW");
+                setRuleMessageLang(lang);
+                AxtForm = Ext.getCmp('notification_input_form');
+                switch (lang) {
+                }
+         }
+
+            Ext.onReady(function () {
+                Ext.QuickTips.init();
+
+                setlang();
+                var AxtData = client.ResellerQuotationSystemnotification_input.getnotification_inputBy({
+                    START_V : 0,
+                    LIMIT_V : 20
+                });
+
+                var proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+
+                var reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'notification_input'
+                }, [
+                        {
+                            name: 'SID'
+                        },
+                        {
+                            name: 'AXTMODIFY'
+                        },
+                        {
+                            name: 'CUSTOMERNAMECHINESE_V'
+                        },
+                        {
+                            name: 'CUSTOMERNAMEEN_V'
+                        },
+                        {
+                            name: 'CONTACTCHINESE_V'
+                        },
+                        {
+                            name: 'CONTACTENGLISH_V'
+                        },
+                        {
+                            name: 'ORDERPRODUCT_V'
+                        },
+                        {
+                            name: 'RENEWCUSTOMERNO_V'
+                        },
+                        {
+                            name: 'NEWCUSTOMERBRANDS_V'
+                        },
+                        {
+                            name: 'COMPETITIVEBRANDS_V'
+                        },
+                        {
+                            name: 'DEALER_TW_V'
+                        }
+                    ]
+                );
+
+                var writer = new Ext.data.JsonWriter({
+                    encode: false       // <-- don't return encoded JSON -- causes Ext.Ajax#request to send data using jsonData config rather than HTTP params
+                });
+
+                var AxtStore = new Ext.data.Store({
+                    id: 'jssnotification_input',
+                    proxy: proxy,
+                    reader: reader,
+                    pruneModifiedRecords: true
+                });
+
+                AxtStore.load({ params: { start: 0, limit: 20} });
+
+                function axtStoreUpdate() {
+                    AxtData = client.ResellerQuotationSystemnotification_input.getnotification_inputBy({
+                        START_V : AxtPageBar.cursor,
+                        LIMIT_V : AxtPageBar.pageSize
+                    });
+                    AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                    AxtStore.load();
+                }
+                var AxtPageBar = new Ext.PagingToolbar({
+                    xtype: "paging",
+                    pageSize: 20,
+                    store: AxtStore,
+                    displayInfo: true,
+                    //displayMsg: 'Displaying {0} - {1} of {2}',
+                    style: 'border-width:0;',
+                    refresh: function (pt, o) {
+                        axtStoreUpdate();
+                        Ext.getCmp('grid1').getView().refresh();
+                    },
+                    //emptyMsg: "No message to display",
+                    plugins: [new Ext.ux.Andrie.pPageSize(), new Ext.ux.ProgressBarPager()],
+                    listeners: {
+                        'beforechange' : function(pagingToolbar, pageData) {
+                            AxtData = client.ResellerQuotationSystemnotification_input.getnotification_inputBy({
+                                CUSTOMERNAMECHINESE_V: AxtForm.findById('customernamechinese_v').getValue(),
+                                CUSTOMERNAMEEN_V: AxtForm.findById('customernameen_v').getValue(),
+                                CONTACTCHINESE_V: AxtForm.findById('contactchinese_v').getValue(),
+                                CONTACTENGLISH_V: AxtForm.findById('contactenglish_v').getValue(),
+                                ORDERPRODUCT_V: AxtForm.findById('orderproduct_v').getValue(),
+                                RENEWCUSTOMERNO_V: AxtForm.findById('renewcustomerno_v').getValue(),
+                                NEWCUSTOMERBRANDS_V: AxtForm.findById('newcustomerbrands_v').getValue(),
+                                COMPETITIVEBRANDS_V: AxtForm.findById('competitivebrands_v').getValue(),
+                                DEALER_TW_V: AxtForm.findById('dealer_tw_v').getValue(),
+                                START_V : pageData.start,
+                                LIMIT_V : pageData.limit
+                            });
+                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                            AxtStore.load();
+                            Ext.getCmp('grid1').getView().refresh();
+
+                            var p = this.getParams();
+                            this.cursor = (pageData && pageData.start) ? pageData.start : 0;
+                            var d = this.getPageData(), ap = d.activePage, ps = d.pages;
+
+                            this.afterTextItem.setText(String.format(this.afterPageText, d.pages));
+                            this.inputItem.setValue(ap);
+                            this.first.setDisabled(ap == 1);
+                            this.prev.setDisabled(ap == 1);
+                            this.next.setDisabled(ap == ps);
+                            this.last.setDisabled(ap == ps);
+                            this.refresh.enable();
+                            this.updateInfo();
+
+                            return false;
+                         }
+                     }
+                 });
+
+                function tfToogle() {
+				   AxtForm.findById('customernamechinese_ta').setVisible(false);
+				   AxtForm.findById('customernamechinese_v').setVisible(true);
+				   AxtForm.findById('customernamechinese_v').setValue(AxtForm.findById('customernamechinese_ta').getValue());
+
+				   AxtForm.findById('customernameen_ta').setVisible(false);
+				   AxtForm.findById('customernameen_v').setVisible(true);
+				   AxtForm.findById('customernameen_v').setValue(AxtForm.findById('customernameen_ta').getValue());
+
+				   AxtForm.findById('contactchinese_ta').setVisible(false);
+				   AxtForm.findById('contactchinese_v').setVisible(true);
+				   AxtForm.findById('contactchinese_v').setValue(AxtForm.findById('contactchinese_ta').getValue());
+
+				   AxtForm.findById('contactenglish_ta').setVisible(false);
+				   AxtForm.findById('contactenglish_v').setVisible(true);
+				   AxtForm.findById('contactenglish_v').setValue(AxtForm.findById('contactenglish_ta').getValue());
+
+				   AxtForm.findById('orderproduct_ta').setVisible(false);
+				   AxtForm.findById('orderproduct_v').setVisible(true);
+				   AxtForm.findById('orderproduct_v').setValue(AxtForm.findById('orderproduct_ta').getValue());
+
+				   AxtForm.findById('renewcustomerno_ta').setVisible(false);
+				   AxtForm.findById('renewcustomerno_v').setVisible(true);
+				   AxtForm.findById('renewcustomerno_v').setValue(AxtForm.findById('renewcustomerno_ta').getValue());
+
+				   AxtForm.findById('newcustomerbrands_ta').setVisible(false);
+				   AxtForm.findById('newcustomerbrands_v').setVisible(true);
+				   AxtForm.findById('newcustomerbrands_v').setValue(AxtForm.findById('newcustomerbrands_ta').getValue());
+
+				   AxtForm.findById('competitivebrands_ta').setVisible(false);
+				   AxtForm.findById('competitivebrands_v').setVisible(true);
+				   AxtForm.findById('competitivebrands_v').setValue(AxtForm.findById('competitivebrands_ta').getValue());
+
+				   AxtForm.findById('dealer_tw_ta').setVisible(false);
+				   AxtForm.findById('dealer_tw_v').setVisible(true);
+				   AxtForm.findById('dealer_tw_v').setValue(AxtForm.findById('dealer_tw_ta').getValue());
+
+                }
+                /*usercode start*/
+                /*usercode end*/
+
+                var sm =  new Ext.grid.CheckboxSelectionModel({
+                    checkOnly: false,
+                    width: 20
+                });
+
+                var AxtPanel = new Ext.Panel({
+                    width: 1100,
+                    layout: 'form',
+                    id: 'notification_input_form',
+                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                    items: [
+                    {
+                        xtype: 'textfield',
+                        hidden: true,
+                        id: 'SID'
+                    },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'displayfield',
+                                        cls: 'CSTitle',
+                                        height: 35,
+                                        columnWidth: 1,
+                                        id: 'dfdTitle'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lblcustomernamechinese_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'customernamechinese_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("customernamechinese_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("customernamechinese_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'customernamechinese_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("customernamechinese_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("customernamechinese_ta").setVisible(true);
+                                    		AxtForm.findById("customernamechinese_ta").focus();
+                                    	}
+                                    },
+                                    id: 'customernamechinese_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lblcustomernameen_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'customernameen_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("customernameen_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("customernameen_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'customernameen_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("customernameen_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("customernameen_ta").setVisible(true);
+                                    		AxtForm.findById("customernameen_ta").focus();
+                                    	}
+                                    },
+                                    id: 'customernameen_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lblcontactchinese_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'contactchinese_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("contactchinese_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("contactchinese_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'contactchinese_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("contactchinese_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("contactchinese_ta").setVisible(true);
+                                    		AxtForm.findById("contactchinese_ta").focus();
+                                    	}
+                                    },
+                                    id: 'contactchinese_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lblcontactenglish_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'contactenglish_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("contactenglish_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("contactenglish_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'contactenglish_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("contactenglish_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("contactenglish_ta").setVisible(true);
+                                    		AxtForm.findById("contactenglish_ta").focus();
+                                    	}
+                                    },
+                                    id: 'contactenglish_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lblorderproduct_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'orderproduct_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("orderproduct_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("orderproduct_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'orderproduct_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("orderproduct_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("orderproduct_ta").setVisible(true);
+                                    		AxtForm.findById("orderproduct_ta").focus();
+                                    	}
+                                    },
+                                    id: 'orderproduct_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lblrenewcustomerno_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'renewcustomerno_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("renewcustomerno_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("renewcustomerno_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'renewcustomerno_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("renewcustomerno_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("renewcustomerno_ta").setVisible(true);
+                                    		AxtForm.findById("renewcustomerno_ta").focus();
+                                    	}
+                                    },
+                                    id: 'renewcustomerno_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lblnewcustomerbrands_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'newcustomerbrands_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("newcustomerbrands_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("newcustomerbrands_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'newcustomerbrands_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("newcustomerbrands_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("newcustomerbrands_ta").setVisible(true);
+                                    		AxtForm.findById("newcustomerbrands_ta").focus();
+                                    	}
+                                    },
+                                    id: 'newcustomerbrands_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lblcompetitivebrands_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'competitivebrands_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("competitivebrands_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("competitivebrands_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'competitivebrands_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("competitivebrands_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("competitivebrands_ta").setVisible(true);
+                                    		AxtForm.findById("competitivebrands_ta").focus();
+                                    	}
+                                    },
+                                    id: 'competitivebrands_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 100,
+                                    id: 'lbldealer_tw_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.15,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 100,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'dealer_tw_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("dealer_tw_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("dealer_tw_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'dealer_tw_v',
+                                    columnWidth: 0.15,
+                                    width: 100,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("dealer_tw_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("dealer_tw_ta").setVisible(true);
+                                    		AxtForm.findById("dealer_tw_ta").focus();
+                                    	}
+                                    },
+                                    id: 'dealer_tw_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTQUERY',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('notification_input_form');
+
+                                                AxtData = client.ResellerQuotationSystemnotification_input.getnotification_inputBy({
+                                                    CUSTOMERNAMECHINESE_V: AxtForm.findById('customernamechinese_v').getValue(),
+                                                    CUSTOMERNAMEEN_V: AxtForm.findById('customernameen_v').getValue(),
+                                                    CONTACTCHINESE_V: AxtForm.findById('contactchinese_v').getValue(),
+                                                    CONTACTENGLISH_V: AxtForm.findById('contactenglish_v').getValue(),
+                                                    ORDERPRODUCT_V: AxtForm.findById('orderproduct_v').getValue(),
+                                                    RENEWCUSTOMERNO_V: AxtForm.findById('renewcustomerno_v').getValue(),
+                                                    NEWCUSTOMERBRANDS_V: AxtForm.findById('newcustomerbrands_v').getValue(),
+                                                    COMPETITIVEBRANDS_V: AxtForm.findById('competitivebrands_v').getValue(),
+                                                    DEALER_TW_V: AxtForm.findById('dealer_tw_v').getValue(),
+                                                    START_V : 0,
+                                                    LIMIT_V : AxtPageBar.pageSize,
+                                                    AXTMODIFY: ""
+                                            });
+                                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                                            AxtStore.load();
+                                            Ext.getCmp('grid1').getView().refresh();
+                                            /*btnBTNAXTQUERY user code start*/
+                                            /*btnBTNAXTQUERY user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTSUBMIT',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('notification_input_form');
+
+
+                                                    if(AxtForm.findById('customernamechinese_v').getValue() == "" && AxtForm.findById('customernameen_v').getValue() == "" && AxtForm.findById('contactchinese_v').getValue() == "" && AxtForm.findById('contactenglish_v').getValue() == "" && AxtForm.findById('orderproduct_v').getValue() == "" && AxtForm.findById('renewcustomerno_v').getValue() == "" && AxtForm.findById('newcustomerbrands_v').getValue() == "" && AxtForm.findById('competitivebrands_v').getValue() == "" && AxtForm.findById('dealer_tw_v').getValue() == ""){
+                                                    
+                                                   		Ext.MessageBox.show({
+                                    				title: axtlang_msgbox_error_title,
+                                    				msg: axtlang_msgbox_null,
+                                    				buttons: Ext.Msg.OK,
+                                    				closable: false,
+                                    				width: 240
+                                    			});
+                                    			return;
+                                                    }
+                                                if( true )
+                                                {
+                                                    var newData = new Array();
+                                                    var data = {
+                                                    CUSTOMERNAMECHINESE_V: AxtForm.findById('customernamechinese_v').getValue(),
+                                                    CUSTOMERNAMEEN_V: AxtForm.findById('customernameen_v').getValue(),
+                                                    CONTACTCHINESE_V: AxtForm.findById('contactchinese_v').getValue(),
+                                                    CONTACTENGLISH_V: AxtForm.findById('contactenglish_v').getValue(),
+                                                    ORDERPRODUCT_V: AxtForm.findById('orderproduct_v').getValue(),
+                                                    RENEWCUSTOMERNO_V: AxtForm.findById('renewcustomerno_v').getValue(),
+                                                    NEWCUSTOMERBRANDS_V: AxtForm.findById('newcustomerbrands_v').getValue(),
+                                                    COMPETITIVEBRANDS_V: AxtForm.findById('competitivebrands_v').getValue(),
+                                                    DEALER_TW_V: AxtForm.findById('dealer_tw_v').getValue(),
+                                                    SID: AxtForm.findById('SID').getValue()
+                                                }
+
+                                                newData.push(data);
+
+                                                if (newData.length <= 0) {
+                                                    return;
+                                                }
+
+                                                var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                var msg = client.ResellerQuotationSystemnotification_input.saveData(newData);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                progress.hide();
+
+                                                axtStoreUpdate();
+
+                                                Ext.getCmp('grid1').getView().refresh();
+                                                }
+
+                                            /*btnBTNAXTSUBMIT user code start*/
+                                            /*btnBTNAXTSUBMIT user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTCANCEL',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('notification_input_form');
+
+
+                                                AxtForm.findById('customernamechinese_v').setValue('');
+                                                AxtForm.findById('customernameen_v').setValue('');
+                                                AxtForm.findById('contactchinese_v').setValue('');
+                                                AxtForm.findById('contactenglish_v').setValue('');
+                                                AxtForm.findById('orderproduct_v').setValue('');
+                                                AxtForm.findById('renewcustomerno_v').setValue('');
+                                                AxtForm.findById('newcustomerbrands_v').setValue('');
+                                                AxtForm.findById('competitivebrands_v').setValue('');
+                                                AxtForm.findById('dealer_tw_v').setValue('');
+                                                AxtForm.findById('SID').setValue('');
+                                            /*btnBTNAXTCANCEL user code start*/
+                                            /*btnBTNAXTCANCEL user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'text-align: left;',
+                       items: [
+                            {
+                                xtype: 'grid',
+                                id: 'grid1',
+                                store: AxtStore,
+                                height: 380,
+                                bodyStyle: 'border-width:0; padding: 0px 0 0 0px; background: transparent;',
+                                loadMask: true,
+                                columnWidth: 1,
+                                columnLines: true,
+                                selModel: sm,
+                                viewConfig: {
+                                templates: {
+                                cell: new Ext.Template(
+    '<td class= "x-grid3-col x-grid3-cell x-grid3-td-{id} x-selectable {css}" style="{style}" tabIndex="0" {cellAttr}>',
+    '<div class="x-grid3-cell-inner x-grid3-col-{id}" {attr}>{value}</div>',
+    '</td>'
+    )
+}
+ },
+                                columns: [
+                                    sm,
+                                    {
+                                        width: 50,
+                                        renderer: renderAXTMODIFYImg,
+                                        id: 'AXTMODIFY'
+                                    },
+                                    {
+                                        id: 'CUSTOMERNAMECHINESE_V',
+                                        dataIndex: 'CUSTOMERNAMECHINESE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'CUSTOMERNAMEEN_V',
+                                        dataIndex: 'CUSTOMERNAMEEN_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'CONTACTCHINESE_V',
+                                        dataIndex: 'CONTACTCHINESE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'CONTACTENGLISH_V',
+                                        dataIndex: 'CONTACTENGLISH_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ORDERPRODUCT_V',
+                                        dataIndex: 'ORDERPRODUCT_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'RENEWCUSTOMERNO_V',
+                                        dataIndex: 'RENEWCUSTOMERNO_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'NEWCUSTOMERBRANDS_V',
+                                        dataIndex: 'NEWCUSTOMERBRANDS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'COMPETITIVEBRANDS_V',
+                                        dataIndex: 'COMPETITIVEBRANDS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'DEALER_TW_V',
+                                        dataIndex: 'DEALER_TW_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    }
+                                ],
+                                tbar: [
+                                    {
+                                        id: 'delete',
+                                        text: 'Delete',
+                                        tooltip: 'Delete',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSDelete',
+                                        width: 72
+                                        ,handler: function () {
+                                            var grid = Ext.getCmp('grid1');
+                                            var records = grid.getSelectionModel().getSelections();
+                                            if (!records || records.length <= 0) 
+                                            {
+                                                return false;
+                                            }
+
+                                            Ext.MessageBox.confirm(
+                                                WRN_00002,
+                                                WRN_00002,
+                                                function (btn) {
+                                                    if (btn == 'yes') {
+                                                        var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                        var deleteData = new Array();
+                                                        Ext.each(records, function (record) {
+                                                            var data = {
+                                                                SID: record.get("SID"),
+                                                                AXTMODIFY: record.get("AXTMODIFY"),
+                                                                CUSTOMERNAMECHINESE_V: record.get("CUSTOMERNAMECHINESE_V"),
+                                                                CUSTOMERNAMEEN_V: record.get("CUSTOMERNAMEEN_V"),
+                                                                CONTACTCHINESE_V: record.get("CONTACTCHINESE_V"),
+                                                                CONTACTENGLISH_V: record.get("CONTACTENGLISH_V"),
+                                                                ORDERPRODUCT_V: record.get("ORDERPRODUCT_V"),
+                                                                RENEWCUSTOMERNO_V: record.get("RENEWCUSTOMERNO_V"),
+                                                                NEWCUSTOMERBRANDS_V: record.get("NEWCUSTOMERBRANDS_V"),
+                                                                COMPETITIVEBRANDS_V: record.get("COMPETITIVEBRANDS_V"),
+                                                                DEALER_TW_V: record.get("DEALER_TW_V")
+                                                            };
+                                                            deleteData.push(data);
+                                                            grid.store.remove(record);
+                                                        });
+
+                                                        var msg = client.ResellerQuotationSystemnotification_input.deleteData(deleteData);
+                                                        axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                        axtStoreUpdate();
+
+                                                        /*onDelete user code start*/
+                                                        /*onDelete user code end*/
+
+                                                        Ext.getCmp('grid1').getView().refresh();
+                                                        progress.hide();
+                                                    }
+                                                }
+                                            );
+                                        }
+                                    },
+                                    '-',
+                                    {
+                                        text: 'Add',
+                                        tooltip: 'Add',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSAdd',
+                                        width: 72,
+                                        handler: function () {
+                                            onAdd(Ext.getCmp('grid1'), AxtEditor, { CUSTOMERNAMECHINESE_V: "", CUSTOMERNAMEEN_V: "", CONTACTCHINESE_V: "", CONTACTENGLISH_V: "", ORDERPRODUCT_V: "", RENEWCUSTOMERNO_V: "", NEWCUSTOMERBRANDS_V: "", COMPETITIVEBRANDS_V: "", DEALER_TW_V: "" });
+                                        },
+                                        id: 'add'
+                                    },
+                                    '-'
+                                ],
+                                bbar: [
+                                    '->',
+                                     AxtPageBar]
+                            }
+                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            hidden:true,
+                            id:'Axtronics_AutoGen_System'
+                        }
+                    ]
+                });
+
+                function renderAXTMODIFYImg() {
+                    return '<center><img src="../../img/icons/edit.png"></center>'
+                }
+
+                AxtForm = Ext.getCmp('notification_input_form');
+                AxtForm.findById('grid1').on('cellclick', function (g, rowIndex, columnIndex, e) {
+                    var record = g.getStore().getAt(rowIndex);
+                    if(columnIndex == 1) {
+                        AxtForm.findById('SID').setValue(record.get('SID'));
+                        AxtForm.findById('customernamechinese_v').setValue(record.get('CUSTOMERNAMECHINESE_V'));
+                        AxtForm.findById('customernameen_v').setValue(record.get('CUSTOMERNAMEEN_V'));
+                        AxtForm.findById('contactchinese_v').setValue(record.get('CONTACTCHINESE_V'));
+                        AxtForm.findById('contactenglish_v').setValue(record.get('CONTACTENGLISH_V'));
+                        AxtForm.findById('orderproduct_v').setValue(record.get('ORDERPRODUCT_V'));
+                        AxtForm.findById('renewcustomerno_v').setValue(record.get('RENEWCUSTOMERNO_V'));
+                        AxtForm.findById('newcustomerbrands_v').setValue(record.get('NEWCUSTOMERBRANDS_V'));
+                        AxtForm.findById('competitivebrands_v').setValue(record.get('COMPETITIVEBRANDS_V'));
+                        AxtForm.findById('dealer_tw_v').setValue(record.get('DEALER_TW_V'));
+                    }
+                });
+                AxtPanel.render("main");
+                setlang();
+            });
+    </script>
+</head>
+<body>
+    <center>
+        <div id="main"></div>
+    </center>
+</body>
+</html>

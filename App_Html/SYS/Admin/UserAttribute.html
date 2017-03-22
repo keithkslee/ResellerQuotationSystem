@@ -1,0 +1,582 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>UserAttribute</title>
+    <link href="../../../css/axtlib.css" type="text/css" rel="stylesheet" />
+    <link href="../../../css/axtStyle.css" type="text/css" rel="stylesheet" />
+    <link href="../../../ext/resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+    <link href="../../../ext/ux/css/RowEditor.css" type="text/css" rel="stylesheet" />
+    <script src="../../../ext/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+    <script src="../../../ext/ext-all-debug.js" type="text/javascript"></script>
+    <script src="../../../ext/ux/PagingMemoryProxy.js" type="text/javascript"></script>
+    <script src="../../../ext/ux/ProgressBarPager.js" type="text/javascript"></script>
+    <script src="../../../ext/ux/RowEditor.js" type="text/javascript"></script>
+    <script src="../../../ext/src/locale/ext-lang-zh_TW.js" type="text/javascript"></script>
+    <script src="../../../axtjs/axtRuleMessage.js" type="text/javascript"></script>
+    <script src="../../../axtjs/axtlib.js" type="text/javascript"></script>
+    <script src="../../../axtjs/pPageSize.js" type="text/javascript"></script>
+    <script src="../../../axtjs/AJAXRPC.js" type="text/javascript"></script>
+    <script src="../../../ajaxrpc/Script.aspx" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var AxtEditor = new Ext.ux.grid.RowEditor({});
+        var client = new AJAXRPC_Client('../../../ajaxrpc/Server.aspx');
+
+        if (client.Login.isLogin() == false) {
+            parent.location.href = "../../../Login.html";
+        }
+
+        client.SYSAdminUserAttribute.createTable();
+        client.SYSAdminUserAttribute.beforeGenConf();
+
+        function setlang() {
+            lang = client.AxtSystem.getLang("zh-TW");
+            setRuleMessageLang(lang);
+            AxtForm = Ext.getCmp('UserAttribute_form');
+            switch (lang) {
+                case 'en':
+                    AxtForm.findById("dfdTitle").setValue("User Attribute Maintenance");
+                    AxtForm.findById("lblattrname").setText("Attribute Name");
+                    AxtForm.findById("btnquerybtn").setText("Query");
+                    AxtForm.findById("btnaddbtn").setText("Add");
+                    AxtForm.findById("grid1").setTitle('User Attribute Maintenance');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center>Attribute Name</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center>Status</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center>Data Type</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center>Default Value</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center>Check Type</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center>Check Condition</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center>Unit</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center>Description</center>');
+                    AxtForm.findById("btnSubmit").setText('Submit');
+                    AxtForm.findById("btnCancel").setText('Cancel');
+                    AxtEditor.saveText = "Update";
+                    AxtEditor.cancelText = "Cancel";
+                    break;
+                case 'zh-TW':
+                    AxtForm.findById("dfdTitle").setValue("使用者屬性維護");
+                    AxtForm.findById("lblattrname").setText("屬性名稱");
+                    AxtForm.findById("btnquerybtn").setText("查詢");
+                    AxtForm.findById("btnaddbtn").setText("新增");
+                    AxtForm.findById("grid1").setTitle('使用者屬性維護');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center>屬性名稱</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center>狀態</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center>資料型態</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center>預設值</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center>檢查型態</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center>檢查條件</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center>單位</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center>說明</center>');
+                    AxtForm.findById("btnSubmit").setText('送出');
+                    AxtForm.findById("btnCancel").setText('取消');
+                    AxtEditor.saveText = "更新";
+                    AxtEditor.cancelText = "取消";
+                    break;
+                case 'zh-CN':
+                    AxtForm.findById("dfdTitle").setValue("使用者屬性管理");
+                    AxtForm.findById("lblattrname").setText("属性名称");
+                    AxtForm.findById("btnquerybtn").setText("查询");
+                    AxtForm.findById("btnaddbtn").setText("新增");
+                    AxtForm.findById("grid1").setTitle('使用者屬性管理');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center>属性名称</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center>状态</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center>数据型态</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center>默认值</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center>检查型态</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center>检查条件</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center>单位</center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center>说明</center>');
+                    AxtForm.findById("btnSubmit").setText('送交');
+                    AxtForm.findById("btnCancel").setText('取消');
+                    AxtEditor.saveText = "更新";
+                    AxtEditor.cancelText = "取消";
+                    break;
+                }
+            }
+
+            Ext.onReady(function () {
+                Ext.QuickTips.init();
+
+                var AxtData = client.SYSAdminUserAttribute.getUserAttribute();
+
+                var proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+
+                var reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'UserAttribute'
+                }, [
+                        {
+                            name: 'SID'
+                        },
+                        {
+                            name: 'C1'
+                        },
+                        {
+                            name: 'C2'
+                        },
+                        {
+                            name: 'C3'
+                        },
+                        {
+                            name: 'C4'
+                        },
+                        {
+                            name: 'C5'
+                        },
+                        {
+                            name: 'C6'
+                        },
+                        {
+                            name: 'C7'
+                        },
+                        {
+                            name: 'C8'
+                        }
+                    ]
+                );
+
+                var writer = new Ext.data.JsonWriter({
+                    encode: false       // <-- don't return encoded JSON -- causes Ext.Ajax#request to send data using jsonData config rather than HTTP params
+                });
+
+                var AxtStore = new Ext.data.Store({
+                    id: 'jssUserAttribute',
+                    proxy: proxy,
+                    reader: reader,
+                    pruneModifiedRecords: true
+                });
+
+                AxtStore.load({ params: { start: 0, limit: 20} });
+
+                function axtStoreUpdate() {
+                    AxtData = client.SYSAdminUserAttribute.getUserAttribute();
+                    AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                    AxtStore.load();
+                }
+
+                /*usercode start*/
+                /*usercode end*/
+
+                var AxtPanel = new Ext.Panel({
+                    width: 800,
+                    layout: 'form',
+                    id: 'UserAttribute_form',
+                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                    items: [
+                   {
+                       xtype: 'panel',
+                       height: 25,
+                       bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;'
+                   },
+                   {
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'border-width:1; padding:0px 0 0 0px; background:transparent;',
+                       items: [
+                            {
+                                xtype: 'displayfield',
+                                id: 'dfdTitle',
+                                cls: 'CSTitle',
+                                height: 35,
+                                columnWidth: 1
+                            }
+                        ]
+                   },
+                    {
+                        xtype: 'panel',
+                        height: 25,
+                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;'
+                    },
+                    {
+                        xtype: 'panel',
+                        layout: 'column',
+                        height: 25,
+                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                        items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                        xtype: 'label',
+                                        id: 'lblattrname',
+                                        width: 100
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                xtype: 'textfield',
+                                name: 'attrfield',
+                                        width: 100,
+                                id: 'attrfield'
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                xtype: 'displayfield',
+                                name: '&nbsp;',
+                                value: '&nbsp;',
+                                columnWidth: 0.55,
+                                id: 'dfdd1'
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                        xtype: 'button',
+                                        id: 'btnquerybtn',
+                                        cls: 'CSButton',
+                                        handler: function () {
+                                            AxtForm = Ext.getCmp('UserAttribute_form');
+
+                                            /*btnquerybtn user code start*/
+                                            /*btnquerybtn user code end*/
+                                        },
+                                        width: 100
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                        xtype: 'button',
+                                        id: 'btnaddbtn',
+                                        cls: 'CSButton',
+                                        handler: function () {
+                                            AxtForm = Ext.getCmp('UserAttribute_form');
+
+                                            /*btnaddbtn user code start*/
+                                            /*btnaddbtn user code end*/
+                                        },
+                                        width: 100
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                   {
+                       xtype: 'panel',
+                       height: 25,
+                       bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;'
+                   },
+                   {
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'text-align: left;',
+                       items: [
+                            {
+                                xtype: 'grid',
+                                id: 'grid1',
+                                store: AxtStore,
+                                height: 380,
+                                bodyStyle: 'border-width:0; padding: 0px 0 0 0px; background: transparent;',
+                                loadMask: true,
+                                columnWidth: 1,
+                                columnLines: true,
+                                plugins: [AxtEditor],
+                                viewConfig: {
+                                    forceFit: true
+                                },
+                                selModel: new Ext.grid.CheckboxSelectionModel({
+                                    checkOnly: false,
+                                    width: 30
+                                }),
+                                columns: [
+                                    new Ext.grid.CheckboxSelectionModel({ width: 30 }),
+                                    {
+                                        id: 'C1',
+                                        dataIndex: 'C1',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'C2',
+                                        dataIndex: 'C2',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'C3',
+                                        dataIndex: 'C3',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'C4',
+                                        dataIndex: 'C4',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'C5',
+                                        dataIndex: 'C5',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'C6',
+                                        dataIndex: 'C6',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'C7',
+                                        dataIndex: 'C7',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'C8',
+                                        dataIndex: 'C8',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    }
+                                ],
+                                tbar: [
+                                    {
+                                        id: 'delete',
+                                        text: 'Delete',
+                                        tooltip: 'Delete',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSDelete',
+                                        width: 72,
+                                        handler: function () {
+                                            var grid = Ext.getCmp('grid1');
+                                            var records = grid.getSelectionModel().getSelections();
+                                            if (!records || records.length <= 0) 
+                                            {
+                                                return false;
+                                            }
+
+                                            Ext.MessageBox.confirm(
+                                                WRN_00002,
+                                                WRN_00002,
+                                                function (btn) {
+                                                    if (btn == 'yes') {
+                                                        var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                        var deleteData = new Array();
+                                                        Ext.each(records, function (record) {
+                                                            var data = {
+                                                                SID: record.get("SID"),
+                                                                C1: record.get("C1"),
+                                                                C2: record.get("C2"),
+                                                                C3: record.get("C3"),
+                                                                C4: record.get("C4"),
+                                                                C5: record.get("C5"),
+                                                                C6: record.get("C6"),
+                                                                C7: record.get("C7"),
+                                                                C8: record.get("C8")
+                                                            };
+                                                            deleteData.push(data);
+                                                            grid.store.remove(record);
+                                                        });
+
+                                                        var msg = client.SYSAdminUserAttribute.deleteData(deleteData);
+                                                        axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                        axtStoreUpdate();
+
+                                                        /*onDelete user code start*/
+                                                        /*onDelete user code end*/
+
+                                                        Ext.getCmp('grid1').getView().refresh();
+                                                        progress.hide();
+                                                    }
+                                                }
+                                            );
+                                        }
+                                    },
+                                    '-',
+                                    {
+                                        id: 'add',
+                                        text: 'Add',
+                                        tooltip: 'Add',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSAdd',
+                                        width: 72,
+                                        handler: function () {
+                                            onAdd(Ext.getCmp('grid1'), AxtEditor, { C1: "", C2: "", C3: "", C4: "", C5: "", C6: "", C7: "", C8: "" });
+                                        }
+                                    },
+                                    '-'
+						           ],
+                                bbar: [
+                                    '->',
+                                    {
+                                        xtype: 'paging',
+                                        pageSize: 20,
+                                        store: AxtStore,
+                                        displayInfo: true,
+                                        //displayMsg: 'Displaying {0} - {1} of {2}',
+                                        style: 'border-width:0;',
+                                        refresh: function (pt, o) {
+                                            axtStoreUpdate();
+                                            Ext.getCmp('grid1').getView().refresh();
+                                        },
+                                        //emptyMsg: "No message to display",
+                                        plugins: [new Ext.ux.Andrie.pPageSize(), new Ext.ux.ProgressBarPager()]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+	                   {
+                        xtype: 'panel',
+                        height: 25,
+                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;'
+	                   },
+                    {
+                        xtype: 'panel',
+                        layout: 'column',
+                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                        items: [
+                            {
+                                xtype: 'panel',
+                                height: 25,
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: .2
+                            },
+                            {
+                                xtype: 'panel',
+                                layout: 'column',
+                                height: 25,
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: .6,
+                                items: [
+                                    {
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        columnWidth: .5,
+                                        items: [
+                                            {
+                                                xtype: 'button',
+                                                id: 'btnSubmit',
+                                                handler: function () {
+                                                    var newData = new Array();
+                                                    var modifyRecord = AxtStore.getModifiedRecords();
+                                                    Ext.each(modifyRecord, function (record) {
+                                                        var data = {
+                                                            SID: record.get("SID"),
+                                                            C1: record.get("C1"),
+                                                            C2: record.get("C2"),
+                                                            C3: record.get("C3"),
+                                                            C4: record.get("C4"),
+                                                            C5: record.get("C5"),
+                                                            C6: record.get("C6"),
+                                                            C7: record.get("C7"),
+                                                            C8: record.get("C8")
+                                                        };
+                                                        newData.push(data);
+                                                    });
+
+                                                    if (newData.length <= 0) {
+                                                        return;
+                                                    }
+
+                                                    var msg = client.SYSAdminUserAttribute.saveData(newData);
+                                                    axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                    axtStoreUpdate();
+
+                                                    /*btnSubmit user code start*/
+                                                    /*btnSubmit user code end*/
+
+                                                    Ext.getCmp('grid1').getView().refresh();
+                                                    parent.document.getElementById('contentViewFrame').src = "App_Html/WIP/WebQuery/LotList.html?time=" + new Date().getTime();
+                                                },
+                                                width: 72
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        columnWidth: .5,
+                                        items: [
+                                            {
+                                                xtype: 'button',
+                                                id: 'btnCancel',
+                                                handler: function () {
+                                                    axtStoreUpdate();
+
+                                                    /*btnCancel user code start*/
+                                                    /*btnCancel user code end*/
+
+                                                    Ext.getCmp('grid1').getView().refresh();
+                                                },
+                                                width: 72
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+	                           {
+                                   xtype: 'panel',
+                                   height: 25,
+                                   bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                   columnWidth: .2
+    	                       }
+	                       ]
+                    }
+                ]
+                });
+
+                AxtPanel.render("main");
+                setlang();
+            });
+    </script>
+</head>
+<body>
+    <center>
+        <div id="main"></div>
+    </center>
+</body>
+</html>

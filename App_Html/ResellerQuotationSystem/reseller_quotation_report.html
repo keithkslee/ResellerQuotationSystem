@@ -1,0 +1,2143 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>reseller_quotation_report</title>
+    <link href="../../css/axtlib.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/axtStyle.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/ux/css/RowEditor.css" type="text/css" rel="stylesheet" />
+    <style>
+        .x-grid3-cell-inner{
+            white-space: normal;
+        }
+    </style>
+
+    <script src="../../ext/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ext-all-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ux/PagingMemoryProxy.js" type="text/javascript"></script>
+    <script src="../../ext/ux/ProgressBarPager.js" type="text/javascript"></script>
+    <script src="../../ext/ux/RowEditor.js" type="text/javascript"></script>
+    <script src="../../ext/src/locale/ext-lang-zh_TW.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtRuleMessage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtlib.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtMutiLanguage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtHelpWindow.js" type="text/javascript"></script>
+    <script src="../../axtjs/pPageSize.js" type="text/javascript"></script>
+    <script src="../../axtjs/AJAXRPC.js" type="text/javascript"></script>
+    <script src="../../Charts/FusionCharts.js" type="text/javascript"></script>
+    <script src="../../ajaxrpc/Script.aspx" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var AxtEditor = new Ext.ux.grid.RowEditor({});
+        var client = new AJAXRPC_Client('../../ajaxrpc/Server.aspx');
+
+        if (client.Login.isLogin() == false) {
+            parent.location.href = "../../Login.html";
+        }
+
+        client.ResellerQuotationSystemreseller_quotation_report.createTable();
+        client.ResellerQuotationSystemreseller_quotation_report.beforeGenConf();
+
+        function setlang() {
+            lang = client.AxtSystem.getLang("zh-TW");
+            setRuleMessageLang(lang);
+            AxtForm = Ext.getCmp('reseller_quotation_report_form');
+            switch (lang) {
+                case 'zh-CN':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("经销商报价单 Report");
+                    AxtForm.findById("fieldset0").setTitle('郵件設定');
+                    AxtForm.findById("lblsenderName_t").update("<font size=\'3\'><p align = \'right\'>寄信人</p></font>");
+                    AxtForm.findById("lblsenderEmail_t").update("<font size=\'3\'><p align = \'right\'>寄信人Email</p></font>");
+                    AxtForm.findById("lblrecipientName_t").update("<font size=\'3\'><p align = \'right\'>收信人</p></font>");
+                    AxtForm.findById("lblrecipientEmail_t").update("<font size=\'3\'><p align = \'right\'>收信人Email</p></font>");
+                    AxtForm.findById("lblreviewerName_t").update("<font size=\'3\'><p align = \'right\'>審核人</p></font>");
+                    AxtForm.findById("lblreviewerEmail_t").update("<font size=\'3\'><p align = \'right\'>審核人Email</p></font>");
+                    AxtForm.findById("fieldset2").setTitle('郵件設定');
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTREPORTOUTPUT").setText("列印");
+                    AxtForm.findById("btnBTNAXTREPORTPREVIEW").setText("預覽");
+                    AxtForm.findById("btnBTNAXTEMAIL").setText("寄送邮件");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>预览</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>告标题</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>报告名称</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>经销商 中文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>报价单号</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>统一编号</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>报价日期</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>連絡人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>出货日期</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>电子邮件</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(11, '<center><font size = \'3\'>付款条件</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(12, '<center><font size = \'3\'>联络电话</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(13, '<center><font size = \'3\'>竞争厂牌</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(14, '<center><font size = \'3\'>联络传真</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(15, '<center><font size = \'3\'>客户名称</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(16, '<center><font size = \'3\'>地址</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(17, '<center><font size = \'3\'>订单类型</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(18, '<center><font size = \'3\'>送货地址</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(19, '<center><font size = \'3\'>报价人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(20, '<center><font size = \'3\'>项目1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(21, '<center><font size = \'3\'>产品名称1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(22, '<center><font size = \'3\'>规格1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(23, '<center><font size = \'3\'>数量(套;人版)1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(24, '<center><font size = \'3\'>一年期定价1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(25, '<center><font size = \'3\'>一年价格1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(26, '<center><font size = \'3\'>三年期定价1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(27, '<center><font size = \'3\'>三个年份价格1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(28, '<center><font size = \'3\'>项目2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(29, '<center><font size = \'3\'>产品名称2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(30, '<center><font size = \'3\'>规格2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(31, '<center><font size = \'3\'>数量(套;人版)2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(32, '<center><font size = \'3\'>一年期定价2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(33, '<center><font size = \'3\'>一年价格2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(34, '<center><font size = \'3\'>三年期定价2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(35, '<center><font size = \'3\'>三个年份价格2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(36, '<center><font size = \'3\'>项目3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(37, '<center><font size = \'3\'>产品名称3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(38, '<center><font size = \'3\'>规格3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(39, '<center><font size = \'3\'>数量(套;人版)3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(40, '<center><font size = \'3\'>一年期定价3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(41, '<center><font size = \'3\'>一年价格3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(42, '<center><font size = \'3\'>三年期定价3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(43, '<center><font size = \'3\'>三个年份价格3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(44, '<center><font size = \'3\'>项次4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(45, '<center><font size = \'3\'>产品名称4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(46, '<center><font size = \'3\'>规格4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(47, '<center><font size = \'3\'>数量(套;人版)4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(48, '<center><font size = \'3\'>一年期定价4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(49, '<center><font size = \'3\'>一年期优惠价4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(50, '<center><font size = \'3\'>三年期定价4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(51, '<center><font size = \'3\'>三年期优惠价4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(52, '<center><font size = \'3\'>一年期定价未税金额</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(53, '<center><font size = \'3\'>一年期未税金额</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(54, '<center><font size = \'3\'>三年期定价未税金额</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(55, '<center><font size = \'3\'>三年期未税金额</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(56, '<center><font size = \'3\'>一年期定价营业税5%</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(57, '<center><font size = \'3\'>一年期营业税5%</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(58, '<center><font size = \'3\'>三年期定价营业税5%</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(59, '<center><font size = \'3\'>三年期营业税5%</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(60, '<center><font size = \'3\'>一年期定价总计</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(61, '<center><font size = \'3\'>一年期总计</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(62, '<center><font size = \'3\'>三年期定价总计</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(63, '<center><font size = \'3\'>三年期总计</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(64, '<center><font size = \'3\'>注解</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(65, '<center><font size = \'3\'>主管</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(66, '<center><font size = \'3\'>销售经理</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(67, '<center><font size = \'3\'>经办人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(68, '<center><font size = \'3\'>客户签收</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'en':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("Reseller Quotation Report");
+                    AxtForm.findById("fieldset0").setTitle('Email Settings');
+                    AxtForm.findById("lblsenderName_t").update("<font size=\'3\'><p align = \'right\'>Sender Name</p></font>");
+                    AxtForm.findById("lblsenderEmail_t").update("<font size=\'3\'><p align = \'right\'>Sender Email</p></font>");
+                    AxtForm.findById("lblrecipientName_t").update("<font size=\'3\'><p align = \'right\'>Recipient Name</p></font>");
+                    AxtForm.findById("lblrecipientEmail_t").update("<font size=\'3\'><p align = \'right\'>Recipient Email</p></font>");
+                    AxtForm.findById("lblreviewerName_t").update("<font size=\'3\'><p align = \'right\'>Reviewer Name</p></font>");
+                    AxtForm.findById("lblreviewerEmail_t").update("<font size=\'3\'><p align = \'right\'>Reviewer Email</p></font>");
+                    AxtForm.findById("fieldset2").setTitle('Report Search');
+                    AxtForm.findById("btnBTNAXTQUERY").setText("Query");
+                    AxtForm.findById("btnBTNAXTREPORTOUTPUT").setText("Print Output");
+                    AxtForm.findById("btnBTNAXTREPORTPREVIEW").setText("Preview");
+                    AxtForm.findById("btnBTNAXTEMAIL").setText("Send Email");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("Cancel");
+                    AxtForm.findById("grid1").setTitle('');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>Modify</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>ReportTitle</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>ReportName</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>ResellerName</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>QuotationNo</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>UnifiedNumbering</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>QuoteDate</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>Contact</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>ShipDate</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>Email</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(11, '<center><font size = \'3\'>PaymentConditions</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(12, '<center><font size = \'3\'>Phone</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(13, '<center><font size = \'3\'>CompetitiveBrands</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(14, '<center><font size = \'3\'>Fax</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(15, '<center><font size = \'3\'>CustomerName</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(16, '<center><font size = \'3\'>Address</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(17, '<center><font size = \'3\'>OrderType</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(18, '<center><font size = \'3\'>DeliveryAddress</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(19, '<center><font size = \'3\'>Offerors</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(20, '<center><font size = \'3\'>Item1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(21, '<center><font size = \'3\'>ProductName1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(22, '<center><font size = \'3\'>Specification1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(23, '<center><font size = \'3\'>Quantity1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(24, '<center><font size = \'3\'>OneYearValue1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(25, '<center><font size = \'3\'>OneYearPrice1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(26, '<center><font size = \'3\'>ThreeYearValue1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(27, '<center><font size = \'3\'>ThreeYearPrice1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(28, '<center><font size = \'3\'>Item2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(29, '<center><font size = \'3\'>ProductName2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(30, '<center><font size = \'3\'>Specification2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(31, '<center><font size = \'3\'>Quantity2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(32, '<center><font size = \'3\'>OneYearValue2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(33, '<center><font size = \'3\'>OneYearPrice2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(34, '<center><font size = \'3\'>ThreeYearValue2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(35, '<center><font size = \'3\'>ThreeYearPrice2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(36, '<center><font size = \'3\'>Item3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(37, '<center><font size = \'3\'>ProductName3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(38, '<center><font size = \'3\'>Specification3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(39, '<center><font size = \'3\'>Quantity3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(40, '<center><font size = \'3\'>OneYearValue3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(41, '<center><font size = \'3\'>OneYearPrice3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(42, '<center><font size = \'3\'>ThreeYearValue3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(43, '<center><font size = \'3\'>ThreeYearPrice3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(44, '<center><font size = \'3\'>Item4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(45, '<center><font size = \'3\'>ProductName4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(46, '<center><font size = \'3\'>Specification4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(47, '<center><font size = \'3\'>Quantity4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(48, '<center><font size = \'3\'>OneYearValue4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(49, '<center><font size = \'3\'>OneYearPrice4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(50, '<center><font size = \'3\'>ThreeYearValue4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(51, '<center><font size = \'3\'>ThreeYearPrice4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(52, '<center><font size = \'3\'>NoAmountTaxValueYear</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(53, '<center><font size = \'3\'>NoAmountTaxYear</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(54, '<center><font size = \'3\'>NoAmountTaxValueTriennial</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(55, '<center><font size = \'3\'>NoTaxAmountTriennial</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(56, '<center><font size = \'3\'>OneYearSalesTaxValue</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(57, '<center><font size = \'3\'>OneYearSalesTax</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(58, '<center><font size = \'3\'>ThreeYearSalesTaxValue</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(59, '<center><font size = \'3\'>ThreeYearSalesTax</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(60, '<center><font size = \'3\'>TotalValueYear</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(61, '<center><font size = \'3\'>TotalYear</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(62, '<center><font size = \'3\'>TotalThreeYearValuePeriod</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(63, '<center><font size = \'3\'>TotalThreeYearPeriod</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(64, '<center><font size = \'3\'>Note</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(65, '<center><font size = \'3\'>Head</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(66, '<center><font size = \'3\'>SalesManager</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(67, '<center><font size = \'3\'>Attn</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(68, '<center><font size = \'3\'>CustomersSign</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'zh-TW':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("經銷商報價單 Report");
+                    AxtForm.findById("fieldset0").setTitle('郵件設定');
+                    AxtForm.findById("lblsenderName_t").update("<font size=\'3\'><p align = \'right\'>寄信人</p></font>");
+                    AxtForm.findById("lblsenderEmail_t").update("<font size=\'3\'><p align = \'right\'>寄信人Email</p></font>");
+                    AxtForm.findById("lblrecipientName_t").update("<font size=\'3\'><p align = \'right\'>收信人</p></font>");
+                    AxtForm.findById("lblrecipientEmail_t").update("<font size=\'3\'><p align = \'right\'>收信人Email</p></font>");
+                    AxtForm.findById("lblreviewerName_t").update("<font size=\'3\'><p align = \'right\'>審核人</p></font>");
+                    AxtForm.findById("lblreviewerEmail_t").update("<font size=\'3\'><p align = \'right\'>審核人Email</p></font>");
+                    AxtForm.findById("fieldset2").setTitle('郵件設定');
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTREPORTOUTPUT").setText("列印");
+                    AxtForm.findById("btnBTNAXTREPORTPREVIEW").setText("預覽");
+                    AxtForm.findById("btnBTNAXTEMAIL").setText("寄送郵件");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>預覽</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>報告標題</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>報告名稱</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>經銷商 中文</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>報價單號</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>統一編號</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>報價日期</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>連絡人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>出貨日期</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>電子郵件</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(11, '<center><font size = \'3\'>付款條件</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(12, '<center><font size = \'3\'>聯絡電話</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(13, '<center><font size = \'3\'>競爭廠牌</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(14, '<center><font size = \'3\'>聯絡傳真</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(15, '<center><font size = \'3\'>客戶名稱</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(16, '<center><font size = \'3\'>地址</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(17, '<center><font size = \'3\'>訂單類型</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(18, '<center><font size = \'3\'>送貨地址</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(19, '<center><font size = \'3\'>報價人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(20, '<center><font size = \'3\'>項目1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(21, '<center><font size = \'3\'>產品名稱1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(22, '<center><font size = \'3\'>規格1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(23, '<center><font size = \'3\'>數量(套;人版)1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(24, '<center><font size = \'3\'>一年期定價1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(25, '<center><font size = \'3\'>一年價格1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(26, '<center><font size = \'3\'>三年期定價1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(27, '<center><font size = \'3\'>三個年份價格1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(28, '<center><font size = \'3\'>項目2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(29, '<center><font size = \'3\'>產品名稱2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(30, '<center><font size = \'3\'>規格2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(31, '<center><font size = \'3\'>數量(套;人版)2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(32, '<center><font size = \'3\'>一年期定價2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(33, '<center><font size = \'3\'>一年價格2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(34, '<center><font size = \'3\'>三年期定價2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(35, '<center><font size = \'3\'>三個年份價格2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(36, '<center><font size = \'3\'>項目3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(37, '<center><font size = \'3\'>產品名稱3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(38, '<center><font size = \'3\'>規格3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(39, '<center><font size = \'3\'>數量(套;人版)3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(40, '<center><font size = \'3\'>一年期定價3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(41, '<center><font size = \'3\'>一年價格3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(42, '<center><font size = \'3\'>三年期定價3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(43, '<center><font size = \'3\'>三個年份價格3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(44, '<center><font size = \'3\'>項次4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(45, '<center><font size = \'3\'>產品名稱4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(46, '<center><font size = \'3\'>規格4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(47, '<center><font size = \'3\'>數量(套;人版)4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(48, '<center><font size = \'3\'>一年期定價4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(49, '<center><font size = \'3\'>一年期優惠價4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(50, '<center><font size = \'3\'>三年期定價4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(51, '<center><font size = \'3\'>三年期優惠價4</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(52, '<center><font size = \'3\'>一年期定價未稅金額</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(53, '<center><font size = \'3\'>一年期未稅金額</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(54, '<center><font size = \'3\'>三年期定價未稅金額</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(55, '<center><font size = \'3\'>三年期未稅金額</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(56, '<center><font size = \'3\'>一年期定價營業稅5%</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(57, '<center><font size = \'3\'>一年期營業稅5%</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(58, '<center><font size = \'3\'>三年期定價營業稅5%</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(59, '<center><font size = \'3\'>三年期營業稅5%</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(60, '<center><font size = \'3\'>一年期定價總計</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(61, '<center><font size = \'3\'>一年期總計</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(62, '<center><font size = \'3\'>三年期定價總計</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(63, '<center><font size = \'3\'>三年期總計</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(64, '<center><font size = \'3\'>註解</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(65, '<center><font size = \'3\'>主管</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(66, '<center><font size = \'3\'>銷售經理</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(67, '<center><font size = \'3\'>經辦人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(68, '<center><font size = \'3\'>客戶簽收</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                }
+            }
+
+
+        function axtHelp() {
+                lang = client.AxtSystem.getLang("zh-TW");
+                setRuleMessageLang(lang);
+                AxtForm = Ext.getCmp('reseller_quotation_report_form');
+                switch (lang) {
+                }
+         }
+
+            Ext.onReady(function () {
+                Ext.QuickTips.init();
+
+                setlang();
+                var AxtData = client.ResellerQuotationSystemreseller_quotation_report.getreseller_quotation_reportBy({
+                    START_V : 0,
+                    LIMIT_V : 20
+                });
+
+                var proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+
+                var reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'reseller_quotation_report'
+                }, [
+                        {
+                            name: 'SID'
+                        },
+                        {
+                            name: 'AXTMODIFY'
+                        },
+                        {
+                            name: 'REPORTTITLE_V'
+                        },
+                        {
+                            name: 'REPORTNAME_V'
+                        },
+                        {
+                            name: 'RESELLERNAME_V'
+                        },
+                        {
+                            name: 'QUOTATIONNO_V'
+                        },
+                        {
+                            name: 'UNIFIEDNUMBERING_V'
+                        },
+                        {
+                            name: 'QUOTE_DATE_V'
+                        },
+                        {
+                            name: 'COMPACT_V'
+                        },
+                        {
+                            name: 'SHIP_DATE_V'
+                        },
+                        {
+                            name: 'EMAIL_V'
+                        },
+                        {
+                            name: 'PAYMENT_CONDITIONS_V'
+                        },
+                        {
+                            name: 'PHONE_V'
+                        },
+                        {
+                            name: 'COMPETITIVEBRANDS_V'
+                        },
+                        {
+                            name: 'FAX_V'
+                        },
+                        {
+                            name: 'CUSTOMERNAME_V'
+                        },
+                        {
+                            name: 'ADDRESS_V'
+                        },
+                        {
+                            name: 'ORDERTYPE_V'
+                        },
+                        {
+                            name: 'DELIVERYADDRESS_V'
+                        },
+                        {
+                            name: 'OFFERORS_V'
+                        },
+                        {
+                            name: 'ITEM1_V'
+                        },
+                        {
+                            name: 'PRODUCT_NAME1_V'
+                        },
+                        {
+                            name: 'SPECIFICATION1_V'
+                        },
+                        {
+                            name: 'QUANTITY1_V'
+                        },
+                        {
+                            name: 'ONEYEARVALUE1_V'
+                        },
+                        {
+                            name: 'ONE_YEAR_PRICE1_V'
+                        },
+                        {
+                            name: 'THREEYEARVALUE1_V'
+                        },
+                        {
+                            name: 'THREE_YEAR_PRICE1_V'
+                        },
+                        {
+                            name: 'ITEM2_V'
+                        },
+                        {
+                            name: 'PRODUCT_NAME2_V'
+                        },
+                        {
+                            name: 'SPECIFICATION2_V'
+                        },
+                        {
+                            name: 'QUANTITY2_V'
+                        },
+                        {
+                            name: 'ONEYEARVALUE2_V'
+                        },
+                        {
+                            name: 'ONE_YEAR_PRICE2_V'
+                        },
+                        {
+                            name: 'THREEYEARVALUE2_V'
+                        },
+                        {
+                            name: 'THREE_YEAR_PRICE2_V'
+                        },
+                        {
+                            name: 'ITEM3_V'
+                        },
+                        {
+                            name: 'PRODUCT_NAME3_V'
+                        },
+                        {
+                            name: 'SPECIFICATION3_V'
+                        },
+                        {
+                            name: 'QUANTITY3_V'
+                        },
+                        {
+                            name: 'ONEYEARVALUE3_V'
+                        },
+                        {
+                            name: 'ONE_YEAR_PRICE3_V'
+                        },
+                        {
+                            name: 'THREEYEARVALUE3_V'
+                        },
+                        {
+                            name: 'THREE_YEAR_PRICE3_V'
+                        },
+                        {
+                            name: 'ITEM4_V'
+                        },
+                        {
+                            name: 'PRODUCT_NAME4_V'
+                        },
+                        {
+                            name: 'SPECIFICATION4_V'
+                        },
+                        {
+                            name: 'QUANTITY4_V'
+                        },
+                        {
+                            name: 'ONE_YEAR_VALUE4_V'
+                        },
+                        {
+                            name: 'ONE_YEAR_PRICE4_V'
+                        },
+                        {
+                            name: 'THREE_YEAR_VALUE4_V'
+                        },
+                        {
+                            name: 'THREE_YEAR_PRICE4_V'
+                        },
+                        {
+                            name: 'NOAMOUNTTAXVALUEYEAR_V'
+                        },
+                        {
+                            name: 'NO_AMOUNT_TAX_YEAR_V'
+                        },
+                        {
+                            name: 'NOAMOUNTTAXVALUETRIENNIAL_V'
+                        },
+                        {
+                            name: 'NO_TAX_AMOUNT_TRIENNIAL_V'
+                        },
+                        {
+                            name: 'ONEYEARSALESTAXVALUE_V'
+                        },
+                        {
+                            name: 'ONE_YEAR_SALES_TAX_V'
+                        },
+                        {
+                            name: 'THREEYEARSALESTAXVALUE_V'
+                        },
+                        {
+                            name: 'THREE_YEAR_SALES_TAX_V'
+                        },
+                        {
+                            name: 'TOTALVALUEYEAR_V'
+                        },
+                        {
+                            name: 'TOTAL_YEAR_V'
+                        },
+                        {
+                            name: 'TOTALTHREEYEARVALUEPERIOD_V'
+                        },
+                        {
+                            name: 'TOTAL_THREE_YEAR_PERIOD_V'
+                        },
+                        {
+                            name: 'NOTE_V'
+                        },
+                        {
+                            name: 'HEAD_V'
+                        },
+                        {
+                            name: 'SALES_MANAGER_V'
+                        },
+                        {
+                            name: 'ATTN_V'
+                        },
+                        {
+                            name: 'CUSTOMERS_SIGN_V'
+                        }
+                    ]
+                );
+
+                var writer = new Ext.data.JsonWriter({
+                    encode: false       // <-- don't return encoded JSON -- causes Ext.Ajax#request to send data using jsonData config rather than HTTP params
+                });
+
+                var AxtStore = new Ext.data.Store({
+                    id: 'jssreseller_quotation_report',
+                    proxy: proxy,
+                    reader: reader,
+                    pruneModifiedRecords: true
+                });
+
+                AxtStore.load({ params: { start: 0, limit: 20} });
+
+                function axtStoreUpdate() {
+                    AxtData = client.ResellerQuotationSystemreseller_quotation_report.getreseller_quotation_reportBy({
+                        START_V : AxtPageBar.cursor,
+                        LIMIT_V : AxtPageBar.pageSize
+                    });
+                    AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                    AxtStore.load();
+                }
+                var AxtPageBar = new Ext.PagingToolbar({
+                    xtype: "paging",
+                    pageSize: 20,
+                    store: AxtStore,
+                    displayInfo: true,
+                    //displayMsg: 'Displaying {0} - {1} of {2}',
+                    style: 'border-width:0;',
+                    refresh: function (pt, o) {
+                        axtStoreUpdate();
+                        Ext.getCmp('grid1').getView().refresh();
+                    },
+                    //emptyMsg: "No message to display",
+                    plugins: [new Ext.ux.Andrie.pPageSize(), new Ext.ux.ProgressBarPager()],
+                    listeners: {
+                        'beforechange' : function(pagingToolbar, pageData) {
+                            AxtData = client.ResellerQuotationSystemreseller_quotation_report.getreseller_quotation_reportBy({
+                                SENDERNAME_V: AxtForm.findById('cbx_senderName_v').getValue(),
+                                SENDEREMAIL_V: AxtForm.findById('cbx_senderEmail_v').getValue(),
+                                RECIPIENTNAME_V: AxtForm.findById('cbx_recipientName_v').getValue(),
+                                RECIPIENTEMAIL_V: AxtForm.findById('cbx_recipientEmail_v').getValue(),
+                                REVIEWERNAME_V: AxtForm.findById('cbx_reviewerName_v').getValue(),
+                                REVIEWEREMAIL_V: AxtForm.findById('cbx_reviewerEmail_v').getValue(),
+                                START_V : pageData.start,
+                                LIMIT_V : pageData.limit
+                            });
+                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                            AxtStore.load();
+                            Ext.getCmp('grid1').getView().refresh();
+
+                            var p = this.getParams();
+                            this.cursor = (pageData && pageData.start) ? pageData.start : 0;
+                            var d = this.getPageData(), ap = d.activePage, ps = d.pages;
+
+                            this.afterTextItem.setText(String.format(this.afterPageText, d.pages));
+                            this.inputItem.setValue(ap);
+                            this.first.setDisabled(ap == 1);
+                            this.prev.setDisabled(ap == 1);
+                            this.next.setDisabled(ap == ps);
+                            this.last.setDisabled(ap == ps);
+                            this.refresh.enable();
+                            this.updateInfo();
+
+                            return false;
+                         }
+                     }
+                 });
+
+                function tfToogle() {
+                }
+                /*usercode start*/
+                /*usercode end*/
+
+                var sm =  new Ext.grid.CheckboxSelectionModel({
+                    checkOnly: false,
+                    width: 20
+                });
+
+                var AxtPanel = new Ext.Panel({
+                    width: 800,
+                    layout: 'form',
+                    id: 'reseller_quotation_report_form',
+                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                    items: [
+                    {
+                        xtype: 'textfield',
+                        hidden: true,
+                        id: 'SID'
+                    },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'displayfield',
+                                        cls: 'CSTitle',
+                                        height: 35,
+                                        columnWidth: 1,
+                                        id: 'dfdTitle'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'fieldset',
+                                        collapsible: true,
+                                        title: 'fieldset0',
+                                        id: 'fieldset0',
+                                        items: [
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblsenderName_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_senderName_v',
+                    mode: 'local',
+                    editable: true,
+
+                    style: 'font-size: 16;',
+                    /*cbxsenderName_v user code start*/
+                    /*cbxsenderName_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblsenderEmail_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_senderEmail_v',
+                    mode: 'local',
+                    editable: true,
+
+                    style: 'font-size: 16;',
+                    /*cbxsenderEmail_v user code start*/
+                    /*cbxsenderEmail_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblrecipientName_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_recipientName_v',
+                    mode: 'local',
+                    editable: true,
+
+                    style: 'font-size: 16;',
+                    /*cbxrecipientName_v user code start*/
+                    /*cbxrecipientName_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblrecipientEmail_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_recipientEmail_v',
+                    mode: 'local',
+                    editable: true,
+
+                    style: 'font-size: 16;',
+                    /*cbxrecipientEmail_v user code start*/
+                    /*cbxrecipientEmail_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            },
+                                            {
+                                                xtype: 'panel',
+                                                layout: 'column',
+                                                border: false,
+                                                height: 30,
+                                                autoHeight:true,
+                                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                //default: {
+                                                //    border: false
+                                                //},
+                                                items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblreviewerName_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_reviewerName_v',
+                    mode: 'local',
+                    editable: true,
+
+                    style: 'font-size: 16;',
+                    /*cbxreviewerName_v user code start*/
+                    /*cbxreviewerName_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                                                        xtype: 'label',
+                                                        width: 150,
+                                                        id: 'lblreviewerEmail_t'
+                                                    }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                                    columnWidth: 0.2,
+                                                    items:[
+                                                    {
+                    xtype: 'combo',
+                    id: 'cbx_reviewerEmail_v',
+                    mode: 'local',
+                    editable: true,
+
+                    style: 'font-size: 16;',
+                    /*cbxreviewerEmail_v user code start*/
+                    /*cbxreviewerEmail_v user code end*/
+
+                    width: 150,
+                    triggerAction: 'all',
+                    selectOnFocus: true,
+                    typeAhead: true,
+                    lazyRender: true,
+                    listeners:{ 
+                        afterquery: function(record){ 
+                        	record.query = new RegExp(record.query,'i');
+                        	record.forceAll = true;
+                        	}
+                     },
+                    forceSelection: false
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'fieldset',
+                                        collapsible: true,
+                                        title: 'fieldset2',
+                                        id: 'fieldset2',
+                                        items: [
+
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTQUERY',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('reseller_quotation_report_form');
+
+                                                AxtData = client.ResellerQuotationSystemreseller_quotation_report.getreseller_quotation_reportBy({
+                                                    SENDERNAME_V: AxtForm.findById('cbx_senderName_v').getValue(),
+                                                    SENDEREMAIL_V: AxtForm.findById('cbx_senderEmail_v').getValue(),
+                                                    RECIPIENTNAME_V: AxtForm.findById('cbx_recipientName_v').getValue(),
+                                                    RECIPIENTEMAIL_V: AxtForm.findById('cbx_recipientEmail_v').getValue(),
+                                                    REVIEWERNAME_V: AxtForm.findById('cbx_reviewerName_v').getValue(),
+                                                    REVIEWEREMAIL_V: AxtForm.findById('cbx_reviewerEmail_v').getValue(),
+                                                    START_V : 0,
+                                                    LIMIT_V : AxtPageBar.pageSize,
+                                                    AXTMODIFY: ""
+                                            });
+                                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                                            AxtStore.load();
+                                            Ext.getCmp('grid1').getView().refresh();
+                                            /*btnBTNAXTQUERY user code start*/
+                                            /*btnBTNAXTQUERY user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTREPORTOUTPUT',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('reseller_quotation_report_form');
+
+
+                                                var grid = Ext.getCmp('grid1');
+                                                var records = grid.getSelectionModel().getSelections();
+                                                var Data = new Array();
+                                                if(!records || records.length <=0){
+                                                	Ext.MessageBox.confirm("Do you want to Display Empty Report?","No, Please select Report in Grid",function(btn){
+                                                		if(btn == "yes"){
+                                                			data = {};
+                                                			Data.push(data)
+                                                				var msg = client.ResellerQuotationSystemreseller_quotation_report.exportData("doc", Data,false);
+                                                			axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                window.location = "../../Report_Output/ResellerQuotationSystemResellerQuotationSystem_report.doc";
+                                                			
+                                                		}
+                                                	});
+                                                }else{
+                                    			Ext.each(records,function(record){
+                                                		var data = {
+                                    	                		AXTMODIFY: record.get('AXTMODIFY'),
+                                    	                		REPORTTITLE_V: record.get('REPORTTITLE_V'),
+                                    	                		REPORTNAME_V: record.get('REPORTNAME_V'),
+                                    	                		RESELLERNAME_V: record.get('RESELLERNAME_V'),
+                                    	                		QUOTATIONNO_V: record.get('QUOTATIONNO_V'),
+                                    	                		UNIFIEDNUMBERING_V: record.get('UNIFIEDNUMBERING_V'),
+                                    	                		QUOTE_DATE_V: record.get('QUOTE_DATE_V'),
+                                    	                		COMPACT_V: record.get('COMPACT_V'),
+                                    	                		SHIP_DATE_V: record.get('SHIP_DATE_V'),
+                                    	                		EMAIL_V: record.get('EMAIL_V'),
+                                    	                		PAYMENT_CONDITIONS_V: record.get('PAYMENT_CONDITIONS_V'),
+                                    	                		PHONE_V: record.get('PHONE_V'),
+                                    	                		COMPETITIVEBRANDS_V: record.get('COMPETITIVEBRANDS_V'),
+                                    	                		FAX_V: record.get('FAX_V'),
+                                    	                		CUSTOMERNAME_V: record.get('CUSTOMERNAME_V'),
+                                    	                		ADDRESS_V: record.get('ADDRESS_V'),
+                                    	                		ORDERTYPE_V: record.get('ORDERTYPE_V'),
+                                    	                		DELIVERYADDRESS_V: record.get('DELIVERYADDRESS_V'),
+                                    	                		OFFERORS_V: record.get('OFFERORS_V'),
+                                    	                		ITEM1_V: record.get('ITEM1_V'),
+                                    	                		PRODUCT_NAME1_V: record.get('PRODUCT_NAME1_V'),
+                                    	                		SPECIFICATION1_V: record.get('SPECIFICATION1_V'),
+                                    	                		QUANTITY1_V: record.get('QUANTITY1_V'),
+                                    	                		ONEYEARVALUE1_V: record.get('ONEYEARVALUE1_V'),
+                                    	                		ONE_YEAR_PRICE1_V: record.get('ONE_YEAR_PRICE1_V'),
+                                    	                		THREEYEARVALUE1_V: record.get('THREEYEARVALUE1_V'),
+                                    	                		THREE_YEAR_PRICE1_V: record.get('THREE_YEAR_PRICE1_V'),
+                                    	                		ITEM2_V: record.get('ITEM2_V'),
+                                    	                		PRODUCT_NAME2_V: record.get('PRODUCT_NAME2_V'),
+                                    	                		SPECIFICATION2_V: record.get('SPECIFICATION2_V'),
+                                    	                		QUANTITY2_V: record.get('QUANTITY2_V'),
+                                    	                		ONEYEARVALUE2_V: record.get('ONEYEARVALUE2_V'),
+                                    	                		ONE_YEAR_PRICE2_V: record.get('ONE_YEAR_PRICE2_V'),
+                                    	                		THREEYEARVALUE2_V: record.get('THREEYEARVALUE2_V'),
+                                    	                		THREE_YEAR_PRICE2_V: record.get('THREE_YEAR_PRICE2_V'),
+                                    	                		ITEM3_V: record.get('ITEM3_V'),
+                                    	                		PRODUCT_NAME3_V: record.get('PRODUCT_NAME3_V'),
+                                    	                		SPECIFICATION3_V: record.get('SPECIFICATION3_V'),
+                                    	                		QUANTITY3_V: record.get('QUANTITY3_V'),
+                                    	                		ONEYEARVALUE3_V: record.get('ONEYEARVALUE3_V'),
+                                    	                		ONE_YEAR_PRICE3_V: record.get('ONE_YEAR_PRICE3_V'),
+                                    	                		THREEYEARVALUE3_V: record.get('THREEYEARVALUE3_V'),
+                                    	                		THREE_YEAR_PRICE3_V: record.get('THREE_YEAR_PRICE3_V'),
+                                    	                		ITEM4_V: record.get('ITEM4_V'),
+                                    	                		PRODUCT_NAME4_V: record.get('PRODUCT_NAME4_V'),
+                                    	                		SPECIFICATION4_V: record.get('SPECIFICATION4_V'),
+                                    	                		QUANTITY4_V: record.get('QUANTITY4_V'),
+                                    	                		ONE_YEAR_VALUE4_V: record.get('ONE_YEAR_VALUE4_V'),
+                                    	                		ONE_YEAR_PRICE4_V: record.get('ONE_YEAR_PRICE4_V'),
+                                    	                		THREE_YEAR_VALUE4_V: record.get('THREE_YEAR_VALUE4_V'),
+                                    	                		THREE_YEAR_PRICE4_V: record.get('THREE_YEAR_PRICE4_V'),
+                                    	                		NOAMOUNTTAXVALUEYEAR_V: record.get('NOAMOUNTTAXVALUEYEAR_V'),
+                                    	                		NO_AMOUNT_TAX_YEAR_V: record.get('NO_AMOUNT_TAX_YEAR_V'),
+                                    	                		NOAMOUNTTAXVALUETRIENNIAL_V: record.get('NOAMOUNTTAXVALUETRIENNIAL_V'),
+                                    	                		NO_TAX_AMOUNT_TRIENNIAL_V: record.get('NO_TAX_AMOUNT_TRIENNIAL_V'),
+                                    	                		ONEYEARSALESTAXVALUE_V: record.get('ONEYEARSALESTAXVALUE_V'),
+                                    	                		ONE_YEAR_SALES_TAX_V: record.get('ONE_YEAR_SALES_TAX_V'),
+                                    	                		THREEYEARSALESTAXVALUE_V: record.get('THREEYEARSALESTAXVALUE_V'),
+                                    	                		THREE_YEAR_SALES_TAX_V: record.get('THREE_YEAR_SALES_TAX_V'),
+                                    	                		TOTALVALUEYEAR_V: record.get('TOTALVALUEYEAR_V'),
+                                    	                		TOTAL_YEAR_V: record.get('TOTAL_YEAR_V'),
+                                    	                		TOTALTHREEYEARVALUEPERIOD_V: record.get('TOTALTHREEYEARVALUEPERIOD_V'),
+                                    	                		TOTAL_THREE_YEAR_PERIOD_V: record.get('TOTAL_THREE_YEAR_PERIOD_V'),
+                                    	                		NOTE_V: record.get('NOTE_V'),
+                                    	                		HEAD_V: record.get('HEAD_V'),
+                                    	                		SALES_MANAGER_V: record.get('SALES_MANAGER_V'),
+                                    	                		ATTN_V: record.get('ATTN_V'),
+                                    	                		CUSTOMERS_SIGN_V: record.get('CUSTOMERS_SIGN_V')
+
+                                            			};
+                                            			Data.push(data);
+                                            	});
+                                                	var msg = client.ResellerQuotationSystemreseller_quotation_report.exportData("doc", Data,false);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                	window.location = "../../Report_Output/ResellerQuotationSystemResellerQuotationSystem_report.doc";
+                         		}
+                                            /*btnBTNAXTREPORTOUTPUT user code start*/
+                                            /*btnBTNAXTREPORTOUTPUT user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTREPORTPREVIEW',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('reseller_quotation_report_form');
+
+
+                                                var grid = Ext.getCmp('grid1');
+                                                var records = grid.getSelectionModel().getSelections();
+                                                var Data = new Array();
+                                                if(!records || records.length <=0){
+                                                	Ext.MessageBox.confirm("Do you want to Display Empty Report?","No, Please select Report in Grid",function(btn){
+                                                		if(btn == "yes"){
+                                                			data = {};
+                                                			Data.push(data)
+                                                			var msg = client.ResellerQuotationSystemreseller_quotation_report.exportData("pdf", Data, false);
+                                                			axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                window.open("../../Report_Output/ResellerQuotationSystemResellerQuotationSystem_report.pdf");
+                                                			
+                                                		}
+                                                	});
+                                                }else{
+                                    			Ext.each(records,function(record){
+                                                		var data = {
+                                    	                		AXTMODIFY: record.get('AXTMODIFY'),
+                                    	                		REPORTTITLE_V: record.get('REPORTTITLE_V'),
+                                    	                		REPORTNAME_V: record.get('REPORTNAME_V'),
+                                    	                		RESELLERNAME_V: record.get('RESELLERNAME_V'),
+                                    	                		QUOTATIONNO_V: record.get('QUOTATIONNO_V'),
+                                    	                		UNIFIEDNUMBERING_V: record.get('UNIFIEDNUMBERING_V'),
+                                    	                		QUOTE_DATE_V: record.get('QUOTE_DATE_V'),
+                                    	                		COMPACT_V: record.get('COMPACT_V'),
+                                    	                		SHIP_DATE_V: record.get('SHIP_DATE_V'),
+                                    	                		EMAIL_V: record.get('EMAIL_V'),
+                                    	                		PAYMENT_CONDITIONS_V: record.get('PAYMENT_CONDITIONS_V'),
+                                    	                		PHONE_V: record.get('PHONE_V'),
+                                    	                		COMPETITIVEBRANDS_V: record.get('COMPETITIVEBRANDS_V'),
+                                    	                		FAX_V: record.get('FAX_V'),
+                                    	                		CUSTOMERNAME_V: record.get('CUSTOMERNAME_V'),
+                                    	                		ADDRESS_V: record.get('ADDRESS_V'),
+                                    	                		ORDERTYPE_V: record.get('ORDERTYPE_V'),
+                                    	                		DELIVERYADDRESS_V: record.get('DELIVERYADDRESS_V'),
+                                    	                		OFFERORS_V: record.get('OFFERORS_V'),
+                                    	                		ITEM1_V: record.get('ITEM1_V'),
+                                    	                		PRODUCT_NAME1_V: record.get('PRODUCT_NAME1_V'),
+                                    	                		SPECIFICATION1_V: record.get('SPECIFICATION1_V'),
+                                    	                		QUANTITY1_V: record.get('QUANTITY1_V'),
+                                    	                		ONEYEARVALUE1_V: record.get('ONEYEARVALUE1_V'),
+                                    	                		ONE_YEAR_PRICE1_V: record.get('ONE_YEAR_PRICE1_V'),
+                                    	                		THREEYEARVALUE1_V: record.get('THREEYEARVALUE1_V'),
+                                    	                		THREE_YEAR_PRICE1_V: record.get('THREE_YEAR_PRICE1_V'),
+                                    	                		ITEM2_V: record.get('ITEM2_V'),
+                                    	                		PRODUCT_NAME2_V: record.get('PRODUCT_NAME2_V'),
+                                    	                		SPECIFICATION2_V: record.get('SPECIFICATION2_V'),
+                                    	                		QUANTITY2_V: record.get('QUANTITY2_V'),
+                                    	                		ONEYEARVALUE2_V: record.get('ONEYEARVALUE2_V'),
+                                    	                		ONE_YEAR_PRICE2_V: record.get('ONE_YEAR_PRICE2_V'),
+                                    	                		THREEYEARVALUE2_V: record.get('THREEYEARVALUE2_V'),
+                                    	                		THREE_YEAR_PRICE2_V: record.get('THREE_YEAR_PRICE2_V'),
+                                    	                		ITEM3_V: record.get('ITEM3_V'),
+                                    	                		PRODUCT_NAME3_V: record.get('PRODUCT_NAME3_V'),
+                                    	                		SPECIFICATION3_V: record.get('SPECIFICATION3_V'),
+                                    	                		QUANTITY3_V: record.get('QUANTITY3_V'),
+                                    	                		ONEYEARVALUE3_V: record.get('ONEYEARVALUE3_V'),
+                                    	                		ONE_YEAR_PRICE3_V: record.get('ONE_YEAR_PRICE3_V'),
+                                    	                		THREEYEARVALUE3_V: record.get('THREEYEARVALUE3_V'),
+                                    	                		THREE_YEAR_PRICE3_V: record.get('THREE_YEAR_PRICE3_V'),
+                                    	                		ITEM4_V: record.get('ITEM4_V'),
+                                    	                		PRODUCT_NAME4_V: record.get('PRODUCT_NAME4_V'),
+                                    	                		SPECIFICATION4_V: record.get('SPECIFICATION4_V'),
+                                    	                		QUANTITY4_V: record.get('QUANTITY4_V'),
+                                    	                		ONE_YEAR_VALUE4_V: record.get('ONE_YEAR_VALUE4_V'),
+                                    	                		ONE_YEAR_PRICE4_V: record.get('ONE_YEAR_PRICE4_V'),
+                                    	                		THREE_YEAR_VALUE4_V: record.get('THREE_YEAR_VALUE4_V'),
+                                    	                		THREE_YEAR_PRICE4_V: record.get('THREE_YEAR_PRICE4_V'),
+                                    	                		NOAMOUNTTAXVALUEYEAR_V: record.get('NOAMOUNTTAXVALUEYEAR_V'),
+                                    	                		NO_AMOUNT_TAX_YEAR_V: record.get('NO_AMOUNT_TAX_YEAR_V'),
+                                    	                		NOAMOUNTTAXVALUETRIENNIAL_V: record.get('NOAMOUNTTAXVALUETRIENNIAL_V'),
+                                    	                		NO_TAX_AMOUNT_TRIENNIAL_V: record.get('NO_TAX_AMOUNT_TRIENNIAL_V'),
+                                    	                		ONEYEARSALESTAXVALUE_V: record.get('ONEYEARSALESTAXVALUE_V'),
+                                    	                		ONE_YEAR_SALES_TAX_V: record.get('ONE_YEAR_SALES_TAX_V'),
+                                    	                		THREEYEARSALESTAXVALUE_V: record.get('THREEYEARSALESTAXVALUE_V'),
+                                    	                		THREE_YEAR_SALES_TAX_V: record.get('THREE_YEAR_SALES_TAX_V'),
+                                    	                		TOTALVALUEYEAR_V: record.get('TOTALVALUEYEAR_V'),
+                                    	                		TOTAL_YEAR_V: record.get('TOTAL_YEAR_V'),
+                                    	                		TOTALTHREEYEARVALUEPERIOD_V: record.get('TOTALTHREEYEARVALUEPERIOD_V'),
+                                    	                		TOTAL_THREE_YEAR_PERIOD_V: record.get('TOTAL_THREE_YEAR_PERIOD_V'),
+                                    	                		NOTE_V: record.get('NOTE_V'),
+                                    	                		HEAD_V: record.get('HEAD_V'),
+                                    	                		SALES_MANAGER_V: record.get('SALES_MANAGER_V'),
+                                    	                		ATTN_V: record.get('ATTN_V'),
+                                    	                		CUSTOMERS_SIGN_V: record.get('CUSTOMERS_SIGN_V')
+
+                                            			};
+                                            			Data.push(data);
+                                            	});
+                                                	var msg = client.ResellerQuotationSystemreseller_quotation_report.exportData("pdf", Data, false);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                window.open("../../Report_Output/ResellerQuotationSystemResellerQuotationSystem_report.pdf");
+                         				}
+                                            /*btnBTNAXTREPORTPREVIEW user code start*/
+                                            /*btnBTNAXTREPORTPREVIEW user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTEMAIL',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('reseller_quotation_report_form');
+
+
+                                                var grid = Ext.getCmp('grid1');
+                                                var records = grid.getSelectionModel().getSelections();
+                                                if(!records || records.length <= 0){
+                                                	Ext.Msg.show({
+                                                		title:"沒有選取",
+                                                		msg:"請選擇一筆資料",
+                                                		buttons:Ext.Msg.OK,
+                                                		closable:false,
+                                                		width:240
+                                                	});
+                                                	return false;
+                                                }
+                                                var Data = new Array();
+                                    			Ext.each(records,function(record){
+                                                		var data = {
+                                    	                		SENDERNAME_V: AxtForm.findById('cbx_senderName_v').getValue(),
+                                    	                		SENDEREMAIL_V: AxtForm.findById('cbx_senderEmail_v').getValue(),
+                                    	                		RECIPIENTNAME_V: AxtForm.findById('cbx_recipientName_v').getValue(),
+                                    	                		RECIPIENTEMAIL_V: AxtForm.findById('cbx_recipientEmail_v').getValue(),
+                                    	                		REVIEWERNAME_V: AxtForm.findById('cbx_reviewerName_v').getValue(),
+                                    	                		REVIEWEREMAIL_V: AxtForm.findById('cbx_reviewerEmail_v').getValue(),
+                                                    			START_V : 0,
+                                                    			LIMIT_V : AxtPageBar.pageSize,
+                                                    			AXTMODIFY: ""
+                                            			};
+                                            			Data.push(data);
+                                            	});
+                                                	var msg = client.ResellerQuotationSystemreseller_quotation_report.exportData("doc", Data,true);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                	window.location = "../../Report_Output/ResellerQuotationSystemResellerQuotationSystem_report.doc";
+                                            /*btnBTNAXTEMAIL user code start*/
+                                            /*btnBTNAXTEMAIL user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTCANCEL',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('reseller_quotation_report_form');
+
+
+                                                AxtForm.findById('cbx_senderName_v').setValue('');
+                                                AxtForm.findById('cbx_senderEmail_v').setValue('');
+                                                AxtForm.findById('cbx_recipientName_v').setValue('');
+                                                AxtForm.findById('cbx_recipientEmail_v').setValue('');
+                                                AxtForm.findById('cbx_reviewerName_v').setValue('');
+                                                AxtForm.findById('cbx_reviewerEmail_v').setValue('');
+                                                AxtForm.findById('SID').setValue('');
+                                            /*btnBTNAXTCANCEL user code start*/
+                                            /*btnBTNAXTCANCEL user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'text-align: left;',
+                       items: [
+                            {
+                                xtype: 'grid',
+                                id: 'grid1',
+                                store: AxtStore,
+                                height: 380,
+                                bodyStyle: 'border-width:0; padding: 0px 0 0 0px; background: transparent;',
+                                loadMask: true,
+                                columnWidth: 1,
+                                columnLines: true,
+                                selModel: sm,
+                                columns: [
+                                    sm,
+                                    {
+                                        width: 50,
+                                        renderer: renderAXTMODIFYImg,
+                                        id: 'AXTMODIFY'
+                                    },
+                                    {
+                                        id: 'REPORTTITLE_V',
+                                        dataIndex: 'REPORTTITLE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'REPORTNAME_V',
+                                        dataIndex: 'REPORTNAME_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'RESELLERNAME_V',
+                                        dataIndex: 'RESELLERNAME_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'QUOTATIONNO_V',
+                                        dataIndex: 'QUOTATIONNO_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'UNIFIEDNUMBERING_V',
+                                        dataIndex: 'UNIFIEDNUMBERING_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'QUOTE_DATE_V',
+                                        dataIndex: 'QUOTE_DATE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'COMPACT_V',
+                                        dataIndex: 'COMPACT_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SHIP_DATE_V',
+                                        dataIndex: 'SHIP_DATE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'EMAIL_V',
+                                        dataIndex: 'EMAIL_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PAYMENT_CONDITIONS_V',
+                                        dataIndex: 'PAYMENT_CONDITIONS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PHONE_V',
+                                        dataIndex: 'PHONE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'COMPETITIVEBRANDS_V',
+                                        dataIndex: 'COMPETITIVEBRANDS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'FAX_V',
+                                        dataIndex: 'FAX_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'CUSTOMERNAME_V',
+                                        dataIndex: 'CUSTOMERNAME_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ADDRESS_V',
+                                        dataIndex: 'ADDRESS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ORDERTYPE_V',
+                                        dataIndex: 'ORDERTYPE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'DELIVERYADDRESS_V',
+                                        dataIndex: 'DELIVERYADDRESS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'OFFERORS_V',
+                                        dataIndex: 'OFFERORS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ITEM1_V',
+                                        dataIndex: 'ITEM1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PRODUCT_NAME1_V',
+                                        dataIndex: 'PRODUCT_NAME1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SPECIFICATION1_V',
+                                        dataIndex: 'SPECIFICATION1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'QUANTITY1_V',
+                                        dataIndex: 'QUANTITY1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONEYEARVALUE1_V',
+                                        dataIndex: 'ONEYEARVALUE1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONE_YEAR_PRICE1_V',
+                                        dataIndex: 'ONE_YEAR_PRICE1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREEYEARVALUE1_V',
+                                        dataIndex: 'THREEYEARVALUE1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREE_YEAR_PRICE1_V',
+                                        dataIndex: 'THREE_YEAR_PRICE1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ITEM2_V',
+                                        dataIndex: 'ITEM2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PRODUCT_NAME2_V',
+                                        dataIndex: 'PRODUCT_NAME2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SPECIFICATION2_V',
+                                        dataIndex: 'SPECIFICATION2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'QUANTITY2_V',
+                                        dataIndex: 'QUANTITY2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONEYEARVALUE2_V',
+                                        dataIndex: 'ONEYEARVALUE2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONE_YEAR_PRICE2_V',
+                                        dataIndex: 'ONE_YEAR_PRICE2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREEYEARVALUE2_V',
+                                        dataIndex: 'THREEYEARVALUE2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREE_YEAR_PRICE2_V',
+                                        dataIndex: 'THREE_YEAR_PRICE2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ITEM3_V',
+                                        dataIndex: 'ITEM3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PRODUCT_NAME3_V',
+                                        dataIndex: 'PRODUCT_NAME3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SPECIFICATION3_V',
+                                        dataIndex: 'SPECIFICATION3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'QUANTITY3_V',
+                                        dataIndex: 'QUANTITY3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONEYEARVALUE3_V',
+                                        dataIndex: 'ONEYEARVALUE3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONE_YEAR_PRICE3_V',
+                                        dataIndex: 'ONE_YEAR_PRICE3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREEYEARVALUE3_V',
+                                        dataIndex: 'THREEYEARVALUE3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREE_YEAR_PRICE3_V',
+                                        dataIndex: 'THREE_YEAR_PRICE3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ITEM4_V',
+                                        dataIndex: 'ITEM4_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PRODUCT_NAME4_V',
+                                        dataIndex: 'PRODUCT_NAME4_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SPECIFICATION4_V',
+                                        dataIndex: 'SPECIFICATION4_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'QUANTITY4_V',
+                                        dataIndex: 'QUANTITY4_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONE_YEAR_VALUE4_V',
+                                        dataIndex: 'ONE_YEAR_VALUE4_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONE_YEAR_PRICE4_V',
+                                        dataIndex: 'ONE_YEAR_PRICE4_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREE_YEAR_VALUE4_V',
+                                        dataIndex: 'THREE_YEAR_VALUE4_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREE_YEAR_PRICE4_V',
+                                        dataIndex: 'THREE_YEAR_PRICE4_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'NOAMOUNTTAXVALUEYEAR_V',
+                                        dataIndex: 'NOAMOUNTTAXVALUEYEAR_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'NO_AMOUNT_TAX_YEAR_V',
+                                        dataIndex: 'NO_AMOUNT_TAX_YEAR_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'NOAMOUNTTAXVALUETRIENNIAL_V',
+                                        dataIndex: 'NOAMOUNTTAXVALUETRIENNIAL_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'NO_TAX_AMOUNT_TRIENNIAL_V',
+                                        dataIndex: 'NO_TAX_AMOUNT_TRIENNIAL_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONEYEARSALESTAXVALUE_V',
+                                        dataIndex: 'ONEYEARSALESTAXVALUE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ONE_YEAR_SALES_TAX_V',
+                                        dataIndex: 'ONE_YEAR_SALES_TAX_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREEYEARSALESTAXVALUE_V',
+                                        dataIndex: 'THREEYEARSALESTAXVALUE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'THREE_YEAR_SALES_TAX_V',
+                                        dataIndex: 'THREE_YEAR_SALES_TAX_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'TOTALVALUEYEAR_V',
+                                        dataIndex: 'TOTALVALUEYEAR_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'TOTAL_YEAR_V',
+                                        dataIndex: 'TOTAL_YEAR_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'TOTALTHREEYEARVALUEPERIOD_V',
+                                        dataIndex: 'TOTALTHREEYEARVALUEPERIOD_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'TOTAL_THREE_YEAR_PERIOD_V',
+                                        dataIndex: 'TOTAL_THREE_YEAR_PERIOD_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'NOTE_V',
+                                        dataIndex: 'NOTE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'HEAD_V',
+                                        dataIndex: 'HEAD_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SALES_MANAGER_V',
+                                        dataIndex: 'SALES_MANAGER_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ATTN_V',
+                                        dataIndex: 'ATTN_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'CUSTOMERS_SIGN_V',
+                                        dataIndex: 'CUSTOMERS_SIGN_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    }
+                                ],
+                                tbar: [
+                                    {
+                                        id: 'delete',
+                                        text: 'Delete',
+                                        tooltip: 'Delete',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSDelete',
+                                        width: 72
+                                        ,handler: function () {
+                                            var grid = Ext.getCmp('grid1');
+                                            var records = grid.getSelectionModel().getSelections();
+                                            if (!records || records.length <= 0) 
+                                            {
+                                                return false;
+                                            }
+
+                                            Ext.MessageBox.confirm(
+                                                WRN_00002,
+                                                WRN_00002,
+                                                function (btn) {
+                                                    if (btn == 'yes') {
+                                                        var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                        var deleteData = new Array();
+                                                        Ext.each(records, function (record) {
+                                                            var data = {
+                                                                SID: record.get("SID"),
+                                                                AXTMODIFY: record.get("AXTMODIFY"),
+                                                                REPORTTITLE_V: record.get("REPORTTITLE_V"),
+                                                                REPORTNAME_V: record.get("REPORTNAME_V"),
+                                                                RESELLERNAME_V: record.get("RESELLERNAME_V"),
+                                                                QUOTATIONNO_V: record.get("QUOTATIONNO_V"),
+                                                                UNIFIEDNUMBERING_V: record.get("UNIFIEDNUMBERING_V"),
+                                                                QUOTE_DATE_V: record.get("QUOTE_DATE_V"),
+                                                                COMPACT_V: record.get("COMPACT_V"),
+                                                                SHIP_DATE_V: record.get("SHIP_DATE_V"),
+                                                                EMAIL_V: record.get("EMAIL_V"),
+                                                                PAYMENT_CONDITIONS_V: record.get("PAYMENT_CONDITIONS_V"),
+                                                                PHONE_V: record.get("PHONE_V"),
+                                                                COMPETITIVEBRANDS_V: record.get("COMPETITIVEBRANDS_V"),
+                                                                FAX_V: record.get("FAX_V"),
+                                                                CUSTOMERNAME_V: record.get("CUSTOMERNAME_V"),
+                                                                ADDRESS_V: record.get("ADDRESS_V"),
+                                                                ORDERTYPE_V: record.get("ORDERTYPE_V"),
+                                                                DELIVERYADDRESS_V: record.get("DELIVERYADDRESS_V"),
+                                                                OFFERORS_V: record.get("OFFERORS_V"),
+                                                                ITEM1_V: record.get("ITEM1_V"),
+                                                                PRODUCT_NAME1_V: record.get("PRODUCT_NAME1_V"),
+                                                                SPECIFICATION1_V: record.get("SPECIFICATION1_V"),
+                                                                QUANTITY1_V: record.get("QUANTITY1_V"),
+                                                                ONEYEARVALUE1_V: record.get("ONEYEARVALUE1_V"),
+                                                                ONE_YEAR_PRICE1_V: record.get("ONE_YEAR_PRICE1_V"),
+                                                                THREEYEARVALUE1_V: record.get("THREEYEARVALUE1_V"),
+                                                                THREE_YEAR_PRICE1_V: record.get("THREE_YEAR_PRICE1_V"),
+                                                                ITEM2_V: record.get("ITEM2_V"),
+                                                                PRODUCT_NAME2_V: record.get("PRODUCT_NAME2_V"),
+                                                                SPECIFICATION2_V: record.get("SPECIFICATION2_V"),
+                                                                QUANTITY2_V: record.get("QUANTITY2_V"),
+                                                                ONEYEARVALUE2_V: record.get("ONEYEARVALUE2_V"),
+                                                                ONE_YEAR_PRICE2_V: record.get("ONE_YEAR_PRICE2_V"),
+                                                                THREEYEARVALUE2_V: record.get("THREEYEARVALUE2_V"),
+                                                                THREE_YEAR_PRICE2_V: record.get("THREE_YEAR_PRICE2_V"),
+                                                                ITEM3_V: record.get("ITEM3_V"),
+                                                                PRODUCT_NAME3_V: record.get("PRODUCT_NAME3_V"),
+                                                                SPECIFICATION3_V: record.get("SPECIFICATION3_V"),
+                                                                QUANTITY3_V: record.get("QUANTITY3_V"),
+                                                                ONEYEARVALUE3_V: record.get("ONEYEARVALUE3_V"),
+                                                                ONE_YEAR_PRICE3_V: record.get("ONE_YEAR_PRICE3_V"),
+                                                                THREEYEARVALUE3_V: record.get("THREEYEARVALUE3_V"),
+                                                                THREE_YEAR_PRICE3_V: record.get("THREE_YEAR_PRICE3_V"),
+                                                                ITEM4_V: record.get("ITEM4_V"),
+                                                                PRODUCT_NAME4_V: record.get("PRODUCT_NAME4_V"),
+                                                                SPECIFICATION4_V: record.get("SPECIFICATION4_V"),
+                                                                QUANTITY4_V: record.get("QUANTITY4_V"),
+                                                                ONE_YEAR_VALUE4_V: record.get("ONE_YEAR_VALUE4_V"),
+                                                                ONE_YEAR_PRICE4_V: record.get("ONE_YEAR_PRICE4_V"),
+                                                                THREE_YEAR_VALUE4_V: record.get("THREE_YEAR_VALUE4_V"),
+                                                                THREE_YEAR_PRICE4_V: record.get("THREE_YEAR_PRICE4_V"),
+                                                                NOAMOUNTTAXVALUEYEAR_V: record.get("NOAMOUNTTAXVALUEYEAR_V"),
+                                                                NO_AMOUNT_TAX_YEAR_V: record.get("NO_AMOUNT_TAX_YEAR_V"),
+                                                                NOAMOUNTTAXVALUETRIENNIAL_V: record.get("NOAMOUNTTAXVALUETRIENNIAL_V"),
+                                                                NO_TAX_AMOUNT_TRIENNIAL_V: record.get("NO_TAX_AMOUNT_TRIENNIAL_V"),
+                                                                ONEYEARSALESTAXVALUE_V: record.get("ONEYEARSALESTAXVALUE_V"),
+                                                                ONE_YEAR_SALES_TAX_V: record.get("ONE_YEAR_SALES_TAX_V"),
+                                                                THREEYEARSALESTAXVALUE_V: record.get("THREEYEARSALESTAXVALUE_V"),
+                                                                THREE_YEAR_SALES_TAX_V: record.get("THREE_YEAR_SALES_TAX_V"),
+                                                                TOTALVALUEYEAR_V: record.get("TOTALVALUEYEAR_V"),
+                                                                TOTAL_YEAR_V: record.get("TOTAL_YEAR_V"),
+                                                                TOTALTHREEYEARVALUEPERIOD_V: record.get("TOTALTHREEYEARVALUEPERIOD_V"),
+                                                                TOTAL_THREE_YEAR_PERIOD_V: record.get("TOTAL_THREE_YEAR_PERIOD_V"),
+                                                                NOTE_V: record.get("NOTE_V"),
+                                                                HEAD_V: record.get("HEAD_V"),
+                                                                SALES_MANAGER_V: record.get("SALES_MANAGER_V"),
+                                                                ATTN_V: record.get("ATTN_V"),
+                                                                CUSTOMERS_SIGN_V: record.get("CUSTOMERS_SIGN_V")
+                                                            };
+                                                            deleteData.push(data);
+                                                            grid.store.remove(record);
+                                                        });
+
+                                                        var msg = client.ResellerQuotationSystemreseller_quotation_report.deleteData(deleteData);
+                                                        axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                        axtStoreUpdate();
+
+                                                        /*onDelete user code start*/
+                                                        /*onDelete user code end*/
+
+                                                        Ext.getCmp('grid1').getView().refresh();
+                                                        progress.hide();
+                                                    }
+                                                }
+                                            );
+                                        }
+                                    },
+                                    '-',
+                                    {
+                                        text: 'Add',
+                                        tooltip: 'Add',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSAdd',
+                                        width: 72,
+                                        handler: function () {
+                                            onAdd(Ext.getCmp('grid1'), AxtEditor, { REPORTTITLE_V: "", REPORTNAME_V: "", RESELLERNAME_V: "", QUOTATIONNO_V: "", UNIFIEDNUMBERING_V: "", QUOTE_DATE_V: "", COMPACT_V: "", SHIP_DATE_V: "", EMAIL_V: "", PAYMENT_CONDITIONS_V: "", PHONE_V: "", COMPETITIVEBRANDS_V: "", FAX_V: "", CUSTOMERNAME_V: "", ADDRESS_V: "", ORDERTYPE_V: "", DELIVERYADDRESS_V: "", OFFERORS_V: "", ITEM1_V: "", PRODUCT_NAME1_V: "", SPECIFICATION1_V: "", QUANTITY1_V: "", ONEYEARVALUE1_V: "", ONE_YEAR_PRICE1_V: "", THREEYEARVALUE1_V: "", THREE_YEAR_PRICE1_V: "", ITEM2_V: "", PRODUCT_NAME2_V: "", SPECIFICATION2_V: "", QUANTITY2_V: "", ONEYEARVALUE2_V: "", ONE_YEAR_PRICE2_V: "", THREEYEARVALUE2_V: "", THREE_YEAR_PRICE2_V: "", ITEM3_V: "", PRODUCT_NAME3_V: "", SPECIFICATION3_V: "", QUANTITY3_V: "", ONEYEARVALUE3_V: "", ONE_YEAR_PRICE3_V: "", THREEYEARVALUE3_V: "", THREE_YEAR_PRICE3_V: "", ITEM4_V: "", PRODUCT_NAME4_V: "", SPECIFICATION4_V: "", QUANTITY4_V: "", ONE_YEAR_VALUE4_V: "", ONE_YEAR_PRICE4_V: "", THREE_YEAR_VALUE4_V: "", THREE_YEAR_PRICE4_V: "", NOAMOUNTTAXVALUEYEAR_V: "", NO_AMOUNT_TAX_YEAR_V: "", NOAMOUNTTAXVALUETRIENNIAL_V: "", NO_TAX_AMOUNT_TRIENNIAL_V: "", ONEYEARSALESTAXVALUE_V: "", ONE_YEAR_SALES_TAX_V: "", THREEYEARSALESTAXVALUE_V: "", THREE_YEAR_SALES_TAX_V: "", TOTALVALUEYEAR_V: "", TOTAL_YEAR_V: "", TOTALTHREEYEARVALUEPERIOD_V: "", TOTAL_THREE_YEAR_PERIOD_V: "", NOTE_V: "", HEAD_V: "", SALES_MANAGER_V: "", ATTN_V: "", CUSTOMERS_SIGN_V: "" });
+                                        },
+                                        id: 'add'
+                                    },
+                                    '-'
+                                ],
+                                bbar: [
+                                    '->',
+                                     AxtPageBar]
+                            }
+                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            hidden:true,
+                            id:'Axtronics_AutoGen_System'
+                        }
+                    ]
+                });
+
+                function renderAXTMODIFYImg() {
+                    return '<center><img src="../../img/icons/edit.png"></center>'
+                }
+
+                AxtForm = Ext.getCmp('reseller_quotation_report_form');
+                AxtForm.findById('grid1').on('cellclick', function (g, rowIndex, columnIndex, e) {
+                    var record = g.getStore().getAt(rowIndex);
+                    if(columnIndex == 1) {
+                        AxtForm.findById('SID').setValue(record.get('SID'));
+                        AxtForm.findById('cbx_senderName_v').setValue(record.get('SENDERNAME_V'));
+                        AxtForm.findById('cbx_senderEmail_v').setValue(record.get('SENDEREMAIL_V'));
+                        AxtForm.findById('cbx_recipientName_v').setValue(record.get('RECIPIENTNAME_V'));
+                        AxtForm.findById('cbx_recipientEmail_v').setValue(record.get('RECIPIENTEMAIL_V'));
+                        AxtForm.findById('cbx_reviewerName_v').setValue(record.get('REVIEWERNAME_V'));
+                        AxtForm.findById('cbx_reviewerEmail_v').setValue(record.get('REVIEWEREMAIL_V'));
+                    }
+                });
+                AxtPanel.render("main");
+                setlang();
+            });
+    </script>
+</head>
+<body>
+    <center>
+        <div id="main"></div>
+    </center>
+</body>
+</html>

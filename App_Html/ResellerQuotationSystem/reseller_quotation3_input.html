@@ -1,0 +1,2796 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>reseller_quotation3_input</title>
+    <link href="../../css/axtlib.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/axtStyle.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+    <link href="../../ext/ux/css/RowEditor.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        .x-grid3-cell-inner{
+            white-space: normal;
+            font-size: 15px;
+        }
+    </style>
+    <style type="text/css">
+       .x-selectable, .x-selectable * {
+       -moz-user-select: text!important;
+       -khtml-user-select: text!important;
+      }
+    </style>
+
+    <script src="../../ext/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ext-all-debug.js" type="text/javascript"></script>
+    <script src="../../ext/ux/PagingMemoryProxy.js" type="text/javascript"></script>
+    <script src="../../ext/ux/ProgressBarPager.js" type="text/javascript"></script>
+    <script src="../../ext/ux/RowEditor.js" type="text/javascript"></script>
+    <script src="../../ext/src/locale/ext-lang-zh_TW.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtRuleMessage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtlib.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtMutiLanguage.js" type="text/javascript"></script>
+    <script src="../../axtjs/axtHelpWindow.js" type="text/javascript"></script>
+    <script src="../../axtjs/pPageSize.js" type="text/javascript"></script>
+    <script src="../../axtjs/AJAXRPC.js" type="text/javascript"></script>
+    <script src="../../Charts/FusionCharts.js" type="text/javascript"></script>
+    <script src="../../ajaxrpc/Script.aspx" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var AxtEditor = new Ext.ux.grid.RowEditor({});
+        var client = new AJAXRPC_Client('../../ajaxrpc/Server.aspx');
+
+        if (client.Login.isLogin() == false) {
+            parent.location.href = "../../Login.html";
+        }
+
+        client.ResellerQuotationSystemreseller_quotation3_input.createTable();
+        client.ResellerQuotationSystemreseller_quotation3_input.beforeGenConf();
+
+        function setlang() {
+            lang = client.AxtSystem.getLang("zh-TW");
+            setRuleMessageLang(lang);
+            AxtForm = Ext.getCmp('reseller_quotation3_input_form');
+            switch (lang) {
+                case 'zh-CN':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("经销商报价3 设定");
+                    AxtForm.findById("lblresellername_t").update("<font size=\'3\'><p align = \'right\'>经销商名称</p></font>");
+                    AxtForm.findById("lblquotationno_t").update("<font size=\'3\'><p align = \'right\'>报价单号</p></font>");
+                    AxtForm.findById("lblunifiednumbering_t").update("<font size=\'3\'><p align = \'right\'>统一编号</p></font>");
+                    AxtForm.findById("lblcompact_t").update("<font size=\'3\'><p align = \'right\'>連絡人</p></font>");
+                    AxtForm.findById("lblpayment_conditions_t").update("<font size=\'3\'><p align = \'right\'>付款条件</p></font>");
+                    AxtForm.findById("lblcustomername_t").update("<font size=\'3\'><p align = \'right\'>客户名称</p></font>");
+                    AxtForm.findById("lblcompetitivebrands_t").update("<font size=\'3\'><p align = \'right\'>竞争厂牌</p></font>");
+                    AxtForm.findById("lblordertype_t").update("<font size=\'3\'><p align = \'right\'>订单类型</p></font>");
+                    AxtForm.findById("lblofferors_t").update("<font size=\'3\'><p align = \'right\'>报价人</p></font>");
+                    AxtForm.findById("lblitem1_t").update("<font size=\'3\'><p align = \'right\'>项目1</p></font>");
+                    AxtForm.findById("lblproduct_name1_t").update("<font size=\'3\'><p align = \'right\'>产品名称1</p></font>");
+                    AxtForm.findById("lblspecification1_t").update("<font size=\'3\'><p align = \'right\'>规格1</p></font>");
+                    AxtForm.findById("lblitem2_t").update("<font size=\'3\'><p align = \'right\'>项目2</p></font>");
+                    AxtForm.findById("lblproduct_name2_t").update("<font size=\'3\'><p align = \'right\'>产品名称2</p></font>");
+                    AxtForm.findById("lblspecification2_t").update("<font size=\'3\'><p align = \'right\'>规格2</p></font>");
+                    AxtForm.findById("lblitem3_t").update("<font size=\'3\'><p align = \'right\'>项目3</p></font>");
+                    AxtForm.findById("lblproduct_name3_t").update("<font size=\'3\'><p align = \'right\'>产品名称3</p></font>");
+                    AxtForm.findById("lblspecification3_t").update("<font size=\'3\'><p align = \'right\'>规格3</p></font>");
+                    AxtForm.findById("lblnote_t").update("<font size=\'3\'><p align = \'right\'>备注</p></font>");
+                    AxtForm.findById("lblhead_t").update("<font size=\'3\'><p align = \'right\'>主管</p></font>");
+                    AxtForm.findById("lblsales_manager_t").update("<font size=\'3\'><p align = \'right\'>销售经理</p></font>");
+                    AxtForm.findById("lblattn_t").update("<font size=\'3\'><p align = \'right\'>经办人</p></font>");
+                    AxtForm.findById("lblreporttitle_t").update("<font size=\'3\'><p align = \'right\'>报表标题</p></font>");
+                    AxtForm.findById("lblreportname_t").update("<font size=\'3\'><p align = \'right\'>报表名称</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("儲存");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('经销商报价3 設定');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>修改</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>经销商名称</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>报价单号</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>统一编号</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>連絡人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>付款条件</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>客户名称</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>竞争厂牌</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>订单类型</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>报价人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(11, '<center><font size = \'3\'>项目1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(12, '<center><font size = \'3\'>产品名称1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(13, '<center><font size = \'3\'>规格1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(14, '<center><font size = \'3\'>项目2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(15, '<center><font size = \'3\'>产品名称2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(16, '<center><font size = \'3\'>规格2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(17, '<center><font size = \'3\'>项目3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(18, '<center><font size = \'3\'>产品名称3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(19, '<center><font size = \'3\'>规格3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(20, '<center><font size = \'3\'>备注</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(21, '<center><font size = \'3\'>主管</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(22, '<center><font size = \'3\'>销售经理</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(23, '<center><font size = \'3\'>经办人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(24, '<center><font size = \'3\'>报表标题</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(25, '<center><font size = \'3\'>报表名称</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'en':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("Reseller Quotation3 Setup");
+                    AxtForm.findById("lblresellername_t").update("<font size=\'3\'><p align = \'right\'>ResellerName</p></font>");
+                    AxtForm.findById("lblquotationno_t").update("<font size=\'3\'><p align = \'right\'>QuotationNo</p></font>");
+                    AxtForm.findById("lblunifiednumbering_t").update("<font size=\'3\'><p align = \'right\'>UnifiedNumbering</p></font>");
+                    AxtForm.findById("lblcompact_t").update("<font size=\'3\'><p align = \'right\'>Contact</p></font>");
+                    AxtForm.findById("lblpayment_conditions_t").update("<font size=\'3\'><p align = \'right\'>PaymentConditions</p></font>");
+                    AxtForm.findById("lblcustomername_t").update("<font size=\'3\'><p align = \'right\'>CustomerName</p></font>");
+                    AxtForm.findById("lblcompetitivebrands_t").update("<font size=\'3\'><p align = \'right\'>CompetitiveBrands</p></font>");
+                    AxtForm.findById("lblordertype_t").update("<font size=\'3\'><p align = \'right\'>OrderType</p></font>");
+                    AxtForm.findById("lblofferors_t").update("<font size=\'3\'><p align = \'right\'>Offerors</p></font>");
+                    AxtForm.findById("lblitem1_t").update("<font size=\'3\'><p align = \'right\'>Item1</p></font>");
+                    AxtForm.findById("lblproduct_name1_t").update("<font size=\'3\'><p align = \'right\'>ProductName1</p></font>");
+                    AxtForm.findById("lblspecification1_t").update("<font size=\'3\'><p align = \'right\'>Specification1</p></font>");
+                    AxtForm.findById("lblitem2_t").update("<font size=\'3\'><p align = \'right\'>Item2</p></font>");
+                    AxtForm.findById("lblproduct_name2_t").update("<font size=\'3\'><p align = \'right\'>ProductName2</p></font>");
+                    AxtForm.findById("lblspecification2_t").update("<font size=\'3\'><p align = \'right\'>Specification2</p></font>");
+                    AxtForm.findById("lblitem3_t").update("<font size=\'3\'><p align = \'right\'>Item3</p></font>");
+                    AxtForm.findById("lblproduct_name3_t").update("<font size=\'3\'><p align = \'right\'>ProductName3</p></font>");
+                    AxtForm.findById("lblspecification3_t").update("<font size=\'3\'><p align = \'right\'>Specification3</p></font>");
+                    AxtForm.findById("lblnote_t").update("<font size=\'3\'><p align = \'right\'>Note</p></font>");
+                    AxtForm.findById("lblhead_t").update("<font size=\'3\'><p align = \'right\'>Head</p></font>");
+                    AxtForm.findById("lblsales_manager_t").update("<font size=\'3\'><p align = \'right\'>SalesManager</p></font>");
+                    AxtForm.findById("lblattn_t").update("<font size=\'3\'><p align = \'right\'>Attn</p></font>");
+                    AxtForm.findById("lblreporttitle_t").update("<font size=\'3\'><p align = \'right\'>ReportTitle</p></font>");
+                    AxtForm.findById("lblreportname_t").update("<font size=\'3\'><p align = \'right\'>ReportName</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("Query");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("Submit");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("Cancel");
+                    AxtForm.findById("grid1").setTitle('Reseller Quotation3 Setup');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>Modify</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>ResellerName</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>QuotationNo</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>UnifiedNumbering</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>Contact</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>PaymentConditions</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>CustomerName</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>CompetitiveBrands</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>OrderType</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>Offerors</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(11, '<center><font size = \'3\'>Item1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(12, '<center><font size = \'3\'>ProductName1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(13, '<center><font size = \'3\'>Specification1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(14, '<center><font size = \'3\'>Item2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(15, '<center><font size = \'3\'>ProductName2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(16, '<center><font size = \'3\'>Specification2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(17, '<center><font size = \'3\'>Item3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(18, '<center><font size = \'3\'>ProductName3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(19, '<center><font size = \'3\'>Specification3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(20, '<center><font size = \'3\'>Note</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(21, '<center><font size = \'3\'>Head</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(22, '<center><font size = \'3\'>SalesManager</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(23, '<center><font size = \'3\'>Attn</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(24, '<center><font size = \'3\'>ReportTitle</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(25, '<center><font size = \'3\'>ReportName</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                case 'zh-TW':
+                if(null != AxtForm) {
+                    AxtForm.findById("dfdTitle").setValue("經銷商報價3 設定");
+                    AxtForm.findById("lblresellername_t").update("<font size=\'3\'><p align = \'right\'>經銷商名稱</p></font>");
+                    AxtForm.findById("lblquotationno_t").update("<font size=\'3\'><p align = \'right\'>報價單號</p></font>");
+                    AxtForm.findById("lblunifiednumbering_t").update("<font size=\'3\'><p align = \'right\'>統一編號</p></font>");
+                    AxtForm.findById("lblcompact_t").update("<font size=\'3\'><p align = \'right\'>連絡人</p></font>");
+                    AxtForm.findById("lblpayment_conditions_t").update("<font size=\'3\'><p align = \'right\'>付款條件</p></font>");
+                    AxtForm.findById("lblcustomername_t").update("<font size=\'3\'><p align = \'right\'>客戶名稱</p></font>");
+                    AxtForm.findById("lblcompetitivebrands_t").update("<font size=\'3\'><p align = \'right\'>競爭廠牌</p></font>");
+                    AxtForm.findById("lblordertype_t").update("<font size=\'3\'><p align = \'right\'>訂單類型</p></font>");
+                    AxtForm.findById("lblofferors_t").update("<font size=\'3\'><p align = \'right\'>報價人</p></font>");
+                    AxtForm.findById("lblitem1_t").update("<font size=\'3\'><p align = \'right\'>項目1</p></font>");
+                    AxtForm.findById("lblproduct_name1_t").update("<font size=\'3\'><p align = \'right\'>產品名稱1</p></font>");
+                    AxtForm.findById("lblspecification1_t").update("<font size=\'3\'><p align = \'right\'>規格1</p></font>");
+                    AxtForm.findById("lblitem2_t").update("<font size=\'3\'><p align = \'right\'>項目2</p></font>");
+                    AxtForm.findById("lblproduct_name2_t").update("<font size=\'3\'><p align = \'right\'>產品名稱2</p></font>");
+                    AxtForm.findById("lblspecification2_t").update("<font size=\'3\'><p align = \'right\'>規格2</p></font>");
+                    AxtForm.findById("lblitem3_t").update("<font size=\'3\'><p align = \'right\'>項目3</p></font>");
+                    AxtForm.findById("lblproduct_name3_t").update("<font size=\'3\'><p align = \'right\'>產品名稱3</p></font>");
+                    AxtForm.findById("lblspecification3_t").update("<font size=\'3\'><p align = \'right\'>規格3</p></font>");
+                    AxtForm.findById("lblnote_t").update("<font size=\'3\'><p align = \'right\'>備註</p></font>");
+                    AxtForm.findById("lblhead_t").update("<font size=\'3\'><p align = \'right\'>主管</p></font>");
+                    AxtForm.findById("lblsales_manager_t").update("<font size=\'3\'><p align = \'right\'>銷售經理</p></font>");
+                    AxtForm.findById("lblattn_t").update("<font size=\'3\'><p align = \'right\'>經辦人</p></font>");
+                    AxtForm.findById("lblreporttitle_t").update("<font size=\'3\'><p align = \'right\'>報表標題</p></font>");
+                    AxtForm.findById("lblreportname_t").update("<font size=\'3\'><p align = \'right\'>報表名稱</p></font>");
+                    AxtForm.findById("btnBTNAXTQUERY").setText("查詢");
+                    AxtForm.findById("btnBTNAXTSUBMIT").setText("儲存");
+                    AxtForm.findById("btnBTNAXTCANCEL").setText("取消");
+                    AxtForm.findById("grid1").setTitle('經銷商報價3 設定');
+                    AxtForm.findById("grid1").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("grid1").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(1, '<center><font size = \'3\'>修改</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(2, '<center><font size = \'3\'>經銷商名稱</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(3, '<center><font size = \'3\'>報價單號</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(4, '<center><font size = \'3\'>統一編號</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(5, '<center><font size = \'3\'>連絡人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(6, '<center><font size = \'3\'>付款條件</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(7, '<center><font size = \'3\'>客戶名稱</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(8, '<center><font size = \'3\'>競爭廠牌</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(9, '<center><font size = \'3\'>訂單類型</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(10, '<center><font size = \'3\'>報價人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(11, '<center><font size = \'3\'>項目1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(12, '<center><font size = \'3\'>產品名稱1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(13, '<center><font size = \'3\'>規格1</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(14, '<center><font size = \'3\'>項目2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(15, '<center><font size = \'3\'>產品名稱2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(16, '<center><font size = \'3\'>規格2</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(17, '<center><font size = \'3\'>項目3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(18, '<center><font size = \'3\'>產品名稱3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(19, '<center><font size = \'3\'>規格3</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(20, '<center><font size = \'3\'>備註</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(21, '<center><font size = \'3\'>主管</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(22, '<center><font size = \'3\'>銷售經理</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(23, '<center><font size = \'3\'>經辦人</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(24, '<center><font size = \'3\'>報表標題</font></center>');
+                    AxtForm.findById("grid1").getColumnModel().setColumnHeader(25, '<center><font size = \'3\'>報表名稱</font></center>');
+                    axtlang_msgbox_error_title = "No Data Input";
+                    axtlang_msgbox_null = "Enter data to continue";
+                }
+                break;
+                }
+            }
+
+
+        function axtHelp() {
+                lang = client.AxtSystem.getLang("zh-TW");
+                setRuleMessageLang(lang);
+                AxtForm = Ext.getCmp('reseller_quotation3_input_form');
+                switch (lang) {
+                }
+         }
+
+            Ext.onReady(function () {
+                Ext.QuickTips.init();
+
+                setlang();
+                var AxtData = client.ResellerQuotationSystemreseller_quotation3_input.getreseller_quotation3_inputBy({
+                    START_V : 0,
+                    LIMIT_V : 20
+                });
+
+                var proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+
+                var reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'reseller_quotation3_input'
+                }, [
+                        {
+                            name: 'SID'
+                        },
+                        {
+                            name: 'AXTMODIFY'
+                        },
+                        {
+                            name: 'RESELLERNAME_V'
+                        },
+                        {
+                            name: 'QUOTATIONNO_V'
+                        },
+                        {
+                            name: 'UNIFIEDNUMBERING_V'
+                        },
+                        {
+                            name: 'COMPACT_V'
+                        },
+                        {
+                            name: 'PAYMENT_CONDITIONS_V'
+                        },
+                        {
+                            name: 'CUSTOMERNAME_V'
+                        },
+                        {
+                            name: 'COMPETITIVEBRANDS_V'
+                        },
+                        {
+                            name: 'ORDERTYPE_V'
+                        },
+                        {
+                            name: 'OFFERORS_V'
+                        },
+                        {
+                            name: 'ITEM1_V'
+                        },
+                        {
+                            name: 'PRODUCT_NAME1_V'
+                        },
+                        {
+                            name: 'SPECIFICATION1_V'
+                        },
+                        {
+                            name: 'ITEM2_V'
+                        },
+                        {
+                            name: 'PRODUCT_NAME2_V'
+                        },
+                        {
+                            name: 'SPECIFICATION2_V'
+                        },
+                        {
+                            name: 'ITEM3_V'
+                        },
+                        {
+                            name: 'PRODUCT_NAME3_V'
+                        },
+                        {
+                            name: 'SPECIFICATION3_V'
+                        },
+                        {
+                            name: 'NOTE_V'
+                        },
+                        {
+                            name: 'HEAD_V'
+                        },
+                        {
+                            name: 'SALES_MANAGER_V'
+                        },
+                        {
+                            name: 'ATTN_V'
+                        },
+                        {
+                            name: 'REPORTTITLE_V'
+                        },
+                        {
+                            name: 'REPORTNAME_V'
+                        }
+                    ]
+                );
+
+                var writer = new Ext.data.JsonWriter({
+                    encode: false       // <-- don't return encoded JSON -- causes Ext.Ajax#request to send data using jsonData config rather than HTTP params
+                });
+
+                var AxtStore = new Ext.data.Store({
+                    id: 'jssreseller_quotation3_input',
+                    proxy: proxy,
+                    reader: reader,
+                    pruneModifiedRecords: true
+                });
+
+                AxtStore.load({ params: { start: 0, limit: 20} });
+
+                function axtStoreUpdate() {
+                    AxtData = client.ResellerQuotationSystemreseller_quotation3_input.getreseller_quotation3_inputBy({
+                        START_V : AxtPageBar.cursor,
+                        LIMIT_V : AxtPageBar.pageSize
+                    });
+                    AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                    AxtStore.load();
+                }
+                var AxtPageBar = new Ext.PagingToolbar({
+                    xtype: "paging",
+                    pageSize: 20,
+                    store: AxtStore,
+                    displayInfo: true,
+                    //displayMsg: 'Displaying {0} - {1} of {2}',
+                    style: 'border-width:0;',
+                    refresh: function (pt, o) {
+                        axtStoreUpdate();
+                        Ext.getCmp('grid1').getView().refresh();
+                    },
+                    //emptyMsg: "No message to display",
+                    plugins: [new Ext.ux.Andrie.pPageSize(), new Ext.ux.ProgressBarPager()],
+                    listeners: {
+                        'beforechange' : function(pagingToolbar, pageData) {
+                            AxtData = client.ResellerQuotationSystemreseller_quotation3_input.getreseller_quotation3_inputBy({
+                                RESELLERNAME_V: AxtForm.findById('resellername_v').getValue(),
+                                QUOTATIONNO_V: AxtForm.findById('quotationno_v').getValue(),
+                                UNIFIEDNUMBERING_V: AxtForm.findById('unifiednumbering_v').getValue(),
+                                COMPACT_V: AxtForm.findById('compact_v').getValue(),
+                                PAYMENT_CONDITIONS_V: AxtForm.findById('payment_conditions_v').getValue(),
+                                CUSTOMERNAME_V: AxtForm.findById('customername_v').getValue(),
+                                COMPETITIVEBRANDS_V: AxtForm.findById('competitivebrands_v').getValue(),
+                                ORDERTYPE_V: AxtForm.findById('ordertype_v').getValue(),
+                                OFFERORS_V: AxtForm.findById('offerors_v').getValue(),
+                                ITEM1_V: AxtForm.findById('item1_v').getValue(),
+                                PRODUCT_NAME1_V: AxtForm.findById('product_name1_v').getValue(),
+                                SPECIFICATION1_V: AxtForm.findById('specification1_v').getValue(),
+                                ITEM2_V: AxtForm.findById('item2_v').getValue(),
+                                PRODUCT_NAME2_V: AxtForm.findById('product_name2_v').getValue(),
+                                SPECIFICATION2_V: AxtForm.findById('specification2_v').getValue(),
+                                ITEM3_V: AxtForm.findById('item3_v').getValue(),
+                                PRODUCT_NAME3_V: AxtForm.findById('product_name3_v').getValue(),
+                                SPECIFICATION3_V: AxtForm.findById('specification3_v').getValue(),
+                                NOTE_V: AxtForm.findById('note_v').getValue(),
+                                HEAD_V: AxtForm.findById('head_v').getValue(),
+                                SALES_MANAGER_V: AxtForm.findById('sales_manager_v').getValue(),
+                                ATTN_V: AxtForm.findById('attn_v').getValue(),
+                                REPORTTITLE_V: AxtForm.findById('reporttitle_v').getValue(),
+                                REPORTNAME_V: AxtForm.findById('reportname_v').getValue(),
+                                START_V : pageData.start,
+                                LIMIT_V : pageData.limit
+                            });
+                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                            AxtStore.load();
+                            Ext.getCmp('grid1').getView().refresh();
+
+                            var p = this.getParams();
+                            this.cursor = (pageData && pageData.start) ? pageData.start : 0;
+                            var d = this.getPageData(), ap = d.activePage, ps = d.pages;
+
+                            this.afterTextItem.setText(String.format(this.afterPageText, d.pages));
+                            this.inputItem.setValue(ap);
+                            this.first.setDisabled(ap == 1);
+                            this.prev.setDisabled(ap == 1);
+                            this.next.setDisabled(ap == ps);
+                            this.last.setDisabled(ap == ps);
+                            this.refresh.enable();
+                            this.updateInfo();
+
+                            return false;
+                         }
+                     }
+                 });
+
+                function tfToogle() {
+				   AxtForm.findById('resellername_ta').setVisible(false);
+				   AxtForm.findById('resellername_v').setVisible(true);
+				   AxtForm.findById('resellername_v').setValue(AxtForm.findById('resellername_ta').getValue());
+
+				   AxtForm.findById('quotationno_ta').setVisible(false);
+				   AxtForm.findById('quotationno_v').setVisible(true);
+				   AxtForm.findById('quotationno_v').setValue(AxtForm.findById('quotationno_ta').getValue());
+
+				   AxtForm.findById('unifiednumbering_ta').setVisible(false);
+				   AxtForm.findById('unifiednumbering_v').setVisible(true);
+				   AxtForm.findById('unifiednumbering_v').setValue(AxtForm.findById('unifiednumbering_ta').getValue());
+
+				   AxtForm.findById('compact_ta').setVisible(false);
+				   AxtForm.findById('compact_v').setVisible(true);
+				   AxtForm.findById('compact_v').setValue(AxtForm.findById('compact_ta').getValue());
+
+				   AxtForm.findById('payment_conditions_ta').setVisible(false);
+				   AxtForm.findById('payment_conditions_v').setVisible(true);
+				   AxtForm.findById('payment_conditions_v').setValue(AxtForm.findById('payment_conditions_ta').getValue());
+
+				   AxtForm.findById('customername_ta').setVisible(false);
+				   AxtForm.findById('customername_v').setVisible(true);
+				   AxtForm.findById('customername_v').setValue(AxtForm.findById('customername_ta').getValue());
+
+				   AxtForm.findById('competitivebrands_ta').setVisible(false);
+				   AxtForm.findById('competitivebrands_v').setVisible(true);
+				   AxtForm.findById('competitivebrands_v').setValue(AxtForm.findById('competitivebrands_ta').getValue());
+
+				   AxtForm.findById('ordertype_ta').setVisible(false);
+				   AxtForm.findById('ordertype_v').setVisible(true);
+				   AxtForm.findById('ordertype_v').setValue(AxtForm.findById('ordertype_ta').getValue());
+
+				   AxtForm.findById('offerors_ta').setVisible(false);
+				   AxtForm.findById('offerors_v').setVisible(true);
+				   AxtForm.findById('offerors_v').setValue(AxtForm.findById('offerors_ta').getValue());
+
+				   AxtForm.findById('item1_ta').setVisible(false);
+				   AxtForm.findById('item1_v').setVisible(true);
+				   AxtForm.findById('item1_v').setValue(AxtForm.findById('item1_ta').getValue());
+
+				   AxtForm.findById('product_name1_ta').setVisible(false);
+				   AxtForm.findById('product_name1_v').setVisible(true);
+				   AxtForm.findById('product_name1_v').setValue(AxtForm.findById('product_name1_ta').getValue());
+
+				   AxtForm.findById('specification1_ta').setVisible(false);
+				   AxtForm.findById('specification1_v').setVisible(true);
+				   AxtForm.findById('specification1_v').setValue(AxtForm.findById('specification1_ta').getValue());
+
+				   AxtForm.findById('item2_ta').setVisible(false);
+				   AxtForm.findById('item2_v').setVisible(true);
+				   AxtForm.findById('item2_v').setValue(AxtForm.findById('item2_ta').getValue());
+
+				   AxtForm.findById('product_name2_ta').setVisible(false);
+				   AxtForm.findById('product_name2_v').setVisible(true);
+				   AxtForm.findById('product_name2_v').setValue(AxtForm.findById('product_name2_ta').getValue());
+
+				   AxtForm.findById('specification2_ta').setVisible(false);
+				   AxtForm.findById('specification2_v').setVisible(true);
+				   AxtForm.findById('specification2_v').setValue(AxtForm.findById('specification2_ta').getValue());
+
+				   AxtForm.findById('item3_ta').setVisible(false);
+				   AxtForm.findById('item3_v').setVisible(true);
+				   AxtForm.findById('item3_v').setValue(AxtForm.findById('item3_ta').getValue());
+
+				   AxtForm.findById('product_name3_ta').setVisible(false);
+				   AxtForm.findById('product_name3_v').setVisible(true);
+				   AxtForm.findById('product_name3_v').setValue(AxtForm.findById('product_name3_ta').getValue());
+
+				   AxtForm.findById('specification3_ta').setVisible(false);
+				   AxtForm.findById('specification3_v').setVisible(true);
+				   AxtForm.findById('specification3_v').setValue(AxtForm.findById('specification3_ta').getValue());
+
+				   AxtForm.findById('note_ta').setVisible(false);
+				   AxtForm.findById('note_v').setVisible(true);
+				   AxtForm.findById('note_v').setValue(AxtForm.findById('note_ta').getValue());
+
+				   AxtForm.findById('head_ta').setVisible(false);
+				   AxtForm.findById('head_v').setVisible(true);
+				   AxtForm.findById('head_v').setValue(AxtForm.findById('head_ta').getValue());
+
+				   AxtForm.findById('sales_manager_ta').setVisible(false);
+				   AxtForm.findById('sales_manager_v').setVisible(true);
+				   AxtForm.findById('sales_manager_v').setValue(AxtForm.findById('sales_manager_ta').getValue());
+
+				   AxtForm.findById('attn_ta').setVisible(false);
+				   AxtForm.findById('attn_v').setVisible(true);
+				   AxtForm.findById('attn_v').setValue(AxtForm.findById('attn_ta').getValue());
+
+				   AxtForm.findById('reporttitle_ta').setVisible(false);
+				   AxtForm.findById('reporttitle_v').setVisible(true);
+				   AxtForm.findById('reporttitle_v').setValue(AxtForm.findById('reporttitle_ta').getValue());
+
+				   AxtForm.findById('reportname_ta').setVisible(false);
+				   AxtForm.findById('reportname_v').setVisible(true);
+				   AxtForm.findById('reportname_v').setValue(AxtForm.findById('reportname_ta').getValue());
+
+                }
+                /*usercode start*/
+                /*usercode end*/
+
+                var sm =  new Ext.grid.CheckboxSelectionModel({
+                    checkOnly: false,
+                    width: 20
+                });
+
+                var AxtPanel = new Ext.Panel({
+                    width: 1100,
+                    layout: 'form',
+                    id: 'reseller_quotation3_input_form',
+                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                    items: [
+                    {
+                        xtype: 'textfield',
+                        hidden: true,
+                        id: 'SID'
+                    },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'displayfield',
+                                        cls: 'CSTitle',
+                                        height: 35,
+                                        columnWidth: 1,
+                                        id: 'dfdTitle'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblresellername_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'resellername_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("resellername_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("resellername_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'resellername_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("resellername_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("resellername_ta").setVisible(true);
+                                    		AxtForm.findById("resellername_ta").focus();
+                                    	}
+                                    },
+                                    id: 'resellername_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblquotationno_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'quotationno_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("quotationno_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("quotationno_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'quotationno_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("quotationno_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("quotationno_ta").setVisible(true);
+                                    		AxtForm.findById("quotationno_ta").focus();
+                                    	}
+                                    },
+                                    id: 'quotationno_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblunifiednumbering_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'unifiednumbering_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("unifiednumbering_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("unifiednumbering_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'unifiednumbering_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("unifiednumbering_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("unifiednumbering_ta").setVisible(true);
+                                    		AxtForm.findById("unifiednumbering_ta").focus();
+                                    	}
+                                    },
+                                    id: 'unifiednumbering_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblcompact_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'compact_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("compact_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("compact_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'compact_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("compact_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("compact_ta").setVisible(true);
+                                    		AxtForm.findById("compact_ta").focus();
+                                    	}
+                                    },
+                                    id: 'compact_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblpayment_conditions_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'payment_conditions_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("payment_conditions_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("payment_conditions_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'payment_conditions_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("payment_conditions_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("payment_conditions_ta").setVisible(true);
+                                    		AxtForm.findById("payment_conditions_ta").focus();
+                                    	}
+                                    },
+                                    id: 'payment_conditions_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblcustomername_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'customername_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("customername_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("customername_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'customername_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("customername_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("customername_ta").setVisible(true);
+                                    		AxtForm.findById("customername_ta").focus();
+                                    	}
+                                    },
+                                    id: 'customername_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblcompetitivebrands_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'competitivebrands_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("competitivebrands_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("competitivebrands_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'competitivebrands_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("competitivebrands_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("competitivebrands_ta").setVisible(true);
+                                    		AxtForm.findById("competitivebrands_ta").focus();
+                                    	}
+                                    },
+                                    id: 'competitivebrands_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblordertype_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'ordertype_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("ordertype_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("ordertype_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'ordertype_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("ordertype_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("ordertype_ta").setVisible(true);
+                                    		AxtForm.findById("ordertype_ta").focus();
+                                    	}
+                                    },
+                                    id: 'ordertype_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblofferors_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'offerors_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("offerors_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("offerors_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'offerors_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("offerors_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("offerors_ta").setVisible(true);
+                                    		AxtForm.findById("offerors_ta").focus();
+                                    	}
+                                    },
+                                    id: 'offerors_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblitem1_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'item1_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("item1_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("item1_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'item1_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("item1_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("item1_ta").setVisible(true);
+                                    		AxtForm.findById("item1_ta").focus();
+                                    	}
+                                    },
+                                    id: 'item1_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblproduct_name1_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'product_name1_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("product_name1_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("product_name1_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'product_name1_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("product_name1_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("product_name1_ta").setVisible(true);
+                                    		AxtForm.findById("product_name1_ta").focus();
+                                    	}
+                                    },
+                                    id: 'product_name1_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblspecification1_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'specification1_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("specification1_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("specification1_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'specification1_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("specification1_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("specification1_ta").setVisible(true);
+                                    		AxtForm.findById("specification1_ta").focus();
+                                    	}
+                                    },
+                                    id: 'specification1_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblitem2_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'item2_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("item2_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("item2_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'item2_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("item2_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("item2_ta").setVisible(true);
+                                    		AxtForm.findById("item2_ta").focus();
+                                    	}
+                                    },
+                                    id: 'item2_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblproduct_name2_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'product_name2_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("product_name2_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("product_name2_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'product_name2_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("product_name2_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("product_name2_ta").setVisible(true);
+                                    		AxtForm.findById("product_name2_ta").focus();
+                                    	}
+                                    },
+                                    id: 'product_name2_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblspecification2_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'specification2_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("specification2_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("specification2_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'specification2_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("specification2_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("specification2_ta").setVisible(true);
+                                    		AxtForm.findById("specification2_ta").focus();
+                                    	}
+                                    },
+                                    id: 'specification2_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblitem3_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'item3_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("item3_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("item3_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'item3_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("item3_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("item3_ta").setVisible(true);
+                                    		AxtForm.findById("item3_ta").focus();
+                                    	}
+                                    },
+                                    id: 'item3_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblproduct_name3_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'product_name3_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("product_name3_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("product_name3_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'product_name3_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("product_name3_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("product_name3_ta").setVisible(true);
+                                    		AxtForm.findById("product_name3_ta").focus();
+                                    	}
+                                    },
+                                    id: 'product_name3_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblspecification3_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'specification3_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("specification3_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("specification3_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'specification3_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("specification3_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("specification3_ta").setVisible(true);
+                                    		AxtForm.findById("specification3_ta").focus();
+                                    	}
+                                    },
+                                    id: 'specification3_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblnote_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'note_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("note_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("note_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'note_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("note_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("note_ta").setVisible(true);
+                                    		AxtForm.findById("note_ta").focus();
+                                    	}
+                                    },
+                                    id: 'note_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblhead_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'head_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("head_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("head_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'head_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("head_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("head_ta").setVisible(true);
+                                    		AxtForm.findById("head_ta").focus();
+                                    	}
+                                    },
+                                    id: 'head_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblsales_manager_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'sales_manager_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("sales_manager_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("sales_manager_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'sales_manager_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("sales_manager_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("sales_manager_ta").setVisible(true);
+                                    		AxtForm.findById("sales_manager_ta").focus();
+                                    	}
+                                    },
+                                    id: 'sales_manager_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblattn_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'attn_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("attn_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("attn_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'attn_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("attn_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("attn_ta").setVisible(true);
+                                    		AxtForm.findById("attn_ta").focus();
+                                    	}
+                                    },
+                                    id: 'attn_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblreporttitle_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'reporttitle_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("reporttitle_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("reporttitle_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'reporttitle_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("reporttitle_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("reporttitle_ta").setVisible(true);
+                                    		AxtForm.findById("reporttitle_ta").focus();
+                                    	}
+                                    },
+                                    id: 'reporttitle_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'label',
+                                    width: 150,
+                                    id: 'lblreportname_t'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                    xtype: 'textarea',
+                                    width: 150,
+                                    autoScroll: true,
+                                    height: 66,
+                                    hidden: true,
+                                    style: 'font-size: 16;',
+                                    id: 'reportname_ta',
+                                    listeners: {
+                                        blur: function(obj) {
+                                            AxtForm.findById("reportname_v").setValue(obj.getValue());
+                                            obj.setVisible(false);
+                                            AxtForm.findById("reportname_v").setVisible(true);
+                                        }
+                                    }
+                                }, {
+                                    xtype: 'textfield',
+                                    name: 'reportname_v',
+                                    columnWidth: 0.2,
+                                    width: 150,
+                                    allowBlank: true,
+                                    style: 'font-size: 16;',
+                                    listeners: {
+                                    	focus: function(obj){
+                                    		AxtForm.findById("reportname_ta").setValue(obj.getValue());
+                                    		obj.setVisible(false);
+                                    		AxtForm.findById("reportname_ta").setVisible(true);
+                                    		AxtForm.findById("reportname_ta").focus();
+                                    	}
+                                    },
+                                    id: 'reportname_v'
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTQUERY',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('reseller_quotation3_input_form');
+
+                                                AxtData = client.ResellerQuotationSystemreseller_quotation3_input.getreseller_quotation3_inputBy({
+                                                    RESELLERNAME_V: AxtForm.findById('resellername_v').getValue(),
+                                                    QUOTATIONNO_V: AxtForm.findById('quotationno_v').getValue(),
+                                                    UNIFIEDNUMBERING_V: AxtForm.findById('unifiednumbering_v').getValue(),
+                                                    COMPACT_V: AxtForm.findById('compact_v').getValue(),
+                                                    PAYMENT_CONDITIONS_V: AxtForm.findById('payment_conditions_v').getValue(),
+                                                    CUSTOMERNAME_V: AxtForm.findById('customername_v').getValue(),
+                                                    COMPETITIVEBRANDS_V: AxtForm.findById('competitivebrands_v').getValue(),
+                                                    ORDERTYPE_V: AxtForm.findById('ordertype_v').getValue(),
+                                                    OFFERORS_V: AxtForm.findById('offerors_v').getValue(),
+                                                    ITEM1_V: AxtForm.findById('item1_v').getValue(),
+                                                    PRODUCT_NAME1_V: AxtForm.findById('product_name1_v').getValue(),
+                                                    SPECIFICATION1_V: AxtForm.findById('specification1_v').getValue(),
+                                                    ITEM2_V: AxtForm.findById('item2_v').getValue(),
+                                                    PRODUCT_NAME2_V: AxtForm.findById('product_name2_v').getValue(),
+                                                    SPECIFICATION2_V: AxtForm.findById('specification2_v').getValue(),
+                                                    ITEM3_V: AxtForm.findById('item3_v').getValue(),
+                                                    PRODUCT_NAME3_V: AxtForm.findById('product_name3_v').getValue(),
+                                                    SPECIFICATION3_V: AxtForm.findById('specification3_v').getValue(),
+                                                    NOTE_V: AxtForm.findById('note_v').getValue(),
+                                                    HEAD_V: AxtForm.findById('head_v').getValue(),
+                                                    SALES_MANAGER_V: AxtForm.findById('sales_manager_v').getValue(),
+                                                    ATTN_V: AxtForm.findById('attn_v').getValue(),
+                                                    REPORTTITLE_V: AxtForm.findById('reporttitle_v').getValue(),
+                                                    REPORTNAME_V: AxtForm.findById('reportname_v').getValue(),
+                                                    START_V : 0,
+                                                    LIMIT_V : AxtPageBar.pageSize,
+                                                    AXTMODIFY: ""
+                                            });
+                                            AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                                            AxtStore.load();
+                                            Ext.getCmp('grid1').getView().refresh();
+                                            /*btnBTNAXTQUERY user code start*/
+                                            /*btnBTNAXTQUERY user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTSUBMIT',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('reseller_quotation3_input_form');
+
+
+                                                    if(AxtForm.findById('resellername_v').getValue() == "" && AxtForm.findById('quotationno_v').getValue() == "" && AxtForm.findById('unifiednumbering_v').getValue() == "" && AxtForm.findById('compact_v').getValue() == "" && AxtForm.findById('payment_conditions_v').getValue() == "" && AxtForm.findById('customername_v').getValue() == "" && AxtForm.findById('competitivebrands_v').getValue() == "" && AxtForm.findById('ordertype_v').getValue() == "" && AxtForm.findById('offerors_v').getValue() == "" && AxtForm.findById('item1_v').getValue() == "" && AxtForm.findById('product_name1_v').getValue() == "" && AxtForm.findById('specification1_v').getValue() == "" && AxtForm.findById('item2_v').getValue() == "" && AxtForm.findById('product_name2_v').getValue() == "" && AxtForm.findById('specification2_v').getValue() == "" && AxtForm.findById('item3_v').getValue() == "" && AxtForm.findById('product_name3_v').getValue() == "" && AxtForm.findById('specification3_v').getValue() == "" && AxtForm.findById('note_v').getValue() == "" && AxtForm.findById('head_v').getValue() == "" && AxtForm.findById('sales_manager_v').getValue() == "" && AxtForm.findById('attn_v').getValue() == "" && AxtForm.findById('reporttitle_v').getValue() == "" && AxtForm.findById('reportname_v').getValue() == ""){
+                                                    
+                                                   		Ext.MessageBox.show({
+                                    				title: axtlang_msgbox_error_title,
+                                    				msg: axtlang_msgbox_null,
+                                    				buttons: Ext.Msg.OK,
+                                    				closable: false,
+                                    				width: 240
+                                    			});
+                                    			return;
+                                                    }
+                                                if( true )
+                                                {
+                                                    var newData = new Array();
+                                                    var data = {
+                                                    RESELLERNAME_V: AxtForm.findById('resellername_v').getValue(),
+                                                    QUOTATIONNO_V: AxtForm.findById('quotationno_v').getValue(),
+                                                    UNIFIEDNUMBERING_V: AxtForm.findById('unifiednumbering_v').getValue(),
+                                                    COMPACT_V: AxtForm.findById('compact_v').getValue(),
+                                                    PAYMENT_CONDITIONS_V: AxtForm.findById('payment_conditions_v').getValue(),
+                                                    CUSTOMERNAME_V: AxtForm.findById('customername_v').getValue(),
+                                                    COMPETITIVEBRANDS_V: AxtForm.findById('competitivebrands_v').getValue(),
+                                                    ORDERTYPE_V: AxtForm.findById('ordertype_v').getValue(),
+                                                    OFFERORS_V: AxtForm.findById('offerors_v').getValue(),
+                                                    ITEM1_V: AxtForm.findById('item1_v').getValue(),
+                                                    PRODUCT_NAME1_V: AxtForm.findById('product_name1_v').getValue(),
+                                                    SPECIFICATION1_V: AxtForm.findById('specification1_v').getValue(),
+                                                    ITEM2_V: AxtForm.findById('item2_v').getValue(),
+                                                    PRODUCT_NAME2_V: AxtForm.findById('product_name2_v').getValue(),
+                                                    SPECIFICATION2_V: AxtForm.findById('specification2_v').getValue(),
+                                                    ITEM3_V: AxtForm.findById('item3_v').getValue(),
+                                                    PRODUCT_NAME3_V: AxtForm.findById('product_name3_v').getValue(),
+                                                    SPECIFICATION3_V: AxtForm.findById('specification3_v').getValue(),
+                                                    NOTE_V: AxtForm.findById('note_v').getValue(),
+                                                    HEAD_V: AxtForm.findById('head_v').getValue(),
+                                                    SALES_MANAGER_V: AxtForm.findById('sales_manager_v').getValue(),
+                                                    ATTN_V: AxtForm.findById('attn_v').getValue(),
+                                                    REPORTTITLE_V: AxtForm.findById('reporttitle_v').getValue(),
+                                                    REPORTNAME_V: AxtForm.findById('reportname_v').getValue(),
+                                                    SID: AxtForm.findById('SID').getValue()
+                                                }
+
+                                                newData.push(data);
+
+                                                if (newData.length <= 0) {
+                                                    return;
+                                                }
+
+                                                var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                var msg = client.ResellerQuotationSystemreseller_quotation3_input.saveData(newData);
+                                                axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+                                                progress.hide();
+
+                                                axtStoreUpdate();
+
+                                                Ext.getCmp('grid1').getView().refresh();
+                                                }
+
+                                            /*btnBTNAXTSUBMIT user code start*/
+                                            /*btnBTNAXTSUBMIT user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            },//axtpanel_item_gen_y_compoment
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                                        xtype: 'panel',
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'btnBTNAXTCANCEL',
+                                            cls: 'CSButton',
+                                            handler: function () {
+                                                AxtForm = Ext.getCmp('reseller_quotation3_input_form');
+
+
+                                                AxtForm.findById('resellername_v').setValue('');
+                                                AxtForm.findById('quotationno_v').setValue('');
+                                                AxtForm.findById('unifiednumbering_v').setValue('');
+                                                AxtForm.findById('compact_v').setValue('');
+                                                AxtForm.findById('payment_conditions_v').setValue('');
+                                                AxtForm.findById('customername_v').setValue('');
+                                                AxtForm.findById('competitivebrands_v').setValue('');
+                                                AxtForm.findById('ordertype_v').setValue('');
+                                                AxtForm.findById('offerors_v').setValue('');
+                                                AxtForm.findById('item1_v').setValue('');
+                                                AxtForm.findById('product_name1_v').setValue('');
+                                                AxtForm.findById('specification1_v').setValue('');
+                                                AxtForm.findById('item2_v').setValue('');
+                                                AxtForm.findById('product_name2_v').setValue('');
+                                                AxtForm.findById('specification2_v').setValue('');
+                                                AxtForm.findById('item3_v').setValue('');
+                                                AxtForm.findById('product_name3_v').setValue('');
+                                                AxtForm.findById('specification3_v').setValue('');
+                                                AxtForm.findById('note_v').setValue('');
+                                                AxtForm.findById('head_v').setValue('');
+                                                AxtForm.findById('sales_manager_v').setValue('');
+                                                AxtForm.findById('attn_v').setValue('');
+                                                AxtForm.findById('reporttitle_v').setValue('');
+                                                AxtForm.findById('reportname_v').setValue('');
+                                                AxtForm.findById('SID').setValue('');
+                                            /*btnBTNAXTCANCEL user code start*/
+                                            /*btnBTNAXTCANCEL user code end*/
+                                                },
+                                            width: 72
+                                        }
+                                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            xtype: 'panel',
+                            layout: 'column',
+                            border: false,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 1,
+                                items:[//axtpanel_item_gen_x_compoment
+                                {//axtpanel_item_gen_x_compoment
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'text-align: left;',
+                       items: [
+                            {
+                                xtype: 'grid',
+                                id: 'grid1',
+                                store: AxtStore,
+                                height: 380,
+                                bodyStyle: 'border-width:0; padding: 0px 0 0 0px; background: transparent;',
+                                loadMask: true,
+                                columnWidth: 1,
+                                columnLines: true,
+                                selModel: sm,
+                                viewConfig: {
+                                templates: {
+                                cell: new Ext.Template(
+    '<td class= "x-grid3-col x-grid3-cell x-grid3-td-{id} x-selectable {css}" style="{style}" tabIndex="0" {cellAttr}>',
+    '<div class="x-grid3-cell-inner x-grid3-col-{id}" {attr}>{value}</div>',
+    '</td>'
+    )
+}
+ },
+                                columns: [
+                                    sm,
+                                    {
+                                        width: 50,
+                                        renderer: renderAXTMODIFYImg,
+                                        id: 'AXTMODIFY'
+                                    },
+                                    {
+                                        id: 'RESELLERNAME_V',
+                                        dataIndex: 'RESELLERNAME_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'QUOTATIONNO_V',
+                                        dataIndex: 'QUOTATIONNO_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'UNIFIEDNUMBERING_V',
+                                        dataIndex: 'UNIFIEDNUMBERING_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'COMPACT_V',
+                                        dataIndex: 'COMPACT_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PAYMENT_CONDITIONS_V',
+                                        dataIndex: 'PAYMENT_CONDITIONS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'CUSTOMERNAME_V',
+                                        dataIndex: 'CUSTOMERNAME_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'COMPETITIVEBRANDS_V',
+                                        dataIndex: 'COMPETITIVEBRANDS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ORDERTYPE_V',
+                                        dataIndex: 'ORDERTYPE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'OFFERORS_V',
+                                        dataIndex: 'OFFERORS_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ITEM1_V',
+                                        dataIndex: 'ITEM1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PRODUCT_NAME1_V',
+                                        dataIndex: 'PRODUCT_NAME1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SPECIFICATION1_V',
+                                        dataIndex: 'SPECIFICATION1_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ITEM2_V',
+                                        dataIndex: 'ITEM2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PRODUCT_NAME2_V',
+                                        dataIndex: 'PRODUCT_NAME2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SPECIFICATION2_V',
+                                        dataIndex: 'SPECIFICATION2_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ITEM3_V',
+                                        dataIndex: 'ITEM3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'PRODUCT_NAME3_V',
+                                        dataIndex: 'PRODUCT_NAME3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SPECIFICATION3_V',
+                                        dataIndex: 'SPECIFICATION3_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'NOTE_V',
+                                        dataIndex: 'NOTE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'HEAD_V',
+                                        dataIndex: 'HEAD_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'SALES_MANAGER_V',
+                                        dataIndex: 'SALES_MANAGER_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'ATTN_V',
+                                        dataIndex: 'ATTN_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'REPORTTITLE_V',
+                                        dataIndex: 'REPORTTITLE_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'REPORTNAME_V',
+                                        dataIndex: 'REPORTNAME_V',
+                                        hideable: true,
+                                        hidden: false,
+                                        sortable: true,
+                                        width: 100
+                                    }
+                                ],
+                                tbar: [
+                                    {
+                                        id: 'delete',
+                                        text: 'Delete',
+                                        tooltip: 'Delete',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSDelete',
+                                        width: 72
+                                        ,handler: function () {
+                                            var grid = Ext.getCmp('grid1');
+                                            var records = grid.getSelectionModel().getSelections();
+                                            if (!records || records.length <= 0) 
+                                            {
+                                                return false;
+                                            }
+
+                                            Ext.MessageBox.confirm(
+                                                WRN_00002,
+                                                WRN_00002,
+                                                function (btn) {
+                                                    if (btn == 'yes') {
+                                                        var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                        var deleteData = new Array();
+                                                        Ext.each(records, function (record) {
+                                                            var data = {
+                                                                SID: record.get("SID"),
+                                                                AXTMODIFY: record.get("AXTMODIFY"),
+                                                                RESELLERNAME_V: record.get("RESELLERNAME_V"),
+                                                                QUOTATIONNO_V: record.get("QUOTATIONNO_V"),
+                                                                UNIFIEDNUMBERING_V: record.get("UNIFIEDNUMBERING_V"),
+                                                                COMPACT_V: record.get("COMPACT_V"),
+                                                                PAYMENT_CONDITIONS_V: record.get("PAYMENT_CONDITIONS_V"),
+                                                                CUSTOMERNAME_V: record.get("CUSTOMERNAME_V"),
+                                                                COMPETITIVEBRANDS_V: record.get("COMPETITIVEBRANDS_V"),
+                                                                ORDERTYPE_V: record.get("ORDERTYPE_V"),
+                                                                OFFERORS_V: record.get("OFFERORS_V"),
+                                                                ITEM1_V: record.get("ITEM1_V"),
+                                                                PRODUCT_NAME1_V: record.get("PRODUCT_NAME1_V"),
+                                                                SPECIFICATION1_V: record.get("SPECIFICATION1_V"),
+                                                                ITEM2_V: record.get("ITEM2_V"),
+                                                                PRODUCT_NAME2_V: record.get("PRODUCT_NAME2_V"),
+                                                                SPECIFICATION2_V: record.get("SPECIFICATION2_V"),
+                                                                ITEM3_V: record.get("ITEM3_V"),
+                                                                PRODUCT_NAME3_V: record.get("PRODUCT_NAME3_V"),
+                                                                SPECIFICATION3_V: record.get("SPECIFICATION3_V"),
+                                                                NOTE_V: record.get("NOTE_V"),
+                                                                HEAD_V: record.get("HEAD_V"),
+                                                                SALES_MANAGER_V: record.get("SALES_MANAGER_V"),
+                                                                ATTN_V: record.get("ATTN_V"),
+                                                                REPORTTITLE_V: record.get("REPORTTITLE_V"),
+                                                                REPORTNAME_V: record.get("REPORTNAME_V")
+                                                            };
+                                                            deleteData.push(data);
+                                                            grid.store.remove(record);
+                                                        });
+
+                                                        var msg = client.ResellerQuotationSystemreseller_quotation3_input.deleteData(deleteData);
+                                                        axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                        axtStoreUpdate();
+
+                                                        /*onDelete user code start*/
+                                                        /*onDelete user code end*/
+
+                                                        Ext.getCmp('grid1').getView().refresh();
+                                                        progress.hide();
+                                                    }
+                                                }
+                                            );
+                                        }
+                                    },
+                                    '-',
+                                    {
+                                        text: 'Add',
+                                        tooltip: 'Add',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSAdd',
+                                        width: 72,
+                                        handler: function () {
+                                            onAdd(Ext.getCmp('grid1'), AxtEditor, { RESELLERNAME_V: "", QUOTATIONNO_V: "", UNIFIEDNUMBERING_V: "", COMPACT_V: "", PAYMENT_CONDITIONS_V: "", CUSTOMERNAME_V: "", COMPETITIVEBRANDS_V: "", ORDERTYPE_V: "", OFFERORS_V: "", ITEM1_V: "", PRODUCT_NAME1_V: "", SPECIFICATION1_V: "", ITEM2_V: "", PRODUCT_NAME2_V: "", SPECIFICATION2_V: "", ITEM3_V: "", PRODUCT_NAME3_V: "", SPECIFICATION3_V: "", NOTE_V: "", HEAD_V: "", SALES_MANAGER_V: "", ATTN_V: "", REPORTTITLE_V: "", REPORTNAME_V: "" });
+                                        },
+                                        id: 'add'
+                                    },
+                                    '-'
+                                ],
+                                bbar: [
+                                    '->',
+                                     AxtPageBar]
+                            }
+                        ]
+                                }//axtpanel_item_gen_x_compoment
+                            ]
+                            }//axtpanel_item_gen_y_compoment
+                            ]
+                        }, {
+                            xtype:'panel',
+                            height:10,
+                            bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                            },
+                        {
+                            hidden:true,
+                            id:'Axtronics_AutoGen_System'
+                        }
+                    ]
+                });
+
+                function renderAXTMODIFYImg() {
+                    return '<center><img src="../../img/icons/edit.png"></center>'
+                }
+
+                AxtForm = Ext.getCmp('reseller_quotation3_input_form');
+                AxtForm.findById('grid1').on('cellclick', function (g, rowIndex, columnIndex, e) {
+                    var record = g.getStore().getAt(rowIndex);
+                    if(columnIndex == 1) {
+                        AxtForm.findById('SID').setValue(record.get('SID'));
+                        AxtForm.findById('resellername_v').setValue(record.get('RESELLERNAME_V'));
+                        AxtForm.findById('quotationno_v').setValue(record.get('QUOTATIONNO_V'));
+                        AxtForm.findById('unifiednumbering_v').setValue(record.get('UNIFIEDNUMBERING_V'));
+                        AxtForm.findById('compact_v').setValue(record.get('COMPACT_V'));
+                        AxtForm.findById('payment_conditions_v').setValue(record.get('PAYMENT_CONDITIONS_V'));
+                        AxtForm.findById('customername_v').setValue(record.get('CUSTOMERNAME_V'));
+                        AxtForm.findById('competitivebrands_v').setValue(record.get('COMPETITIVEBRANDS_V'));
+                        AxtForm.findById('ordertype_v').setValue(record.get('ORDERTYPE_V'));
+                        AxtForm.findById('offerors_v').setValue(record.get('OFFERORS_V'));
+                        AxtForm.findById('item1_v').setValue(record.get('ITEM1_V'));
+                        AxtForm.findById('product_name1_v').setValue(record.get('PRODUCT_NAME1_V'));
+                        AxtForm.findById('specification1_v').setValue(record.get('SPECIFICATION1_V'));
+                        AxtForm.findById('item2_v').setValue(record.get('ITEM2_V'));
+                        AxtForm.findById('product_name2_v').setValue(record.get('PRODUCT_NAME2_V'));
+                        AxtForm.findById('specification2_v').setValue(record.get('SPECIFICATION2_V'));
+                        AxtForm.findById('item3_v').setValue(record.get('ITEM3_V'));
+                        AxtForm.findById('product_name3_v').setValue(record.get('PRODUCT_NAME3_V'));
+                        AxtForm.findById('specification3_v').setValue(record.get('SPECIFICATION3_V'));
+                        AxtForm.findById('note_v').setValue(record.get('NOTE_V'));
+                        AxtForm.findById('head_v').setValue(record.get('HEAD_V'));
+                        AxtForm.findById('sales_manager_v').setValue(record.get('SALES_MANAGER_V'));
+                        AxtForm.findById('attn_v').setValue(record.get('ATTN_V'));
+                        AxtForm.findById('reporttitle_v').setValue(record.get('REPORTTITLE_V'));
+                        AxtForm.findById('reportname_v').setValue(record.get('REPORTNAME_V'));
+                    }
+                });
+                AxtPanel.render("main");
+                setlang();
+            });
+    </script>
+</head>
+<body>
+    <center>
+        <div id="main"></div>
+    </center>
+</body>
+</html>

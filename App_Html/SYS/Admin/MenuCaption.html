@@ -1,0 +1,526 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MenuCaption</title>
+    <link href="../../../css/axtlib.css" type="text/css" rel="stylesheet" />
+    <link href="../../../css/axtStyle.css" type="text/css" rel="stylesheet" />
+    <link href="../../../ext/resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+    <link href="../../../ext/ux/css/RowEditor.css" type="text/css" rel="stylesheet" />
+    <script src="../../../ext/adapter/ext/ext-base-debug.js" type="text/javascript"></script>
+    <script src="../../../ext/ext-all-debug.js" type="text/javascript"></script>
+    <script src="../../../ext/ux/PagingMemoryProxy.js" type="text/javascript"></script>
+    <script src="../../../ext/ux/ProgressBarPager.js" type="text/javascript"></script>
+    <script src="../../../ext/ux/RowEditor.js" type="text/javascript"></script>
+    <script src="../../../ext/src/locale/ext-lang-zh_TW.js" type="text/javascript"></script>
+    <script src="../../../axtjs/axtRuleMessage.js" type="text/javascript"></script>
+    <script src="../../../axtjs/axtlib.js" type="text/javascript"></script>
+    <script src="../../../axtjs/pPageSize.js" type="text/javascript"></script>
+    <script src="../../../axtjs/AJAXRPC.js" type="text/javascript"></script>
+    <script src="../../../ajaxrpc/Script.aspx" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var AxtEditor = new Ext.ux.grid.RowEditor({});
+        var client = new AJAXRPC_Client('../../../ajaxrpc/Server.aspx');
+
+        if (client.Login.isLogin() == false) {
+            parent.location.href = "../../../Login.html";
+        }
+
+        client.SYSAdminMenuCaption.createTable();
+        client.SYSAdminMenuCaption.beforeGenConf();
+
+        function setlang() {
+            lang = client.AxtSystem.getLang("zh-TW");
+            setRuleMessageLang(lang);
+            AxtForm = Ext.getCmp('MenuCaption_form');
+            switch (lang) {
+                case 'en':
+                    AxtForm.findById("dfdTitle").setValue("Set Menu Item");
+                    AxtForm.findById("lblsub_menu").setText("Sub Menu");
+                    AxtForm.findById("lblmenu_item").setText("Menu Item");
+                    AxtForm.findById("btnquery").setText("Query");
+                    AxtForm.findById("menucaption_crud_grid").setTitle('Menu Item Config');
+                    AxtForm.findById("menucaption_crud_grid").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("menucaption_crud_grid").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(1, '<center>Sub Menu</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(2, '<center>Menu Item</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(3, '<center>Language Type</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(4, '<center>Language</center>');
+                    AxtForm.findById("btnSubmit").setText('Submit');
+                    AxtForm.findById("btnCancel").setText('Cancel');
+                    AxtEditor.saveText = "Update";
+                    AxtEditor.cancelText = "Cancel";
+                    break;
+                case 'zh-TW':
+                    AxtForm.findById("dfdTitle").setValue("選單標題維護");
+                    AxtForm.findById("lblsub_menu").setText("子選單");
+                    AxtForm.findById("lblmenu_item").setText("選單項目");
+                    AxtForm.findById("btnquery").setText("查詢");
+                    AxtForm.findById("menucaption_crud_grid").setTitle('選單項目設定');
+                    AxtForm.findById("menucaption_crud_grid").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("menucaption_crud_grid").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(1, '<center>子選單</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(2, '<center>選單項目</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(3, '<center>語系</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(4, '<center>語言</center>');
+                    AxtForm.findById("btnSubmit").setText('送出');
+                    AxtForm.findById("btnCancel").setText('取消');
+                    AxtEditor.saveText = "更新";
+                    AxtEditor.cancelText = "取消";
+                    break;
+                case 'zh-CN':
+                    AxtForm.findById("dfdTitle").setValue("選單標題管理");
+                    AxtForm.findById("lblsub_menu").setText("子目录");
+                    AxtForm.findById("lblmenu_item").setText("选单项目");
+                    AxtForm.findById("btnquery").setText("查询");
+                    AxtForm.findById("menucaption_crud_grid").setTitle('選單項目設定');
+                    AxtForm.findById("menucaption_crud_grid").getTopToolbar().findById('add').setText('Add');
+                    AxtForm.findById("menucaption_crud_grid").getTopToolbar().findById('delete').setText('Delete');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(1, '<center>子目录</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(2, '<center>选单项目</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(3, '<center>语系</center>');
+                    AxtForm.findById("menucaption_crud_grid").getColumnModel().setColumnHeader(4, '<center>语言</center>');
+                    AxtForm.findById("btnSubmit").setText('送交');
+                    AxtForm.findById("btnCancel").setText('取消');
+                    AxtEditor.saveText = "更新";
+                    AxtEditor.cancelText = "取消";
+                    break;
+                }
+            }
+
+            Ext.onReady(function () {
+                Ext.QuickTips.init();
+
+                var AxtData = client.SYSAdminMenuCaption.getMenuCaption();
+
+                var proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+
+                var reader = new Ext.data.JsonReader({
+                    totalProperty: 'totalCount',
+                    successProperty: 'success',
+                    idProperty: 'id',
+                    root: 'MenuCaption'
+                }, [
+                        {
+                            name: 'SID'
+                        },
+                        {
+                            name: 'SUB_MENU'
+                        },
+                        {
+                            name: 'MENU_ITEM'
+                        },
+                        {
+                            name: 'LANGUAGE_TYPE'
+                        },
+                        {
+                            name: 'LANGUAGE'
+                        }
+                    ]
+                );
+
+                var writer = new Ext.data.JsonWriter({
+                    encode: false       // <-- don't return encoded JSON -- causes Ext.Ajax#request to send data using jsonData config rather than HTTP params
+                });
+
+                var AxtStore = new Ext.data.Store({
+                    id: 'jssMenuCaption',
+                    proxy: proxy,
+                    reader: reader,
+                    pruneModifiedRecords: true
+                });
+
+                AxtStore.load({ params: { start: 0, limit: 20} });
+
+                function axtStoreUpdate() {
+                    AxtData = client.SYSAdminMenuCaption.getMenuCaption();
+                    AxtStore.proxy = new Ext.data.PagingMemoryProxy(Ext.util.JSON.decode(AxtData));
+                    AxtStore.load();
+                }
+
+                /*usercode start*/
+                /*usercode end*/
+
+                var AxtPanel = new Ext.Panel({
+                    width: 800,
+                    layout: 'form',
+                    id: 'MenuCaption_form',
+                    bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                    items: [
+                   {
+                       xtype: 'panel',
+                       height: 25,
+                       bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;'
+                   },
+                   {
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'border-width:1; padding:0px 0 0 0px; background:transparent;',
+                       items: [
+                            {
+                                xtype: 'displayfield',
+                                id: 'dfdTitle',
+                                cls: 'CSTitle',
+                                height: 35,
+                                columnWidth: 1
+                            }
+                        ]
+                   },
+                    {
+                        xtype: 'panel',
+                        height: 25,
+                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;'
+                    },
+                    {
+                        xtype: 'panel',
+                        layout: 'column',
+                        height: 25,
+                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                        items: [
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                        xtype: 'label',
+                                        id: 'lblsub_menu',
+                                        width: 100
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                        xtype: 'combo',
+                                        id: 'cbxsub_menu',
+                                        mode: 'local',
+                                        editable: true,
+
+                                        /*cbxsub_menu user code start*/
+                                        /*cbxsub_menu user code end*/
+
+                                        width: 150,
+                                        triggerAction: 'all',
+                                        selectOnFocus: true,
+                                        typeAhead: true,
+                                        lazyRender: true,
+                                        forceSelection: true
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                        xtype: 'label',
+                                        id: 'lblmenu_item',
+                                        width: 100
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                        xtype: 'combo',
+                                        id: 'cbxmenu_item',
+                                        mode: 'local',
+                                        editable: true,
+
+                                        /*cbxmenu_item user code start*/
+                                        /*cbxmenu_item user code end*/
+
+                                        width: 150,
+                                        triggerAction: 'all',
+                                        selectOnFocus: true,
+                                        typeAhead: true,
+                                        lazyRender: true,
+                                        forceSelection: true
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'panel',
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: 0.2,
+                                items: [
+                                    {
+                                        xtype: 'button',
+                                        id: 'btnquery',
+                                        cls: 'CSButton',
+                                        handler: function () {
+                                            AxtForm = Ext.getCmp('MenuCaption_form');
+
+                                            /*btnquery user code start*/
+                                            /*btnquery user code end*/
+                                        },
+                                        width: 72
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                   {
+                       xtype: 'panel',
+                       height: 25,
+                       bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;'
+                   },
+                   {
+                       xtype: 'panel',
+                       layout: 'column',
+                       bodyStyle: 'text-align: left;',
+                       items: [
+                            {
+                                xtype: 'grid',
+                                id: 'menucaption_crud_grid',
+                                store: AxtStore,
+                                height: 380,
+                                bodyStyle: 'border-width:0; padding: 0px 0 0 0px; background: transparent;',
+                                loadMask: true,
+                                columnWidth: 1,
+                                columnLines: true,
+                                plugins: [AxtEditor],
+                                viewConfig: {
+                                    forceFit: true
+                                },
+                                selModel: new Ext.grid.CheckboxSelectionModel({
+                                    checkOnly: false,
+                                    width: 30
+                                }),
+                                columns: [
+                                    new Ext.grid.CheckboxSelectionModel({ width: 30 }),
+                                    {
+                                        id: 'SUB_MENU',
+                                        dataIndex: 'SUB_MENU',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'MENU_ITEM',
+                                        dataIndex: 'MENU_ITEM',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'LANGUAGE_TYPE',
+                                        dataIndex: 'LANGUAGE_TYPE',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    },
+                                    {
+                                        id: 'LANGUAGE',
+                                        dataIndex: 'LANGUAGE',
+                                        hideable: false,
+                                        hidden: false,
+                                        sortable: true,
+                                        editor: new Ext.form.TextField({}),
+                                        width: 100
+                                    }
+                                ],
+                                tbar: [
+                                    {
+                                        id: 'delete',
+                                        text: 'Delete',
+                                        tooltip: 'Delete',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSDelete',
+                                        width: 72,
+                                        handler: function () {
+                                            var grid = Ext.getCmp('menucaption_crud_grid');
+                                            var records = grid.getSelectionModel().getSelections();
+                                            if (!records || records.length <= 0) 
+                                            {
+                                                return false;
+                                            }
+
+                                            Ext.MessageBox.confirm(
+                                                WRN_00002,
+                                                WRN_00002,
+                                                function (btn) {
+                                                    if (btn == 'yes') {
+                                                        var progress = Ext.MessageBox.wait(WRN_00004, WRN_00003);
+                                                        var deleteData = new Array();
+                                                        Ext.each(records, function (record) {
+                                                            var data = {
+                                                                SID: record.get("SID"),
+                                                                SUB_MENU: record.get("SUB_MENU"),
+                                                                MENU_ITEM: record.get("MENU_ITEM"),
+                                                                LANGUAGE_TYPE: record.get("LANGUAGE_TYPE"),
+                                                                LANGUAGE: record.get("LANGUAGE")
+                                                            };
+                                                            deleteData.push(data);
+                                                            grid.store.remove(record);
+                                                        });
+
+                                                        var msg = client.SYSAdminMenuCaption.deleteData(deleteData);
+                                                        axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                        axtStoreUpdate();
+
+                                                        /*onDelete user code start*/
+                                                        /*onDelete user code end*/
+
+                                                        Ext.getCmp('menucaption_crud_grid').getView().refresh();
+                                                        progress.hide();
+                                                    }
+                                                }
+                                            );
+                                        }
+                                    },
+                                    '-',
+                                    {
+                                        id: 'add',
+                                        text: 'Add',
+                                        tooltip: 'Add',
+                                        //ctCls: 'x-btn-over',
+                                        iconCls: 'CSAdd',
+                                        width: 72,
+                                        handler: function () {
+                                            onAdd(Ext.getCmp('menucaption_crud_grid'), AxtEditor, { SUB_MENU: "", MENU_ITEM: "", LANGUAGE_TYPE: "", LANGUAGE: "" });
+                                        }
+                                    },
+                                    '-'
+						           ],
+                                bbar: [
+                                    '->',
+                                    {
+                                        xtype: 'paging',
+                                        pageSize: 20,
+                                        store: AxtStore,
+                                        displayInfo: true,
+                                        //displayMsg: 'Displaying {0} - {1} of {2}',
+                                        style: 'border-width:0;',
+                                        refresh: function (pt, o) {
+                                            axtStoreUpdate();
+                                            Ext.getCmp('menucaption_crud_grid').getView().refresh();
+                                        },
+                                        //emptyMsg: "No message to display",
+                                        plugins: [new Ext.ux.Andrie.pPageSize(), new Ext.ux.ProgressBarPager()]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+	                   {
+                        xtype: 'panel',
+                        height: 25,
+                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;'
+	                   },
+                    {
+                        xtype: 'panel',
+                        layout: 'column',
+                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                        items: [
+                            {
+                                xtype: 'panel',
+                                height: 25,
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: .2
+                            },
+                            {
+                                xtype: 'panel',
+                                layout: 'column',
+                                height: 25,
+                                bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                columnWidth: .6,
+                                items: [
+                                    {
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        columnWidth: .5,
+                                        items: [
+                                            {
+                                                xtype: 'button',
+                                                id: 'btnSubmit',
+                                                handler: function () {
+                                                    var newData = new Array();
+                                                    var modifyRecord = AxtStore.getModifiedRecords();
+                                                    Ext.each(modifyRecord, function (record) {
+                                                        var data = {
+                                                            SID: record.get("SID"),
+                                                            SUB_MENU: record.get("SUB_MENU"),
+                                                            MENU_ITEM: record.get("MENU_ITEM"),
+                                                            LANGUAGE_TYPE: record.get("LANGUAGE_TYPE"),
+                                                            LANGUAGE: record.get("LANGUAGE")
+                                                        };
+                                                        newData.push(data);
+                                                    });
+
+                                                    if (newData.length <= 0) {
+                                                        return;
+                                                    }
+
+                                                    var msg = client.SYSAdminMenuCaption.saveData(newData);
+                                                    axtlib.msgStart(eval(msg), "dfdTitle", 0, 0);
+
+                                                    axtStoreUpdate();
+
+                                                    /*btnSubmit user code start*/
+                                                    /*btnSubmit user code end*/
+
+                                                    Ext.getCmp('menucaption_crud_grid').getView().refresh();
+                                                    parent.document.getElementById('contentViewFrame').src = "App_Html/WIP/WebQuery/LotList.html?time=" + new Date().getTime();
+                                                },
+                                                width: 72
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                        columnWidth: .5,
+                                        items: [
+                                            {
+                                                xtype: 'button',
+                                                id: 'btnCancel',
+                                                handler: function () {
+                                                    axtStoreUpdate();
+
+                                                    /*btnCancel user code start*/
+                                                    /*btnCancel user code end*/
+
+                                                    Ext.getCmp('menucaption_crud_grid').getView().refresh();
+                                                },
+                                                width: 72
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+	                           {
+                                   xtype: 'panel',
+                                   height: 25,
+                                   bodyStyle: 'border-width:0; padding:0px 0 0 0px; background:transparent;',
+                                   columnWidth: .2
+    	                       }
+	                       ]
+                    }
+                ]
+                });
+
+                AxtPanel.render("main");
+                setlang();
+            });
+    </script>
+</head>
+<body>
+    <center>
+        <div id="main"></div>
+    </center>
+</body>
+</html>
